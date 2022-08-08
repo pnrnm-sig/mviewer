@@ -104,6 +104,13 @@ var info = (function () {
    */
   var _tocsortedlayers;
 
+     /**
+     * Property: _tocsortedlayers
+     * Array of string
+     * Used to store all layerids sorted according to the toc
+     */
+    var _tocsortedlayers;
+
   /**
    * Private Method: _customizeHTML
    * @param html {Array}
@@ -472,51 +479,36 @@ var info = (function () {
       var mapLayers = mviewer.getMap().getLayers().getArray();
       mapLayers = mapLayers.map((l) => l.getProperties().mviewerid).filter((l) => l);
 
-      var mapLayersOrder = [];
-      viewsLayers.forEach((lv) => {
-        if (mapLayers.indexOf(lv.layerid) > -1) {
-          mapLayersOrder[mapLayers.indexOf(lv.layerid)] = lv;
-        } else {
-          mapLayersOrder[lv.id] = lv; // when display template is allintabs all layers are virtually renamed (one fictive layer per feature)
-        }
-      });
-      var infoLayers = mapLayersOrder.filter((f) => f);
-      var orderedlayers = [];
-      if (
-        configuration.getConfiguration().application.sortlayersinfopanel &&
-        configuration.getConfiguration().application.sortlayersinfopanel == "toc"
-      ) {
-        //toc order
-        // les couches de la toc dans l'ordre
-        for (var j = 0; j < infoLayers.length; j++) {
-          // layers not shown in toc but queried first
-          if (
-            _tocsortedlayers.indexOf(
-              infoLayers[j].initiallayerid
-                ? infoLayers[j].initiallayerid
-                : infoLayers[j].layerid
-            ) === -1
-          ) {
-            orderedlayers.push(infoLayers[j]);
-          }
-        }
-        for (var i = 0; i < _tocsortedlayers.length; i++) {
-          for (var j = 0; j < infoLayers.length; j++) {
-            if (
-              (infoLayers[j].initiallayerid
-                ? infoLayers[j].initiallayerid
-                : infoLayers[j].layerid) == _tocsortedlayers[i]
-            ) {
-              orderedlayers.push(infoLayers[j]);
+            var mapLayersOrder = [];
+            viewsLayers.forEach(lv => {
+                
+                if (mapLayers.indexOf(lv.layerid) > -1){
+                mapLayersOrder[mapLayers.indexOf(lv.layerid)] = lv;
+                } else {
+                    mapLayersOrder[lv.id] = lv; // when display template is allintabs all layers are virtually renamed (one fictive layer per feature)
+                }
+            })
+                        var infoLayers = mapLayersOrder.filter(f => f);
+            var orderedlayers = [];
+            if (configuration.getConfiguration().application.sortlayersinfopanel && configuration.getConfiguration().application.sortlayersinfopanel=='toc'){ //toc order
+                // les couches de la toc dans l'ordre 
+                for (var j = 0; j < infoLayers.length; j++) {// layers not shown in toc but queried first
+                    if (_tocsertedlayers.indexOf(infoLayers[j].initiallayerid ? infoLayers[j].initiallayerid:infoLayers[j].layerid) === -1){
+                        orderedlayers.push(infoLayers[j]);
+                    }
+                }
+                for (var i = 0; i < _tocsertedlayers.length; i++) {
+                    for (var j = 0; j < infoLayers.length; j++) {
+                        if ((infoLayers[j].initiallayerid ? infoLayers[j].initiallayerid:infoLayers[j].layerid) == _tocsertedlayers[i]){
+                            orderedlayers.push(infoLayers[j]);
+                        }
+                    }
+                }
+            } else { // ordered with legend (=map order)
+                orderedlayers = infoLayers.reverse();
             }
-          }
+            return orderedlayers
         }
-      } else {
-        // ordered with legend (=map order)
-        orderedlayers = infoLayers.reverse();
-      }
-      return orderedlayers;
-    };
 
     /**
      * Return infos according to map click event behavior.

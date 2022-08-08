@@ -46,6 +46,7 @@ Syntaxe
 		langfile=""
 		favicon=""
         sortlayersinfopanel=""
+		sortlayersinfopanel=""
         />
 
 Paramètres principaux
@@ -86,31 +87,6 @@ Paramètres secondaires
 * ``favicon`` :guilabel:`studio` : URL du fichier image à utiliser comme favicon de l'application.
 * ``addlayerstools`` :guilabel:`studio` : paramètre optionnel de type booléen (true/false) activant le panneau pour ajouter des couches WMS ou API features à la carte.
 * ``sortlayersinfopanel``: mode de tri des couches dans le panneau d'information en suivant la légende qui suit l'ordre des couches de la map (valeur **default**) ou la toc (valeur **toc**). Valeur par défaut **default**.
-
-Modes de templates
------------------
-
-Modes d'affichage des templates soit à droite (templaterightinfopanel), soit en bas (templatebottominfopanel).
-
-* ``default``: Une entrée par couche avec un carroussel pour navigation par entités.
-
-.. image:: ../_images/tech/default.png
-              :alt: default
-              :align: center   
-
-* ``brut``: Affichage à la suite de toutes les entités avec encapsulation par couche.
-
-.. image:: ../_images/tech/brut.png
-              :alt: brut
-              :align: center   
-
-* ``accordion``: Affichage par couche avec carroussel et pliage/dépliage lors du changement de couche.
-
-.. image:: ../_images/tech/accordion.png
-              :alt: accordion
-              :align: center   
-
-* ``allintabs``: Affichage à la suite avec une entrée par entité.
 
 .. image:: ../_images/tech/allintabs.png
               :alt: allintabs

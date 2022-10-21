@@ -4,3 +4,6 @@ panels/*
 apps/*.json
 node*
 package-*
+
+# Ignore temp folder
+/temp

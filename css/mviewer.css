@@ -1268,6 +1268,11 @@ li.mv-nav-item {
     display: inline-block;
 }
 
+/* Changement fait après installation : Hide themes in navbar that have an id beginning with "hideme" */
+[id^="theme-layers-hideme"] {
+  display: none;
+}
+
 /*******************************
 ------------- BOTTOM PANEL
 ********************************/

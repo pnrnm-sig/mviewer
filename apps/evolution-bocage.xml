@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Evolution du bocage v1</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2022-09-27T10:08:28.263Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application
+    title="L'évolution du bocage sur le territoire du Parc Normandie-Maine"
+    logo=""    
+    help="doc_evolution_bocage.html"    
+    style="css/themes/pnrnm.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"    
+    overwrite="false"    
+    fullscreen="true">
+</application>
+
+<!-- Zoom de la carte, étendue de la carte -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
+
+<!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> 
+<!-- Barre de recherche -->
+<searchparameters bbox="false" localities="false" features="true" static="false"/>
+
+<baselayers style="default"> 
+    <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Map tiles by  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, under  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
+</baselayers>
+<themes mini="false">
+    <theme id="theme-20220510132910" name="Densité du bocage" collapsed="false" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
+        <layer 
+            id="densite_com"
+            name="Année 1945"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="densite_1945"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/densite-1945.mst"></template>
+        </layer> 
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2000 -->
+        <layer 
+            id="densite_com"
+            name="Année 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/densite-2000.mst"></template>
+        </layer> 
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2010 -->
+        <layer 
+            id="densite_com"
+            name="Année 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/densite-2010.mst"></template>
+        </layer> 
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2020 -->
+        <layer 
+            id="densite_com"
+            name="A venir -- Année 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/densite-2020.mst"></template>
+        </layer> 
+
+
+    </theme> 
+    <theme id="theme-20220510132911" name="Evolution du bocage" collapsed="true" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 1945 et 2000 -->
+
+        <layer 
+            id="evolution_com" 
+            name="Entre 1945 et 2000" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_1945_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/evolution-1945-2000.mst"></template>
+        </layer>
+        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2000 et 2010 -->
+        <layer 
+            id="evolution_com" 
+            name="Entre 2000 et 2010" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/evolution-2000-2010.mst"></template>
+        </layer>
+            <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2010 et 2020 -->
+
+        <layer 
+            id="evolution_com" 
+            name="A venir -- Entre 2010 et 2020" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_1945_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/evolution-2010-2020.mst"></template>
+        </layer>
+        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 1945 et 2020 -->
+        <layer 
+            id="evolution_com" 
+            name="A venir -- Entre 1945 et 2020" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_1945_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/evolution-1945-2020.mst"></template>
+        </layer>
+
+    </theme>     
+    <theme id="theme-20220510132912" name="Plantation de haies" collapsed="true" icon="fas fa-layer-group"> 
+        <!-- Couche permettant l'affichage de la couche plantation de haies par commune -->
+        <layer 
+            id="densite_com"
+            name="Haies plantées par le Parc depuis 2008"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="plantation_haies"
+            legendurl="img/legend/legende_plantation_haies.png"  
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage/plantation-haies.mst"></template>
+        </layer> 
+    </theme>
+    <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
+    <theme id="hideme-20220510132912" name="Référentiel" collapsed="true" icon="fas fa-layer-group"> 
+    <!-- Couche permettant l'affichage des noms des communes et de l'affichage du contour rouge sur la commune 
+    lors du survol de la souris (hover) de l'utilisateur ainsi que la recherche des noms des communes dans la barre de recherche. -->
+            <layer 
+            id="communes"
+            name="Communes du Parc"
+            type="customlayer"     
+            url="customlayers/pnrnm/communes.js"      
+            visible="true"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom commune"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="false"
+            showintoc="true"
+            searchable="true"
+            searchengine="fuse"
+            fusesearchkeys="nom"
+            fusesearchresult="{{nom}}">            
+        </layer> 
+        <!-- tooltip, fields, aliases, tooltipenabled et tooltipcontent permettent le hover, showintoc permet de ne pas afficher la couche dans la légence,
+        searchable, searchengine, fusesearchkeys et fusesearchresult permettent la recherche des entités dans la barre de recherche. Name est affiché dans
+        la barre de recherche lors de l'affichage de résultats. -->
+        <!-- Couche permettant l'affichage du périmètre du Parc -->
+        <layer 
+            id="perimetre"
+            name="Périmètre du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+    </theme>
+</themes>
+</config>

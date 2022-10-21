@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>v0 - Evolution du bocage</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2022-09-27T10:08:28.263Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application
+    title="Le bocage sur le territoire du Parc"
+    logo=""    
+    help="doc_evolution_bocage_v0.html"    
+    style="css/themes/pnrnm-v0.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"    
+    overwrite="false"    
+    fullscreen="true">
+</application>
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
+<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<searchparameters bbox="false" localities="false" features="false" static="false"/>
+<baselayers style="default"> 
+    <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Map tiles by  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, under  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
+</baselayers>
+<themes mini="false">
+    <theme id="theme-20220510132910" name="Le bocage à l'échelle des communes" collapsed="false" icon="fas fa-leaf">
+    <group name="Densité du bocage" id="grp1" > 
+        <layer 
+            id="densite_com"
+            name="Densité du bocage 1945"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="densite_1945"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-1945.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_com"
+            name="Densité du bocage 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-2000.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_com"
+            name="Densité du bocage 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-2010.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_bocage"
+            name="A venir -- Densité du bocage 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-2020.mst"></template>
+        </layer> 
+    </group>
+    <group name="Evolution du bocage" id="grp2"> 
+        <layer 
+            id="evolution_com" 
+            name="Evolution entre 1945 et 2000" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_1945_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-communes-1945-2000.mst"></template>
+        </layer>
+        <layer 
+            id="evolution_com" 
+            name="Evolution entre 2000 et 2010" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-communes-2000-2010.mst"></template>
+        </layer>
+        <layer 
+            id="evolution_com" 
+            name="A venir -- Evolution entre 2010 et 2020" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_1945_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-communes-1945-2010.mst"></template>
+        </layer>
+        <layer 
+            id="evolution" 
+            name="A venir -- Evolution entre 1945 et 2020" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_1945_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-communes-1945-2010.mst"></template>
+        </layer>
+    </group> 
+    </theme> 
+    <theme id="theme-20220510132911" name="Le bocage à l'échelle des EPCI" collapsed="true" icon="fas fa-leaf">
+    <group name="Densité du bocage" id="grp3" > 
+        <layer 
+            id="densite_epci"
+            name="Densité du bocage 1945"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_epci_1945"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/epci-densite-bocage-1945.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_epci"
+            name="Densité du bocage 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_epci_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/epci-densite-bocage-2000.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_epci"
+            name="Densité du bocage 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_epci_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/epci-densite-bocage-2010.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_epci"
+            name="A venir -- Densité du bocage 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_epci_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/epci-densite-bocage-2020.mst"></template>
+        </layer> 
+    </group>
+    <group name="Evolution du bocage" id="grp4" > 
+        <layer 
+            id="evolution_epci" 
+            name="Evolution entre 1945 et 2000" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_nette_epci_1945_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-epci-1945-2000.mst"></template>
+        </layer>
+        <layer 
+            id="evolution_epci"
+            name="Evolution entre 2000 et 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_nette_epci_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-epci-2000-2010.mst"></template>
+        </layer> 
+        <layer 
+            id="evolution_epci"
+            name="A venir -- Evolution entre 2010 et 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_nette_epci_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-epci-2010-2020.mst"></template>
+        </layer> 
+        <layer 
+            id="evolution_epci"
+            name="A venir -- Evolution entre 1945 et 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_nette_epci_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-epci-1945-2020.mst"></template>
+        </layer> 
+    </group> 
+    </theme> 
+    <theme id="theme-20220510132912" name="Le bocage à l'échelle des départements" collapsed="true" icon="fas fa-leaf">
+    <group name="Densité du bocage" id="grp5" > 
+        <layer 
+            id="densite_dept"
+            name="Densité du bocage 1945"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_dept_1945"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/dept-densite-bocage-1945.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_dept"
+            name="Densité du bocage 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_dept_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/dept-densite-bocage-2000.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_dept"
+            name="Densité du bocage 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_dept_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/dept-densite-bocage-2010.mst"></template>
+        </layer> 
+        <layer 
+            id="densite_dept"
+            name="A venir -- Densité du bocage 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_dept_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/dept-densite-bocage-2020.mst"></template>
+        </layer> 
+    </group>
+    <group name="Evolution du bocage" id="grp6"> 
+        <layer 
+            id="evolution_dept" 
+            name="Entre 1945 et 2000" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_dept_1945_2000"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-dept-1945-2000.mst"></template>
+        </layer>
+        <layer 
+            id="evolution_dept"
+            name="Entre 2000 et 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_dept_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-dept-2000-2010.mst"></template>
+        </layer> 
+        <layer 
+            id="evolution_dept"
+            name="A venir -- Entre 2010 et 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_dept_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-dept-2010-2020.mst"></template>
+        </layer> 
+        <layer 
+            id="evolution_dept"
+            name="A venir -- Entre 1945 et 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_dept_2000_2010"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="templates/evolution-bocage-v0/evolution-bocage-dept-1945-2020.mst"></template>
+        </layer> 
+    </group> 
+    </theme> 
+    <theme id="theme-20220510132912" name="Référentiel - à chacher ?" collapsed="true" icon="fas fa-leaf"> 
+        <layer 
+            id="perimetre"
+            name="Périmètre du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+    </theme>
+</themes>
+</config>

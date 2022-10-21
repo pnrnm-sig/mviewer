@@ -1,0 +1,155 @@
+<!-- *** TEMPLATE CHIFFRES CLES 1 / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="item scrollbar-hidden" style="width:270px;">
+		<h3 class="title-feature ">{{nom}}</h3>
+
+      	<!--Chiffre clé 1-->
+      	<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber1"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{db_commune_1945_2010}} m/ha</div>
+	          <div class="titlenumber-feature">de différence en densité bocagère en 2020 par rapport à 2010</div>
+	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
+	        </div>
+      	</div>
+      	<!--./Chiffres clé 1-->
+		<!--Chiffre clé 2-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber2"></div>
+          	</div>
+			<div class="col-sm-8">
+	          <div class="number-feature">{{l_1945_2010_km}} km</div>
+	          <div class="titlenumber-feature">de différence de linéaire de haies entre 2010 et 2020</div>
+	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
+	        </div>
+      	</div>
+		<!--./Chiffres clé 2-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber3"></div>
+          	</div>
+			<div class="col-sm-8">
+	          <div class="number-feature">{{db_evol_1945_2010}} %</div>
+	          <div class="titlenumber-feature">d'évolution entre 2010 et 2020</div>
+	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
+	        </div>
+      	</div>
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #00936f;
+	}
+
+	/*** Définir les paramètres des chiffres clés*/
+
+	/* Couleur - code HEX */ 
+	.numberkey {
+    	--mynumbercolor: #00936f; 
+  	}
+
+  	/** Définir les icônes des chiffres clés **/
+
+	/* Icône 1 - Lien vers l'îcone */
+	#iconnumber1{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/densite.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/densite.png);
+	 }
+	#iconnumber2{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
+	 }
+	#iconnumber3{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/evolution.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/evolution.png);
+	 }
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none;
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Texte */
+
+	.title-feature {
+		color: var(--mycolor);
+	    font-family: 'roboto_bold_c', Arial, Sans-serif;
+	    text-transform: uppercase;
+	    font-size: 16px;
+	    margin-bottom: 7%;
+	    line-height: 1.2;
+	}
+	.subtitle-feature {
+		color: var(--mycolor);
+		font-family:'roboto_regular', Arial, Sans-serif;
+		font-size:12px;
+		margin-top:7%;
+		line-height:1;
+	}
+
+	/* Chiffres clés */
+
+	.numberkey {
+    	margin-top: 10px; 
+    	height: 10px;   
+  	}
+
+	.zone-iconnumber{
+		padding:20px;
+	}
+
+	#iconnumber1{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+	#iconnumber2{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+	#iconnumber3{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+
+	.number-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:30px;   
+  	}
+
+  	.titlenumber-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:13px;
+    	line-height:1;
+ 	}
+
+	.subtitlenumber-feature{
+		font-size:11px;
+		color:#555;
+	}
+	
+</style>

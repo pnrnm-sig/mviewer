@@ -10,8 +10,8 @@
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{info_db_1945_2010}} m/ha</div>
-	          <div class="titlenumber-feature">d'évolution en densité bocagère entre 1945 et 2020</div>
+	          <div class="number-feature">{{db_commune_1945_2010}} m/ha</div>
+	          <div class="titlenumber-feature">de différence en densité bocagère en 2020 par rapport à 1945</div>
 	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
@@ -22,22 +22,24 @@
           		<div id="iconnumber2"></div>
           	</div>
 			<div class="col-sm-8">
-	          <div class="number-feature">{{info_l_1945_2010}} km</div>
-	          <div class="titlenumber-feature">de linéaire de haies en 2020 par rapport à 1945</div>
+	          <div class="number-feature">{{l_1945_2010_km}} km</div>
+	          <div class="titlenumber-feature">de différence de linéaire de haies entre 1945 et 2020</div>
 	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
 		<!--./Chiffres clé 2-->
+		<!--Chiffre clé 3-->
 		<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
           		<div id="iconnumber3"></div>
           	</div>
 			<div class="col-sm-8">
-	          <div class="number-feature">{{info_db_evol_1945_2010}} %</div>
+	          <div class="number-feature">{{db_evol_1945_2010}} %</div>
 	          <div class="titlenumber-feature">d'évolution entre 1945 et 2020</div>
 	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
+		<!--./Chiffres clé 3-->
 	</li>
 {{/features}}
 

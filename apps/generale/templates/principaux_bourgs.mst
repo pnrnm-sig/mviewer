@@ -38,8 +38,8 @@
 
 	/* Icône 1 - Lien vers l'îcone */
 	#iconnumber1{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/population.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/population.png);
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/generale/img/icone/population.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/generale/img/icone/population.png);
 	 }
 
 

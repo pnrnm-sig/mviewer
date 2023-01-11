@@ -12,7 +12,7 @@
 <application    
     title="Remonter le temps à travers le bocage du territoire du Parc et Géoparc Normandie-Maine"    
     logo=""    
-    help="doc_bocage_diachronique.html"    
+    help="apps/bocage-diachronique/doc_bocage_diachronique.html"    
     style="css/themes/pnrnm.css"    
     exportpng="false"    
     showhelp="false"    
@@ -24,7 +24,7 @@
     Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
 </application>
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-16656.4,6200926.3" zoom="17" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
-<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="true" static="false"/>
 <baselayers style="gallery"> 
@@ -40,7 +40,7 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="true"  
             tiled="true"         
-            legendurl="img/legend/legende_1945.png"  
+            legendurl="apps/bocage-diachronique/img/legend/legende_1945.png"  
             infoformat="text/html"
             queryable="false"
             exclusive="true"
@@ -57,7 +57,7 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
-            legendurl="img/legend/legende_2000.png"  
+            legendurl="apps/bocage-diachronique/img/legend/legende_2000.png"  
             infoformat="text/html"
             queryable="false"
             exclusive="true"
@@ -70,7 +70,7 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"   
             tiled="true"           
-            legendurl="img/legend/legende_2010.png"  
+            legendurl="apps/bocage-diachronique/img/legend/legende_2010.png"  
             infoformat="text/html"
             queryable="false"
             exclusive="true"
@@ -87,10 +87,10 @@ masquera automatiquement toutes les autres couches ayant ce paramètre activé. 
             visible="true" 
             queryable="false"           
             type="customlayer"           
-            legendurl="img/legend/legende_2020.png"         
-            customcontrolpath="demo/swipe/control"            
+            legendurl="apps/bocage-diachronique/img/legend/legende_2020.png"         
+            customcontrolpath="apps/bocage-diachronique/swipe/control"            
             opacity="1"            
-            url="demo/swipe/layer/swipe.js"            
+            url="apps/bocage-diachronique/swipe/layer/swipe.js"            
             customcontrol="true"            
             expanded="false"                      
             metadata=""            
@@ -115,7 +115,7 @@ elles seront affichées dans l’ordre d’écriture du XML -->
             id="communes"
             name="Communes du Parc"
             type="customlayer"     
-            url="customlayers/pnrnm/communes.js"      
+            url="apps/commun/customlayers/communes.js"      
             visible="true"
             fields="nom"
             aliases="Nom commune"

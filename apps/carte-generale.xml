@@ -12,7 +12,7 @@
 <application
     title="Carte générale du territoire du Parc et Géoparc Normandie-Maine"
     logo=""    
-    help="doc_carte_generale.html"    
+    help="apps/generale/doc_carte_generale.html"    
     style="css/themes/pnrnm.css"    
     exportpng="false"    
     showhelp="false"    
@@ -28,7 +28,7 @@
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
 
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
-<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> 
+<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
 <!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="false" static="false"/>
@@ -45,9 +45,9 @@
             id="communes"
             name="Communes du Parc"
             type="customlayer"     
-            url="customlayers/pnrnm/generale/communes.js"    
+            url="apps/generale/customlayers/communes.js"    
             visible="true"
-            legendurl="img/legend/legende_administratif.png"
+            legendurl="apps/generale/img/legend/legende_administratif.png"
             tooltip="true"
             fields="nom"
             aliases="Nom commune"
@@ -61,9 +61,9 @@
             id="principaux_bourgs"
             name="Principaux bourgs du Parc"
             type="customlayer"     
-            url="customlayers/pnrnm/generale/principaux_bourgs.js"    
+            url="apps/generale/customlayers/principaux_bourgs.js"    
             visible="false"
-            legendurl="img/legend/legende_principaux_bourgs.png"
+            legendurl="apps/generale/img/legend/legende_principaux_bourgs.png"
             tooltip="true"
             fields="nom"
             aliases="Nom principaux bourgs"
@@ -72,16 +72,16 @@
             queryable="true"
             exclusive="true"
             attribution="Cliquer sur un bourg pour obtenir plus d'informations.">   
-            <template url="templates/generale/principaux_bourgs.mst"></template>            
+            <template url="apps/generale/templates/principaux_bourgs.mst"></template>            
         </layer>
         <!-- Couche permettant l'affichage des villes-portes du Parc -->
         <layer 
             id="villes_portes"
             name="Villes-portes du Parc"
             type="customlayer"     
-            url="customlayers/pnrnm/generale/villes_portes.js"    
+            url="apps/generale/customlayers/villes_portes.js"    
             visible="false"
-            legendurl="img/legend/legende_administratif.png"
+            legendurl="apps/generale/img/legend/legende_administratif.png"
             tooltip="true"
             fields="nom"
             aliases="Nom ville-porte"
@@ -95,9 +95,9 @@
             id="associees_deleguees"
             name="Communes associées ou déléguées du Parc"
             type="customlayer"     
-            url="customlayers/pnrnm/generale/associees_deleguees.js"    
+            url="apps/generale/customlayers/associees_deleguees.js"    
             visible="false"
-            legendurl="img/legend/legende_administratif.png"
+            legendurl="apps/generale/img/legend/legende_administratif.png"
             tooltip="true"
             fields="nom"
             aliases="Nom commune associée ou déléguée"
@@ -111,9 +111,9 @@
             id="epci"
             name="EPCI"
             type="customlayer"     
-            url="customlayers/pnrnm/generale/epci.js"    
+            url="apps/generale/customlayers/epci.js"    
             visible="false"
-            legendurl="img/legend/legende_administratif.png"
+            legendurl="apps/generale/img/legend/legende_administratif.png"
             tooltip="true"
             fields="nom"
             aliases="Nom EPCI"
@@ -127,9 +127,9 @@
             id="departements"
             name="Départements"
             type="customlayer"     
-            url="customlayers/pnrnm/generale/departements.js"   
+            url="apps/generale/customlayers/departements.js"   
             visible="false"
-            legendurl="img/legend/legende_administratif.png"
+            legendurl="apps/generale/img/legend/legende_administratif.png"
             tooltip="true"
             fields="nom"
             aliases="Nom département"
@@ -169,12 +169,12 @@
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
-            legendurl="img/legend/legende_paysages_classement.jpg"
+            legendurl="apps/generale/img/legend/legende_paysages_classement.jpg"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
             attribution="Cliquer sur un ensemble paysager pour obtenir plus d'informations.">   
-            <template url="templates/generale/ensembles_paysagers.mst"></template>    
+            <template url="apps/generale/templates/ensembles_paysagers.mst"></template>    
         </layer> 
         <!-- Couche permettant l'affichage des différentes unités paysagères du Parc -->
         <layer 
@@ -184,11 +184,11 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
             infoformat="application/vnd.ogc.gml"
-            legendurl="img/legend/legende_unite_paysageres.jpg"
+            legendurl="apps/generale/img/legend/legende_unite_paysageres.jpg"
             queryable="true"
             exclusive="true"
             attribution="Cliquer sur une unité paysagère pour obtenir plus d'informations.">   
-            <template url="templates/generale/unites_paysageres.mst"></template>  
+            <template url="apps/generale/templates/unites_paysageres.mst"></template>  
         </layer> 
     </theme>
     <theme id="theme-20220510132912" name="Éléments géographiques" collapsed="true" icon="fas fa-layer-group"> 
@@ -203,7 +203,7 @@
             queryable="true"
             exclusive="false"
             attribution="Cliquer sur une forêt publique pour obtenir plus d'informations.">   
-            <template url="templates/generale/forets_publiques.mst"></template> 
+            <template url="apps/generale/templates/forets_publiques.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage des cours d'eau du territoire -->
         <layer 
@@ -216,7 +216,7 @@
             queryable="true"
             exclusive="false"
             attribution="Cliquer sur un cours d'eau pour obtenir plus d'informations.">   
-            <template url="templates/generale/cours_deau.mst"></template> 
+            <template url="apps/generale/templates/cours_deau.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
         <layer 
@@ -229,7 +229,7 @@
             queryable="true"
             exclusive="false"
             attribution="Cliquer sur un détail orographique pour obtenir plus d'informations.">   
-            <template url="templates/generale/detail_orographique.mst"></template> 
+            <template url="apps/generale/templates/detail_orographique.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage les zones Natura2000 du territoire et aux alentours -->
         <layer 
@@ -239,11 +239,11 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
             infoformat="application/vnd.ogc.gml"
-            legendurl="img/legend/legende_natura2000.png"
+            legendurl="apps/generale/img/legend/legende_natura2000.png"
             queryable="true"
             exclusive="false"
             attribution="Cliquer sur un site Natura 2000 pour obtenir plus d'informations.">   
-            <template url="templates/generale/natura2000.mst"></template> 
+            <template url="apps/generale/templates/natura2000.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
         <layer 
@@ -254,7 +254,7 @@
             visible="false"
             infoformat="text/html"
             opacity="0.5"
-            legendurl="img/legend/legende_landcover.png"
+            legendurl="apps/generale/img/legend/legende_landcover.png"
             queryable="false"
             exclusive="false">
         </layer> 
@@ -266,7 +266,7 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
             infoformat="text/html"
-            legendurl="img/legend/legende_bdalti25m.png"
+            legendurl="apps/generale/img/legend/legende_bdalti25m.png"
             queryable="false"
             exclusive="false">
         </layer> 

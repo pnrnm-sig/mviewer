@@ -3,7 +3,7 @@
 <metadata>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
-<dc:title>Double swipe</dc:title>
+<dc:title>Remonter le temps vue du ciel</dc:title>
 <dc:creator>anonymous</dc:creator>
 <dc:publisher>anonymous</dc:publisher>
 <dc:subject>Parc Normandie Maine</dc:subject>
@@ -12,7 +12,7 @@
 <application    
     title="Remonter le temps sur le territoire du Parc et Géoparc Normandie-Maine"    
     logo=""    
-    help="doc_remonter_le_temps.html" 
+    help="apps/remonter-le-temps/doc_remonter_le_temps.html" 
     style="css/themes/pnrnm.css"    
     exportpng="false"    
     showhelp="false"       
@@ -22,7 +22,7 @@
     Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
 </application>
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-16656.4,6200926.3" zoom="17" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
-<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="true" static="false"/>
 <baselayers style="gallery"> 
@@ -42,7 +42,7 @@
             showintoc="true"
             tiled="true"   
             legendurl="img/blank.gif" 
-            url="customcontrols/remonter-le-temps/customlayers/swipeLeft.js" 
+            url="apps/remonter-le-temps/customcontrols/customlayers/swipeLeft.js" 
             queryable="false"> 
         </layer> <!-- URL indique le fichier dans lequel les couches WMS sont ajoutées pour le côté gauche du balayage. -->
     <!-- Couche permettant d'afficher les limites communales et les noms des communes. -->
@@ -61,7 +61,7 @@
             id="communes"
             name="Communes du Parc"
             type="customlayer"     
-            url="customlayers/pnrnm/communes.js"      
+            url="apps/commun/customlayers/communes.js"      
             visible="true"
             fields="nom"
             aliases="Nom commune"
@@ -98,9 +98,9 @@ elles seront affichées dans l’ordre d’écriture du XML -->
             expanded="true" 
             tiled="true"   
             legendurl="img/blank.gif" 
-            url="customcontrols/remonter-le-temps/customlayers/swipeRight.js" 
+            url="apps/remonter-le-temps/customcontrols/customlayers/swipeRight.js" 
             customcontrol="true" 
-            customcontrolpath="customcontrols/remonter-le-temps/customcontrols/" 
+            customcontrolpath="apps/remonter-le-temps/customcontrols/customcontrols/" 
             queryable="false"> 
         </layer> <!-- URL indique le fichier dans lequel les couches WMS sont ajoutées pour le côté droit du balayage.
                       CUSTOMCONTROLPATH indique le chemin d'accès vers les fichiers permettant de personnaliser le bouton et la barre de balayage

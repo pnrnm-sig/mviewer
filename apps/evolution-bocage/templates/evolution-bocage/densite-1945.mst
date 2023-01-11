@@ -80,16 +80,16 @@
 
 	/* Icône 1 - Lien vers l'îcone */
 	#iconnumber1{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/densite.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/densite.png);
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/densite.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/densite.png);
 	 }
 	#iconnumber2{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/des-arbres.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/des-arbres.png);
 	 }
 	#iconnumber3{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/plantation.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/plantation.png);
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
 	 }
 
 

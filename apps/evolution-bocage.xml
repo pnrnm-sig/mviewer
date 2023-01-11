@@ -12,7 +12,7 @@
 <application
     title="L'évolution du bocage sur le territoire du Parc et Géoparc Normandie-Maine"
     logo=""    
-    help="doc_evolution_bocage.html"    
+    help="apps/evolution-bocage/doc_evolution_bocage.html"    
     style="css/themes/pnrnm.css"    
     exportpng="false"    
     showhelp="false"    
@@ -27,7 +27,7 @@
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
 
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
-<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> 
+<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
 <!-- Barre de recherche -->
 <searchparameters bbox="false" localities="false" features="true" static="false"/>
 
@@ -47,7 +47,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/densite-1945.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-1945.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 2000 -->
         <layer 
@@ -60,7 +60,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/densite-2000.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2000.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 2010 -->
         <layer 
@@ -73,7 +73,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/densite-2010.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2010.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 2020 -->
         <layer 
@@ -86,7 +86,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/densite-2020.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2020.mst"></template>
         </layer> 
 
 
@@ -104,7 +104,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/evolution-1945-2000.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-1945-2000.mst"></template>
         </layer>
         <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2000 et 2010 -->
         <layer 
@@ -117,7 +117,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/evolution-2000-2010.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2000-2010.mst"></template>
         </layer>
             <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2010 et 2020 -->
 
@@ -131,7 +131,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/evolution-2010-2020.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2010-2020.mst"></template>
         </layer>
         <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 1945 et 2020 -->
         <layer 
@@ -144,7 +144,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/evolution-1945-2020.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-1945-2020.mst"></template>
         </layer>
 
     </theme>     
@@ -161,7 +161,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="templates/evolution-bocage/plantation-haies.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-bocage/plantation-haies.mst"></template>
         </layer> 
     </theme>
     <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
@@ -172,7 +172,7 @@
             id="communes"
             name="Communes du Parc"
             type="customlayer"     
-            url="customlayers/pnrnm/communes.js"      
+            url="apps/commun/customlayers/communes.js"      
             visible="true"
             tooltip="true"
             fields="nom"

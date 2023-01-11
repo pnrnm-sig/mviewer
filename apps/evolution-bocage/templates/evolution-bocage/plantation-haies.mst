@@ -4,61 +4,30 @@
 	<li class="item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature ">{{nom}}</h3>
 
-		<!--Chiffre clé 1-->
-		<div class="row numberkey" style="height:auto;">
+		<!--Chiffre clé 3-->
+      	<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{db_2010_dec}} m/ha</div>
-	          <div class="titlenumber-feature">de densité du bocage en 2010</div>
+	          <div class="number-feature">{{plantation}} m</div>
+	          <div class="titlenumber-feature">de haies plantées par le Parc depuis 2008</div>
 	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
-		<!--./Chiffres clé 1-->
-		<!--Chiffre clé 2-->
-      	<div class="row numberkey" style="height:auto;">
+      	<!--./Chiffres clé 3-->	
+		
+      	{{! <div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
           		<div id="iconnumber2"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{l_2010_km}} km</div>
-	          <div class="titlenumber-feature">de linéaire de haies en 2010</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
-	        </div>
-      	</div>
-      	<!--./Chiffres clé 2-->		
-		<!--Chiffre clé 3-->
-      	<!--<div class="row numberkey" style="height:auto;">
-        	<div class="zone-iconnumber col-sm-4">
-          		<div id="iconnumber3"></div>
-          	</div>
-	        <div class="col-sm-8">
-	          <div class="number-feature">{{plantation}} km</div>
+	          <div class="number-feature">39 625 m</div>
 	          <div class="titlenumber-feature">de haies plantées par le Parc depuis 2008</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
+	          <div class="subtitle-feature"><i>Toutes communes confondues</i></div>
 	        </div>
-      	</div>-->
-      	<!--./Chiffres clé 3-->	
-		
-		<table>
-			<thead>
-				<tr><th>      </th><th>Densité bocagère</th></tr>
-			</thead>
-			<tbody>
-					<tr><td><b>1945</b></td><td>{{db_1945_dec}} m/ha</td></tr>
-			</tbody>
-			<tbody>
-					<tr><td><b>2000</b></td><td>{{db_2000_dec}} m/ha</td></tr>
-			</tbody>
-			<tbody>
-					<tr><td><b>2010</b></td><td>{{db_2010_dec}} m/ha</td></tr>
-			</tbody>
-			<tbody>
-					<tr><td><b>2020</b></td><td>XXX m/ha</td></tr>
-			</tbody>
-		</table>
-		
+      	</div> }}
+	
 	</li>
 {{/features}}
 
@@ -80,17 +49,13 @@
 
 	/* Icône 1 - Lien vers l'îcone */
 	#iconnumber1{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/densite.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/densite.png);
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
 	 }
-	#iconnumber2{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
-	 }
-	#iconnumber3{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/plantation.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/plantation.png);
-	 }
+	/*#iconnumber2{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation_parc.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation_parc.png);
+	 }*/
 
 
   	/***********************************************/
@@ -157,7 +122,6 @@
 	}
 
 
-
 	.number-feature {
     	color: var(--mynumbercolor);
     	font-family:'roboto_bold';
@@ -173,9 +137,17 @@
 
 	.subtitlenumber-feature{
 		font-size:11px;
-		color:#555;
 	}
-	
+
+	/*.table-title{
+		color: var(--mycolor);
+	    font-family: 'roboto_bold', Arial, Sans-serif;
+	    font-size: 14px;
+		margin-top: 10%;
+	    margin-bottom: 7%;
+	    line-height: 1.2;
+	}
+*/
 	th {
 		color:#00936f ;
 	}
@@ -195,5 +167,5 @@
 		border: 1px solid #ccc; 
 		text-align: center; 		
 	}
-	
+
 </style>

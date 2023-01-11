@@ -45,4 +45,11 @@
 	    line-height: 1.2;
 	}
 
+  	.titlenumber-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:13px;
+    	line-height:1;
+ 	}
+
 </style>

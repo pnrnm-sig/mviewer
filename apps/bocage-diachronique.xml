@@ -10,7 +10,7 @@
 <dc:date>2022-09-12T13:00:12.968Z</dc:date>
 </rdf:Description></rdf:RDF></metadata>
 <application    
-    title="Remonter le temps à travers le bocage du territoire du Parc Normandie-Maine"    
+    title="Remonter le temps à travers le bocage du territoire du Parc et Géoparc Normandie-Maine"    
     logo=""    
     help="doc_bocage_diachronique.html"    
     style="css/themes/pnrnm.css"    
@@ -28,9 +28,9 @@
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="true" static="false"/>
 <baselayers style="gallery"> 
-    <baselayer visible="true" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
-</baselayers> <!-- Fond de carte utilisée lorsqu'aucune couche n'est cochée -->
-<themes mini="true">
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Fond de carte Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+</baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
+<themes mini="false">
     
     <theme id="theme-20220810114905" name="Comparer l'année 2020 à ..." collapsed="false" icon="fas fa-layer-group">               
         <layer 

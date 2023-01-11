@@ -3,7 +3,7 @@
 <metadata>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
-<dc:title>Evolution du bocage v1</dc:title>
+<dc:title>v0.1 - Evolution du bocage</dc:title>
 <dc:creator>anonymous</dc:creator>
 <dc:publisher>anonymous</dc:publisher>
 <dc:subject>Parc Normandie Maine</dc:subject>

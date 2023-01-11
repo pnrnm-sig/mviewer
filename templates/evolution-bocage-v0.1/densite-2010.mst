@@ -4,40 +4,49 @@
 	<li class="item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature ">{{nom}}</h3>
 
-      	<!--Chiffre clé 1-->
-      	<div class="row numberkey" style="height:auto;">
+		<!--Chiffre clé 1-->
+		<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{info_db_1945_2010}} m/ha</div>
-	          <div class="titlenumber-feature">d'évolution en densité bocagère entre 1945 et 2020</div>
+	          <div class="number-feature">{{db_2010_dec}} m/ha</div>
+	          <div class="titlenumber-feature">de densité du bocage en 2010</div>
 	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
-      	<!--./Chiffres clé 1-->
+		<!--./Chiffres clé 1-->
 		<!--Chiffre clé 2-->
-		<div class="row numberkey" style="height:auto;">
+      	<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
           		<div id="iconnumber2"></div>
           	</div>
-			<div class="col-sm-8">
-	          <div class="number-feature">{{info_l_1945_2010}} km</div>
-	          <div class="titlenumber-feature">de linéaire de haies en 2020 par rapport à 1945</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{l_2010_km}} km</div>
+	          <div class="titlenumber-feature">de linéaire de haies en 2010</div>
 	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
-		<!--./Chiffres clé 2-->
-		<div class="row numberkey" style="height:auto;">
-        	<div class="zone-iconnumber col-sm-4">
-          		<div id="iconnumber3"></div>
-          	</div>
-			<div class="col-sm-8">
-	          <div class="number-feature">{{info_db_evol_1945_2010}} %</div>
-	          <div class="titlenumber-feature">d'évolution entre 1945 et 2020</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
-	        </div>
-      	</div>
+      	<!--./Chiffres clé 2-->	
+		
+		<table>
+			<thead>
+				<tr><th>      </th><th>Densité bocagère</th></tr>
+			</thead>
+			<tbody>
+					<tr><td><b>1945</b></td><td>{{db_1945_dec}} m/ha</td></tr>
+			</tbody>
+			<tbody>
+					<tr><td><b>2000</b></td><td>{{db_2000_dec}} m/ha</td></tr>
+			</tbody>
+			<tbody>
+					<tr><td><b>2010</b></td><td>{{db_2010_dec}} m/ha</td></tr>
+			</tbody>
+			<tbody>
+					<tr><td><b>2020</b></td><td>XXX m/ha</td></tr>
+			</tbody>
+		</table>
+		
 	</li>
 {{/features}}
 
@@ -66,10 +75,7 @@
 	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
 	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/des-arbres.png);
 	 }
-	#iconnumber3{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/evolution.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/img/icone/evolution.png);
-	 }
+
   	/***********************************************/
 	/*** Ne pas toucher aux propriétés suivantes ***/
 
@@ -111,7 +117,6 @@
 	.zone-iconnumber{
 		padding:20px;
 	}
-
 	#iconnumber1{
 	    -webkit-mask-repeat: no-repeat;
 	    mask-repeat: no-repeat;
@@ -126,13 +131,7 @@
 	    width: 70px;
 	    background: var(--mynumbercolor);
 	}
-	#iconnumber3{
-	    -webkit-mask-repeat: no-repeat;
-	    mask-repeat: no-repeat;
-	    height: 70px;
-	    width: 70px;
-	    background: var(--mynumbercolor);
-	}
+
 
 	.number-feature {
     	color: var(--mynumbercolor);
@@ -150,6 +149,26 @@
 	.subtitlenumber-feature{
 		font-size:11px;
 		color:#555;
+	}
+	
+	th {
+		color:#00936f ;
+	}
+	
+	table { 
+		width: 95%; 
+		color: #00936f; 
+		border-collapse: collapse; 
+	}
+	th { 
+		background: #eee; 
+		color: #00936f; 
+		font-weight: bold; 
+	}
+	td, th { 
+		padding: 6px; 
+		border: 1px solid #ccc; 
+		text-align: center; 		
 	}
 	
 </style>

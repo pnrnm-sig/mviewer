@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Remonter le temps v0</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2022-09-12T13:00:12.968Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application    
+    title="Remonter le temps sur le territoire du Parc et Géoparc Normandie-Maine"    
+    logo=""    
+    help="doc_remonter_le_temps.html"    
+    style="css/themes/pnrnm.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"    
+    overwrite="false"    
+    fullscreen="true"> <!-- Overwrite indique si la case "Ecraser le fichier XML chargé" a été cochée lors de la sauvegarde du XML. 
+    Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+</application>
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
+<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<searchparameters bbox="false" localities="true" features="true" static="false"/>
+<baselayers style="gallery"> 
+    <baselayer visible="true" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Fond de carte Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+</baselayers> <!-- Fond de carte utilisée lorsqu'aucune couche n'est cochée -->
+<themes mini="false">
+    
+    <theme id="theme-20220810114905" name="Comparer l'année 2020 à ..." collapsed="false" icon="fas fa-layer-group">  
+        <group id="1" name="Cartes historiques">        
+        <layer 
+            id="Carte_Cassini"
+            name="Carte de Cassini (XVIIIème siècle)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_1950-1965.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            </layer>       
+        <layer 
+            id="Carte_Capitaine"
+            name="Carte de Capitaine (XVIIIème siècle)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_1950-1965.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            </layer>              
+        <layer 
+            id="GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40"
+            name="Carte de l'état-major (1820-1866)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_1950-1965.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            </layer>             
+        <layer 
+            id="GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950"
+            name="Carte historique de 1950"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_1950-1965.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            </layer>   
+        </group> 
+    <group id="2" name="Photographies aériennes">             
+        <layer 
+            id="ORTHOIMAGERY.ORTHOPHOTOS.1950-1965"
+            name="Années 1950 - 1965"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_1950-1965.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            </layer>  
+        <layer 
+            id="ORTHOIMAGERY.ORTHOPHOTOS2000"
+            name="A venir - Année 1990"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_1990.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            </layer>
+        <layer 
+            id="ORTHOIMAGERY.ORTHOPHOTOS2000-2005"
+            name="Années 2000 - 2005"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            legendurl="img/legend/remonter_le_temps/legende_2000-2005.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+        </layer>   
+        <layer 
+            id="ORTHOIMAGERY.ORTHOPHOTOS2010"
+            name="Année 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"   
+            tiled="true"           
+            legendurl="img/legend/remonter_le_temps/legende_2010.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne."> <!-- Booléen stipulant si la couche est exclusive. Si la valeur est « true », l’affichage de cette couche
+masquera automatiquement toutes les autres couches ayant ce paramètre activé. -->
+        </layer>
+        <layer 
+            id="ORTHOIMAGERY.ORTHOPHOTOS2011-2015"
+            name="Années 2011 - 2015"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            legendurl="img/legend/remonter_le_temps/legende_2011-2015.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+        </layer>         
+        <layer 
+            id="ORTHOIMAGERY.ORTHOPHOTOS2011-2015"
+            name="A venir - Années 2012 - 2013"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            legendurl="img/legend/remonter_le_temps/legende_2012-2013.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+        </layer>        
+        <layer 
+            id="ORTHOIMAGERY.ORTHOPHOTOS2011-2015"
+            name="A venir - Années 2015 - 2016"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            legendurl="img/legend/remonter_le_temps/legende_2015-2016.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+        </layer>
+        </group> 
+    <group id="3" name="Images satellitaires">             
+        <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2014"
+            name="Année 2014"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2014.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>  
+            <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2015"
+            name="Année 2015"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2015.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>
+            <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2016"
+            name="Année 2016"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2016.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>  
+            <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2017"
+            name="Année 2017"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2017.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>        
+            <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2018"
+            name="Année 2018"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2018.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>  
+            <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2019"
+            name="Année 2019"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2019.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>        
+            <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2020"
+            name="Année 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2020.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>  
+            <layer 
+            id="ORTHOIMAGERY.ORTHO-SAT.SPOT.2021"
+            name="Année 2021"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/remonter_le_temps/legende_sat_2021.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de l'image satellitaire.">
+            </layer>
+        </group>
+    </theme> 
+
+    <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
+    <theme id="hideme-20220810114905" name="Balayage" collapsed="true" icon="fas fa-leaf">           
+        <layer 
+            id="swipe" 
+            name="Année 2020" 
+            visible="true" 
+            queryable="false"           
+            type="customlayer"                   
+            customcontrolpath="customcontrols/remonter-le-temps/control"            
+            opacity="1"            
+            url="customcontrols/remonter-le-temps/layer/swipe.js"            
+            customcontrol="true"       
+            legendurl="img/legend/remonter_le_temps/legende_2020.png"       
+            expanded="false"                      
+            metadata=""            
+            metadata-csw=""            
+            swipelayerurl=""            
+            swipelayerid=""
+            toplayer="true"> <!-- Toplayer précise si la couche demeure figée. Booléen. Défaut = true. Si plusieurs couches sont en toplayer,
+elles seront affichées dans l’ordre d’écriture du XML -->
+        </layer>   
+    <!-- Couche permettant la recherche des noms des communes dans la barre de recherche. -->
+        <layer 
+            id="communes"
+            name="Communes du Parc"
+            type="customlayer"     
+            url="customlayers/pnrnm/communes.js"      
+            visible="true"
+            fields="nom"
+            aliases="Nom commune"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="false"
+            showintoc="true"
+            searchable="true"
+            searchengine="fuse"
+            fusesearchkeys="nom"
+            fusesearchresult="{{nom}}">            
+        </layer> 
+        <layer 
+            id="perimetre"
+            name="Périmètre du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+    </theme>  
+</themes>
+</config>

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A LIRE
+Ce fichier est une copie du fichier evolution-bocage.xml et contient des commentaires afin de mieux comprendre la construction du fichier et de son code.
+Ce fichier ne doit pas être modifié ni ouvert avec Mviewer Studio. Cela pourrait causer la suppression des commentaires. 
+
+
+Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewerdoc.readthedocs.io/fr/latest/doc_tech/config_layers.html?parametres-pour-gerer-l-affichage-de-la-couche -->
+
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Carte générale v0</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2022-09-27T10:08:28.263Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application
+    title="Carte générale du territoire du Parc et Géoparc Normandie-Maine"
+    logo=""    
+    help="doc_carte_generale.html"    
+    style="css/themes/pnrnm.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"    
+    overwrite="false"    
+    fullscreen="true"><!-- Overwrite indique si la case "Ecraser le fichier XML chargé" a été cochée lors de la sauvegarde du XML. 
+    Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+</application>
+
+<!-- Zoom de la carte, étendue de la carte -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
+
+<!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> 
+<!-- Barre de recherche -->
+<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<searchparameters bbox="false" localities="true" features="false" static="false"/>
+
+<baselayers style="gallery">  
+    <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, sous  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
+    <baselayer visible="false" id="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" thumbgallery="img/basemap/scan.jpg" title="IGN" label="Fond de carte Plan IGN V2" type="WMTS" url="https://wxs.ign.fr/essentiels/geoportail/wmts?" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+    <baselayer visible="false" id="esriworldimagery" thumbgallery="img/basemap/esriworldwide.jpg" title="Esri" label="Fond de carte Esri world imagery" type="OSM" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" attribution="&lt;a href=&quot;https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9&quot; target=&quot;_blank&quot; &gt;Esri world imagery&lt;/a&gt;"  ></baselayer> 
+</baselayers>
+<themes mini="false">
+    <theme id="theme-20220510132910" name="Administratif" collapsed="false" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage des communes du Parc -->
+        <layer 
+            id="communes"
+            name="Communes du Parc"
+            type="customlayer"     
+            url="customlayers/pnrnm/generale/communes.js"    
+            visible="true"
+            legendurl="img/legend/legende_administratif.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom commune"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="true">            
+        </layer>
+        <!-- Couche permettant l'affichage des principaux bourgs du Parc -->
+        <layer 
+            id="principaux_bourgs"
+            name="Principaux bourgs du Parc"
+            type="customlayer"     
+            url="customlayers/pnrnm/generale/principaux_bourgs.js"    
+            visible="false"
+            legendurl="img/legend/legende_principaux_bourgs.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom principaux bourgs"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            attribution="Cliquer sur un bourg pour obtenir plus d'informations.">   
+            <template url="templates/generale/principaux_bourgs.mst"></template>            
+        </layer>
+        <!-- Couche permettant l'affichage des villes-portes du Parc -->
+        <layer 
+            id="villes_portes"
+            name="Villes-portes du Parc"
+            type="customlayer"     
+            url="customlayers/pnrnm/generale/villes_portes.js"    
+            visible="false"
+            legendurl="img/legend/legende_administratif.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom ville-porte"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="true">            
+        </layer>
+        <!-- Couche permettant l'affichage des communes associées ou déléguées sur le territoire du Parc -->
+        <layer 
+            id="associees_deleguees"
+            name="Communes associées ou déléguées du Parc"
+            type="customlayer"     
+            url="customlayers/pnrnm/generale/associees_deleguees.js"    
+            visible="false"
+            legendurl="img/legend/legende_administratif.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom commune associée ou déléguée"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="true">            
+        </layer>
+        <!-- Couche permettant l'affichage des EPCI qui font partie du Parc -->
+        <layer 
+            id="epci"
+            name="EPCI"
+            type="customlayer"     
+            url="customlayers/pnrnm/generale/epci.js"    
+            visible="false"
+            legendurl="img/legend/legende_administratif.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom EPCI"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="true">     
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre qui font partie du Parc -->
+        <layer 
+            id="departements"
+            name="Départements"
+            type="customlayer"     
+            url="customlayers/pnrnm/generale/departements.js"   
+            visible="false"
+            legendurl="img/legend/legende_administratif.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom département"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="true">         
+        </layer>  
+    </theme>
+    <theme id="theme-20220510132911" name="Plan de Parc" collapsed="true" icon="fas fa-layer-group">
+    
+        <!-- Couche permettant l'affichage des zones de haute valeur culturelle et paysagère du territoire-->
+        <layer 
+            id="zonesHautesValCulturellePaysages"
+            name="Zones de haute valeur culturelle et paysagère"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true">     
+        </layer> 
+        <!-- Couche permettant l'affichage des zones de haute valeur écologique du territoire-->
+        <layer 
+            id="zonesHautesValeursEcol_V3"
+            name="Zones de haute valeur écologique"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true">     
+        </layer> 
+        <!-- Couche permettant l'affichage des différents ensembles paysagers du territoire -->
+        <layer 
+            id="paysages_classement202208"
+            name="Ensembles paysagers"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            legendurl="img/legend/legende_paysages_classement.jpg"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            attribution="Cliquer sur un ensemble paysager pour obtenir plus d'informations.">   
+            <template url="templates/generale/ensembles_paysagers.mst"></template>    
+        </layer> 
+        <!-- Couche permettant l'affichage des différentes unités paysagères du territoire -->
+        <layer 
+            id="unites_paysageres_decoupe"
+            name="Unités paysagères"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            legendurl="img/legend/legende_unite_paysageres.jpg"
+            queryable="true"
+            exclusive="true"
+            attribution="Cliquer sur une unité paysagère pour obtenir plus d'informations.">   
+            <template url="templates/generale/unites_paysageres.mst"></template>  
+        </layer> 
+    </theme>
+    <theme id="theme-20220510132912" name="Éléments géographiques" collapsed="true" icon="fas fa-layer-group"> 
+
+        <!-- Couche permettant l'affichage des forêts publiques du territoire -->
+        <layer 
+            id="forets_publiques"
+            name="Forêts publiques"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur une forêt publique pour obtenir plus d'informations.">   
+            <template url="templates/generale/forets_publiques.mst"></template> 
+        </layer> 
+        <!-- Couche permettant l'affichage des cours d'eau du territoire -->
+        <layer 
+            id="cours_deau"
+            name="Cours d'eau"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur un cours d'eau pour obtenir plus d'informations.">   
+            <template url="templates/generale/cours_deau.mst"></template> 
+        </layer> 
+        <!-- Couche permettant l'affichage des détails orographique du territoire -->
+        <layer 
+            id="detail_orographique_2021"
+            name="Détails orographique"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur un détail orographique pour obtenir plus d'informations.">   
+            <template url="templates/generale/detail_orographique.mst"></template> 
+        </layer> 
+        <!-- Couche permettant l'affichage des zones Natura2000 du territoire et aux alentours -->
+        <layer 
+            id="natura2000"
+            name="Natura 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            legendurl="img/legend/legende_natura2000.png"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur un site Natura 2000 pour obtenir plus d'informations.">   
+            <template url="templates/generale/natura2000.mst"></template> 
+        </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol (Corine Land Cover 2018) -->
+        <layer 
+            id="LANDCOVER.CLC18_FR"
+            name="Occupation du sol (Corine Land Cover 2018)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="text/html"
+            opacity="0.5"
+            legendurl="img/legend/legende_landcover.png"
+            queryable="false"
+            exclusive="false">
+        </layer> 
+        <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
+        <layer 
+            id="bdalti25m_agregat"
+            name="Relief du territoire (BD ALTI® 25 m)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="text/html"
+            legendurl="img/legend/legende_bdalti25m.png"
+            queryable="false"
+            exclusive="false">
+        </layer> 
+    </theme>
+    <theme id="theme-20220510132913" name="Périmètres du Parc" collapsed="true" icon="fas fa-layer-group"> 
+
+        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
+        <layer 
+            id="perimetre_7595"
+            name="Périmètre historique (1975-1995)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="hachures"
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true">
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre historique de 1996 à 2008 du Parc -->
+        <layer 
+            id="perimetre_9608"
+            name="Périmètre historique (1996-2008)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="hachures"
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true">
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre actuel de 2009 à 2023 du Parc -->
+        <layer 
+            id="perimetre_0923"
+            name="Périmètre actuel (2009 - 2023)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre_vert"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre d"étude de 2024 à 2039 du Parc -->
+        <layer 
+            id="perimetre_2439"
+            name="Périmètre d'étude (2024 - 2039)"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="hachures"
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true">
+        </layer>  
+    </theme>
+</themes>
+</config>

@@ -117,7 +117,7 @@ elles seront affichées dans l’ordre d’écriture du XML -->
             infoformat="application/vnd.ogc.gml"
             queryable="false"
             exclusive="false"
-            showintoc="true"
+            showintoc="false"
             searchable="true"
             searchengine="fuse"
             fusesearchkeys="nom"

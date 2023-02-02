@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Les sites géologiques du Géoparc Normandie-Maine</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2022-09-27T10:08:28.263Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application
+    title="Les sites géologiques du Géoparc Normandie-Maine"
+    logo=""    
+    help="apps/geoparc/doc_geoparc.html"    
+    style="css/themes/pnrnm.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"      
+    fullscreen="true"
+    id="filter"><!-- Help indique le chemin vers le fichier de la documentation. 
+    Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML. 
+    Filter indique l'utilisation de l'extension filtre -->
+</application>
+
+<!-- Zoom de la carte, étendue de la carte -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-39538.94496047902,6179048.932278912" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/>
+<!-- Extensions ajoutées à la carte -->
+<extensions>
+    <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+    <extension type="component" id="fullscreen" path="apps/commun/addons"/>
+    <!-- Extension permettant l'ajout de la fonctionnalité filtre, le chemin vers les fichiers de paramétrage du filtre est indiqué avec "path" -->
+    <extension type="component" id="filter" path="apps/commun/addons"/>
+</extensions> 
+<!-- Barre de recherche -->
+<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<!-- Localities permet de chercher des adresses, Features permet de chercher des attributs de couches choisi plus loin, animate permet de lancer une animation de zoom sur la recherche sélectionnée -->
+<searchparameters bbox="false" localities="true" features="true" static="false" animate="true"/>
+<!-- Fonds de carte -->
+<baselayers style="gallery">  
+    <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, sous  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
+    <baselayer  visible="false" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+    <baselayer visible="false" id="esriworldimagery" thumbgallery="img/basemap/esriworldwide.jpg" title="Esri" label="Fond de carte Esri world imagery" type="OSM" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" attribution="&lt;a href=&quot;https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9&quot; target=&quot;_blank&quot; &gt;Esri world imagery&lt;/a&gt;"  ></baselayer> 
+</baselayers>
+<!-- Themes correspond au panneau de couche qui peut être ouvert avec l'icône de menu hamburger -->
+<themes mini="true" legendmini="false">   
+<!-- Chaque thème correspond à un groupe de couches -->
+    <theme id="theme-20171106150925" name="Informations" collapsed="true" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage des géosites du Géoparc -->
+        <layer 
+            id="geosites"
+            name="Géosites du Géoparc"
+            type="customlayer"     
+            url="apps/geoparc/customlayers/geosites.js"      
+            visible="true"
+            tooltip="true"
+            fields="nom"
+            legendurl="apps/geoparc/img/legend/legende_geosites_ere.png" 
+            aliases="Nom du géosite"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            searchable="true"
+            searchengine="fuse"
+            fusesearchkeys="nom"
+            fusesearchresult="{{nom}}"
+            toplayer="true">
+            <template url="apps/geoparc/templates/geosites.mst" />            
+        </layer>         
+        <!-- Couche permettant l'affichage des partenaires du Géoparc -->
+        <layer 
+            id="partenaires_geoparc"
+            name="Partenaires du Géoparc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"   
+            infoformat="application/vnd.ogc.gml"
+            queryable="true">
+            <template url="apps/geoparc/templates/partenaires.mst" />   
+        </layer>   
+        <!-- Couche permettant l'affichage des formations géologiques du Géoparc -->
+        <layer 
+            id="geol_parc_L93"
+            name="Formations géologiques"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"           
+            legendurl="apps/geoparc/img/legend/legende_formations_geol4.5.jpg"  
+            infoformat="text/html"
+            queryable="false"
+            opacity="0.5">
+        </layer> 
+    </theme>  
+    <!-- Un thème avec un id commençant par hideme n'est pas affiché dans le panneau de couches -->
+    <theme id="hideme-perimetre" name="Référentiel" collapsed="true" icon="fas fa-layer-group"> 
+        <!-- Couche permettant l'affichage du périmètre du Géoparc -->
+        <layer 
+            id="perimetregeoparc"
+            name="Périmètre du Géoparc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+    </theme>
+</themes>
+</config>

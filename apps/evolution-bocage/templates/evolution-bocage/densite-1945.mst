@@ -96,7 +96,7 @@
 
 	.title-feature {
 		color: var(--mycolor);
-	    font-family: 'roboto_bold_c', Arial, Sans-serif;
+	    font-family: 'roboto_bold', Arial, Sans-serif;
 	    text-transform: uppercase;
 	    font-size: 16px;
 	}

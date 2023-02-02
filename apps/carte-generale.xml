@@ -25,17 +25,19 @@
 </application>
 
 <!-- Zoom de la carte, étendue de la carte -->
-<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,99823.13871738865,6298356.928340613"/>
 
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
 <!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
-<searchparameters bbox="false" localities="true" features="false" static="false"/>
+<searchparameters bbox="false" localities="true" features="false" static="false" animate="true"/>
 
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, sous  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
-    <baselayer visible="false" id="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" thumbgallery="img/basemap/scan.jpg" title="IGN" label="Fond de carte Plan IGN V2" type="WMTS" url="https://wxs.ign.fr/essentiels/geoportail/wmts?" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+        <baselayer  type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8"
+            url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false"
+            attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
     <baselayer visible="false" id="esriworldimagery" thumbgallery="img/basemap/esriworldwide.jpg" title="Esri" label="Fond de carte Esri world imagery" type="OSM" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" attribution="&lt;a href=&quot;https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9&quot; target=&quot;_blank&quot; &gt;Esri world imagery&lt;/a&gt;"  ></baselayer> 
 </baselayers>
 <themes mini="false">
@@ -274,7 +276,7 @@
     <theme id="theme-20220510132913" name="Périmètres du Parc" collapsed="true" icon="fas fa-layer-group"> 
         <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
         <layer 
-            id="perimetre_7595"
+            id="perimetre1975"
             name="Périmètre historique (1975-1995)"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -286,7 +288,7 @@
         </layer> 
         <!-- Couche permettant l'affichage du périmètre historique de 1996 à 2008 du Parc -->
         <layer 
-            id="perimetre_9608"
+            id="perimetre1996"
             name="Périmètre historique (1996-2008)"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -298,7 +300,7 @@
         </layer> 
         <!-- Couche permettant l'affichage du périmètre actuel de 2009 à 2023 du Parc -->
         <layer 
-            id="perimetre_0923"
+            id="perimetre2008"
             name="Périmètre actuel (2009 - 2023)"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -310,7 +312,7 @@
         </layer> 
         <!-- Couche permettant l'affichage du périmètre d"étude de 2024 à 2039 du Parc -->
         <layer 
-            id="perimetre_2439"
+            id="perimetre2024"
             name="Périmètre d'étude (2024 - 2039)"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"

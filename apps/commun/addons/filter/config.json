@@ -1,0 +1,48 @@
+{
+  "js": ["js/filter.js"],
+  "css": "css/filter.css",
+  "html": "filter.html",
+  "target": "page-content-wrapper",
+  "options": {
+    "mviewer": {
+      "filter": {
+        "tooltipPosition": "bottom-left",
+        "title": "Filtrer",
+        "open": true,
+        "zoomOnFeatures": false,
+        "legendTitle": "Sélectionner une donnée :",
+
+        "style": {
+          "border": "1px #ddd solid",
+          "background": "#FFFFFF",
+          "text": "#00936F",
+          "colorButton": "black"
+        },
+        "layers": [
+          {
+            "layerId": "geosites",
+            "filter": [
+              {
+                "attribut": "periode",
+                "type": "button",
+                "label": "Période géologique",
+                "dataSeparator": ","
+              },
+              {
+                "attribut": "type_roche",
+                "type": "button",
+                "label": "Roche",
+                "dataSeparator": ","
+              },
+              {
+                "attribut": "ig_majeur",
+                "type": "combobox",
+                "label": "Intérêt géologique"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -875,7 +875,7 @@ var configuration = (function () {
                 ? false
                 : true;
             oLayer.showintoc =
-              layer.showintoc && layer.showintoc === "false" ? false : true;
+              layer.showintoc && layer.showintoc === "true" ? false : true;
             oLayer.legendurl = layer.legendurl
               ? layer.legendurl
               : mviewer.getLegendUrl(oLayer);

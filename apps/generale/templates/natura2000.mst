@@ -1,7 +1,7 @@
 <!-- *** TEMPLATE CHIFFRES CLES 1 / BANDEAU DROITE *** --> 
 
 {{#features}}
-	<li class="item scrollbar-hidden" style="width:270px;">
+	<li class="inventaire item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature ">{{sitename}}</h3>
 
 	
@@ -30,13 +30,10 @@
 
 	/* Texte */
 
-	.title-feature {
-		color: var(--mycolor);
-	    font-family: 'roboto_bold_c', Arial, Sans-serif;
-	    text-transform: uppercase;
-	    font-size: 16px;
-	    margin-bottom: 7%;
-	    line-height: 1.2;
-	}
-	
+	.inventaire .title-feature {
+			color: #c43c39; /* Indique la couleur du texte (nom du géosite) */
+			font-family:"roboto_bold"; /* Indique la police du texte */
+			font-size:16px; /* Indique la taille de la police du texte */
+			margin-bottom:5%; /* Permet de définir une marge sous le titre */
+		}
 </style>

@@ -1,0 +1,75 @@
+{{! Ce qui est affiché dans le panneau d'information... }}
+{{#features}}
+	<li id="{{type}}" class="inventaire item scrollbar-hidden" style="width:270px;">
+		<h3 class="title-feature">{{cad_nom}}</h3> <!-- Titre du panneau d'information : nom du partenaire -->
+		<p class="text-feature"> 
+		<span>
+			Code INSEE : 
+		</span>
+		{{insee_cad}}</br>	
+		<span>
+			Nature : 
+		</span>
+		{{nature}}</br>
+		<span>
+			Code INSEE de la commune nouvelle: 
+		</span>
+		{{insee_comnouv}}</br>
+		<span>
+			Nom de la commune nouvelle: 
+		</span>
+		{{comnouv_nom}}
+
+
+        
+	</p>
+</li>
+{{/features}}
+
+
+{{! Les styles utilisés pour modifier l'apparance de ce qui est affiché dans le panneau d'information }}
+<style>
+
+	/* Style du titre du panneau d'information */
+	.inventaire .title-feature {
+		color: #c43c39; /* Indique la couleur du texte (nom du géosite) */
+		font-family:"roboto_bold"; /* Indique la police du texte */
+		font-size:16px; /* Indique la taille de la police du texte */
+		margin-bottom:5%; /* Permet de définir une marge sous le titre */
+	}
+	.inventaire .text-feature{
+		font-family:"roboto_regular"; /* Indique la police du texte */
+		color:#555; /* Indique la couleur du texte */
+		font-size:13px; /* Indique la taille de la police du texte */
+		margin-top:5px; /* Permet de définir une marge au dessus */
+	}
+	.inventaire .text-feature span{
+		font-family:"roboto_bold";  /* Indique la police du texte qui se trouve sous la class text-feature et entre <span></span> */
+	}
+
+    .inventaire p, .inventaire h3 {
+        padding-left:1px; /* Permet un décalage à gauche */
+        padding-right:1px; /* Permet un décalage à droite */
+    }
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none;
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Lien cliquable vers les fiches de géosites */
+	a.button-link {
+		color: #00936f; /* Couleur du lien */
+		cursor: pointer; /* Le curseur se change en petite main */
+	}
+
+	/* Ce qui se passe lorsqu'on passe la souris par dessus le lien cliquable */
+	a.button-link:hover {
+		color: #008050; /* Couleur du lien lorsqu'on passe la souris par dessus */
+		text-decoration: underline; /* Le lien est sourligné lorsqu'on passe la souris par dessus */
+	}
+</style>

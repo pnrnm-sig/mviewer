@@ -3,14 +3,14 @@
 <metadata>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
-<dc:title>Carte générale v0</dc:title>
+<dc:title>Carte générale</dc:title>
 <dc:creator>anonymous</dc:creator>
 <dc:publisher>anonymous</dc:publisher>
 <dc:subject>Parc Normandie Maine</dc:subject>
 <dc:date>2022-09-27T10:08:28.263Z</dc:date>
 </rdf:Description></rdf:RDF></metadata>
 <application
-    title="Carte générale du territoire du Parc et Géoparc Normandie-Maine"
+    title="Le territoire du Parc et Géoparc Normandie-Maine"
     logo=""    
     help="apps/generale/doc_carte_generale.html"    
     style="css/themes/pnrnm.css"    
@@ -18,14 +18,12 @@
     showhelp="false"    
     coordinates="false"    
     measuretools="false"    
-    togglealllayersfromtheme="false"    
-    overwrite="false"    
-    fullscreen="true"><!-- Overwrite indique si la case "Ecraser le fichier XML chargé" a été cochée lors de la sauvegarde du XML. 
-    Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+    togglealllayersfromtheme="true"    
+    fullscreen="true"><!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
 </application>
 
 <!-- Zoom de la carte, étendue de la carte -->
-<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,99823.13871738865,6298356.928340613"/>
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/>
 
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
@@ -35,35 +33,85 @@
 
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, sous  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
-        <baselayer  type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8"
-            url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false"
-            attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+    <baselayer type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
     <baselayer visible="false" id="esriworldimagery" thumbgallery="img/basemap/esriworldwide.jpg" title="Esri" label="Fond de carte Esri world imagery" type="OSM" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" attribution="&lt;a href=&quot;https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9&quot; target=&quot;_blank&quot; &gt;Esri world imagery&lt;/a&gt;"  ></baselayer> 
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Administratif" collapsed="false" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
+        <layer 
+            id="siege"
+            name="Sièges"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            toplayer="true"
+            attribution="Cliquer sur un siège pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/siege.mst"></template>   
+        </layer> 
         <!-- Couche permettant l'affichage des communes du Parc -->
         <layer 
-            id="communes"
-            name="Communes du Parc"
+            id="communes_parc"
+            name="Communes du territoire"
             type="customlayer"     
-            url="apps/generale/customlayers/communes.js"    
+            url="apps/generale/customlayers/communes_parc.js"    
             visible="true"
+            legendurl="apps/generale/img/legend/legende_communes.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom commune"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur une commune pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/communes.mst"></template>            
+        </layer>
+        <!-- Couche permettant l'affichage des communes associées ou déléguées sur le territoire du Parc -->
+        <layer 
+            id="communes_asso_dele_fus"
+            name="Communes associées, déléguées ou fusionnées"
+            type="customlayer"     
+            url="apps/generale/customlayers/communes_asso_dele_fus.js"    
+            visible="false"
+            legendurl="apps/generale/img/legend/legende_communes_asso_del_fus_points.png"
+            tooltip="true"
+            fields="cad_nom"
+            aliases="Nom commune associée, déléguée ou fusionnée"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur une commune pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/communes_asso_dele_fus.mst"></template>     
+        </layer>
+        <!-- Couche permettant l'affichage des communes historiques du Parc -->
+        <layer 
+            id="communes_histo"
+            name="Communes historiques"
+            type="customlayer"     
+            url="apps/generale/customlayers/communes_histo.js"    
+            visible="false"
             legendurl="apps/generale/img/legend/legende_administratif.png"
             tooltip="true"
             fields="nom"
             aliases="Nom commune"
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
-            queryable="false"
-            exclusive="true">            
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur une commune pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/communes_histo.mst"></template>      
         </layer>
         <!-- Couche permettant l'affichage des principaux bourgs du Parc -->
         <layer 
-            id="principaux_bourgs"
-            name="Principaux bourgs du Parc"
+            id="villes_bourgs"
+            name="Villes et principaux bourgs"
             type="customlayer"     
-            url="apps/generale/customlayers/principaux_bourgs.js"    
+            url="apps/generale/customlayers/villes_bourgs.js"    
             visible="false"
             legendurl="apps/generale/img/legend/legende_principaux_bourgs.png"
             tooltip="true"
@@ -72,57 +120,27 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="true"
+            exclusive="false"
             attribution="Cliquer sur un bourg pour obtenir plus d'informations.">   
-            <template url="apps/generale/templates/principaux_bourgs.mst"></template>            
-        </layer>
-        <!-- Couche permettant l'affichage des villes-portes du Parc -->
-        <layer 
-            id="villes_portes"
-            name="Villes-portes du Parc"
-            type="customlayer"     
-            url="apps/generale/customlayers/villes_portes.js"    
-            visible="false"
-            legendurl="apps/generale/img/legend/legende_administratif.png"
-            tooltip="true"
-            fields="nom"
-            aliases="Nom ville-porte"
-            tooltipenabled="true"
-            infoformat="application/vnd.ogc.gml"
-            queryable="false"
-            exclusive="true">            
-        </layer>
-        <!-- Couche permettant l'affichage des communes associées ou déléguées sur le territoire du Parc -->
-        <layer 
-            id="associees_deleguees"
-            name="Communes associées ou déléguées du Parc"
-            type="customlayer"     
-            url="apps/generale/customlayers/associees_deleguees.js"    
-            visible="false"
-            legendurl="apps/generale/img/legend/legende_administratif.png"
-            tooltip="true"
-            fields="nom"
-            aliases="Nom commune associée ou déléguée"
-            tooltipenabled="true"
-            infoformat="application/vnd.ogc.gml"
-            queryable="false"
-            exclusive="true">            
+            <template url="apps/generale/templates/villes_bourgs.mst"></template>            
         </layer>
         <!-- Couche permettant l'affichage des EPCI qui font partie du Parc -->
         <layer 
             id="epci"
-            name="EPCI"
+            name="Intercommunalité"
             type="customlayer"     
             url="apps/generale/customlayers/epci.js"    
             visible="false"
-            legendurl="apps/generale/img/legend/legende_administratif.png"
+            legendurl="apps/generale/img/legend/legende_epci_lignes.png"
             tooltip="true"
             fields="nom"
-            aliases="Nom EPCI"
+            aliases="Nom intercommunalité"
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
-            queryable="false"
-            exclusive="true">     
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur une intercommunauté pour obtenir plus d'informations.">  
+            <template url="apps/generale/templates/epci.mst"></template>        
         </layer> 
         <!-- Couche permettant l'affichage du périmètre qui font partie du Parc -->
         <layer 
@@ -133,36 +151,121 @@
             visible="false"
             legendurl="apps/generale/img/legend/legende_administratif.png"
             tooltip="true"
-            fields="nom"
+            fields="dep_nom"
             aliases="Nom département"
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
-            queryable="false"
-            exclusive="true">         
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur un département pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/departement.mst"></template>        
         </layer>  
+    </theme>
+    <theme id="theme-20220510132913" name="Périmètre du Parc" collapsed="true" icon="fas fa-layer-group"> 
+        <!-- Couche permettant l'affichage du périmètre du Parc actuel -->
+        <layer 
+            id="perimetreparc"
+            name="Périmètre actuel"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre_vert"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">  
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre du Géoparc -->
+        <layer 
+            id="perimetregeoparc"
+            name="Périmètre du Géoparc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="perimetre"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            toplayer="true">  
+            <template url="apps/generale/templates/perimetregeoparc.mst"></template> 
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre d"étude de 2024 à 2039 du Parc -->
+        <layer 
+            id="perimetre2024"
+            name="Périmètre d'étude 2024 - 2039"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="hachures"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/perimetre2024.mst"></template> 
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre actuel de 2009 à 2023 du Parc -->
+        <layer 
+            id="perimetre2008"
+            name="Périmètre 2008 - 2023"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="hachures"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/perimetre2009.mst"></template> 
+        </layer>
+        <!-- Couche permettant l'affichage du périmètre historique de 1996 à 2008 du Parc -->
+        <layer 
+            id="perimetre1996"
+            name="Périmètre 1996 - 2008"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="hachures"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/perimetre1996.mst"></template> 
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
+        <layer 
+            id="perimetre1975"
+            name="Périmètre 1975 - 1995"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="hachures"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="false"
+            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            <template url="apps/generale/templates/perimetre1975.mst"></template> 
+        </layer> 
     </theme>
     <theme id="theme-20220510132911" name="Plan de Parc" collapsed="true" icon="fas fa-layer-group">
         <!-- Couche permettant l'affichage des zones de haute valeur culturelle et paysagère -->
         <layer 
-            id="zonesHautesValCulturellePaysages"
+            id="zoneshautesvalculturellepaysages"
             name="Zones de haute valeur culturelle et paysagère"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
             infoformat="text/html"
             queryable="false"
-            exclusive="true">     
+            exclusive="false">     
         </layer> 
         <!-- Couche permettant l'affichage des zones de haute valeur écologique -->
         <layer 
-            id="zonesHautesValeursEcol_V3"
+            id="zoneshautesvaleursecol_v3"
             name="Zones de haute valeur écologique"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
             infoformat="text/html"
             queryable="false"
-            exclusive="true">     
+            exclusive="false">     
         </layer> 
         <!-- Couche permettant l'affichage des différents ensembles paysagers du Parc -->
         <layer 
@@ -174,13 +277,13 @@
             legendurl="apps/generale/img/legend/legende_paysages_classement.jpg"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="true"
+            exclusive="false"
             attribution="Cliquer sur un ensemble paysager pour obtenir plus d'informations.">   
             <template url="apps/generale/templates/ensembles_paysagers.mst"></template>    
         </layer> 
         <!-- Couche permettant l'affichage des différentes unités paysagères du Parc -->
         <layer 
-            id="unites_paysageres_decoupe"
+            id="up_pnrnm_2020_v2_decoupe"
             name="Unités paysagères"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -188,7 +291,7 @@
             infoformat="application/vnd.ogc.gml"
             legendurl="apps/generale/img/legend/legende_unite_paysageres.jpg"
             queryable="true"
-            exclusive="true"
+            exclusive="false"
             attribution="Cliquer sur une unité paysagère pour obtenir plus d'informations.">   
             <template url="apps/generale/templates/unites_paysageres.mst"></template>  
         </layer> 
@@ -209,8 +312,8 @@
         </layer> 
         <!-- Couche permettant l'affichage des cours d'eau du territoire -->
         <layer 
-            id="cours_deau"
-            name="Cours d'eau"
+            id="sandre_coursdeau"
+            name="Cours d'eau (SANDRE)"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
@@ -272,56 +375,6 @@
             queryable="false"
             exclusive="false">
         </layer> 
-    </theme>
-    <theme id="theme-20220510132913" name="Périmètres du Parc" collapsed="true" icon="fas fa-layer-group"> 
-        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
-        <layer 
-            id="perimetre1975"
-            name="Périmètre historique (1975-1995)"
-            type="wms"
-            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
-            visible="false"
-            style="hachures"
-            infoformat="text/html"
-            queryable="false"
-            exclusive="true">
-        </layer> 
-        <!-- Couche permettant l'affichage du périmètre historique de 1996 à 2008 du Parc -->
-        <layer 
-            id="perimetre1996"
-            name="Périmètre historique (1996-2008)"
-            type="wms"
-            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
-            visible="false"
-            style="hachures"
-            infoformat="text/html"
-            queryable="false"
-            exclusive="true">
-        </layer> 
-        <!-- Couche permettant l'affichage du périmètre actuel de 2009 à 2023 du Parc -->
-        <layer 
-            id="perimetre2008"
-            name="Périmètre actuel (2009 - 2023)"
-            type="wms"
-            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
-            visible="true"
-            style="perimetre_vert"
-            infoformat="text/html"
-            queryable="false"
-            toplayer="true">
-        </layer> 
-        <!-- Couche permettant l'affichage du périmètre d"étude de 2024 à 2039 du Parc -->
-        <layer 
-            id="perimetre2024"
-            name="Périmètre d'étude (2024 - 2039)"
-            type="wms"
-            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
-            visible="false"
-            style="hachures"
-            infoformat="text/html"
-            queryable="false"
-            exclusive="true">
-        </layer>  
     </theme>
 </themes>
 </config>

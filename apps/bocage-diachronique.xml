@@ -83,7 +83,7 @@ masquera automatiquement toutes les autres couches ayant ce paramètre activé. 
     <theme id="hideme-20220810114905" name="Balayage" collapsed="true" icon="fas fa-leaf">           
         <layer 
             id="swipe" 
-            name="Année 2010 - sera année 2020" 
+            name="Année 2020" 
             visible="true" 
             queryable="false"           
             type="customlayer"           
@@ -129,7 +129,7 @@ elles seront affichées dans l’ordre d’écriture du XML -->
             fusesearchresult="{{nom}}">            
         </layer> 
         <layer 
-            id="perimetre2008"
+            id="perimetreparc"
             name="Périmètre du Parc"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"

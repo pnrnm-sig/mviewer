@@ -1,17 +1,17 @@
 {
-  mviewer.customLayers.principaux_bourgs = {};
-  var principaux_bourgs = mviewer.customLayers.principaux_bourgs;
+  mviewer.customLayers.villes_bourgs = {};
+  var villes_bourgs = mviewer.customLayers.villes_bourgs;
 
-  mviewer.customLayers.principaux_bourgs.layer = new ol.layer.Vector({
+  mviewer.customLayers.villes_bourgs.layer = new ol.layer.Vector({
     source: new ol.source.Vector({
-      url: "https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=carteetdonnees%3Aprincipaux_bourgs&outputFormat=application/json&srsName=EPSG:3857",
+      url: "https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=carteetdonnees%3Avilles_bourgs&outputFormat=application/json&srsName=EPSG:3857",
       format: new ol.format.GeoJSON()
     }),
     style: function (feature) {
       var fill = new ol.style.Fill({ color: 'rgba(235, 179, 185, 0.21)' });
       var stroke = new ol.style.Stroke({ color: 'rgba(200,86,86)', width: 2 });
 
-      if (feature.get('population') <= 1000) {
+      if (feature.get('p19_pop') <= 1000) {
 
         return new ol.style.Style({
           image: new ol.style.Circle({
@@ -22,7 +22,7 @@
 
         });
       }
-      else if (feature.get('population') > 1000 && feature.get('population') <= 2000) {
+      else if (feature.get('p19_pop') > 1000 && feature.get('p19_pop') <= 2000) {
 
         return new ol.style.Style({
           image: new ol.style.Circle({
@@ -33,7 +33,7 @@
 
         });
       }
-      else if (feature.get('population') > 2000 && feature.get('population') <= 3000) {
+      else if (feature.get('p19_pop') > 2000 && feature.get('p19_pop') <= 3000) {
 
         return new ol.style.Style({
           image: new ol.style.Circle({
@@ -44,7 +44,7 @@
 
         });
       }
-      else if (feature.get('population') > 3000 && feature.get('population') <= 4000) {
+      else if (feature.get('p19_pop') > 3000 && feature.get('p19_pop') <= 4000) {
 
         return new ol.style.Style({
           image: new ol.style.Circle({
@@ -55,7 +55,7 @@
 
         });
       }
-      else if (feature.get('population') > 4000 && feature.get('population') <= 5186) {
+      else if (feature.get('p19_pop') > 4000 ){
 
         return new ol.style.Style({
           image: new ol.style.Circle({
@@ -71,5 +71,5 @@
     }
   });
 
-  mviewer.customLayers.principaux_bourgs.handle = false;
+  mviewer.customLayers.villes_bourgs.handle = false;
 }

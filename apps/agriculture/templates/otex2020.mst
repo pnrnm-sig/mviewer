@@ -1,0 +1,159 @@
+<!-- *** TEMPLATE CHIFFRES CLES 1 / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="item scrollbar-hidden" style="width:270px;">
+		<h3 class="title-feature ">{{nom}}</h3>
+
+      	<!--Chiffre clé 1-->
+      	<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber1"></div>
+          	</div>
+	        <div class="col-sm-8" id="center">
+	          <div class="number-feature">{{#area_ha}}{{area_ha}}{{/area_ha}}{{^area_ha}}0{{/area_ha}} ha</div>
+	          <div class="titlenumber-feature">superficie de la commune</div>
+	        </div>
+      	</div>
+      	<!--./Chiffre clé 1-->
+		<!--Chiffre clé 2-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber2"></div>
+          	</div>
+			<div class="col-sm-8">
+	          <div class="number-feature">{{#sau20}}{{sau20}}{{/sau20}}{{^sau20}}0{{/sau20}} ha</div>
+	          <div class="titlenumber-feature">de supercifie agricole utile</div>
+	          <div class="subtitle-feature"><i>Pour les sièges d'exploitations localisés sur la commune</i></div>
+	        </div>
+      	</div>
+		<!--./Chiffre clé 2-->
+		<!--Chiffre clé 3-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber3"></div>
+          	</div>
+			<div class="col-sm-8" id="center">
+	          <div class="number-feature">{{#expl20}}{{expl20}}{{/expl20}}{{^expl20}}0{{/expl20}}</div>
+	          <div class="titlenumber-feature">exploitants sur la commune</div>
+	        </div>
+      	</div>
+		<!--./Chiffre clé 3-->
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #00936f;
+	}
+
+	/*** Définir les paramètres des chiffres clés*/
+
+	/* Couleur - code HEX */ 
+	.numberkey {
+    	--mynumbercolor: #00936f; 
+  	}
+
+  	/** Définir les icônes des chiffres clés **/
+
+	/* Icône 1 - Lien vers l'îcone */
+	#iconnumber1{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/superficie2.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/superficie2.png);
+	 }
+	#iconnumber2{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/sau.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/sau.png);
+	 }
+	#iconnumber3{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/exploitation.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/exploitation.png);
+	 }
+	
+	#center{
+  		padding: 10px;
+		margin-top: 5%;
+	}
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none;
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Texte */
+
+	.title-feature {
+		color: #1D1B35;
+	    font-family: 'roboto_bold', Arial, Sans-serif;
+	    font-size: 18px;
+	    margin-bottom: 7%;
+	    line-height: 1.2;
+	}
+	.subtitle-feature {
+		color: var(--mycolor);
+		font-family:'roboto_regular', Arial, Sans-serif;
+		font-size:12px;
+		margin-top:7%;
+		line-height:1;
+	}
+
+	/* Chiffres clés */
+
+	.numberkey {
+    	margin-top: 10px; 
+    	height: 10px;   
+  	}
+
+	.zone-iconnumber{
+		padding:20px;
+	}
+
+	#iconnumber1{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+	#iconnumber2{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+	#iconnumber3{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+
+	.number-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:30px;   
+  	}
+
+  	.titlenumber-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:13px;
+    	line-height:1;
+ 	}
+
+	.subtitlenumber-feature{
+		font-size:11px;
+		color:#555;
+	}
+	
+</style>

@@ -2,7 +2,7 @@
 
 {{#features}}
 	<li class="inventaire item scrollbar-hidden" style="width:270px;">
-		<h3 class="title-feature">{{nom}}</h3>
+		<h3 class="title-feature">{{NOM}}</h3>
 
 		<!--Chiffre clé 1-->
 		<div class="row numberkey" style="height:auto;">

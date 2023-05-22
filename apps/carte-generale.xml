@@ -32,9 +32,9 @@
 <searchparameters bbox="false" localities="true" features="false" static="false" animate="true"/>
 
 <baselayers style="gallery">  
-    <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, sous  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
+    <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
     <baselayer type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
-    <baselayer visible="false" id="esriworldimagery" thumbgallery="img/basemap/esriworldwide.jpg" title="Esri" label="Fond de carte Esri world imagery" type="OSM" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" attribution="&lt;a href=&quot;https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9&quot; target=&quot;_blank&quot; &gt;Esri world imagery&lt;/a&gt;"  ></baselayer> 
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr' target='_blank'&gt;&lt;img src='https://geoservices.ign.fr/images/logoIGN.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Administratif" collapsed="false" icon="fas fa-layer-group">
@@ -48,8 +48,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="false"
-            toplayer="true"
-            attribution="Cliquer sur un siège pour obtenir plus d'informations."> 
+            toplayer="true"> 
             <template url="apps/generale/templates/siege.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage des communes du Parc -->
@@ -66,8 +65,7 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur une commune pour obtenir plus d'informations."> 
+            exclusive="false"> 
             <template url="apps/generale/templates/communes.mst"></template>            
         </layer>
         <!-- Couche permettant l'affichage des communes associées ou déléguées sur le territoire du Parc -->
@@ -84,8 +82,7 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur une commune pour obtenir plus d'informations."> 
+            exclusive="false"> 
             <template url="apps/generale/templates/communes_asso_dele_fus.mst"></template>     
         </layer>
         <!-- Couche permettant l'affichage des communes historiques du Parc -->
@@ -102,8 +99,7 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur une commune pour obtenir plus d'informations."> 
+            exclusive="false"> 
             <template url="apps/generale/templates/communes_histo.mst"></template>      
         </layer>
         <!-- Couche permettant l'affichage des principaux bourgs du Parc -->
@@ -120,8 +116,7 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur un bourg pour obtenir plus d'informations.">   
+            exclusive="false">   
             <template url="apps/generale/templates/villes_bourgs.mst"></template>            
         </layer>
         <!-- Couche permettant l'affichage des EPCI qui font partie du Parc -->
@@ -138,8 +133,7 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur une intercommunauté pour obtenir plus d'informations.">  
+            exclusive="false">  
             <template url="apps/generale/templates/epci.mst"></template>        
         </layer> 
         <!-- Couche permettant l'affichage du périmètre qui font partie du Parc -->
@@ -156,8 +150,7 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur un département pour obtenir plus d'informations."> 
+            exclusive="false" >
             <template url="apps/generale/templates/departement.mst"></template>        
         </layer>  
     </theme>
@@ -197,8 +190,7 @@
             style="hachures"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            exclusive="false"> 
             <template url="apps/generale/templates/perimetre2024.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage du périmètre actuel de 2009 à 2023 du Parc -->
@@ -211,8 +203,7 @@
             style="hachures"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            exclusive="false"> 
             <template url="apps/generale/templates/perimetre2009.mst"></template> 
         </layer>
         <!-- Couche permettant l'affichage du périmètre historique de 1996 à 2008 du Parc -->
@@ -225,8 +216,7 @@
             style="hachures"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            exclusive="false"> 
             <template url="apps/generale/templates/perimetre1996.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
@@ -239,8 +229,7 @@
             style="hachures"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur le périmètre pour obtenir plus d'informations."> 
+            exclusive="false"> 
             <template url="apps/generale/templates/perimetre1975.mst"></template> 
         </layer> 
     </theme>
@@ -277,8 +266,7 @@
             legendurl="apps/generale/img/legend/legende_paysages_classement.jpg"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur un ensemble paysager pour obtenir plus d'informations.">   
+            exclusive="false">   
             <template url="apps/generale/templates/ensembles_paysagers.mst"></template>    
         </layer> 
         <!-- Couche permettant l'affichage des différentes unités paysagères du Parc -->
@@ -291,8 +279,7 @@
             infoformat="application/vnd.ogc.gml"
             legendurl="apps/generale/img/legend/legende_unite_paysageres.jpg"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur une unité paysagère pour obtenir plus d'informations.">   
+            exclusive="false">   
             <template url="apps/generale/templates/unites_paysageres.mst"></template>  
         </layer> 
     </theme>
@@ -306,8 +293,7 @@
             visible="false"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur une forêt publique pour obtenir plus d'informations.">   
+            exclusive="false">   
             <template url="apps/generale/templates/forets_publiques.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage des cours d'eau du territoire -->
@@ -319,8 +305,7 @@
             visible="false"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur un cours d'eau pour obtenir plus d'informations.">   
+            exclusive="false">   
             <template url="apps/generale/templates/cours_deau.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
@@ -332,8 +317,7 @@
             visible="false"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur un détail orographique pour obtenir plus d'informations.">   
+            exclusive="false">   
             <template url="apps/generale/templates/detail_orographique.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage les zones Natura2000 du territoire et aux alentours -->
@@ -346,8 +330,7 @@
             infoformat="application/vnd.ogc.gml"
             legendurl="apps/generale/img/legend/legende_natura2000.png"
             queryable="true"
-            exclusive="false"
-            attribution="Cliquer sur un site Natura 2000 pour obtenir plus d'informations.">   
+            exclusive="false">   
             <template url="apps/generale/templates/natura2000.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->

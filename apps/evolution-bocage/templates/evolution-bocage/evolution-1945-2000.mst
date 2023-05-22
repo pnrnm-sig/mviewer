@@ -3,7 +3,7 @@
 {{#features}}
 	<li class="item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature ">{{nom}}</h3>
-
+		<h3 class="subtitle-feature ">{{#ancien_nom}}Anciennement communes de {{ancien_nom}}{{/ancien_nom}}{{^ancien_nom}}{{ancien_nom}}{{/ancien_nom}}</h3>
       	<!--Chiffre clé 1-->
       	<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
@@ -12,7 +12,6 @@
 	        <div class="col-sm-8">
 	          <div class="number-feature">{{info_db_1945_2000}} m/ha</div>
 	          <div class="titlenumber-feature">d'évolution en densité bocagère entre 1945 et 2000</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
       	<!--./Chiffres clé 1-->
@@ -24,7 +23,6 @@
 			<div class="col-sm-8">
 	          <div class="number-feature">{{info_l_1945_2000}} km</div>
 	          <div class="titlenumber-feature">de linéaire de haies en 2000 par rapport à 1945</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
 		<!--./Chiffres clé 2-->
@@ -35,7 +33,6 @@
 			<div class="col-sm-8">
 	          <div class="number-feature">{{info_db_evol_1945_2000}} %</div>
 	          <div class="titlenumber-feature">d'évolution entre 1945 et 2000</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
 	        </div>
       	</div>
 	</li>
@@ -90,16 +87,13 @@
 	    font-family: 'roboto_bold_c', Arial, Sans-serif;
 	    text-transform: uppercase;
 	    font-size: 16px;
-	    margin-bottom: 7%;
-	    line-height: 1.2;
 	}
 	.subtitle-feature {
 		color: var(--mycolor);
 		font-family:'roboto_regular', Arial, Sans-serif;
-		font-size:12px;
-		margin-top:7%;
-		line-height:1;
+		font-size:14px;
 	}
+
 
 	/* Chiffres clés */
 
@@ -138,6 +132,7 @@
     	color: var(--mynumbercolor);
     	font-family:'roboto_bold';
     	font-size:30px;   
+		margin-top:10%;
   	}
 
   	.titlenumber-feature {

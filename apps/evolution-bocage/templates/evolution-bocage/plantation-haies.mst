@@ -10,9 +10,15 @@
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{plantation}} m</div>
-	          <div class="titlenumber-feature">de haies plantées par le Parc depuis 2008</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
+	          <div class="number-feature">
+			  		{{#haies_ml}} <!-- Ce qu'il faut afficher si l'attribut choisi a une valeur -->
+						{{haies_ml}} ml
+					{{/haies_ml}}
+					{{^haies_ml}}	<!-- Ce qu'il faut afficher si l'attribut choisi a une valeur NULL -->
+						0 ml
+					{{/haies_ml}}
+			  </div>
+	          <div class="titlenumber-feature"> de haies plantées par le Parc depuis 2004</div>
 	        </div>
       	</div>
       	<!--./Chiffres clé 3-->	
@@ -126,6 +132,7 @@
     	color: var(--mynumbercolor);
     	font-family:'roboto_bold';
     	font-size:30px;   
+		margin-top:10%;
   	}
 
   	.titlenumber-feature {

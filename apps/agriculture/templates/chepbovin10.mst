@@ -1,0 +1,245 @@
+<!-- *** TEMPLATE 5.2 / GRAPH DIAGRAMME CIRCULAIRE / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="item scrollbar-hidden" style="width: inherit;padding: 0px 10px 0px 0px;">
+		<h3 class="title-feature ">{{nom}}</h3>
+
+		<!-- Chart 1-->
+	    <div class="Chart">
+	        <div id="idChart">
+	            <canvas class="chart" id="myChartPie1_{{insee_com}}" data-codegeo="{{insee_com}}" data-mychartPie1-1="{{vacheall10}}" data-mychartPie1-2="{{vachelai10}}" width="120" height="90"></canvas>
+	        </div>
+	        <div class="textChart">
+	            <div class="title-chart">Il n'y a pas de données disponibles.</div>
+	            <div class="subtitle-chart"><i>Pour la commune sélectionnée en 2010</i></div>
+	        </div>        
+	    </div>
+	    <!-- ./Chart 1-->	
+            	<!--Chiffre clé 1-->
+      	<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber1"></div>
+          	</div>
+	        <div class="col-sm-8" id="center">
+	          <div class="number-feature">{{#tetesau10}}{{tetesau10}} têtes{{/tetesau10}}</div>
+	          <div class="titlenumber-feature">{{#tetesau10}}de bovins par hectare de la SAU{{/tetesau10}}</div> 
+			  <div class="nodata-feature">{{^tetesau10}}Aucune donnée disponible en 2010 pour la commune sélectionnée{{/tetesau10}}</div>
+	        </div>
+      	</div>
+      	<!--./Chiffre clé 1-->	
+      		
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #1D1B35;
+	}
+
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none;
+		scrollbar-width: none; /* Firefox */
+	}
+
+
+	/* Texte */
+	/*** Définir les paramètres des chiffres clés*/
+
+	/* Couleur - code HEX */ 
+	.numberkey {
+    	--mynumbercolor: #00936f; 
+  	}
+
+  	/** Définir les icônes des chiffres clés **/
+
+  /* Icône 1 - Lien vers l'îcone */
+	#iconnumber1{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/vache.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/agriculture/img/icone/vache.png);
+	 }
+	
+	#center{
+  		padding: 10px;
+		  margin-top: 2%;
+	}
+
+	.title-feature {
+    	color: var(--mynumbercolor);
+	    font-family: 'roboto_bold', Arial, Sans-serif;
+	    font-size: 18px;
+	    margin-bottom: 7%;
+	    line-height: 1.2;
+	}
+	.subtitle-feature {
+    color: var(--mynumbercolor);
+		font-family:'roboto_regular', Arial, Sans-serif;
+		font-size:16px;
+		margin-top:7%;
+		line-height:1;
+	}
+
+	.text-feature{
+		font-family:'roboto_regular', Arial, Sans-serif;
+		color:#555;
+		font-size:12px;
+		margin-top:5%;
+	}
+
+	/* Chart */
+  .Chart{
+		text-align:center; 
+    margin:0;
+	}
+
+    .textChart {
+      font-family:"roboto_regular";
+      font-size: 13px;
+      color:#777;
+      margin-top: 5px;
+    }
+    .title-chart{
+      font-family: "roboto_bold";
+    }
+
+    /* Chiffres clés */
+
+	.numberkey {
+    	margin-top: 10px; 
+    	height: 10px;   
+  	}
+
+	.zone-iconnumber{
+		padding:20px;
+	}
+
+	#iconnumber1{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+
+	.number-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:30px;   
+  	}
+	.nodata-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:13px; 
+  	}
+
+  	.titlenumber-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:13px;
+    	line-height:1;
+ 	}
+
+	.subtitlenumber-feature{
+		font-size:11px;
+		color:#555;
+	}
+
+	
+</style>
+
+<script language="javascript"> 
+
+  ////// PARAMETRAGE DU GRAPHIQUE - JS///////
+
+  /// Récupération du insee_com de l'entité selectionnée 
+  var c_geo = [];
+        {{#features}}
+            c_geo.push('{{insee_com}}');
+        {{/features}}
+
+{{#features}}
+
+  /// CHART 1 - Création d'un diagramme circulaire
+
+  var graph_myChartPie1 = {};
+  graph_myChartPie1.getData = function () {
+    // Définition du code geo - ID
+    var insee_com = $("#myChartPie1_{{insee_com}}").attr("data-codegeo");
+    // Définition des variables du graphiques
+    var data = {myChartPie1_attr: {labels:["Vaches allaitantes","Vaches laitières"], data: {datasets:[[parseFloat($("#myChartPie1_{{insee_com}}").attr("data-mychartPie1-1")),parseFloat($("#myChartPie1_{{insee_com}}").attr("data-mychartPie1-2"))]]}}};
+  
+    function checkforData(array) {
+      var arrayOfElements = document.getElementsByClassName('textChart');
+      var lengthOfArray = arrayOfElements.length;
+      // Si toutes les valeurs sont égales à NaN
+      if (isNaN(parseFloat(array))) {
+        return;
+
+      } else {
+        // Si aucune valeur est égale à NaN
+        for (var i = 0; i < lengthOfArray; i++) {
+          // Création du graphique avec les paramètres définis
+          graph_myChartPie1.drawChart(data);
+          // Ne pas afficher le message d'abscence de données
+          arrayOfElements[i].style.display = 'none';
+        }
+      }
+    }
+
+    checkforData(data.myChartPie1_attr.data.datasets[0])
+
+  };  
+  
+  // Définition des paramètres du graphique
+  graph_myChartPie1.drawChart = function (data) {
+  var ctx = document.getElementById("myChartPie1_{{insee_com}}");
+  var myChart1 = new Chart(ctx, {
+          type: 'pie',
+          data: {
+              labels: data.myChartPie1_attr.labels,
+              datasets: [{                  
+                  label: "ha",
+                  data: data.myChartPie1_attr.data.datasets[0],
+                  backgroundColor: [
+                    "#f58221",   
+                    "#ffc20a"
+                  ],
+                  hoverBackgroundColor: [
+                    "#f58221",   
+                    "#ffc20a"
+                  ],
+                  borderWidth: 3 
+              }]
+          },
+          options: { 
+            responsive: true,
+            tooltips: {
+              callbacks: {
+                  label: function(tooltipItem, data) {
+                      return parseFloat(data.datasets[0].data[tooltipItem.index]).toFixed(0).toLocaleString() + " têtes";
+                  }
+              }
+            }
+          }
+      });
+    };
+  if  (typeof Chart === 'function') {
+      graph_myChartPie1.getData();
+  } else {
+      $.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function() {
+        graph_myChartPie1.getData();    
+      }); 
+  }      
+
+
+{{/features}}
+</script>        

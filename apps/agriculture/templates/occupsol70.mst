@@ -1,0 +1,270 @@
+<!-- *** TEMPLATE 5.2 / GRAPH DIAGRAMME CIRCULAIRE / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="item" style="width: inherit;padding: 0px 10px 0px 0px;">
+		<h3 class="title-feature ">{{nom}}</h3>
+
+		<!-- Chart 1-->
+	    <div class="Chart">
+	        <div id="idChart">
+	            <canvas class="chart" id="myChartPie1_{{insee_com}}" data-codegeo="{{insee_com}}" data-mychartPie1-1="{{cereales70}}" data-mychartPie1-2="{{sth70}}"data-mychartPie1-3="{{fourrag70}}" data-mychartPie1-4="{{autres70}}" width="120" height="90"></canvas>
+	        </div>
+	        <div class="textChart">
+	            <div class="hidetitle-chart">Il n'y a pas de données disponibles.</div>
+	            <div class="subtitle-chart"><i>Pour la commune sélectionnée en 1970</i></div>
+	        </div>        
+	    </div>
+	    <!-- ./Chart 1-->		
+
+      <!-- Bar Chart 1-->
+	    <div class="Chart">
+	        <div id="idChart">
+	            <canvas class="chart" id="myChartBar1_{{insee_com}}" data-codegeo="{{insee_com}}" data-mychartBarA-1="{{cereales70}}" data-mychartBarA-2="{{sth70}}" data-mychartBarA-3="{{fourrag70}}" data-mychartBarA-4="{{autres70}}"data-mychartBarB-1="{{cereales79}}" data-mychartBarB-2="{{sth79}}" data-mychartBarB-3="{{fourrag79}}" data-mychartBarB-4="{{autres79}}"data-mychartBarC-1="{{cereales88}}" data-mychartBarC-2="{{sth88}}" data-mychartBarC-3="{{fourrag88}}" data-mychartBarC-4="{{autres88}}"data-mychartBarD-1="{{cereales00}}" data-mychartBarD-2="{{sth00}}" data-mychartBarD-3="{{fourrag00}}" data-mychartBarD-4="{{autres00}}"data-mychartBarE-1="{{cereales10}}" data-mychartBarE-2="{{sth10}}" data-mychartBarE-3="{{fourrag10}}" data-mychartBarE-4="{{autres10}}" width="120" height="100"></canvas>
+	        </div>
+	        <div class="textChart">
+	            <div class="subtitle-chart"><i>Si une couleur n'apparaît pas, la donnée pour la commune et l'année concernée n'est pas disponible</i></div>
+	        </div>        
+	    </div>
+	    <!-- ./Bar Chart 1-->	
+      		
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #1D1B35;
+	}
+
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	/* Texte */
+
+	.title-feature {
+		color: var(--mycolor);
+	    font-family: 'roboto_bold', Arial, Sans-serif;
+	    font-size: 18px;
+	    margin-bottom: 7%;
+	    line-height: 1.2;
+	}
+	.subtitle-feature {
+		color: var(--mycolor);
+		font-family:'roboto_regular', Arial, Sans-serif;
+		font-size:16px;
+		margin-top:7%;
+		line-height:1;
+	}
+
+	.text-feature{
+		font-family:'roboto_regular', Arial, Sans-serif;
+		color:#555;
+		font-size:12px;
+		margin-top:5%;
+	}
+
+	/* Chart */
+  .Chart{
+		text-align: center; 
+    margin-bottom: 30%;
+
+	}
+
+  .textChart {
+      font-family:"roboto_regular";
+      font-size: 13px;
+      color:#777;
+      margin-top: 5px;
+      padding:2px;
+  }
+  .hidetitle-chart{
+      font-family: "roboto_bold";
+  }
+
+	
+</style>
+
+<script language="javascript"> 
+
+  ////// PARAMETRAGE DU GRAPHIQUE - JS///////
+
+  /// Récupération du insee_com de l'entité selectionnée 
+  var c_geo = [];
+        {{#features}}
+            c_geo.push('{{insee_com}}');
+        {{/features}}
+
+{{#features}}
+
+  /// CHART 1 - Création d'un diagramme circulaire
+
+  var graph_myChartPie1 = {};
+  graph_myChartPie1.getData = function () {
+    // Définition du code geo - ID
+    var insee_com = $("#myChartPie1_{{insee_com}}").attr("data-codegeo");
+    // Définition des variables du graphiques
+    var data = {myChartPie1_attr: {labels:["Céréales","Surface toujours en herbe (STH)", "Surface fourragère principale (hors STH)", "Autre(s)"], data: {datasets:[[parseFloat($("#myChartPie1_{{insee_com}}").attr("data-mychartPie1-1")),parseFloat($("#myChartPie1_{{insee_com}}").attr("data-mychartPie1-2")),parseFloat($("#myChartPie1_{{insee_com}}").attr("data-mychartPie1-3")),parseFloat($("#myChartPie1_{{insee_com}}").attr("data-mychartPie1-4"))]]}}};
+  
+    function checkforData(array) {
+      var arrayOfElements = document.getElementsByClassName('hidetitle-chart');
+      var lengthOfArray = arrayOfElements.length;
+      // Si toutes les valeurs sont égales à NaN
+      if (isNaN(parseFloat(array))) {
+        return;
+
+      } else {
+        // Si aucune valeur est égale à NaN
+        for (var i = 0; i < lengthOfArray; i++) {
+          // Création du graphique avec les paramètres définis
+          graph_myChartPie1.drawChart(data);
+          // Ne pas afficher le message d'abscence de données
+          arrayOfElements[i].style.display = 'none';
+        }
+      }
+    }
+
+    checkforData(data.myChartPie1_attr.data.datasets[0])
+
+  };  
+  
+  // Définition des paramètres du graphique
+  graph_myChartPie1.drawChart = function (data) {
+  var ctx = document.getElementById("myChartPie1_{{insee_com}}");
+  var myChart1 = new Chart(ctx, {
+          type: 'pie',
+          data: {
+              labels: data.myChartPie1_attr.labels,
+              datasets: [{                  
+                  label: "ha",
+                  data: data.myChartPie1_attr.data.datasets[0],
+                  backgroundColor: [
+                    "#ffdd00",   
+                    "#008743",
+                    "#bfd630",                 
+                    "#f36f23"
+                  ],
+                  hoverBackgroundColor: [
+                    "#ffdd00",   
+                    "#008743",
+                    "#bfd630",                 
+                    "#f36f23"
+                  ],
+                  borderWidth: 3 
+              }]
+          },
+          options: { 
+            responsive: true,
+            tooltips: {
+              callbacks: {
+                  label: function(tooltipItem, data) {
+                      return parseFloat(data.datasets[0].data[tooltipItem.index]).toFixed(0).toLocaleString() + " hectares";
+                  }
+              }
+            }
+          }
+      });
+    };
+  if  (typeof Chart === 'function') {
+      graph_myChartPie1.getData();
+  } else {
+      $.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function() {
+        graph_myChartPie1.getData();    
+      }); 
+  }      
+
+  /// CHART BAR 1 - Création d'un diagramme bar
+
+  var graph_myChartBar1 = {};
+  graph_myChartBar1.getData = function () {
+    // Définition du code geo - ID
+    var code_geo = $("#myChartBar1_{{insee_com}}").attr("data-codegeo");
+    // Définition des variables du graphiques
+    var data = {myChartBar1_attr: {labels:["1970","1979","1988","2000","2010"], data: {datasets:[[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-1"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-2"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-3"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-4"))]]}}};
+
+    // Affichage des données dans la console
+    console.log(data);
+    // Création du graphique avec les paramètres définis
+    graph_myChartBar1.drawChart(data);
+  };    
+  
+  // Définition des paramètres du graphique
+  graph_myChartBar1.drawChart = function (data) {
+  var ctx = document.getElementById("myChartBar1_{{insee_com}}");
+  var myChart1 = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: data.myChartBar1_attr.labels,
+              datasets: [{                  
+                  label: "Céréales",
+                  backgroundColor: "#ffdd00",
+                  borderColor: "#ffdd00",
+                  borderWidth: 1,
+                  borderSkipped:'left',
+                  hoverBackgroundColor: "#ffdd00",
+                  hoverBorderColor: "#ffdd00",
+                  data: data.myChartBar1_attr.data.datasets[0],
+              },    
+              {              
+                  label: "Surface toujours en herbe (STH)",
+                  backgroundColor: "#008743",
+                  borderColor: "#008743",
+                  borderWidth: 1,
+                  borderSkipped:'left',
+                  hoverBackgroundColor: "#008743",
+                  hoverBorderColor: "#008743",
+                  data: data.myChartBar1_attr.data.datasets[1],
+              },    
+              {              
+                  label: "Surface fourrage principale (hors STH)",
+                  backgroundColor: "#bfd630",
+                  borderColor: "#bfd630",
+                  borderWidth: 1,
+                  borderSkipped:'left',
+                  hoverBackgroundColor: "#bfd630",
+                  hoverBorderColor: "#bfd630",
+                  data: data.myChartBar1_attr.data.datasets[2],
+              },    
+              {              
+                  label: "Autre(s)",
+                  backgroundColor: "#f36f23",
+                  borderColor: "#f36f23",
+                  borderWidth: 1,
+                  borderSkipped:'left',
+                  hoverBackgroundColor: "#f36f23",
+                  hoverBorderColor: "#f36f23",
+                  data: data.myChartBar1_attr.data.datasets[3],
+              }]
+          },
+          options: {            
+            scales:{
+              yAxes:[{
+                  ticks:{
+                    min:0
+                  }
+                }]
+            },
+            responsive: true,
+            tooltips: {
+              callbacks: {
+                  label: function(tooltipItem, data) {
+                      return data.datasets[tooltipItem.datasetIndex].label +': ' + parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString();
+                  }
+              }
+            }
+          }
+      });
+    };  
+
+    if  (typeof Chart === 'function') {
+       graph_myChartBar1.getData();
+  } else {
+      $.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function() {
+        graph_myChartBar1.getData();
+        
+      }); 
+  }
+
+
+{{/features}}
+</script>        

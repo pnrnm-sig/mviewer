@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Carte agriculture</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2022-09-27T10:08:28.263Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application
+    title="L'évolution de l'agriculture sur le Parc et Géoparc Normandie-Maine"
+    logo=""    
+    help="apps/agriculture/doc_carte_agriculture.html"    
+    style="css/themes/pnrnm.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"    
+    fullscreen="true"><!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+</application>
+
+<!-- Zoom de la carte, étendue de la carte -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/>
+
+<!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
+<!-- Barre de recherche -->
+<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<searchparameters bbox="false" localities="true" features="false" static="false" animate="true"/>
+
+<baselayers style="gallery">  
+    <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
+    <baselayer type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr' target='_blank'&gt;&lt;img src='https://geoservices.ign.fr/images/logoIGN.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+</baselayers>
+<themes mini="false">
+    <theme id="theme-20220510132910" name="Orientation agricole des communes" collapsed="false" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
+        <layer 
+            id="evolution_agri"
+            name="OTEX principale en 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="otex2010"> 
+            <template url="apps/agriculture/templates/otex2010.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
+        <layer 
+            id="evolution_agri"
+            name="OTEX principale en 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="otex2020"> 
+            <template url="apps/agriculture/templates/otex2020.mst"></template>   
+        </layer> 
+    </theme>
+
+    
+    <theme id="theme-20220510132911" name="Evolution de l'occupation du sol agricole" collapsed="true" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 1970 -->
+        <layer 
+            id="occup_sol"
+            name="Occupation du sol agricole en 1970"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="occup_sol70"
+            legendurl="apps/agriculture/img/legend/legende_occup_sol.jpg" > 
+            <template url="apps/agriculture/templates/occupsol70.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 1979 -->
+        <layer 
+            id="occup_sol"
+            name="Occupation du sol agricole en 1979"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="occup_sol79"
+            legendurl="apps/agriculture/img/legend/legende_occup_sol.jpg" > 
+            <template url="apps/agriculture/templates/occupsol79.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 1988 -->
+        <layer 
+            id="occup_sol"
+            name="Occupation du sol agricole en 1988"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="occup_sol88"
+            legendurl="apps/agriculture/img/legend/legende_occup_sol.jpg" > 
+            <template url="apps/agriculture/templates/occupsol88.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 2000 -->
+        <layer 
+            id="occup_sol"
+            name="Occupation du sol agricole en 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="occup_sol00"
+            legendurl="apps/agriculture/img/legend/legende_occup_sol.jpg" > 
+            <template url="apps/agriculture/templates/occupsol00.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 2010 -->
+        <layer 
+            id="occup_sol"
+            name="Occupation du sol agricole en 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="occup_sol10"
+            legendurl="apps/agriculture/img/legend/legende_occup_sol.jpg" > 
+            <template url="apps/agriculture/templates/occupsol10.mst"></template>   
+        </layer> 
+    </theme>    
+    <theme id="theme-20220510132912" name="Evolution du cheptel bovin" collapsed="true" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 1988 -->
+        <layer 
+            id="chepbovindia1988"
+            name="Cheptel bovin en 1988"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
+            <template url="apps/agriculture/templates/chepbovin88.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 2000 -->
+        <layer 
+            id="chepbovindia2000"
+            name="Cheptel bovin en 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
+            <template url="apps/agriculture/templates/chepbovin00.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 2010 -->
+        <layer 
+            id="chepbovindia2010"
+            name="Cheptel bovin en 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
+            <template url="apps/agriculture/templates/chepbovin10.mst"></template>   
+        </layer> 
+    </theme>    
+    <theme id="theme-20220510132913" name="Evolution des prairies permanentes" collapsed="true" icon="fas fa-layer-group">
+        <!-- Couche permettant l'affichage des prairies permanentes de 1970 -->
+        <layer 
+            id="prairies1970"
+            name="Prairies permanentes en 1970"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_prairies.png" >
+            <template url="apps/agriculture/templates/prairies70.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage des prairies permanentes de 1979 -->
+        <layer 
+            id="prairies1979"
+            name="Prairies permanentes en 1979"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_prairies.png" >
+            <template url="apps/agriculture/templates/prairies79.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage des prairies permanentes de 1988 -->
+        <layer 
+            id="prairies1988"
+            name="Prairies permanentes en 1988"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_prairies.png" >
+            <template url="apps/agriculture/templates/prairies88.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage des prairies permanentes de 2000 -->
+        <layer 
+            id="prairies2000"
+            name="Prairies permanentes en 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_prairies.png" >
+            <template url="apps/agriculture/templates/prairies00.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage des prairies permanentes de 2010 -->
+        <layer 
+            id="prairies2010"
+            name="Prairies permanentes en 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_prairies.png" >
+            <template url="apps/agriculture/templates/prairies10.mst"></template>   
+        </layer> 
+    </theme>
+    <theme id="hideme-theme-20220510132913" name="Périmètre du Parc" collapsed="true" icon="fas fa-layer-group"> 
+    <!-- Couche permettant l'affichage des noms des communes et de l'affichage du contour rouge sur la commune 
+    lors du survol de la souris (hover) de l'utilisateur ainsi que la recherche des noms des communes dans la barre de recherche. -->
+            <layer 
+            id="communes"
+            name="Communes du Parc"
+            type="customlayer"     
+            url="apps/commun/customlayers/communes.js"      
+            visible="true"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom commune"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="false"
+            showintoc="true"
+            searchable="true"
+            searchengine="fuse"
+            fusesearchkeys="nom"
+            fusesearchresult="{{nom}}">            
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre du Parc actuel -->
+        <layer 
+            id="perimetreparc"
+            name="Périmètre du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre_vert"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">  
+        </layer> 
+    </theme>
+</themes>
+</config>

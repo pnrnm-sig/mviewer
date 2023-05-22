@@ -10,7 +10,7 @@
 <dc:date>2022-09-12T13:00:12.968Z</dc:date>
 </rdf:Description></rdf:RDF></metadata>
 <application    
-    title="Remonter le temps à travers le bocage du territoire du Parc et Géoparc Normandie-Maine"    
+    title="Le bocage du territoire du Parc et Géoparc Normandie-Maine à travers le temps"    
     logo=""    
     help="apps/bocage-diachronique/doc_bocage_diachronique.html"    
     style="css/themes/pnrnm.css"    
@@ -32,10 +32,10 @@
 </baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
 <themes mini="false">
     
-    <theme id="theme-20220810114905" name="Comparer l'année 2020 à ..." collapsed="false" icon="fas fa-layer-group">               
+    <theme id="theme-20220810114905" name="Comparer les haies de 2020 avec les ..." collapsed="false" icon="fas fa-layer-group">               
         <layer 
             id="histo_1945"
-            name="Année 1945"
+            name="Haies de 1945"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="true"  
@@ -43,8 +43,7 @@
             legendurl="apps/bocage-diachronique/img/legend/legende_1945.png"  
             infoformat="text/html"
             queryable="false"
-            exclusive="true"
-            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            exclusive="true">
             </layer>  
             <!-- ID correspond à l'ID dans GeoServer de la couche souhaitée. Visible indique si la couche est active au démarrage de la carte.
             Queryable indique si la couche est interrogeable (ouvre la fiche d'information de l'entité).
@@ -52,7 +51,7 @@
             Attribution permet d'ajouter du texte dans la légende. -->
         <layer 
             id="histo_2000"
-            name="Année 2000"
+            name="Haies de 2000"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -60,12 +59,11 @@
             legendurl="apps/bocage-diachronique/img/legend/legende_2000.png"  
             infoformat="text/html"
             queryable="false"
-            exclusive="true"
-            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            exclusive="true">
         </layer>
         <layer 
             id="histo_2010"
-            name="Année 2010"
+            name="Haies de 2010"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"   
@@ -73,8 +71,7 @@
             legendurl="apps/bocage-diachronique/img/legend/legende_2010.png"  
             infoformat="text/html"
             queryable="false"
-            exclusive="true"
-            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne."> <!-- Booléen stipulant si la couche est exclusive. Si la valeur est « true », l’affichage de cette couche
+            exclusive="true"> <!-- Booléen stipulant si la couche est exclusive. Si la valeur est « true », l’affichage de cette couche
 masquera automatiquement toutes les autres couches ayant ce paramètre activé. -->
         </layer> 
     </theme> 
@@ -83,7 +80,7 @@ masquera automatiquement toutes les autres couches ayant ce paramètre activé. 
     <theme id="hideme-20220810114905" name="Balayage" collapsed="true" icon="fas fa-leaf">           
         <layer 
             id="swipe" 
-            name="Année 2020" 
+            name="Haies de 2020" 
             visible="true" 
             queryable="false"           
             type="customlayer"           

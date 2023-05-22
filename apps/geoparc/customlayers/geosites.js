@@ -5,7 +5,7 @@
   geosites.legend = {
     items: [
       {
-        label: "Précambrien",
+        label: "Néoprotérozoïque (Précambrien)",
         geometry: "Polygon",
         styles: [
           // Style pour l'intérieur du polygone à grande échelle afin d'avoir un polygone large et ainsi rendre les plus petits géosites bien visibles
@@ -88,7 +88,7 @@
         ],
       },
       {
-        label: "Précambrien",
+        label: "Néoprotérozoïque (Précambrien)",
         geometry: "Polygon",
         styles: [
         // Style pour l'intérieur du polygone à petite échelle afin d'avoir un polygone large et ainsi rendre les plus petits géosites bien visibles
@@ -184,8 +184,8 @@
       if (feature.get("ere_roche") && resolution < 10) {
         // Prendre la valeur de ere_roche
         switch (feature.get("ere_roche")) {
-          // Si la valeur de ere_roche est égale à Précambrien
-          case "Précambrien":
+          // Si la valeur de ere_roche est égale à Néoprotérozoïque (Précambrien)
+          case "Néoprotérozoïque (Précambrien)":
             // Prendre la valeur de styles du premier élément de la liste geosites.legend
             stl = geosites.legend.items[0].styles;
             break;
@@ -209,8 +209,8 @@
       else if (feature.get("ere_roche") && resolution > 10) {
         // Prendre la valeur de ere_roche
         switch (feature.get("ere_roche")) {
-          // Si la valeur de ere_roche est égale à Précambrien
-          case "Précambrien":
+          // Si la valeur de ere_roche est égale à Néoprotérozoïque (Précambrien)
+          case "Néoprotérozoïque (Précambrien)":
             // Prendre la valeur de styles du sixième élément de la liste geosites.legend
             stl = geosites.legend.items[5].styles;
             break;

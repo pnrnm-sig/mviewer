@@ -50,17 +50,20 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2020.mst"></template>
         </layer> 
-        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2010 -->
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
         <layer 
+            id="bocage_com"
+            name="Année 1945"
             id="bocage_com"
             name="Année 2010"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
-            style="densite_2010"
+            style="densite_1945"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-1945.mst"></template>
             <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2010.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 2000 -->
@@ -161,6 +164,23 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/plantation-haies.mst"></template>
         </layer> 
+                <!-- Couche permettant l'affichage des principaux bourgs du Parc -->
+        <!-- <layer 
+            id="vm_suiviplantations_epci"
+            name="Test en cours... style plantation de haies par EPCI"
+            type="customlayer"     
+            url="apps/evolution-bocage/customlayers/vm_suiviplantations_epci.js"    
+            visible="false"
+            legendurl="apps/generale/img/legend/legende_principaux_bourgs.png"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom principaux bourgs"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">   
+            <template url="apps/generale/templates/villes_bourgs.mst"></template>            
+        </layer> -->
     </theme>
     <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
     <theme id="hideme-20220510132912" name="Référentiel" collapsed="true" icon="fas fa-layer-group"> 

@@ -17,9 +17,7 @@
     exportpng="false"    
     showhelp="false"       
     measuretools="false"
-    overwrite="false"    
-    fullscreen="true"> <!-- Overwrite indique si la case "Ecraser le fichier XML chargé" a été cochée lors de la sauvegarde du XML. 
-    Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+    fullscreen="true"> <!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
 </application>
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-16656.4,6200926.3" zoom="17" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
@@ -76,7 +74,7 @@
         </layer> 
         <!-- Couche affichant le périmètre du Parc en premier plan. -->
         <layer 
-            id="perimetre2008"
+            id="perimetreparc"
             name="Périmètre du Parc"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -95,7 +93,6 @@ elles seront affichées dans l’ordre d’écriture du XML -->
             name="Comparer les années..." 
             visible="true" 
             type="customlayer" 
-            expanded="true" 
             tiled="true"   
             legendurl="img/blank.gif" 
             url="apps/remonter-le-temps/customcontrols/customlayers/swipeRight.js" 

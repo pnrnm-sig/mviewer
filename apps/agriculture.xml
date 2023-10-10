@@ -23,7 +23,7 @@
 </application>
 
 <!-- Zoom de la carte, étendue de la carte -->
-<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/>
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-25003.74898791354,6185045.088741366" zoom="9" maxextent="-209877.4580,6009930.9516,200009.2689,9002292.7061"/>
 
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
@@ -38,7 +38,7 @@
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Orientation agricole des communes" collapsed="false" icon="fas fa-layer-group">
-        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
+        <!-- Couche permettant l'affichage de l'OTEX principale de chaque commune en 2010 -->
         <layer 
             id="evolution_agri"
             name="OTEX principale en 2010"
@@ -51,7 +51,7 @@
             style="otex2010"> 
             <template url="apps/agriculture/templates/otex2010.mst"></template>   
         </layer> 
-        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
+        <!-- Couche permettant l'affichage de l'OTEX principale de chaque commune en 2020 -->
         <layer 
             id="evolution_agri"
             name="OTEX principale en 2020"
@@ -138,9 +138,23 @@
             legendurl="apps/agriculture/img/legend/legende_occup_sol.jpg" > 
             <template url="apps/agriculture/templates/occupsol10.mst"></template>   
         </layer> 
+        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 2020 -->
+        <layer 
+            id="occup_sol"
+            name="Occupation du sol agricole en 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            style="occup_sol20"
+            legendurl="apps/agriculture/img/legend/legende_occup_sol.jpg" > 
+            <template url="apps/agriculture/templates/occupsol20.mst"></template>   
+        </layer> 
     </theme>    
     <theme id="theme-20220510132912" name="Evolution du cheptel bovin" collapsed="true" icon="fas fa-layer-group">
-        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 1988 -->
+        <!-- Couche permettant l'affichage du cheptel bovin en 1988 -->
         <layer 
             id="chepbovindia1988"
             name="Cheptel bovin en 1988"
@@ -153,7 +167,7 @@
             legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
             <template url="apps/agriculture/templates/chepbovin88.mst"></template>   
         </layer> 
-        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 2000 -->
+        <!-- Couche permettant l'affichage du cheptel bovin en 2000 -->
         <layer 
             id="chepbovindia2000"
             name="Cheptel bovin en 2000"
@@ -166,7 +180,7 @@
             legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
             <template url="apps/agriculture/templates/chepbovin00.mst"></template>   
         </layer> 
-        <!-- Couche permettant l'affichage de l'occupation du sol agricole de 2010 -->
+        <!-- Couche permettant l'affichage du cheptel bovin en 2010 -->
         <layer 
             id="chepbovindia2010"
             name="Cheptel bovin en 2010"
@@ -178,6 +192,19 @@
             exclusive="true"
             legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
             <template url="apps/agriculture/templates/chepbovin10.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage du cheptel bovin en 2020 -->
+        <layer 
+            id="chepbovindia2020"
+            name="Cheptel bovin en 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
+            <template url="apps/agriculture/templates/chepbovin20.mst"></template>   
         </layer> 
     </theme>    
     <theme id="theme-20220510132913" name="Evolution des prairies permanentes" collapsed="true" icon="fas fa-layer-group">
@@ -245,6 +272,19 @@
             exclusive="true"
             legendurl="apps/agriculture/img/legend/legende_prairies.png" >
             <template url="apps/agriculture/templates/prairies10.mst"></template>   
+        </layer> 
+        <!-- Couche permettant l'affichage des prairies permanentes de 2020 -->
+        <layer 
+            id="prairies2020"
+            name="Prairies permanentes en 2020"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true"
+            legendurl="apps/agriculture/img/legend/legende_prairies.png" >
+            <template url="apps/agriculture/templates/prairies20.mst"></template>   
         </layer> 
     </theme>
     <theme id="hideme-theme-20220510132913" name="Périmètre du Parc" collapsed="true" icon="fas fa-layer-group"> 

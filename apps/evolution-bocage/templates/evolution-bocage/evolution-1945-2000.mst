@@ -3,7 +3,7 @@
 {{#features}}
 	<li class="item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature ">{{nom}}</h3>
-		<h3 class="subtitle-feature ">{{#ancien_nom}}Anciennement communes de {{ancien_nom}}{{/ancien_nom}}{{^ancien_nom}}{{ancien_nom}}{{/ancien_nom}}</h3>
+		<h3 class="subtitle-feature ">{{#ancien_nom}}({{ancien_nom}}){{/ancien_nom}}{{^ancien_nom}}{{ancien_nom}}{{/ancien_nom}}</h3>
       	<!--Chiffre clé 1-->
       	<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
@@ -93,7 +93,6 @@
 		font-family:'roboto_regular', Arial, Sans-serif;
 		font-size:14px;
 	}
-
 
 	/* Chiffres clés */
 

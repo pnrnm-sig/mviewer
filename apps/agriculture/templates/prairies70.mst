@@ -10,9 +10,20 @@
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8" id="center">
-	          <div class="number-feature">{{#sthsau70}}{{sthsau70}} %{{/sthsau70}}</div>
-	          <div class="titlenumber-feature">{{#sthsau70}}de prairies permanentes sur </br>la SAU{{/sthsau70}}</div> 
-			  <div class="nodata-feature">{{^sthsau70}}Aucune donnée disponible en 1970 pour la commune sélectionnée{{/sthsau70}}</div>
+			<!-- Affiche la part de la STH sur la SAU de la commune-->
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+					{{! Valeur affichée }}
+			  		{{#sthsau70}}{{sthsau70}} %{{/sthsau70}}
+				</div>
+	        	<div class="titlenumber-feature">
+					{{! Titre sous le nombre affiché, un saut à la ligne est nécessaire sinon le titre est coupé trop près du bord (pas esthétique)}}
+			  		{{#sthsau70}}de prairies permanentes sur </br>la SAU{{/sthsau70}}
+				</div> 
+				<div class="nodata-feature">
+					{{! Affiché lorsqu'aucune donnée n'est disponible pour l'année concernée }}
+			  		{{^sthsau70}}Aucune donnée disponible en 1970 pour la commune sélectionnée{{/sthsau70}}
+				</div>
 	        </div>
       	</div>
       	<!--./Chiffre clé 1-->
@@ -87,20 +98,6 @@
 	}
 
 	#iconnumber1{
-	    -webkit-mask-repeat: no-repeat;
-	    mask-repeat: no-repeat;
-	    height: 70px;
-	    width: 70px;
-	    background: var(--mynumbercolor);
-	}
-	#iconnumber2{
-	    -webkit-mask-repeat: no-repeat;
-	    mask-repeat: no-repeat;
-	    height: 70px;
-	    width: 70px;
-	    background: var(--mynumbercolor);
-	}
-	#iconnumber3{
 	    -webkit-mask-repeat: no-repeat;
 	    mask-repeat: no-repeat;
 	    height: 70px;

@@ -22,17 +22,6 @@
 	        </div>
       	</div>
       	<!--./Chiffres clé 3-->	
-		
-      	{{! <div class="row numberkey" style="height:auto;">
-        	<div class="zone-iconnumber col-sm-4">
-          		<div id="iconnumber2"></div>
-          	</div>
-	        <div class="col-sm-8">
-	          <div class="number-feature">39 625 m</div>
-	          <div class="titlenumber-feature">de haies plantées par le Parc depuis 2008</div>
-	          <div class="subtitle-feature"><i>Toutes communes confondues</i></div>
-	        </div>
-      	</div> }}
 	
 	</li>
 {{/features}}
@@ -58,11 +47,6 @@
 	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
 	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
 	 }
-	/*#iconnumber2{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation_parc.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation_parc.png);
-	 }*/
-
 
   	/***********************************************/
 	/*** Ne pas toucher aux propriétés suivantes ***/
@@ -144,35 +128,6 @@
 
 	.subtitlenumber-feature{
 		font-size:11px;
-	}
-
-	/*.table-title{
-		color: var(--mycolor);
-	    font-family: 'roboto_bold', Arial, Sans-serif;
-	    font-size: 14px;
-		margin-top: 10%;
-	    margin-bottom: 7%;
-	    line-height: 1.2;
-	}
-*/
-	th {
-		color:#00936f ;
-	}
-	
-	table { 
-		width: 95%; 
-		color: #00936f; 
-		border-collapse: collapse; 
-	}
-	th { 
-		background: #eee; 
-		color: #00936f; 
-		font-weight: bold; 
-	}
-	td, th { 
-		padding: 6px; 
-		border: 1px solid #ccc; 
-		text-align: center; 		
 	}
 
 </style>

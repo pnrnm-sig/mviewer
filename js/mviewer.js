@@ -349,6 +349,7 @@ mviewer = (function () {
         center: _center,
         enableRotation: _rotation,
         zoom: _zoom,
+        zoomFactor: 1.95,
         extent: mapoptions.maxextent
           ? mapoptions.maxextent.split(",").map(function (item) {
               return parseFloat(item);

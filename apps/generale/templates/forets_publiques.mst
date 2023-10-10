@@ -3,7 +3,19 @@
 {{#features}}
 	<li class="inventaire item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature">{{llib_frt}}</h3>
+		<p class="text-feature"> 
+		<span>
+			Propriété : 
+		</span>
+		{{#propriete}}{{propriete}}{{/propriete}}{{^propriete}}Autre{{/propriete}}</br>
+		<span>
+			Surface : 
+		</span>
+		{{#area_ha}}{{area_ha}}{{/area_ha}} ha</br>
 
+
+        
+	</p>
 	
 	</li>
 {{/features}}
@@ -30,12 +42,26 @@
 
 	/* Texte */
 
-.inventaire .title-feature {
+	.inventaire .title-feature {
 		color: #c43c39; /* Indique la couleur du texte (nom du géosite) */
 		font-family:"roboto_bold"; /* Indique la police du texte */
 		font-size:16px; /* Indique la taille de la police du texte */
 		margin-bottom:5%; /* Permet de définir une marge sous le titre */
 	}
+	.inventaire .text-feature{
+		font-family:"roboto_regular"; /* Indique la police du texte */
+		color:#555; /* Indique la couleur du texte */
+		font-size:13px; /* Indique la taille de la police du texte */
+		margin-top:5px; /* Permet de définir une marge au dessus */
+	}
+	.inventaire .text-feature span{
+		font-family:"roboto_bold";  /* Indique la police du texte qui se trouve sous la class text-feature et entre <span></span> */
+	}
+
+    .inventaire p, .inventaire h3 {
+        padding-left:1px; /* Permet un décalage à gauche */
+        padding-right:1px; /* Permet un décalage à droite */
+    }
 
 	/* Rendre les barres de défilement invisibles */
 	.scrollbar-hidden::-webkit-scrollbar {

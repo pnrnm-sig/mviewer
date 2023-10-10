@@ -26,7 +26,9 @@
 </application>
 
 <!-- Zoom de la carte, étendue de la carte -->
-<mapoptions maxzoom="20" projection="EPSG:3857" center="-39538.94496047902,6179048.932278912" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/>
+<!-- <mapoptions maxzoom="20" projection="EPSG:3857" center="-39538.94496047902,6179048.932278912" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/> -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-65003.74898791354,6185045.088741366" zoom="10"  maxextent="-209877.4580,6009930.9516,100009.2689,9002292.7061"/>
+
 <!-- Extensions ajoutées à la carte -->
 <extensions>
     <!-- Extension permettant l'ajout du bouton "Plein écran" -->
@@ -70,6 +72,17 @@
             toplayer="true">
             <template url="apps/geoparc/templates/geosites.mst" />            
         </layer>         
+        <!-- Couche permettant l'affichage des partenaires du Géoparc -->
+        <!-- <layer 
+            id="geosites_fond"
+            name="Geosites du Géoparc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"   
+            infoformat="application/vnd.ogc.gml"
+            queryable="true">
+            <template url="apps/geoparc/templates/partenaires.mst" />   
+        </layer>          -->
         <!-- Couche permettant l'affichage des partenaires du Géoparc -->
         <layer 
             id="partenaires_geoparc"

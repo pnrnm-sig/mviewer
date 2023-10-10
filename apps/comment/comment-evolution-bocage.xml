@@ -25,14 +25,12 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
     showhelp="false"    
     coordinates="false"    
     measuretools="false"    
-    togglealllayersfromtheme="false"    
-    overwrite="false"    
+    togglealllayersfromtheme="false"     
     fullscreen="true">
 </application>
 
 <!-- Zoom de la carte, étendue de la carte -->
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
-
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> 
 <!-- Barre de recherche, utilisation d'une image transparante (invisible.png) afin de cacher le marker rouge par défaut lorsqu'on clique sur la carte -->
@@ -41,9 +39,10 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
 <baselayers style="default"> 
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Map tiles by  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, under  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
 </baselayers>
-<!-- Themes et couches -->
+<!-- Themes correspond au panneau de couche qui peut être ouvert avec l'icône de menu hamburger -->
 <themes mini="false">
-<!-- Densité du bocage -->
+    <!-- Chaque thème correspond à un groupe de couches -->
+    <!-- Densité du bocage -->
     <theme id="theme-20220510132910" name="Densité du bocage" collapsed="false" icon="fas fa-layer-group">
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
         <layer 
@@ -182,9 +181,9 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
     <!-- Référentiel -->
     <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
     <theme id="hideme-20220510132912" name="Référentiel" collapsed="true" icon="fas fa-layer-group"> 
-    <!-- Couche permettant l'affichage des noms des communes et de l'affichage du contour rouge sur la commune 
-    lors du survol de la souris (hover) de l'utilisateur ainsi que la recherche des noms des communes dans la barre de recherche. -->
-            <layer 
+        <!-- Couche permettant l'affichage des noms des communes et de l'affichage du contour rouge sur la commune 
+        lors du survol de la souris (hover) de l'utilisateur ainsi que la recherche des noms des communes dans la barre de recherche. -->
+        <layer 
             id="invisible_hover"
             name="Communes du Parc"
             type="customlayer"     

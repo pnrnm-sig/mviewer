@@ -3,7 +3,55 @@
 {{#features}}
 	<li class="inventaire item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature">{{up_pnrnm}}</h3>
+		<p class="text-feature"> 
+		<span>
+			Présentation : 
+		</span>
+		{{presentation}}</br></br>
+		<span>
+			Famille de paysages : 
+		</span>
+		{{fam_pnrnm}}{{#ssfam_pnrnm}} ({{ssfam_pnrnm}}){{/ssfam_pnrnm}}{{^ssfam_pnrnm}}{{/ssfam_pnrnm}}</br></br>
+		<span>
+			Motifs et éléments : 
+		</span>
+		{{motif_element}}</br></br>
+		<span> 
+			En savoir plus :<br/>
+		</span> 
+		<ol>
+		{{#fiche_1}} <!-- Ce qu'il faut afficher si l'attribut choisi a une valeur -->
+		<li>
+			<a href="{{fiche_1}}" target="_blank" class="button-link">Fiche de l'atlas régional</a><br/>
+		</li>
+		{{/fiche_1}}
+		{{^fiche_1}}	<!-- Ce qu'il faut afficher si l'attribut choisi a une valeur NULL -->
+		<li>
+			Pas de fiche l'atlas régional disponible<br/>
+		</li>
+		{{/fiche_1}}
+		{{#fiche_2}} <!-- Ce qu'il faut afficher si l'attribut choisi a une valeur -->
+		<li>
+			<a href="{{fiche_2}}" target="_blank" class="button-link">Fiche complémentaire</a><br/>
+		</li>
+		{{/fiche_2}}
+		{{^fiche_2}}	<!-- Ce qu'il faut afficher si l'attribut choisi a une valeur NULL -->
+		
+		{{/fiche_2}}
+		{{#fiche_pnr}} <!-- Ce qu'il faut afficher si l'attribut choisi a une valeur -->
+		<li>
+			<a href="{{fiche_pnr}}" target="_blank" class="button-link">Extrait du diagnostic territorial 2020 du Parc</a><br/>
+		</li>
+		{{/fiche_pnr}}
+		{{^fiche_pnr}}	<!-- Ce qu'il faut afficher si l'attribut choisi a une valeur NULL -->
+		<li>
+			Pas de fiche du Parc disponible<br/>
+		</li>
+		{{/fiche_pnr}}
+		</ol>
 
+        
+	</p>
 	
 	</li>
 {{/features}}
@@ -46,6 +94,18 @@
 	.scrollbar-hidden {
 		-ms-overflow-style: none;
 		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Lien cliquable vers les fiches de géosites */
+	a.button-link {
+		color: #00936f; /* Couleur du lien */
+		cursor: pointer; /* Le curseur se change en petite main */
+	}
+
+	/* Ce qui se passe lorsqu'on passe la souris par dessus le lien cliquable */
+	a.button-link:hover {
+		color: #008050; /* Couleur du lien lorsqu'on passe la souris par dessus */
+		text-decoration: underline; /* Le lien est sourligné lorsqu'on passe la souris par dessus */
 	}
 
 </style>

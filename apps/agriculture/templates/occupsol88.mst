@@ -7,21 +7,26 @@
 		<!-- Chart 1-->
 	    <div class="Chart">
 	        <div id="idChart">
+				      {{! Graphique circulaire occupation du sol }}
 	            <canvas class="chart" id="myChartPie1_{{insee_com}}" data-codegeo="{{insee_com}}" data-mychartPie1-1="{{cereales88}}" data-mychartPie1-2="{{sth88}}"data-mychartPie1-3="{{fourrag88}}" data-mychartPie1-4="{{autres88}}" width="120" height="90"></canvas>
 	        </div>
 	        <div class="textChart">
-	            <div class="hidetitle-chart">Il n'y a pas de données disponibles.</div>
+				      {{! Message qui apparaît lorsqu'une des deux valeurs est NULL pour l'année concernée }}
+	            {{! <div class="hidetitle-chart">Il n'y a pas de données disponibles.</div> }}
+				      {{! Précision en italique }}
 	            <div class="subtitle-chart"><i>Pour la commune sélectionnée en 1988</i></div>
 	        </div>        
 	    </div>
 	    <!-- ./Chart 1-->		
 
-            <!-- Bar Chart 1-->
+      <!-- Bar Chart 1-->
 	    <div class="Chart">
 	        <div id="idChart">
-	            <canvas class="chart" id="myChartBar1_{{insee_com}}" data-codegeo="{{insee_com}}" data-mychartBarA-1="{{cereales70}}" data-mychartBarA-2="{{sth70}}" data-mychartBarA-3="{{fourrag70}}" data-mychartBarA-4="{{autres70}}"data-mychartBarB-1="{{cereales79}}" data-mychartBarB-2="{{sth79}}" data-mychartBarB-3="{{fourrag79}}" data-mychartBarB-4="{{autres79}}"data-mychartBarC-1="{{cereales88}}" data-mychartBarC-2="{{sth88}}" data-mychartBarC-3="{{fourrag88}}" data-mychartBarC-4="{{autres88}}"data-mychartBarD-1="{{cereales00}}" data-mychartBarD-2="{{sth00}}" data-mychartBarD-3="{{fourrag00}}" data-mychartBarD-4="{{autres00}}"data-mychartBarE-1="{{cereales10}}" data-mychartBarE-2="{{sth10}}" data-mychartBarE-3="{{fourrag10}}" data-mychartBarE-4="{{autres10}}" width="120" height="100"></canvas>
+				      {{! Graphique histogramme occupation du sol }}
+	            <canvas class="chart" id="myChartBar1_{{insee_com}}" data-codegeo="{{insee_com}}" data-mychartBarA-1="{{cereales70}}" data-mychartBarA-2="{{sth70}}" data-mychartBarA-3="{{fourrag70}}" data-mychartBarA-4="{{autres70}}"data-mychartBarB-1="{{cereales79}}" data-mychartBarB-2="{{sth79}}" data-mychartBarB-3="{{fourrag79}}" data-mychartBarB-4="{{autres79}}"data-mychartBarC-1="{{cereales88}}" data-mychartBarC-2="{{sth88}}" data-mychartBarC-3="{{fourrag88}}" data-mychartBarC-4="{{autres88}}"data-mychartBarD-1="{{cereales00}}" data-mychartBarD-2="{{sth00}}" data-mychartBarD-3="{{fourrag00}}" data-mychartBarD-4="{{autres00}}"data-mychartBarE-1="{{cereales10}}" data-mychartBarE-2="{{sth10}}" data-mychartBarE-3="{{fourrag10}}" data-mychartBarE-4="{{autres10}}" data-mychartBarF-1="{{cereales20}}" data-mychartBarF-2="{{sth20}}" data-mychartBarF-3="{{fourrag20}}" data-mychartBarF-4="{{autres20}}" width="120" height="100"></canvas>
 	        </div>
 	        <div class="textChart">
+				      {{! Précision en italique }}
 	            <div class="subtitle-chart"><i>Si une couleur n'apparaît pas, la donnée pour la commune et l'année concernée n'est pas disponible</i></div>
 	        </div>        
 	    </div>
@@ -109,19 +114,20 @@
     function checkforData(array) {
       var arrayOfElements = document.getElementsByClassName('hidetitle-chart');
       var lengthOfArray = arrayOfElements.length;
+                graph_myChartPie1.drawChart(data);
       // Si toutes les valeurs sont égales à NaN
-      if (isNaN(parseFloat(array))) {
-        return;
+      //if (isNaN(parseFloat(array))) {
+      //  return;
 
-      } else {
+      //} else {
         // Si aucune valeur est égale à NaN
-        for (var i = 0; i < lengthOfArray; i++) {
+      //  for (var i = 0; i < lengthOfArray; i++) {
           // Création du graphique avec les paramètres définis
-          graph_myChartPie1.drawChart(data);
+      //    graph_myChartPie1.drawChart(data);
           // Ne pas afficher le message d'abscence de données
-          arrayOfElements[i].style.display = 'none';
-        }
-      }
+      //    arrayOfElements[i].style.display = 'none';
+      //  }
+      //}
     }
 
     checkforData(data.myChartPie1_attr.data.datasets[0])
@@ -138,12 +144,14 @@
               datasets: [{                  
                   label: "ha",
                   data: data.myChartPie1_attr.data.datasets[0],
+				          // Couleurs de fond du diagramme
                   backgroundColor: [
                     "#ffdd00",   
                     "#008743",
                     "#bfd630",                 
                     "#f36f23"
                   ],
+				          // Couleurs du diagramme lors du survol de la souris
                   hoverBackgroundColor: [
                     "#ffdd00",   
                     "#008743",
@@ -157,6 +165,7 @@
             responsive: true,
             tooltips: {
               callbacks: {
+				          // Label appraissant lors du survol de la souris sur le diagramme circulaire
                   label: function(tooltipItem, data) {
                       return parseFloat(data.datasets[0].data[tooltipItem.index]).toFixed(0).toLocaleString() + " hectares";
                   }
@@ -180,7 +189,7 @@
     // Définition du code geo - ID
     var code_geo = $("#myChartBar1_{{insee_com}}").attr("data-codegeo");
     // Définition des variables du graphiques
-    var data = {myChartBar1_attr: {labels:["1970","1979","1988","2000","2010"], data: {datasets:[[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-1"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-2"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-3"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-4"))]]}}};
+    var data = {myChartBar1_attr: {labels:["1970","1979","1988","2000","2010","2020"], data: {datasets:[[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-1")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-1"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-2")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-2"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-3")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-3"))],[parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-4")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-4"))]]}}};
 
     // Affichage des données dans la console
     console.log(data);
@@ -247,6 +256,7 @@
             responsive: true,
             tooltips: {
               callbacks: {
+				          // Label appraissant lors du survol de la souris sur le diagramme circulaire
                   label: function(tooltipItem, data) {
                       return data.datasets[tooltipItem.datasetIndex].label +': ' + parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString();
                   }

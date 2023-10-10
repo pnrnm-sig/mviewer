@@ -23,13 +23,13 @@
 </application>
 
 <!-- Zoom de la carte, étendue de la carte -->
-<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/>
-
+<!-- <mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/> -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-25003.74898791354,6185045.088741366" zoom="9" maxextent="-209877.4580,6009930.9516,200009.2689,9002292.7061"/>
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
 <!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
-<searchparameters bbox="false" localities="true" features="false" static="false" animate="true"/>
+<searchparameters bbox="false" localities="true" features="true" static="false" animate="true"/>
 
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
@@ -65,7 +65,11 @@
             tooltipenabled="true"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
-            exclusive="false"> 
+            exclusive="false"
+            searchable="true"
+            searchengine="fuse"
+            fusesearchkeys="nom"
+            fusesearchresult="{{nom}}"> 
             <template url="apps/generale/templates/communes.mst"></template>            
         </layer>
         <!-- Couche permettant l'affichage des communes associées ou déléguées sur le territoire du Parc -->
@@ -233,7 +237,7 @@
             <template url="apps/generale/templates/perimetre1975.mst"></template> 
         </layer> 
     </theme>
-    <theme id="theme-20220510132911" name="Plan de Parc" collapsed="true" icon="fas fa-layer-group">
+    <theme id="theme-20220510132911" name="Plan de Parc 2024 - 2039" collapsed="true" icon="fas fa-layer-group">
         <!-- Couche permettant l'affichage des zones de haute valeur culturelle et paysagère -->
         <layer 
             id="zoneshautesvalculturellepaysages"
@@ -271,7 +275,7 @@
         </layer> 
         <!-- Couche permettant l'affichage des différentes unités paysagères du Parc -->
         <layer 
-            id="up_pnrnm_2020_v2_decoupe"
+            id="up_pnrnm_2020_v3"
             name="Unités paysagères"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -299,7 +303,7 @@
         <!-- Couche permettant l'affichage des cours d'eau du territoire -->
         <layer 
             id="sandre_coursdeau"
-            name="Cours d'eau (SANDRE)"
+            name="Cours d'eau"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
@@ -349,7 +353,7 @@
         <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
         <layer 
             id="bdalti25m_agregat"
-            name="Relief du territoire (BD ALTI® 25 m)"
+            name="Relief du territoire"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"

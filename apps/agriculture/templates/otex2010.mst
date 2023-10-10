@@ -10,8 +10,21 @@
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8" id="center">
-	          <div class="number-feature">{{#area_ha}}{{area_ha}} ha{{/area_ha}}{{^area_ha}}Hectares{{/area_ha}}</div>
-	          <div class="titlenumber-feature">{{#area_ha}}superficie de la commune{{/area_ha}}{{^area_ha}}de superficie de la commune inconnu{{/area_ha}}</div>
+			<!-- Affiche le nombre de hectares de superficie de la commune-->
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+			  		{{! Valeur affichée }}
+					{{#area_ha}}{{area_ha}} ha{{/area_ha}}
+					{{! Si valeur NULL alors }}
+					{{^area_ha}}Hectares{{/area_ha}}
+				</div>
+				{{! Titre sous le nombre affiché }}
+	        	<div class="titlenumber-feature">
+			  		{{! Valeur affichée }}
+					{{#area_ha}}superficie de la commune{{/area_ha}}
+					{{! Si valeur NULL alors }}
+					{{^area_ha}}de superficie de la commune inconnu{{/area_ha}}
+				</div>
 	        </div>
       	</div>
       	<!--./Chiffre clé 1-->
@@ -21,9 +34,25 @@
           		<div id="iconnumber2"></div>
           	</div>
 			<div class="col-sm-8">
-	          <div class="number-feature">{{#sau10}}{{sau10}} ha{{/sau10}}{{^sau10}}Hectares{{/sau10}}</div>
-	          <div class="titlenumber-feature">{{#sau10}}de supercifie agricole utile{{/sau10}}{{^sau10}}de supercifie agricole utile inconnu{{/sau10}}</div>
-	          <div class="subtitle-feature"><i>Pour les sièges d'exploitations localisés sur la commune</i></div>
+			<!-- Affiche le nombre de hectares de superficie agricole utile de la commune-->
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+			  		{{! Valeur affichée }}
+			  		{{#sau10}}{{sau10}} ha{{/sau10}}
+					{{! Si valeur NULL alors }}
+					{{^sau10}}Hectares{{/sau10}}
+				</div>
+				{{! Titre sous le nombre affiché }}
+	        	<div class="titlenumber-feature">
+			  		{{! Valeur affichée }}
+					{{#sau10}}de supercifie agricole utile{{/sau10}}
+					{{! Si valeur NULL alors }}
+					{{^sau10}}de supercifie agricole utile inconnu{{/sau10}}
+				</div>
+	        	<div class="subtitle-feature">
+					{{! Précision en italique }}
+					<i>Pour les sièges d'exploitations localisés sur la commune</i>
+				</div>
 	        </div>
       	</div>
 		<!--./Chiffre clé 2-->
@@ -33,8 +62,21 @@
           		<div id="iconnumber3"></div>
           	</div>
 			<div class="col-sm-8" id="center">
-	          <div class="number-feature">{{#expl10}}{{expl10}}{{/expl10}}{{^expl10}}Nombre{{/expl10}}</div>
-	          <div class="titlenumber-feature">{{#expl10}}exploitants sur la commune{{/expl10}}{{^expl10}}d'exploitants sur la commune inconnu{{/expl10}}</div>
+			<!-- Affiche le nombre d'exploitants de la commune-->
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+			  		{{! Valeur affichée }}
+					{{#expl10}}{{expl10}}{{/expl10}}
+					{{! Si valeur NULL alors }}
+					{{^expl10}}Nombre{{/expl10}}
+				</div>
+				{{! Titre sous le nombre affiché }}
+	        	<div class="titlenumber-feature">
+			  		{{! Valeur affichée }}
+			  		{{#expl10}}exploitants sur la commune{{/expl10}}
+					{{! Si valeur NULL alors }}
+					{{^expl10}}d'exploitants sur la commune inconnu{{/expl10}}
+				</div>
 	        </div>
       	</div>
 		<!--./Chiffre clé 3-->

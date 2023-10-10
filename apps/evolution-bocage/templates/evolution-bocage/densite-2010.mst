@@ -3,7 +3,7 @@
 {{#features}}
 	<li class="item scrollbar-hidden" style="width:270px;">
 		<h3 class="title-feature ">{{nom}}</h3>
-		<h3 class="subtitle-feature ">{{#ancien_nom}}Anciennement communes de {{ancien_nom}}{{/ancien_nom}}{{^ancien_nom}}{{ancien_nom}}{{/ancien_nom}}</h3>
+		<h3 class="subtitle-feature ">{{#ancien_nom}}({{ancien_nom}}){{/ancien_nom}}{{^ancien_nom}}{{ancien_nom}}{{/ancien_nom}}</h3>
 		<!--Chiffre clé 1-->
 		<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
@@ -25,21 +25,8 @@
 	          <div class="titlenumber-feature">de linéaire de haies en 2010</div>
 	        </div>
       	</div>
-      	<!--./Chiffres clé 2-->		
-		<!--Chiffre clé 3-->
-      	<!--<div class="row numberkey" style="height:auto;">
-        	<div class="zone-iconnumber col-sm-4">
-          		<div id="iconnumber3"></div>
-          	</div>
-	        <div class="col-sm-8">
-	          <div class="number-feature">{{plantation}} km</div>
-	          <div class="titlenumber-feature">de haies plantées par le Parc depuis 2008</div>
-	          <div class="subtitle-feature"><i>Pour la commune sélectionnée</i></div>
-	        </div>
-      	</div>-->
-      	<!--./Chiffres clé 3-->	
-		
-		<table>
+      	<!--./Chiffres clé 2-->				
+		<table class="table-densite">
 			<thead>
 				<tr>
 					<th></th>
@@ -88,10 +75,6 @@
 	#iconnumber2{
 	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/des-arbres.png);
 	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/des-arbres.png);
-	 }
-	#iconnumber3{
-	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
-	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/evolution-bocage/img/icone/plantation.png);
 	 }
 
 
@@ -146,15 +129,6 @@
 	    width: 70px;
 	    background: var(--mynumbercolor);
 	}
-	#iconnumber3{
-	    -webkit-mask-repeat: no-repeat;
-	    mask-repeat: no-repeat;
-	    height: 70px;
-	    width: 70px;
-	    background: var(--mynumbercolor);
-	}
-
-
 
 	.number-feature {
     	color: var(--mynumbercolor);
@@ -174,22 +148,19 @@
 		font-size:11px;
 		color:#555;
 	}
-	
-	th {
-		color:#00936f ;
-	}
-	
-	table { 
+
+	/* Style du tableau */
+	table.table-densite { 
 		width: 95%; 
 		color: #00936f; 
 		border-collapse: collapse; 
 	}
-	th { 
+	table.table-densite th { 
 		background: #eee; 
 		color: #00936f; 
 		font-weight: bold; 
 	}
-	td, th { 
+	table.table-densite td, th { 
 		padding: 6px; 
 		border: 1px solid #ccc; 
 		text-align: center; 		

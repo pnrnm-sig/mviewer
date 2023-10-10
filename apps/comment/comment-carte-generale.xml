@@ -10,7 +10,7 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
 <metadata>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
-<dc:title>Carte générale v0</dc:title>
+<dc:title>Carte générale</dc:title>
 <dc:creator>anonymous</dc:creator>
 <dc:publisher>anonymous</dc:publisher>
 <dc:subject>Parc Normandie Maine</dc:subject>
@@ -26,26 +26,25 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
     coordinates="false"    
     measuretools="false"    
     togglealllayersfromtheme="false"    
-    overwrite="false"    
-    fullscreen="true"><!-- Overwrite indique si la case "Ecraser le fichier XML chargé" a été cochée lors de la sauvegarde du XML. 
-    Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+    fullscreen="true"><!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
 </application>
 
 <!-- Zoom de la carte, étendue de la carte -->
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6191345.088741366" zoom="8" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
-
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> 
 <!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="false" static="false"/>
-
+<!-- Fonds de carte -->
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href=&quot;https://cartodb.com/attributions&quot;&gt;CartoDb&lt;/a&gt;, sous  &lt;a href=&quot;https://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY 3.0 &lt;/a&gt;"  ></baselayer> 
     <baselayer visible="false" id="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" thumbgallery="img/basemap/scan.jpg" title="IGN" label="Fond de carte Plan IGN V2" type="WMTS" url="https://wxs.ign.fr/essentiels/geoportail/wmts?" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
     <baselayer visible="false" id="esriworldimagery" thumbgallery="img/basemap/esriworldwide.jpg" title="Esri" label="Fond de carte Esri world imagery" type="OSM" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" attribution="&lt;a href=&quot;https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9&quot; target=&quot;_blank&quot; &gt;Esri world imagery&lt;/a&gt;"  ></baselayer> 
 </baselayers>
+<!-- Themes correspond au panneau de couche qui peut être ouvert avec l'icône de menu hamburger -->
 <themes mini="false">
+    <!-- Chaque thème correspond à un groupe de couches -->
     <theme id="theme-20220510132910" name="Administratif" collapsed="false" icon="fas fa-layer-group">
         <!-- Couche permettant l'affichage des communes du Parc -->
         <layer 
@@ -147,7 +146,6 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
         </layer>  
     </theme>
     <theme id="theme-20220510132911" name="Plan de Parc" collapsed="true" icon="fas fa-layer-group">
-    
         <!-- Couche permettant l'affichage des zones de haute valeur culturelle et paysagère du territoire-->
         <layer 
             id="zonesHautesValCulturellePaysages"
@@ -200,7 +198,6 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
         </layer> 
     </theme>
     <theme id="theme-20220510132912" name="Éléments géographiques" collapsed="true" icon="fas fa-layer-group"> 
-
         <!-- Couche permettant l'affichage des forêts publiques du territoire -->
         <layer 
             id="forets_publiques"
@@ -281,7 +278,6 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
         </layer> 
     </theme>
     <theme id="theme-20220510132913" name="Périmètres du Parc" collapsed="true" icon="fas fa-layer-group"> 
-
         <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
         <layer 
             id="perimetre_7595"

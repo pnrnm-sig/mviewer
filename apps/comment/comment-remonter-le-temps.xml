@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- A LIRE
 Ce fichier est une copie du fichier remonter-le-temps.xml et contient des commentaires afin de mieux comprendre la construction du fichier et de son code.
 Ce fichier ne doit pas être modifié ni ouvert avec Mviewer Studio. Cela pourrait causer la suppression des commentaires. 
@@ -24,23 +23,27 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
     style="css/themes/pnrnm.css"    
     exportpng="false"    
     showhelp="false"       
-    measuretools="false"
-    overwrite="false"    
-    fullscreen="true"> <!-- Overwrite indique si la case "Ecraser le fichier XML chargé" a été cochée lors de la sauvegarde du XML. 
-    Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+    measuretools="false"  
+    fullscreen="true"> <!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
 </application>
+<!-- Zoom de la carte, étendue de la carte -->
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-16656.4,6200926.3" zoom="17" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
 <extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<!-- Localities permet de chercher des adresses, Features permet de chercher des attributs de couches choisi plus loin -->
 <searchparameters bbox="false" localities="true" features="true" static="false"/>
+<!-- Fonds de carte -->
 <baselayers style="gallery"> 
     <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Fond de carte Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
 </baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
+<!-- Themes correspond au panneau de couche qui peut être ouvert avec l'icône de menu hamburger -->
 <themes mini="true" legendmini="false">
-        <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
+    <!-- Chaque thème correspond à un groupe de couches -->
+    <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
     <theme id="hideme-20220810114905" name="Balayage" collapsed="true" icon="fas fa-leaf">    
-    <!-- Couche nécessaire pour le balayage. Cette couche est cachée afin que l'utilisateur ne puisse pas désactiver la fonctionnalité de balayage. 
-    La couche n'est également pas affichée dans la légende afin d'éviter un doublon avec la couche swipeRight. -->
+        <!-- Couche nécessaire pour le balayage. Cette couche est cachée afin que l'utilisateur ne puisse pas désactiver la fonctionnalité de balayage. 
+        La couche n'est également pas affichée dans la légende afin d'éviter un doublon avec la couche swipeRight. -->
         <layer 
             id="swipeLeft" 
             name="Photographie aérienne de gauche" 
@@ -53,7 +56,7 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
             url="customcontrols/swipe/remonter-le-temps/customlayers/swipeLeft.js" 
             queryable="false"> 
         </layer> <!-- URL indique le fichier dans lequel les couches WMS sont ajoutées pour le côté gauche du balayage. -->
-    <!-- Couche permettant d'afficher les limites communales et les noms des communes. -->
+        <!-- Couche permettant d'afficher les limites communales et les noms des communes. -->
         <layer 
             id="communes_parc"
             name="Communes du Parc"
@@ -64,7 +67,7 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
             queryable="false"
             toplayer="true">
         </layer> 
-    <!-- Couche permettant la recherche des noms des communes dans la barre de recherche. -->
+        <!-- Couche permettant la recherche des noms des communes dans la barre de recherche. -->
         <layer 
             id="communes"
             name="Communes du Parc"
@@ -93,7 +96,7 @@ Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewer
             infoformat="text/html"
             queryable="false"
             toplayer="true"><!-- Toplayer précise si la couche demeure figée. Booléen. Défaut = true. Si plusieurs couches sont en toplayer,
-elles seront affichées dans l’ordre d’écriture du XML -->
+                                elles seront affichées dans l’ordre d’écriture du XML -->
         </layer> 
     </theme> 
     <!-- Thème affiché permettant la sélection des couches et la fonctionnalité de balayage. -->

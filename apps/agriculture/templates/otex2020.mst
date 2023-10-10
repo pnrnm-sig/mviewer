@@ -10,8 +10,21 @@
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8" id="center">
-	          <div class="number-feature">{{#area_ha}}{{area_ha}}{{/area_ha}}{{^area_ha}}0{{/area_ha}} ha</div>
-	          <div class="titlenumber-feature">superficie de la commune</div>
+			<!-- Affiche le nombre de hectares de superficie de la commune-->
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+			  		{{! Valeur affichée }}
+					{{#area_ha}}{{area_ha}} ha{{/area_ha}}
+					{{! Si valeur NULL alors }}
+					{{^area_ha}}Hectares{{/area_ha}}
+				</div>
+				{{! Titre sous le nombre affiché }}
+	        	<div class="titlenumber-feature">
+			  		{{! Valeur affichée }}
+					{{#area_ha}}superficie de la commune{{/area_ha}}
+					{{! Si valeur NULL alors }}
+					{{^area_ha}}de superficie de la commune inconnu{{/area_ha}}
+				</div>
 	        </div>
       	</div>
       	<!--./Chiffre clé 1-->
@@ -21,9 +34,25 @@
           		<div id="iconnumber2"></div>
           	</div>
 			<div class="col-sm-8">
-	          <div class="number-feature">{{#sau20}}{{sau20}}{{/sau20}}{{^sau20}}0{{/sau20}} ha</div>
-	          <div class="titlenumber-feature">de supercifie agricole utile</div>
-	          <div class="subtitle-feature"><i>Pour les sièges d'exploitations localisés sur la commune</i></div>
+			<!-- Affiche le nombre de hectares de superficie agricole utile de la commune-->
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+			  		{{! Valeur affichée }}
+			  		{{#sau20}}{{sau20}} ha{{/sau20}}
+					{{! Si valeur NULL alors }}
+					{{^sau20}}Hectares{{/sau20}}
+				</div>
+				{{! Titre sous le nombre affiché }}
+	        	<div class="titlenumber-feature">
+			  		{{! Valeur affichée }}
+					{{#sau20}}de supercifie agricole utile{{/sau20}}
+					{{! Si valeur NULL alors }}
+					{{^sau20}}de supercifie agricole utile inconnu{{/sau20}}
+				</div>
+	        	<div class="subtitle-feature">
+					{{! Précision en italique }}
+					<i>Pour les sièges d'exploitations localisés sur la commune</i>
+				</div>
 	        </div>
       	</div>
 		<!--./Chiffre clé 2-->
@@ -33,8 +62,21 @@
           		<div id="iconnumber3"></div>
           	</div>
 			<div class="col-sm-8" id="center">
-	          <div class="number-feature">{{#expl20}}{{expl20}}{{/expl20}}{{^expl20}}0{{/expl20}}</div>
-	          <div class="titlenumber-feature">exploitants sur la commune</div>
+			<!-- Affiche le nombre d'exploitants de la commune-->
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+			  		{{! Valeur affichée }}
+					{{#expl20}}{{expl20}}{{/expl20}}
+					{{! Si valeur NULL alors }}
+					{{^expl20}}Nombre{{/expl20}}
+				</div>
+				{{! Titre sous le nombre affiché }}
+	        	<div class="titlenumber-feature">
+			  		{{! Valeur affichée }}
+			  		{{#expl20}}exploitants sur la commune{{/expl20}}
+					{{! Si valeur NULL alors }}
+					{{^expl20}}d'exploitants sur la commune inconnu{{/expl20}}
+				</div>
 	        </div>
       	</div>
 		<!--./Chiffre clé 3-->

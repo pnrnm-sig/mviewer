@@ -7,23 +7,36 @@
 		<!-- Chart 1-->
 	    <div class="Chart">
 	        <div id="idChart">
+				{{! Graphique circulaire vaches allaitantes / laitières }}
 	            <canvas class="chart" id="myChartPie1_{{insee_com}}" data-codegeo="{{insee_com}}" data-mychartPie1-1="{{vacheall88}}" data-mychartPie1-2="{{vachelai88}}" width="120" height="90"></canvas>
 	        </div>
 	        <div class="textChart">
-	            <div class="title-chart">Il n'y a pas de données disponibles.</div>
+				{{! Message qui apparaît lorsqu'une des deux valeurs est NULL pour l'année concernée }}
+	            <div class="title-chart">Il n'y a pas de données disponibles sur la répartition du cheptel.</div>
+				{{! Précision en italique }}
 	            <div class="subtitle-chart"><i>Pour la commune sélectionnée en 1988</i></div>
 	        </div>        
 	    </div>
 	    <!-- ./Chart 1-->	
-            	<!--Chiffre clé 1-->
+        <!--Chiffre clé 1-->
       	<div class="row numberkey" style="height:auto;">
         	<div class="zone-iconnumber col-sm-4">
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8" id="center">
-	          <div class="number-feature">{{#tetesau88}}{{tetesau88}} têtes{{/tetesau88}}</div>
-	          <div class="titlenumber-feature">{{#tetesau88}}de bovins par hectare de la SAU{{/tetesau88}}</div> 
-			  <div class="nodata-feature">{{^tetesau88}}Aucune donnée disponible en 1988 pour la commune sélectionnée{{/tetesau88}}</div>
+				{{! Nombre affiché }}
+	        	<div class="number-feature">
+				  	{{! Valeur affichée }}
+			  		{{#tetesau88}}{{tetesau88}} têtes{{/tetesau88}}
+				</div>
+	        	<div class="titlenumber-feature">
+					{{! Titre nombre de bovins par hectare de la SAU }}
+					{{#tetesau88}}de bovins par hectare de la SAU{{/tetesau88}}
+				</div> 
+				{{! Si valeur NULL alors }}
+				<div class="nodata-feature">
+					{{^tetesau88}}Aucune donnée disponible en 1988 sur le nombre de bovins par hectare de la SAU pour la commune sélectionnée{{/tetesau88}}
+				</div>
 	        </div>
       	</div>
       	<!--./Chiffre clé 1-->	
@@ -209,10 +222,12 @@
               datasets: [{                  
                   label: "ha",
                   data: data.myChartPie1_attr.data.datasets[0],
+				  // Couleurs de fond du diagramme
                   backgroundColor: [
                     "#f58221",   
                     "#ffc20a"
                   ],
+				  // Couleurs du diagramme lors du survol de la souris
                   hoverBackgroundColor: [
                     "#f58221",   
                     "#ffc20a"
@@ -224,6 +239,7 @@
             responsive: true,
             tooltips: {
               callbacks: {
+				// Label appraissant lors du survol de la souris sur le diagramme circulaire
                   label: function(tooltipItem, data) {
                       return parseFloat(data.datasets[0].data[tooltipItem.index]).toFixed(0).toLocaleString() + " têtes";
                   }

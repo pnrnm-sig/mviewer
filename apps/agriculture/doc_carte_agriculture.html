@@ -10,29 +10,138 @@
 <div class="tab-content">
 	<div role="tabpanel" class="tab-pane active" id="h_kartenn">
         <h4 i18n="help.modal.about">À propos de la carte</h4>
-        <p>Trouvez ici une description de la carte de l'évolution de l'agriculture. </p>        
+        <p>Cette carte interactive met en évidence l'évolution de l'espace agricole de 1970 à 2020 sur le territoire du Parc selon plusieurs indicateurs: orientation agricole des communes, évolution de l'occupation du sol agricole, évolution du cheptel bovin et évolution des prairies permanentes. </p>
+        <p>Le territoire étant principalement rural, la majeure partie des activités est agricole. Depuis le siècle dernier, la production laitière et les prairies permanentes ont cédé la place à la culture céréalière.</p>        
     </div>  
     <div role="tabpanel" class="tab-pane" id="h_aide">
         <h4 i18n="help.modal.help">Aide</h4>
-        Une documentation est disponible expliquant l'utilisation de la carte interactive.
-        <a href="https://mviewerdoc.readthedocs.io/fr/latest/doc_user/interface.html" target="_blank" i18n="help.modal.doc">Cliquer ici pour accéder à la documentation.</a>
+        <h5>Fonctionnalités principales</h5>
+        <h6>Interagir avec la carte</h6>
+        Sur ordinateur, déplacez-vous sur la carte avec un cliquer-glisser. Sur tablette ou mobile, utiliser un doigt
+            <table style="margin-bottom:3%">
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_zoom.jpg">
+                        <img src="apps/commun/img/doc/icone_dezoom.jpg">
+                    </td>
+                    <td>
+                        Zoomer et dézoomer sur la carte. Sur ordinateur, utiliser la molette de la souris. Sur tablette ou mobile, pincer avec deux doigts
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px;text-align: right;">
+                        <img src="apps/commun/img/doc/icone_etendue.jpg">
+                    </td>
+                    <td>
+                        Sur ordinateur, revenir à l’étendue par défaut de la carte (c’est-à-dire la vue et le niveau de zoom à l’ouverture de la carte)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_plein_ecran.jpg">
+                        <img src="apps/commun/img/doc/icone_plein_ecran_quitter.jpg">
+                    </td>
+                    <td>
+                        Afficher et quitter le mode plein écran
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/hamburger_ouvert.jpg">
+                        <img src="apps/commun/img/doc/hamburger_ferme.jpg">
+                    </td>
+                    <td>
+                        Ouvrir et fermer le gestionnaire de couches. Cliquer ensuite si besoin sur le titre d’un groupe de couches pour faire appraître les couches qui peuvent être activées et désactivées
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/fond_carte.jpg">
+                    </td>
+                    <td>
+                        Changer le fond de carte utilisé
+                    </td>
+                </tr>
+            </table>
+
+        <h6>Interagir avec les données</h6>
+            <table style="margin-bottom:3%">
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/generale/img/doc/hover_commune.jpg">
+                    </td>
+                    <td>
+                        Certaines données sur la carte sont interactives, en cliquant dessus un panneau d’information s’ouvre. Sur ordinateur, en passant la souris sur la carte, les communes sont mises en surbrillance et leur nom est affiché
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/rechercher.jpg">
+                    </td>
+                    <td>
+                        Rechercher une localité en entrant une adresse
+                    </td>
+                </tr>
+            </table>
+
+        <h5>Pour aller plus loin</h5>
+
+        <p>Une documentation plus détaillée expliquant le fonctionnement des cartes mviewer de manière générale est disponible.
+        <a href="https://mviewerdoc.readthedocs.io/fr/latest/doc_user/interface.html" target="_blank" i18n="help.modal.doc">Cliquer ici pour accéder à la documentation.</a></p>
     </div>  
     <div role="tabpanel" class="tab-pane" id="h_data">
         <h4 i18n="help.modal.help">Données</h4>
-        <p>Trouvez ici des informations à propos des données de la carte. </p>
-    </div>  
+        <h5>Définitions</h5>
+        <p><ul>
+            <li><b>SAU</b> : Surface Agricole Utile ou Utilisée</li>
+            <li><b>STH</b> : Surface Toujours en Herbe, aussi appelée prairie permanente</li>            
+            <li><b>OTEX</b> : Orientation Technico-économique de l’Exploitation agricole qui permet de classer une exploitation selon son activité dominante</li>
+            <li><b>Cheptel</b> : ensemble du bétail d’un territoire, d’une exploitation agricole</li>
+            <li><b>Prairie permanente</b> : prairie jamais labourée</li>
+          </ul> 
+        </p>
+        <h5>Sources des données</h5>
+        <p>
+            <i>Mise à jour des données : octobre 2023</i><br/>
+            <i>L'ensemble des données provenant du site internet Agreste - Recensements agricoles est soumis au secret statistique. Cela a pour conséquence que certaines données ne sont pas disponibles. Il est estimé que le secret statistique ne remet pas en cause l’analyse globale de l’évolution de l’agriculture sur le territoire.</i>
+            <ul>
+                <li><b>OTEX</b> : Les données OTEX de l’année 2020 ont été téléchargé depuis le site internet <a href="https://stats.agriculture.gouv.fr/cartostat/#bbox=392237,6889018,180840,110967&c=indicator&i=otex_2020_1.otefda20&t=A02&view=map15" target="_blank">Agreste – Recensements agricoles</a>. L’indicateur « Spécialisation territoriale de la production agricole en 2020 (OTEX en 12 postes) » a été choisi. Les données OTEX de l’année 2010 ont été téléchargé depuis le site internet <a href="https://agreste.agriculture.gouv.fr/agreste-saiku/?plugin=true&query=query/open/RA2020_001#query/open/RA2020_001" target="_blank">Agreste – Recensements agricoles</a>.</li>
+                <li><b>Occupation du sol agricole et prairies permanentes</b> : Ces données ont été obtenues à partir du site internet <a href="https://agreste.agriculture.gouv.fr/agreste-saiku/?plugin=true&query=query/open/G_2012#query/open/G_2012" target="_blank">Agreste – Recensements agricoles</a>. Les données « Fourrages » correspondent à la différence entre « Fourrages et superficies toujours en herbe » et « Superficies toujours en herbe ». Les données « Autres » correspondent à la différence entre « Superficie agricole utilisée » et la somme des données « Céréales » et « Fourrages et superficies toujours en herbe ». L'évolution des prairies permanentes a été calculé à partir de « Superficie toujours en herbe » sur « Surface agricole utilisée ».</li>
+                <li><b>Cheptel bovin</b> : Ces données ont été obtenues à partir du site internet <a href="https://agreste.agriculture.gouv.fr/agreste-saiku/?plugin=true&query=query/open/G_1010#query/open/G_1010" target="_blank">Agreste – Recensements agricoles</a>. Le nombre de tête par SAU a été calculé à partir de « Total Bovins » sur la « Surface agricole utilisée » de chaque commune.</li>
+                <li><b>IGN Admin Express</b> : <a href="https://geoservices.ign.fr/adminexpress" target="_blank">https://geoservices.ign.fr/adminexpress</a></li>
+              </ul>
+        </p>    </div>  
     <div role="tabpanel" class="tab-pane" id="h_contact">
         <h4 i18n="help.modal.help">Contact</h4>
-        <p>Trouvez ici des informations à propos des contacts. </p>
+        <p> <a href="https://www.parc-naturel-normandie-maine.fr/contact.html" target="_blank">Pour nous écrire, cliquer ici. </a></p>
     </div>  
+
     <div role="tabpanel" class="tab-pane" id="h_credits">
         <h4 i18n="help.modal.credits">Crédits</h4>  
-        <p>La carte a été développée par le Parc naturel régional Normandie-Maine et s'appuie sur la solution mviewer. </p> 
+        <p>La carte a été développée par le Parc naturel régional et Géoparc Normandie-Maine et s'appuie sur la solution mviewer.</p>
+         <div style="display:inline-block;vertical-align:top;">
         <a href="https://www.parc-naturel-normandie-maine.fr/" target="_blank">
-            <img src="img/logo/parcgeoparc2020.svg" alt="Logo Parc et Géoparc Normandie-Maine"  width="20%" height="20%">
+            <img src="img/logo/parcgeoparc2020.svg" alt="Logo Parc et Géoparc Normandie-Maine" height="100px">
         </a>  
         <a href="https://mviewer.netlify.app/fr/" target="_blank">
-            <img src="img/logo/logo_mviewer.svg" alt="Logo mviewer"  width="12%" height="12%">
+            <img src="img/logo/logo_mviewer.svg" alt="Logo mviewer">
         </a>  
-    </div>    
+    </div>
+        <div style="display:inline-block;">
+            <ul style="list-style-type:none;font-size:9px;">
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/ferme">Ferme icônes créées par Freepik - Flaticon</a>.
+            </li>
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/agriculture">Agriculture icônes créées par joalfa - Flaticon</a>.  
+            </li>
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/paysage">Paysage icônes créées par Freepik - Flaticon</a>.
+            </li>
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/vache">Vache icônes créées par Freepik - Flaticon</a>.
+            </li>
+          </ul>
+        </div>
+    </div>
 </div>

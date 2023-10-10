@@ -18,8 +18,7 @@
     showhelp="false"    
     coordinates="false"    
     measuretools="false"    
-    togglealllayersfromtheme="false"    
-    overwrite="false"    
+    togglealllayersfromtheme="false"     
     fullscreen="true">
 </application>
 
@@ -263,6 +262,63 @@
         </layer>
 
     </group>
+
+    <group id="group-202205101354857" name="Par périmètre Parc" collapsed="true" >
+
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2020 -->
+        <layer 
+            id="bocage_pnr"
+            name="Densité du bocage de 2020 par département"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="densite_2020_dep"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2020.mst"></template>
+        </layer> 
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2010 -->
+        <layer 
+            id="bocage_pnr"
+            name="Densité du bocage de 2010 par périmètre"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2010_pnr"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2010.mst"></template>
+        </layer> 
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2000 -->
+        <layer 
+            id="bocage_pnr"
+            name="Densité du bocage de 2000 par périmètre"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_2000_pnr"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2000.mst"></template>
+        </layer> 
+        <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
+        <layer 
+            id="bocage_pnr"
+            name="Densité du bocage de 1945 par périmètre"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="densite_1945_pnr"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-1945.mst"></template>
+        </layer>
+
+    </group>
     </theme> 
     <theme id="theme-20220510132911" name="Evolution du bocage" collapsed="true" icon="fas fa-layer-group">
         <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 1945 et 2000 -->
@@ -429,7 +485,7 @@
 
     </group>
 
-    <group id="group-20220510132914" name="Par département" collapsed="true" >
+    <group id="group-2022051013291" name="Par département" collapsed="true" >
 
           <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2010 et 2020 -->
         <layer 
@@ -472,7 +528,49 @@
         </layer>
 
     </group>
+    <group id="group-202205101328465" name="Par périmètre Parc" collapsed="true" >
 
+          <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2010 et 2020 -->
+        <layer 
+            id="bocage_pnr" 
+            name="Evolution du bocage de 2010 à 2020 par périmètre Parc" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_2010_2020_dep"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2010-2020.mst"></template>
+        </layer>
+        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2000 et 2020 -->
+        <layer 
+            id="bocage_pnr" 
+            name="Evolution du bocage de 2000 à 2020 par périmètre Parc" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_2000_2020_dep"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2000-2020.mst"></template>
+        </layer>
+        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 1945 et 2020 -->
+        <layer 
+            id="bocage_pnr" 
+            name="Evolution du bocage de 1945 à 2020 par périmètre Parc" 
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="evolution_1945_2020_dep"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            exclusive="true">
+            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-1945-2020.mst"></template>
+        </layer>
+
+    </group>
     </theme>     
     <theme id="theme-20220510132912" name="Plantation de haies" collapsed="true" icon="fas fa-layer-group"> 
         <!-- Couche permettant l'affichage de la couche plantation de haies par commune -->

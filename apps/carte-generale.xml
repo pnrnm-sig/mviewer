@@ -33,8 +33,8 @@
 
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
-    <baselayer type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
-    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr' target='_blank'&gt;&lt;img src='https://geoservices.ign.fr/images/logoIGN.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+    <baselayer visible="false" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://data.geopf.fr/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://data.geopf.fr/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Administratif" collapsed="false" icon="fas fa-layer-group">
@@ -252,7 +252,7 @@
         <!-- Couche permettant l'affichage des zones de haute valeur écologique -->
         <layer 
             id="zoneshautesvaleursecol_v3"
-            name="Zones de haute valeur écologique"
+            name="Zones de haute valeur écologique et géologique"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"

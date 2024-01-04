@@ -182,6 +182,11 @@
     font-size: 13px;
     background-color: #00936F; }
 
+    /* masquer l'élément avec l'identifiant HTML btn-remove-layers*/
+    #btn-remove-layers {
+        display: none !important;
+    }
+
     /* ACTIVATION BARRE OPACITE POUR LES COUCHES CHOISIES */
     .mv-layer-options[data-layerid="temp_annuel_pr_com"] .form-group-opacity {
       display: initial;

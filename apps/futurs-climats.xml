@@ -26,9 +26,9 @@
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="true" static="false" animate="true"/>
 <baselayers style="gallery"> 
-    <baselayer  visible="true" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+    <baselayer visible="true" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://data.geopf.fr/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
     <baselayer visible="false" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
-    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr' target='_blank'&gt;&lt;img src='https://geoservices.ign.fr/images/logoIGN.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://data.geopf.fr/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
 </baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
 <themes mini="false">
     
@@ -243,7 +243,7 @@
     <theme id="hideme-20220810114905" name="Administratif" collapsed="true" icon="fas fa-leaf">   
         <!-- Couche permettant l'affichage des noms des communes et de l'affichage du contour rouge sur la commune 
     lors du survol de la souris (hover) de l'utilisateur ainsi que la recherche des noms des communes dans la barre de recherche. -->
-            <layer 
+        <layer 
             id="communes2024"
             name="Communes du Parc"
             type="customlayer"     
@@ -261,6 +261,25 @@
             searchengine="fuse"
             fusesearchkeys="nom"
             fusesearchresult="{{nom}}">            
+        </layer> 
+        <!-- Couche permettant l'affichage des EPCI qui font partie du Parc -->
+        <layer 
+            id="epci"
+            name="Intercommunalité (EPCI) du Parc"
+            type="customlayer"     
+            url="apps/commun/customlayers/epci.js"    
+            visible="true"
+            fields="nom"
+            aliases="Nom intercommunalité (EPCI)"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="false"
+            showintoc="true"
+            searchable="true"
+            searchengine="fuse"
+            fusesearchkeys="nom"
+            fusesearchresult="{{nom}}">       
         </layer> 
         <!-- Couche permettant l'affichage du périmètre du Parc -->
         <layer 

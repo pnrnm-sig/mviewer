@@ -29,12 +29,12 @@
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
 <!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
-<searchparameters bbox="false" localities="true" features="false" static="false" animate="true"/>
+<searchparameters bbox="false" localities="false" features="true" static="false" animate="true"/>
 
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
-    <baselayer type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
-    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr' target='_blank'&gt;&lt;img src='https://geoservices.ign.fr/images/logoIGN.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+    <baselayer visible="false" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://data.geopf.fr/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://data.geopf.fr/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Orientation agricole des communes" collapsed="false" icon="fas fa-layer-group">
@@ -156,7 +156,7 @@
     <theme id="theme-20220510132912" name="Evolution du cheptel bovin" collapsed="true" icon="fas fa-layer-group">
         <!-- Couche permettant l'affichage du cheptel bovin en 1988 -->
         <layer 
-            id="chepbovindia1988"
+            id="cheptel"
             name="Cheptel bovin en 1988"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -164,12 +164,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="chepbovin1988dia"
             legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
             <template url="apps/agriculture/templates/chepbovin88.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage du cheptel bovin en 2000 -->
         <layer 
-            id="chepbovindia2000"
+            id="cheptel"
             name="Cheptel bovin en 2000"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -177,12 +178,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="chepbovin2000dia"
             legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
             <template url="apps/agriculture/templates/chepbovin00.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage du cheptel bovin en 2010 -->
         <layer 
-            id="chepbovindia2010"
+            id="cheptel"
             name="Cheptel bovin en 2010"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -190,12 +192,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="chepbovin2010dia"
             legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
             <template url="apps/agriculture/templates/chepbovin10.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage du cheptel bovin en 2020 -->
         <layer 
-            id="chepbovindia2020"
+            id="cheptel"
             name="Cheptel bovin en 2020"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -203,6 +206,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="chepbovin2020dia"
             legendurl="apps/agriculture/img/legend/legende_cheptel.png" > 
             <template url="apps/agriculture/templates/chepbovin20.mst"></template>   
         </layer> 
@@ -210,7 +214,7 @@
     <theme id="theme-20220510132913" name="Evolution des prairies permanentes" collapsed="true" icon="fas fa-layer-group">
         <!-- Couche permettant l'affichage des prairies permanentes de 1970 -->
         <layer 
-            id="prairies1970"
+            id="prairies"
             name="Prairies permanentes en 1970"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -218,12 +222,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="prairies_permanentes70"
             legendurl="apps/agriculture/img/legend/legende_prairies.png" >
             <template url="apps/agriculture/templates/prairies70.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage des prairies permanentes de 1979 -->
         <layer 
-            id="prairies1979"
+            id="prairies"
             name="Prairies permanentes en 1979"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -231,12 +236,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="prairies_permanentes79"
             legendurl="apps/agriculture/img/legend/legende_prairies.png" >
             <template url="apps/agriculture/templates/prairies79.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage des prairies permanentes de 1988 -->
         <layer 
-            id="prairies1988"
+            id="prairies"
             name="Prairies permanentes en 1988"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -244,12 +250,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="prairies_permanentes88"
             legendurl="apps/agriculture/img/legend/legende_prairies.png" >
             <template url="apps/agriculture/templates/prairies88.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage des prairies permanentes de 2000 -->
         <layer 
-            id="prairies2000"
+            id="prairies"
             name="Prairies permanentes en 2000"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -257,12 +264,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="prairies_permanentes00"
             legendurl="apps/agriculture/img/legend/legende_prairies.png" >
             <template url="apps/agriculture/templates/prairies00.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage des prairies permanentes de 2010 -->
         <layer 
-            id="prairies2010"
+            id="prairies"
             name="Prairies permanentes en 2010"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -270,12 +278,13 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="prairies_permanentes10"
             legendurl="apps/agriculture/img/legend/legende_prairies.png" >
             <template url="apps/agriculture/templates/prairies10.mst"></template>   
         </layer> 
         <!-- Couche permettant l'affichage des prairies permanentes de 2020 -->
         <layer 
-            id="prairies2020"
+            id="prairies"
             name="Prairies permanentes en 2020"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
@@ -283,6 +292,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true"
+            style="prairies_permanentes20"
             legendurl="apps/agriculture/img/legend/legende_prairies.png" >
             <template url="apps/agriculture/templates/prairies20.mst"></template>   
         </layer> 

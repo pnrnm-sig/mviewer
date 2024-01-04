@@ -6,14 +6,14 @@
 		<!-- Moyennes températures annuelles -->
 		<h4 class="subtitle-feature">Températures moyennes annuelles</h4>	
 		<div class="item">
-			<span class="number-mean">{{pr_an_nortnav}}°C</span>
-			<span class="caption">Moyenne des minimales
-			  <div class="tooltipdef">Indicateur DRIAS</div></span>
-		</div>
-		<div class="item">
 			<span class="number-mean">{{pr_an_mean}}°C</span>
 			<span class="caption">Moyenne
 			  <div class="tooltipdef">Donnée désagrégée</div></span>
+		</div>
+		<div class="item">
+			<span class="number-mean">{{pr_an_nortnav}}°C</span>
+			<span class="caption">Moyenne des minimales
+			  <div class="tooltipdef">Indicateur DRIAS</div></span>
 		</div>
 		<div class="item">
 			<span class="number-mean">{{pr_an_nortxav}}°C</span>

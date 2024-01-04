@@ -12,6 +12,12 @@
 			<span class="caption">Cumul moyen
 			  <div class="tooltipdef">Donnée désagrégée</div></span>
 		</div>
+		<div class="subitem">
+			<span class="caption">
+				<div class="number-year">{{hm85_an_difmean}} mm de différence</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>
 
 	  	<h4 class="subtitle-feature">Cumul précipitations par saison</h4>
 	    <div class="Chart">
@@ -177,19 +183,30 @@
 		/* To horizontally center images and caption */
 		text-align: center;
 		/* The width of the container also implies margin around the images. */
-		width: 80px;
+		width: 120px;
     	margin-top: 10px; 
-    	margin-bottom: 20px; 
-		margin-left:30%;
-		margin-right:30%;
+    	margin-bottom: 2px; 
+		margin-left:25%;
+		margin-right:25%;
 	}
-	.number-mean {
+	.subitem {
+		/* To correctly align image, regardless of content height: */
 		vertical-align: top;
 		display: inline-block;
+		/* To horizontally center images and caption */
+		text-align: center;
+		/* The width of the container also implies margin around the images. */
+		width: 80px;
+    	margin-bottom: 10px; 
+		margin-left:25%;
+		margin-right:25%;
+	}
+	.number-mean {
     	color: #00936f;
     	font-family:'roboto_bold';
-    	font-size:20px;   
-		width: 80px;
+    	font-size:16px;   
+		margin-left:25%;
+		margin-right:25%;
 	}
 	.caption {
 		/* Make the caption a block so it occupies its own line. */
@@ -197,8 +214,13 @@
 		font-family:'roboto_regular', Arial, Sans-serif;
 		color:#555;
 		font-size:12px;
+		width: 120px;
 	}
-		
+	.number-year {		
+    	color: #bb2d33;
+    	font-family:'roboto_bold';
+    	font-size:12px; 
+	}
 
 	/* Rendre les barres de défilement invisibles */
 	.scrollbar-hidden::-webkit-scrollbar {
@@ -416,7 +438,7 @@
 		visibility: visible;
 	}
 
-		/* Hover caption */
+	/* Hover caption */
 	.caption .tooltipdef {
     	font-family:'roboto_bold';
     	line-height:1.25;
@@ -431,11 +453,34 @@
 		/* Position the tooltip */
 		position: absolute;
 		z-index: 2;
-		top: 150px;
-	    width: max-content;
+		top: 145px;
+		left: 27%;
 	}
 
 	.caption:hover .tooltipdef {
+		position: absolute;
+		visibility: visible;
+	}
+		/* Hover caption */
+	.caption .tooltipyear {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 166px;
+	    width: 120px;
+	}
+
+	.caption:hover .tooltipyear {
 		position: absolute;
 		visibility: visible;
 	}

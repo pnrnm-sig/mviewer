@@ -9,21 +9,42 @@
 		<!-- Moyennes températures annuelles -->
 		<h4 class="subtitle-feature">Températures moyennes annuelles</h4>		
 		<div class="item">
-			<span class="number-mean">{{hm45_an_nortnav}}°C</span>
-			<span class="caption">Moyenne des minimales
-			  <div class="tooltipdef">Indicateur DRIAS</div></span>
-		</div>
-		<div class="item">
 			<span class="number-mean">{{hm45_an_mean}}°C</span>
 			<span class="caption">Moyenne
-			  <div class="tooltipdef">Donnée désagrégée</div></span>
+				<div class="tooltipdef">Donnée désagrégée</div>
+			</span>
+		</div>
+		<div class="item">
+			<span class="number-mean">{{hm45_an_nortnav}}°C</span>
+			<span class="caption">Moyenne des minimales
+				<div class="tooltipdef">Indicateur DRIAS</div>
+			</span>
 		</div>
 		<div class="item">
 			<span class="number-mean">{{hm45_an_nortxav}}°C</span>
 			<span class="caption">Moyenne des maximales
-			  <div class="tooltipdef">Indicateur DRIAS</div></span>
+				<div class="tooltipdef">Indicateur DRIAS</div>
+			</span>
 		</div>
 
+	<div class="subitem">
+			<span class="caption">
+				<div class="number-year">+{{hm45_difmean}}°C</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>
+	<div class="subitem">
+			<span class="caption">
+				<div class="number-year">+{{hm45_an_atnav}}°C</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>
+	<div class="subitem">
+			<span class="caption">
+				<div class="number-year">+{{hm45_an_atxav}}°C</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>	
 			
 	    <!-- Range Bar 1-->	
    	  	<h4 class="subtitle-feature">Températures moyennes mensuelles</h4>	
@@ -250,12 +271,22 @@
 		/* The width of the container also implies margin around the images. */
 		width: 80px;
     	margin-top: 10px; 
-    	margin-bottom: 20px; 
+    	margin-bottom: 2px; 
+	}
+	.subitem {
+		/* To correctly align image, regardless of content height: */
+		vertical-align: top;
+		display: inline-block;
+		/* To horizontally center images and caption */
+		text-align: center;
+		/* The width of the container also implies margin around the images. */
+		width: 80px;
+    	margin-bottom: 10px; 
 	}
 	.number-mean {
     	color: #00936f;
     	font-family:'roboto_bold';
-    	font-size:20px;   
+    	font-size:16px;   
 		width: 50px;
 		height: 50px;
 	}
@@ -265,6 +296,12 @@
 		font-family:'roboto_regular', Arial, Sans-serif;
 		color:#555;
 		font-size:12px;
+		width: 80px;
+	}
+	.number-year {		
+    	color: #bb2d33;
+    	font-family:'roboto_bold';
+    	font-size:12px;   
 	}
 		
 
@@ -447,7 +484,29 @@
 		position: absolute;
 		visibility: visible;
 	}
+		/* Hover caption */
+	.caption .tooltipyear {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
 
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 170px;
+	    width: 80px;
+	}
+
+	.caption:hover .tooltipyear {
+		position: absolute;
+		visibility: visible;
+	}
 	/* Rendre les barres de défilement invisibles */
 	.scrollbar-hidden::-webkit-scrollbar {
 		display: none;

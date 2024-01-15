@@ -7,8 +7,4 @@ package-*
 
 # Ignore temp folder
 /temp
-/demo/swipe/del_remonter-le-temps
-/demo/swipe/double-swipe-d
-/customlayers/pnrnm/inventaire.js
-/apps/geoparc.xml
-/demo/swipe/remonter-le-temps
+/js/variable.js

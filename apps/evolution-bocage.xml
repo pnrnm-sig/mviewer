@@ -53,17 +53,14 @@
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
         <layer 
             id="bocage_com"
-            name="Année 1945"
-            id="bocage_com"
             name="Année 2010"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
-            style="densite_1945"
+            style="densite_2010"
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-1945.mst"></template>
             <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2010.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 2000 -->

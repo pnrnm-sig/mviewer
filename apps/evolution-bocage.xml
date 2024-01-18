@@ -3,7 +3,7 @@
 <metadata>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
-<dc:title>Evolution du bocage v1</dc:title>
+<dc:title>Evolution du bocage</dc:title>
 <dc:creator>anonymous</dc:creator>
 <dc:publisher>anonymous</dc:publisher>
 <dc:subject>Parc Normandie Maine</dc:subject>
@@ -22,12 +22,8 @@
     fullscreen="true">
 </application>
 
-<!-- Zoom de la carte, étendue de la carte -->
-<!-- <mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/> -->
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-15003.74898791354,6185045.088741366" zoom="10" maxextent="-209877.4580,6009930.9516,200009.2689,9002292.7061"/>
-<!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
-<!-- Barre de recherche -->
 <searchparameters bbox="false" localities="false" features="true" static="false" animate="true"/>
 
 <baselayers style="default"> 
@@ -37,7 +33,6 @@
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Densité du bocage par commune" collapsed="false" icon="fas fa-layer-group">
-        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2020 -->
         <layer 
             id="bocage_com"
             name="Année 2020"
@@ -50,7 +45,6 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2020.mst"></template>
         </layer> 
-        <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
         <layer 
             id="bocage_com"
             name="Année 2010"
@@ -63,7 +57,6 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2010.mst"></template>
         </layer> 
-        <!-- Couche permettant l'affichage de la densité de bocage par commune en 2000 -->
         <layer 
             id="bocage_com"
             name="Année 2000"
@@ -76,7 +69,6 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2000.mst"></template>
         </layer> 
-        <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
         <layer 
             id="bocage_com"
             name="Année 1945"
@@ -93,7 +85,6 @@
 
     </theme> 
     <theme id="theme-20220510132911" name="Evolution du bocage par commune" collapsed="true" icon="fas fa-layer-group">
-        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2010 et 2020 -->
         <layer 
             id="bocage_com" 
             name="Entre 2010 et 2020" 
@@ -106,7 +97,6 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2010-2020.mst"></template>
         </layer>
-        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2000 et 2020 -->
         <layer 
             id="bocage_com" 
             name="Entre 2000 et 2020" 
@@ -119,7 +109,6 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2000-2020.mst"></template>
         </layer>
-        <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 1945 et 2020 -->
         <layer 
             id="bocage_com" 
             name="Entre 1945 et 2020" 
@@ -135,7 +124,6 @@
 
     </theme>     
     <theme id="theme-20220510132912" name="Plantation de haies par le Parc" collapsed="true" icon="fas fa-layer-group"> 
-        <!-- Couche permettant l'affichage de la couche plantation de haies par commune -->
         <layer 
             id="plantation_haies"
             name="Haies plantées depuis 2004 par commune"
@@ -148,7 +136,6 @@
             exclusive="true">
             <template url="apps/evolution-bocage/templates/evolution-bocage/plantation-haies.mst"></template>
         </layer>         
-        <!-- Couche permettant l'affichage de la couche plantation de haies par EPCI -->
         <layer 
             id="plantation_haies_epci"
             name="Haies plantées depuis 2004 par EPCI"
@@ -162,10 +149,7 @@
             <template url="apps/evolution-bocage/templates/evolution-bocage/plantation-haies.mst"></template>
         </layer> 
     </theme>
-    <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
     <theme id="hideme-20220510132912" name="Référentiel" collapsed="true" icon="fas fa-layer-group"> 
-    <!-- Couche permettant l'affichage des noms des communes et de l'affichage du contour rouge sur la commune 
-    lors du survol de la souris (hover) de l'utilisateur ainsi que la recherche des noms des communes dans la barre de recherche. -->
             <layer 
             id="communes"
             name="Communes du Parc"
@@ -185,10 +169,6 @@
             fusesearchkeys="nom"
             fusesearchresult="{{nom}}">            
         </layer> 
-        <!-- tooltip, fields, aliases, tooltipenabled et tooltipcontent permettent le hover, showintoc permet de ne pas afficher la couche dans la légende,
-        searchable, searchengine, fusesearchkeys et fusesearchresult permettent la recherche des entités dans la barre de recherche. Name est affiché dans
-        la barre de recherche lors de l'affichage de résultats. -->
-        <!-- Couche permettant l'affichage du périmètre du Parc -->
         <layer 
             id="perimetre2008"
             name="Périmètre du Parc"

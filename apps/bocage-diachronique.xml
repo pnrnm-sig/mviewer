@@ -3,7 +3,7 @@
 <metadata>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
-<dc:title>Bocage diachronique v1</dc:title>
+<dc:title>Bocage diachronique</dc:title>
 <dc:creator>anonymous</dc:creator>
 <dc:publisher>anonymous</dc:publisher>
 <dc:subject>Parc Normandie Maine</dc:subject>
@@ -19,16 +19,13 @@
     coordinates="false"    
     measuretools="false"    
     togglealllayersfromtheme="false"    
-    fullscreen="true"> <!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
-</application>
+    fullscreen="true"></application>
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-16656.4,6200926.3" zoom="17" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
-<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
-<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions><olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="true" static="false" animate="true"/>
 <baselayers style="gallery"> 
     <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://data.geopf.fr/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
-</baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
-<themes mini="false">
+</baselayers><themes mini="false">
     
     <theme id="theme-20220810114905" name="Comparer les haies de 2020 avec les ..." collapsed="false" icon="fas fa-layer-group">               
         <layer 
@@ -43,10 +40,6 @@
             queryable="false"
             exclusive="true">
             </layer>  
-            <!-- ID correspond à l'ID dans GeoServer de la couche souhaitée. Visible indique si la couche est active au démarrage de la carte.
-            Queryable indique si la couche est interrogeable (ouvre la fiche d'information de l'entité).
-            Legendurl indique l'image à afficher dans la légende lorsque la couche est active.
-            Attribution permet d'ajouter du texte dans la légende. -->
         <layer 
             id="histo_2000"
             name="Haies de 2000"
@@ -69,12 +62,10 @@
             legendurl="apps/bocage-diachronique/img/legend/legende_2010.png"  
             infoformat="text/html"
             queryable="false"
-            exclusive="true"> <!-- Booléen stipulant si la couche est exclusive. Si la valeur est « true », l’affichage de cette couche
-masquera automatiquement toutes les autres couches ayant ce paramètre activé. -->
+            exclusive="true">        
         </layer> 
     </theme> 
 
-    <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
     <theme id="hideme-20220810114905" name="Balayage" collapsed="true" icon="fas fa-leaf">           
         <layer 
             id="swipe" 
@@ -92,8 +83,7 @@ masquera automatiquement toutes les autres couches ayant ce paramètre activé. 
             metadata-csw=""            
             swipelayerurl=""            
             swipelayerid=""
-            toplayer="true"> <!-- Toplayer précise si la couche demeure figée. Booléen. Défaut = true. Si plusieurs couches sont en toplayer,
-elles seront affichées dans l’ordre d’écriture du XML -->
+            toplayer="true">        
         </layer>   
         <layer 
             id="communes_parc"
@@ -105,7 +95,6 @@ elles seront affichées dans l’ordre d’écriture du XML -->
             queryable="false"
             toplayer="true">
         </layer> 
-    <!-- Couche permettant la recherche des noms des communes dans la barre de recherche. -->
         <layer 
             id="communes"
             name="Communes du Parc"

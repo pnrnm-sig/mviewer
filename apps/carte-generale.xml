@@ -19,15 +19,10 @@
     coordinates="false"    
     measuretools="false"    
     togglealllayersfromtheme="true"    
-    fullscreen="true"><!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
-</application>
+    fullscreen="true"></application>
 
-<!-- Zoom de la carte, étendue de la carte -->
-<!-- <mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/> -->
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-25003.74898791354,6185045.088741366" zoom="9" maxextent="-209877.4580,6009930.9516,200009.2689,9002292.7061"/>
-<!-- Extension permettant l'ajout du bouton "Plein écran" -->
 <extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
-<!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="true" static="false" animate="true"/>
 
@@ -38,7 +33,6 @@
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Administratif" collapsed="false" icon="fas fa-layer-group">
-        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
         <layer 
             id="siege"
             name="Sièges"
@@ -51,7 +45,6 @@
             toplayer="true"> 
             <template url="apps/generale/templates/siege.mst"></template>   
         </layer> 
-        <!-- Couche permettant l'affichage des communes du Parc -->
         <layer 
             id="communes_parc"
             name="Communes du territoire"
@@ -72,7 +65,6 @@
             fusesearchresult="{{nom}}"> 
             <template url="apps/generale/templates/communes.mst"></template>            
         </layer>
-        <!-- Couche permettant l'affichage des communes associées ou déléguées sur le territoire du Parc -->
         <layer 
             id="communes_asso_dele_fus"
             name="Communes associées, déléguées ou fusionnées"
@@ -89,7 +81,6 @@
             exclusive="false"> 
             <template url="apps/generale/templates/communes_asso_dele_fus.mst"></template>     
         </layer>
-        <!-- Couche permettant l'affichage des communes historiques du Parc -->
         <layer 
             id="communes_histo"
             name="Communes historiques"
@@ -106,7 +97,6 @@
             exclusive="false"> 
             <template url="apps/generale/templates/communes_histo.mst"></template>      
         </layer>
-        <!-- Couche permettant l'affichage des principaux bourgs du Parc -->
         <layer 
             id="villes_bourgs"
             name="Villes et principaux bourgs"
@@ -123,7 +113,6 @@
             exclusive="false">   
             <template url="apps/generale/templates/villes_bourgs.mst"></template>            
         </layer>
-        <!-- Couche permettant l'affichage des EPCI qui font partie du Parc -->
         <layer 
             id="epci"
             name="Intercommunalité"
@@ -140,7 +129,6 @@
             exclusive="false">  
             <template url="apps/generale/templates/epci.mst"></template>        
         </layer> 
-        <!-- Couche permettant l'affichage du périmètre qui font partie du Parc -->
         <layer 
             id="departements"
             name="Départements"
@@ -159,7 +147,6 @@
         </layer>  
     </theme>
     <theme id="theme-20220510132913" name="Périmètre du Parc" collapsed="true" icon="fas fa-layer-group"> 
-        <!-- Couche permettant l'affichage du périmètre du Parc actuel -->
         <layer 
             id="perimetreparc"
             name="Périmètre actuel"
@@ -171,7 +158,6 @@
             queryable="false"
             toplayer="true">  
         </layer> 
-        <!-- Couche permettant l'affichage du périmètre du Géoparc -->
         <layer 
             id="perimetregeoparc"
             name="Périmètre du Géoparc"
@@ -184,7 +170,6 @@
             toplayer="true">  
             <template url="apps/generale/templates/perimetregeoparc.mst"></template> 
         </layer> 
-        <!-- Couche permettant l'affichage du périmètre d"étude de 2024 à 2039 du Parc -->
         <layer 
             id="perimetre2024"
             name="Périmètre d'étude 2024 - 2039"
@@ -197,7 +182,6 @@
             exclusive="false"> 
             <template url="apps/generale/templates/perimetre2024.mst"></template> 
         </layer> 
-        <!-- Couche permettant l'affichage du périmètre actuel de 2009 à 2023 du Parc -->
         <layer 
             id="perimetre2008"
             name="Périmètre 2008 - 2023"
@@ -210,7 +194,6 @@
             exclusive="false"> 
             <template url="apps/generale/templates/perimetre2009.mst"></template> 
         </layer>
-        <!-- Couche permettant l'affichage du périmètre historique de 1996 à 2008 du Parc -->
         <layer 
             id="perimetre1996"
             name="Périmètre 1996 - 2008"
@@ -223,7 +206,6 @@
             exclusive="false"> 
             <template url="apps/generale/templates/perimetre1996.mst"></template> 
         </layer> 
-        <!-- Couche permettant l'affichage du périmètre historique de 1975 à 1995 du Parc -->
         <layer 
             id="perimetre1975"
             name="Périmètre 1975 - 1995"
@@ -238,7 +220,6 @@
         </layer> 
     </theme>
     <theme id="theme-20220510132911" name="Plan de Parc 2024 - 2039" collapsed="true" icon="fas fa-layer-group">
-        <!-- Couche permettant l'affichage des zones de haute valeur culturelle et paysagère -->
         <layer 
             id="zoneshautesvalculturellepaysages"
             name="Zones de haute valeur culturelle et paysagère"
@@ -249,7 +230,6 @@
             queryable="false"
             exclusive="false">     
         </layer> 
-        <!-- Couche permettant l'affichage des zones de haute valeur écologique -->
         <layer 
             id="zoneshautesvaleursecol_v3"
             name="Zones de haute valeur écologique et géologique"
@@ -260,7 +240,6 @@
             queryable="false"
             exclusive="false">     
         </layer> 
-        <!-- Couche permettant l'affichage des différents ensembles paysagers du Parc -->
         <layer 
             id="paysages_classement202208"
             name="Ensembles paysagers"
@@ -273,7 +252,6 @@
             exclusive="false">   
             <template url="apps/generale/templates/ensembles_paysagers.mst"></template>    
         </layer> 
-        <!-- Couche permettant l'affichage des différentes unités paysagères du Parc -->
         <layer 
             id="up_pnrnm_2020_v3"
             name="Unités paysagères"
@@ -288,7 +266,6 @@
         </layer> 
     </theme>
     <theme id="theme-20220510132912" name="Éléments géographiques" collapsed="true" icon="fas fa-layer-group"> 
-        <!-- Couche permettant l'affichage des forêts publiques du territoire -->
         <layer 
             id="forets_publiques"
             name="Forêts publiques"
@@ -300,7 +277,6 @@
             exclusive="false">   
             <template url="apps/generale/templates/forets_publiques.mst"></template> 
         </layer> 
-        <!-- Couche permettant l'affichage des cours d'eau du territoire -->
         <layer 
             id="sandre_coursdeau"
             name="Cours d'eau"
@@ -312,7 +288,6 @@
             exclusive="false">   
             <template url="apps/generale/templates/cours_deau.mst"></template> 
         </layer> 
-        <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
         <layer 
             id="detail_orographique_2021"
             name="Détails orographique"
@@ -324,7 +299,6 @@
             exclusive="false">   
             <template url="apps/generale/templates/detail_orographique.mst"></template> 
         </layer> 
-        <!-- Couche permettant l'affichage les zones Natura2000 du territoire et aux alentours -->
         <layer 
             id="natura2000"
             name="Natura 2000"
@@ -337,7 +311,6 @@
             exclusive="false">   
             <template url="apps/generale/templates/natura2000.mst"></template> 
         </layer> 
-        <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
         <layer 
             id="LANDCOVER.CLC18_FR"
             name="Occupation du sol (Corine Land Cover 2018)"
@@ -350,7 +323,6 @@
             queryable="false"
             exclusive="false">
         </layer> 
-        <!-- Couche permettant l'affichage de l'aggrégation de la bdalti25m et bdalti25m_ombrage -->
         <layer 
             id="bdalti25m_agregat"
             name="Relief du territoire"

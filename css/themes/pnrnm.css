@@ -355,6 +355,9 @@ body .popover-title {
 /* Partager la carte*/
 #sharepanel {
   font-family: "roboto_regular", Arial, Sans-serif; }
+  #sharebtn{
+    display: none !important;
+  }
 
 /*******************************
 ------------- HELP PANEL -----

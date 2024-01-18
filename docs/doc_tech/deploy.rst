@@ -29,12 +29,12 @@ Dans un terminal, après vous être placé dans le dossier web Apache, exécuter
 
 .. code-block:: bash
 
-	git clone https://github.com/geobretagne/mviewer.git
+	git clone https://github.com/mviewer/mviewer.git
 
 Sans git
 ----------
 
-Télécharger ce `fichier zip <https://github.com/geobretagne/mviewer/archive/master.zip>`_ présent sur la page d'accueil du dépôt mviewer sur GitHub : https://github.com/geobretagne/mviewer
+Télécharger ce `fichier zip <https://github.com/mviewer/mviewer/archive/master.zip>`_ présent sur la page d'accueil du dépôt mviewer sur GitHub : https://github.com/mviewer/mviewer
 
 Dézipper le contenu du  zip dans le dossier web Apache **/var/www/** *(ou autres dossiers de déploiement Apache)*.
 
@@ -106,7 +106,7 @@ Cette solution permet de mettre en place les mêmes possibilités que la méthod
 1. Création du fichier environemment
 
 .. code-block:: bash
-    :caption: .env
+    :caption: settings.json
 
     APPSPATH=/home/prod/mviewer-apps
 
@@ -145,6 +145,32 @@ exemples :
  - http://localhost/demo/
  - http://localhost/index.html
  - http://localhost/?config=apps/default.xml
+
+
+Mettre à jour mon instance de mviewer
+****************************
+
+Lors d'une nouvelle release de mviewer, il est conseillé d'utiliser git pour mettre à jour son instance.
+
+1. Tester la nouvelle version sur une version de test mviewer-dev
+
+.. code-block:: bash
+
+    cd /var/www/mviewer-dev
+    git clone https://github.com/mviewer/mviewer.git
+
+Puis, tester cette instance en pointant sur des applications en production. Exemple : https://localhost/mviewer-dev?config=prod/monappli.xml.
+	
+2. Mise à jour de la version de prod. On peut faire une sauvegarde de notre instance actuelle (ici avec le dossier mviewer-save)
+
+.. code-block:: bash
+
+    cd /var/www/
+    cp -r mviewer mviewer-save
+    cd mviewer
+    git pull origin
+
+Puis, tester cette instance. Exemple : https://localhost/mviewer?config=prod/monappli.xml.
 
 
 Configuration et adaptations

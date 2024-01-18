@@ -1,0 +1,116 @@
+<ul class="nav nav-tabs" role="tablist">    
+	<li role="presentation" class="active"><a href="#h_kartenn" aria-controls="profile" role="tab" data-toggle="tab">À propos</a></li>
+    <li role="presentation" ><a href="#h_aide" aria-controls="messages" role="tab" data-toggle="tab" i18n="help.modal.help">Aide</a></li>
+    <li role="presentation" ><a href="#h_data" aria-controls="messages" role="tab" data-toggle="tab" i18n="help.modal.help">Données</a></li>
+    <li role="presentation" ><a href="#h_contact" aria-controls="settings" role="tab" data-toggle="tab" i18n="help.modal.credits">Contact</a></li> 
+    <li role="presentation" ><a href="#h_credits" aria-controls="settings" role="tab" data-toggle="tab" i18n="help.modal.credits">Crédits</a></li>   
+</ul>
+
+ <!-- Tab panes -->
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane active" id="h_kartenn">
+        <h4 i18n="help.modal.about">À propos de la carte</h4>
+        <p>Cette interface permet de découvrir le territoire du Parc et Géoparc Normandie-Maine à travers le temps à l'aide de cartes historiques et actuelles, d'images satellitaires et de photographies aériennes. Sa fonctionnalité de balayage permet de comparer les différents supports et années entre eux.</p>        
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_aide">
+        <h4 i18n="help.modal.help">Aide</h4>
+        <h5>Fonctionnalités principales</h5>
+        <h6>Interagir avec la carte</h6>
+        Sur ordinateur, déplacez-vous sur la carte avec un cliquer-glisser. Sur tablette ou mobile, utiliser un doigt
+            <table style="margin-bottom:3%">
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_zoom.jpg">
+                        <img src="apps/commun/img/doc/icone_dezoom.jpg">
+                    </td>
+                    <td>
+                        Zoomer et dézoomer sur la carte. Sur ordinateur, utiliser la molette de la souris. Sur tablette ou mobile, pincer avec deux doigts
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px;text-align: right;">
+                        <img src="apps/commun/img/doc/icone_etendue.jpg">
+                    </td>
+                    <td>
+                        Sur ordinateur, revenir à l’étendue par défaut de la carte (c’est-à-dire la vue et le niveau de zoom à l’ouverture de la carte)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_plein_ecran.jpg">
+                        <img src="apps/commun/img/doc/icone_plein_ecran_quitter.jpg">
+                    </td>
+                    <td>
+                        Afficher et quitter le mode plein écran
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/hamburger_ouvert.jpg">
+                        <img src="apps/commun/img/doc/hamburger_ferme.jpg">
+                    </td>
+                    <td>
+                        Ouvrir et fermer le gestionnaire de couches. Cliquer ensuite si besoin sur le titre d’un groupe de couches pour faire appraître les couches qui peuvent être activées et désactivées
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/fond_carte.jpg">
+                    </td>
+                    <td>
+                        Changer le fond de carte utilisé
+                    </td>
+                </tr>
+            </table>
+
+        <h6>Interagir avec les données</h6>
+            <table style="margin-bottom:3%">
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/remonter-le-temps/img/doc/balayage.jpg">
+                    </td>
+                    <td>
+                        Balayer la carte de droite à gauche en utilisant le rond rouge pour modifier l'affichage et faciliter la comparaison
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/rechercher.jpg">
+                    </td>
+                    <td>
+                        Rechercher une localité en entrant une adresse
+                    </td>
+                </tr>
+            </table>
+
+        <h5>Pour aller plus loin</h5>
+
+        <p>Une documentation plus détaillée expliquant le fonctionnement des cartes mviewer de manière générale est disponible.
+        <a href="https://mviewerdoc.readthedocs.io/fr/latest/doc_user/interface.html" target="_blank" i18n="help.modal.doc">Cliquer ici pour accéder à la documentation.</a></p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_data">
+        <h4 i18n="help.modal.help">Données</h4>
+        <h5>Sources des données</h5>
+        <p>
+            <i>Mise à jour des données : décembre 2023</i>
+            <ul>
+                <li><b>SOGEFI WMS</b> : Carte de Cassini (XVIIIème siècle) et Carte de Capitaine (XVIIIème siècle) <a href="https://www.sogefi-sig.com/geoservices-apis-wms/" target="_blank">données distribuées par SOGEFI</a></li>
+                <li><b>Géoplateforme IGN</b> : <a href="https://geoservices.ign.fr/services-geoplateforme-diffusion" target="_blank">Données diffusées par Géoplateforme</a> sous les noms techniques suivants : GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40, GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950, GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2, ORTHOIMAGERY.ORTHOPHOTOS.1950-1965, ORTHOIMAGERY.ORTHOPHOTOS2000-2005, ORTHOIMAGERY.ORTHOPHOTOS2010, ORTHOIMAGERY.ORTHOPHOTOS2011-2015, HR.ORTHOIMAGERY.ORTHOPHOTOS, ORTHOIMAGERY.ORTHO-SAT.SPOT.2017, ORTHOIMAGERY.ORTHO-SAT.SPOT.2019, ORTHOIMAGERY.ORTHO-SAT.SPOT.2021</li>  
+            </ul>
+        </p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_contact">
+        <h4 i18n="help.modal.help">Contact</h4>
+        <p> <a href="https://www.parc-naturel-normandie-maine.fr/contact.html" target="_blank">Pour nous écrire, cliquer ici. </a></p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_credits">
+        <h4 i18n="help.modal.credits">Crédits</h4>  
+        <p>La carte a été développée par le Parc naturel régional et Géoparc Normandie-Maine et s'appuie sur la solution mviewer.</p>
+        <a href="https://www.parc-naturel-normandie-maine.fr/" target="_blank">
+            <img src="img/logo/parcgeoparc2020.svg" alt="Logo Parc et Géoparc Normandie-Maine"  width="20%" height="20%">
+        </a>  
+        <a href="https://mviewer.netlify.app/fr/" target="_blank">
+            <img src="img/logo/logo_mviewer.svg" alt="Logo mviewer"  width="12%" height="12%">
+        </a>  
+    </div>    
+</div>

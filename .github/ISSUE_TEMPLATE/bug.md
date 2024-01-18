@@ -7,35 +7,20 @@ assignees: ''
 
 ---
 
-**Description du bug / Describe the bug**
+## Environnement
 
-Une description courte du problème
+Version mviewer: 3.9.1
 
+Navigateur: nom / version
 
-**Reproduire le bug / To Reproduce**
+## Description
 
-Etapes à suivre pour reproduire votre problème du type : 
+Une description courte du problème.
 
-1. Aller sur la page https://mon.mviewer.xml
-2. Cliquer sur Rechercher
-3. Saisir quelque chose
-4. Voir que rien ne se passe (ou l'erreur si identifiable)
-
-**Comportement attendu / Exptected behavior**
+## Ce que je devrai voir
 
 Une description courte de ce que vous auriez voulu voir, ce qui ce serait passé sans le problème.
 
-**Screenshots**
+## Etapes
 
-Si possible, une capture d'écran pour nous aider à voir le problème décrit.
-
-**Environnement / Desktop**
-
-Merci de remplir ces informations si connues :
- - OS: [e.g. iOS]
- - Navigateur / browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Informations complémentaires / Additional context**
-
-Préciser par exemple si le problème a été vu suite à l'installation d'une nouvelle version ou suite à des modifications que vous auriez faites dans votre Mviewer.
+Etapes à suivre pour reproduire le problème.

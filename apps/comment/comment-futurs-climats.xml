@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A LIRE
+Ce fichier est une copie du fichier evolution-bocage.xml et contient des commentaires afin de mieux comprendre la construction du fichier et de son code.
+Ce fichier ne doit pas être modifié ni ouvert avec Mviewer Studio. Cela pourrait causer la suppression des commentaires. 
+
+
+Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewerdoc.readthedocs.io/fr/latest/doc_tech/config_layers.html?parametres-pour-gerer-l-affichage-de-la-couche -->
+
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Futurs climats</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2023-06-08T13:00:12.968Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application    
+    title="Quel climat pour 2070 sur le territoire du Parc et Géoparc Normandie-Maine ?"    
+    logo=""    
+    help="apps/futurs-climats/doc_futurs_climats.html"    
+    style="css/themes/pnrnm.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"  
+    fullscreen="true"> <!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+</application>
+<!-- Zoom de la carte, étendue de la carte -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-9903.74898791354,6180045.088741366" zoom="9" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/>
+<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<!-- Barre de recherche -->
+<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<!-- Localities permet de chercher des adresses, Features permet de chercher des attributs de couches choisi plus loin, animate permet de lancer une animation de zoom sur la recherche sélectionnée -->
+<searchparameters bbox="false" localities="true" features="true" static="false" animate="true"/>
+<!-- Fonds de carte -->
+<baselayers style="gallery"> 
+    <baselayer  visible="true" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://wxs.ign.fr/decouverte/geoportail/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://geoservices.ign.fr/services-web-decouverte' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+</baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
+<!-- Themes correspond au panneau de couche qui peut être ouvert avec l'icône de menu hamburger -->
+<themes mini="false">
+    <!-- Chaque thème correspond à un groupe de couches -->
+    <!-- Moyennes des températures annuelles -->
+    <theme id="theme-20220810114905" name="Moyennes des températures annuelles" collapsed="false" icon="fas fa-layer-group">              
+    <!-- Moyennes des températures annuelles à l'échelle des communes --> 
+    <group id="group-20230725165138" name="Par commune" collapsed="false" >
+    <!-- Moyennes des températures annuelles par commune pour la période de référence -->
+        <layer 
+            id="temp_annuel_pr_com"
+            name="Période de référence 1976 - 2005"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/temp_annuel_pr_com.mst"></template>    
+        </layer>  
+            <!-- ID correspond à l'ID dans GeoServer de la couche souhaitée. Visible indique si la couche est active au démarrage de la carte.
+            Queryable indique si la couche est interrogeable (ouvre la fiche d'information de l'entité).
+            Legendurl indique l'image à afficher dans la légende lorsque la couche est active.
+            Attribution permet d'ajouter du texte dans la légende. -->
+    <!-- Moyennes des températures annuelles par commune à l'horizon moyen pour le RCP 4.5-->        
+        <layer 
+            id="temp_annuel_hm45_com"
+            name="Scénario intermédiaire : RCP 4.5, horizon 2070"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/temp_annuel_hm45_com.mst"></template>    
+        </layer>
+    <!-- Moyennes des températures annuelles par commune à l'horizon moyen pour le RCP 8.5-->        
+        <layer 
+            id="temp_annuel_hm85_com"
+            name="Scénario pessimiste : RCP 8.5, horizon 2070 "
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/temp_annuel_hm85_com.mst"></template>    
+        </layer>
+        </group>    
+        <!-- Moyennes des températures annuelles à l'échelle des EPCI --> 
+        <group id="group-20230728165138" name="Par EPCI" collapsed="true" >
+    <!-- Moyennes des températures annuelles par EPCI pour la période de référence -->        
+        <layer 
+            id="temp_annuel_pr_epci"
+            name="Période de référence 1976 - 2005"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/temp_annuel_pr_epci.mst"></template>    
+        </layer>  
+    <!-- Moyennes des températures annuelles par EPCI à l'horizon moyen pour le RCP 4.5-->        
+        <layer 
+            id="temp_annuel_hm45_epci"
+            name="Scénario intermédiaire : RCP 4.5, horizon 2070"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/temp_annuel_hm45_epci.mst"></template>    
+        </layer>
+    <!-- Moyennes des températures annuelles par EPCI à l'horizon moyen pour le RCP 8.5-->        
+        <layer 
+            id="temp_annuel_hm85_epci"
+            name="Scénario pessimiste : RCP 8.5, horizon 2070 "
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/temp_annuel_hm85_epci.mst"></template>    
+        </layer>
+        </group>
+    </theme> 
+  <!-- Cumul des précipitations annuelles -->
+  <theme id="theme-202208101149074" name="Cumul des précipitations annuelles" collapsed="true" icon="fas fa-layer-group">               
+    <!-- Cumul des précipitations annuelles à l'échelle des communes -->
+    <group id="group-20230725165138" name="Par commune" collapsed="true" >
+        <!-- Cumul des précipitations annuelles par commune pour la période de référence -->
+        <layer 
+            id="preci_annuel_pr_com"
+            name="Période de référence 1976 - 2005"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"  
+            tiled="true"         
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/preci_annuel_pr_com.mst"></template>    
+            </layer>
+        <!-- Cumul des précipitations annuelles par commune à l'horizon moyen pour le RCP 4.5 -->
+        <layer 
+            id="preci_annuel_hm45_com"
+            name="Scénario intermédiaire : RCP 4.5, horizon 2070"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/preci_annuel_hm45_com.mst"></template>    
+        </layer>
+        <!-- Cumul des précipitations annuelles par commune à l'horizon moyen pour le RCP 8.5 -->
+        <layer 
+            id="preci_annuel_hm85_com"
+            name="Scénario pessimiste : RCP 8.5, horizon 2070"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/preci_annuel_hm85_com.mst"></template>    
+        </layer>
+        </group>    
+        <!-- Cumul des précipitations annuelles à l'échelle des EPCI -->
+        <group id="group-20230731165138" name="Par EPCI" collapsed="true" >
+        <!-- Cumul des précipitations annuelles par EPCI pour la période de référence -->
+        <layer 
+            id="preci_annuel_pr_epci"
+            name="Période de référence 1976 - 2005"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"  
+            tiled="true"         
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/preci_annuel_pr_epci.mst"></template>    
+        </layer>  
+        <!-- Cumul des précipitations annuelles par EPCI à l'horizon moyen pour le RCP 4.5 -->
+        <layer 
+            id="preci_annuel_hm45_epci"
+            name="Scénario intermédiaire : RCP 4.5, horizon 2070"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/preci_annuel_hm45_epci.mst"></template>    
+        </layer>
+        <!-- Cumul des précipitations annuelles par EPCI à l'horizon moyen pour le RCP 8.5 -->
+        <layer 
+            id="preci_annuel_hm85_epci"
+            name="Scénario pessimiste : RCP 8.5, horizon 2070"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            infoformat="application/vnd.ogc.gml"
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            queryable="true"
+            opacity="0.7"
+            scalemin="25000"
+            scalemax="50000000"
+            exclusive="true">
+            <template url="apps/futurs-climats/templates/preci_annuel_hm85_epci.mst"></template>    
+        </layer>
+        </group>
+    </theme> 
+
+    <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
+    <theme id="hideme-20220810114905" name="Administratif" collapsed="true" icon="fas fa-leaf">   
+        <!-- Couche permettant l'affichage des noms des communes et de l'affichage du contour rouge sur la commune 
+        lors du survol de la souris (hover) de l'utilisateur ainsi que la recherche des noms des communes dans la barre de recherche. -->
+        <layer 
+            id="communes2024"
+            name="Communes du Parc"
+            type="customlayer"     
+            url="apps/commun/customlayers/communes2024.js"      
+            visible="true"
+            tooltip="true"
+            fields="nom"
+            aliases="Nom commune"
+            tooltipenabled="true"
+            infoformat="application/vnd.ogc.gml"
+            queryable="false"
+            exclusive="false"
+            showintoc="true"
+            searchable="true"
+            searchengine="fuse"
+            fusesearchkeys="nom"
+            fusesearchresult="{{nom}}">            
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre du Parc -->
+        <layer 
+            id="perimetre2024"
+            name="Périmètre du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre_vert"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+        <!-- Couche permettant l'affichage des communes même lorsque aucune couche raster est activée -->
+        <layer 
+            id="communes_parc2024"
+            name="Communes du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="ligne_noire"
+            infoformat="text/html"
+            queryable="false"
+            showintoc="true">
+        </layer> 
+    </theme>  
+</themes>
+</config>

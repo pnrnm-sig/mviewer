@@ -1,2 +1,10 @@
 dist/*
+node*
 panels/*
+apps/*.json
+node*
+package-*
+
+# Ignore temp folder
+/temp
+/js/variable.js

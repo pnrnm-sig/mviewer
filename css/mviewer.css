@@ -452,13 +452,11 @@ p.bjqs-caption{
 	height:5px;
 }
 ::-webkit-scrollbar-track {
-	background:
 	border: skinny plain red;
 	box-shadow: 0px 0px 3px #blue inset;
-	border-radius:10px;
+	border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-	background:
 	border: skinny plain black;
 	border-radius:10px;
 }
@@ -756,6 +754,16 @@ ul#layers-container {
     margin-bottom: 0;
 }
 
+#page-content-wrapper:has(#bottom-panel.active) #backgroundlayerstoolbar-gallery{
+	margin-bottom: 340px;
+	transition: 0.5s;
+}
+
+#page-content-wrapper:has(#right-panel.active) #backgroundlayerstoolbar-gallery{
+	margin-right: 320px;
+	transition: 0.5s;
+}
+
 #backgroundlayersbtn {
   background-image: url("../img/basemap/osm.png");
   background-size: 39px 43px;
@@ -766,7 +774,6 @@ ul#layers-container {
   box-shadow: 0px 0px 30px 3px rgba(200, 200, 200, 0.5) ;
 }
 
-
 @media (min-width: 992px) {
     #backgroundlayerstoolbar-default {
         bottom: 15px;
@@ -774,6 +781,16 @@ ul#layers-container {
         float: right;
         position: fixed;
     }
+}
+
+#page-content-wrapper:has(#right-panel.active) #backgroundlayerstoolbar-default{
+  margin-right: 320px;
+  transition: 0.5s;
+}
+
+#page-content-wrapper:has(#bottom-panel.active) #backgroundlayerstoolbar-default{
+  margin-bottom: 340px;
+  transition: 0.5s;
 }
 
 @media (max-width: 991px) {
@@ -793,10 +810,20 @@ ul#layers-container {
 	right: 10px;
 }
 
+#page-content-wrapper:has(#right-panel.active) #zoomtoolbar{
+	margin-right: 320px;
+	transition: 0.5s;
+}
+
 #toolstoolbar {
 	position: fixed;
 	top: 160px;
 	right: 10px;
+}
+
+#page-content-wrapper:has(#right-panel.active) #toolstoolbar{
+	margin-right: 320px;
+	transition: 0.5s;
 }
 
 #drawtoolsoptions {
@@ -1241,6 +1268,11 @@ li.mv-nav-item {
     display: inline-block;
 }
 
+/* Changement fait après installation : Hide themes in navbar that have an id beginning with "hideme" */
+[id^="theme-layers-hideme"] {
+  display: none;
+}
+
 /*******************************
 ------------- BOTTOM PANEL
 ********************************/
@@ -1509,6 +1541,10 @@ span.mv-time-player-selection {
 	margin-bottom: -4%;
 }
 
+.popover-content p {
+width: 250px;
+}
+
 /* Icone layers non coches
 Utiliser le code Unicode du caractere de la police awesome.
 */
@@ -1653,6 +1689,16 @@ button.btn.btn-default.btn-raised, a#exportpng,a.btn.btn-default {
 	border-radius: 30px;
 }
 
+#page-content-wrapper:has(#bottom-panel.active) .ol-attribution.ol-unselectable.ol-control{
+	margin-bottom: 345px;
+	transition: 0.5s;
+}
+
+#page-content-wrapper:has(#bottom-panel.active) .ol-scale-line.ol-unselectable{
+	margin-bottom: 350px;
+	transition: 0.5s;
+}
+
 #feature-info {
   position: absolute;
   height: 1px;
@@ -1660,6 +1706,61 @@ button.btn.btn-default.btn-raised, a#exportpng,a.btn.btn-default {
   z-index: 100;
  }
 
+/*******************************
+------------- ADD LAYER PANEL
+********************************/
+
+.loading_container{
+  z-index: 10000;
+  height: 50px;
+}
+#addlayers_tabs{
+  margin-bottom: 5px;
+}
+.layerGroup{
+  font-weight: bold;
+}
+#addlayers_results{
+  max-height: 50vh;
+  overflow: auto;
+  padding-right: 30px;
+}
+#addLayers_service_url{
+  width: 50%;
+  display: inline-block;
+}
+.csw_search{
+  width: 50%;
+  display: inline-block;
+}
+.addLayers_service_url_select {
+  width: 50%;
+  display: inline-block;
+  margin-bottom: 4px;
+  height: 28px;
+}
+
+#addLayers_service_url_csw{
+  width: 50%;
+  display: inline-block;
+}
+.thumb_csw{
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #bbb;
+  max-width: 180px;
+}
+.layer-result{
+  font-weight: bold;
+}
+.layer-result-row{
+  border-radius: 2px;
+  margin-top: 2px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+}
 /*******************************
 ------------- HELP PANEL
 ********************************/
@@ -1903,4 +2004,23 @@ div#login-box {
   justify-content: center;
   height: 50%;
   font-size: 20px;
+}
+
+.caret-toggle h4 .state-icon{
+	font-size: 16px;
+	color: white;
+}
+
+.caret-toggle.collapsed h4 .state-icon.firstLayer:after {
+	content: "\2b";/*plus*/
+}
+.caret-toggle h4 .state-icon.firstLayer:after {
+	content: "\2212";/*moins*/
+}
+
+.caret-toggle h4 .state-icon.notFirstLayer:after {
+	content: "\2212";/*moins*/
+}
+.caret-toggle.collapsed h4 .state-icon.notFirstLayer:after {
+	content: "\2b";/*plus*/
 }

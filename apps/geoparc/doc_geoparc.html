@@ -1,0 +1,161 @@
+<ul class="nav nav-tabs" role="tablist">    
+	<li role="presentation" class="active"><a href="#h_kartenn" aria-controls="profile" role="tab" data-toggle="tab">À propos</a></li>
+    <li role="presentation" ><a href="#h_aide" aria-controls="messages" role="tab" data-toggle="tab" i18n="help.modal.help">Aide</a></li>
+    <li role="presentation" ><a href="#h_data" aria-controls="messages" role="tab" data-toggle="tab" i18n="help.modal.help">Données</a></li>
+    <li role="presentation" ><a href="#h_contact" aria-controls="settings" role="tab" data-toggle="tab" i18n="help.modal.credits">Contact</a></li> 
+    <li role="presentation" ><a href="#h_credits" aria-controls="settings" role="tab" data-toggle="tab" i18n="help.modal.credits">Crédits</a></li>   
+</ul>
+
+ <!-- Tab panes -->
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane active" id="h_kartenn">
+        <h4 i18n="help.modal.about">À propos de la carte</h4>
+        <p>L’interface de la carte des sites géologiques du Géoparc Normandie-Maine répertorie les géosites du territoire. Ces derniers peuvent être filtrés par période géologique, par roche et par intérêt géologique. Une couche des formations géologiques et des partenaires du Géoparc peuvent également être consultés.</p>     
+        <p>En savoir plus sur les géosites du Géoparc : <a href="https://www.parc-naturel-normandie-maine.fr/sites-geoparc.html" target="_blank">https://www.parc-naturel-normandie-maine.fr/sites-geoparc.html</a></p>   
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_aide">
+        <h4 i18n="help.modal.help">Aide</h4>
+        <h5>Fonctionnalités principales</h5>
+        <h6>Interagir avec la carte</h6>
+        Sur ordinateur, déplacez-vous sur la carte avec un cliquer-glisser. Sur tablette ou mobile, utiliser un doigt
+            <table style="margin-bottom:3%">
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_zoom.jpg">
+                        <img src="apps/commun/img/doc/icone_dezoom.jpg">
+                    </td>
+                    <td>
+                        Zoomer et dézoomer sur la carte. Sur ordinateur, utiliser la molette de la souris. Sur tablette ou mobile, pincer avec deux doigts
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px;text-align: right;">
+                        <img src="apps/commun/img/doc/icone_etendue.jpg">
+                    </td>
+                    <td>
+                        Sur ordinateur, revenir à l’étendue par défaut de la carte (c’est-à-dire la vue et le niveau de zoom à l’ouverture de la carte)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px;text-align: right;">
+                        <img src="apps/geoparc/img/doc/icone_filtre.jpg">
+                    </td>
+                    <td>
+                        Ouvrir ou fermer la fenêtre permettant de filtrer les géosites
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_plein_ecran.jpg">
+                        <img src="apps/commun/img/doc/icone_plein_ecran_quitter.jpg">
+                    </td>
+                    <td>
+                        Afficher et quitter le mode plein écran
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/hamburger_ouvert.jpg">
+                        <img src="apps/commun/img/doc/hamburger_ferme.jpg">
+                    </td>
+                    <td>
+                        Ouvrir et fermer le gestionnaire de couches. Cliquer ensuite si besoin sur le titre d’un groupe de couches pour faire appraître les couches qui peuvent être activées et désactivées
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/fond_carte.jpg">
+                    </td>
+                    <td>
+                        Changer le fond de carte utilisé
+                    </td>
+                </tr>
+            </table>
+
+        <h6>Interagir avec les données</h6>
+            <table style="margin-bottom:3%">
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/geoparc/img/doc/filtre.jpg">
+                    </td>
+                    <td>
+                        <ol>
+                            <li>
+                                Pour filtrer les géosites selon plusieurs critères, cliquer sur une valeur du filtre. Cliquer sur plusieurs valeurs pour trouver des géosites qui répondent à au moins une des valeurs choisies
+                            </li>
+                            <li>
+                                Réinitialiser le filtre du critère concerné
+                            </li>
+                            <li>
+                                Réinitialiser tous les filtres
+                            </li>
+                            <li>
+                                Fermer la fenêtre du filtre 
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/geoparc/img/doc/hover_geosite.jpg">
+                    </td>
+                    <td>
+                        Certaines données sur la carte sont interactives, en cliquant dessus un panneau d’information s’ouvre. Sur ordinateur, en passant la souris sur un géosite, le nom de celui-ci est affiché
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/rechercher.jpg">
+                    </td>
+                    <td>
+                        Rechercher des géosites en écrivant leur nom ou rechercher une localité en entrant une adresse
+                    </td>
+                </tr>
+            </table>
+
+        <h5>Pour aller plus loin</h5>
+
+        <p>Une documentation plus détaillée expliquant le fonctionnement des cartes mviewer de manière générale est disponible.
+        <a href="https://mviewerdoc.readthedocs.io/fr/latest/doc_user/interface.html" target="_blank" i18n="help.modal.doc">Cliquer ici pour accéder à la documentation.</a></p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_data">
+        <h4 i18n="help.modal.help">Données</h4>
+        <h5>Définitions</h5>
+        <p><ul>
+            <li><b>Géosite</b> : site géologique</li>
+          </ul> 
+        </p>
+        <h5>Sources des données</h5>
+        <p>
+            <i>Mise à jour des données : mai 2023</i>
+            <ul>
+                <li><b>BRGM</b> : Bd Charm-50</li>
+                <li><b>IGN Admin Express</b> : <a href="https://geoservices.ign.fr/adminexpress" target="_blank">https://geoservices.ign.fr/adminexpress</a></li>
+                <li><b>PNR NM</b></li>
+              </ul>
+        </p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_contact">
+        <h4 i18n="help.modal.help">Contact</h4>
+        <p> <a href="https://www.parc-naturel-normandie-maine.fr/contact.html" target="_blank">Pour nous écrire, cliquer ici. </a></p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_credits">
+        <h4 i18n="help.modal.credits">Crédits</h4>  
+        <p>La carte a été développée par le Parc naturel régional et Géoparc Normandie-Maine et s'appuie sur la solution mviewer.</p>
+         <div style="display:inline-block;vertical-align:top;">
+        <a href="https://www.parc-naturel-normandie-maine.fr/" target="_blank">
+            <img src="img/logo/parcgeoparc2020.svg" alt="Logo Parc et Géoparc Normandie-Maine" height="100px">
+        </a>  
+        <a href="https://mviewer.netlify.app/fr/" target="_blank">
+            <img src="img/logo/logo_mviewer.svg" alt="Logo mviewer">
+        </a>  
+    </div>
+        <div style="display:inline-block;">
+            <ul style="list-style-type:none;font-size:9px;">
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/roche">Roche icônes créées par Freepik - Flaticon</a>.
+            </li>
+          </ul>
+        </div>
+    </div> 
+</div>

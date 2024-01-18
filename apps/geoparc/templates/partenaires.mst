@@ -1,0 +1,86 @@
+{{! Ce qui est affiché dans le panneau d'information... }}
+{{#features}}
+	<li id="{{type}}" class="inventaire item" style="width:100%;">
+		<h3 class="title-feature">{{nom}}</h3> <!-- Titre du panneau d'information : nom du partenaire -->
+		<p class="text-feature">              
+		<span class="text-span">
+			{{texte}}
+		</span>
+		<span>
+			Adresse : 
+		</span>
+		{{adresse}}</br>
+		{{#tel}} <!-- Ce qu'il faut afficher si l'attribut choisi a une valeur -->
+			<span>
+				Tél : 
+			</span>
+			{{tel}}<br/>
+		{{/tel}}
+		{{^tel}}	<!-- Ce qu'il faut afficher si l'attribut choisi a une valeur NULL -->
+		{{/tel}}
+		{{#mail}} <!-- Ce qu'il faut afficher si l'attribut choisi a une valeur -->
+			<span>
+				Mail : 
+			</span>
+			{{mail}}<br/>
+		{{/mail}}
+		{{^mail}}	<!-- Ce qu'il faut afficher si l'attribut choisi a une valeur NULL -->
+		{{/mail}}
+		{{#site_web}} <!-- Ce qu'il faut afficher si l'attribut choisi a une valeur -->
+			<span>
+				Site internet : 
+			</span>
+			<a href="{{site_web}}" target="_blank" class="button-link">{{site_web}}</a><br/>
+		{{/site_web}}
+		{{^site_web}}	<!-- Ce qu'il faut afficher si l'attribut choisi a une valeur NULL -->
+			<br/>
+		{{/site_web}}
+        </p>
+	</li>
+{{/features}}
+
+
+{{! Les styles utilisés pour modifier l'apparance de ce qui est affiché dans le panneau d'information }}
+<style>
+	/* Style du petit texte de début centré */
+	.text-span{
+		display: flex; /* Permet de modifier les dimensions d'un élément afin de remplir l'espace disponible de son conteneur  */
+  		justify-content: center; /* Permet d'indiquer comment est rempli l'espace disponible, ici de centrer le contenu (texte) */
+		text-align: center; /* Permet de centrer le texte */
+		margin-bottom: 5%; /* Permet d'avoir une marge en dessous de l'objet */
+	}
+	/* Style du titre du panneau d'information */
+	.inventaire .title-feature {
+		color: #c43c39; /* Indique la couleur du texte (nom du géosite) */
+		font-family:"roboto_bold"; /* Indique la police du texte */
+		font-size:16px; /* Indique la taille de la police du texte */
+		margin-bottom:5%; /* Permet de définir une marge sous le titre */
+	}
+	.inventaire .text-feature{
+		font-family:"roboto_regular"; /* Indique la police du texte */
+		color:#555; /* Indique la couleur du texte */
+		font-size:13px; /* Indique la taille de la police du texte */
+		margin-top:5px; /* Permet de définir une marge au dessus */
+	}
+	.inventaire .text-feature span{
+		font-family:"roboto_bold";  /* Indique la police du texte qui se trouve sous la class text-feature et entre <span></span> */
+	}
+
+    .inventaire p, .inventaire h3 {
+        padding-left:15px; /* Permet un décalage à gauche */
+        padding-right:15px; /* Permet un décalage à droite */
+    }
+
+
+	/* Lien cliquable vers les fiches de géosites */
+	a.button-link {
+		color: #00936f; /* Couleur du lien */
+		cursor: pointer; /* Le curseur se change en petite main */
+	}
+
+	/* Ce qui se passe lorsqu'on passe la souris par dessus le lien cliquable */
+	a.button-link:hover {
+		color: #008050; /* Couleur du lien lorsqu'on passe la souris par dessus */
+		text-decoration: underline; /* Le lien est sourligné lorsqu'on passe la souris par dessus */
+	}
+</style>

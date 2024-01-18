@@ -1,0 +1,83 @@
+<!-- *** TEMPLATE CHIFFRES CLES 1 / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="inventaire item scrollbar-hidden" style="width:270px;">
+		<h3 class="title-feature ">{{sitename}}</h3>
+		<p class="text-feature"> 
+		<span>
+			Code du site : 
+		</span>
+		{{sitecode}}</br>
+		<span>
+			Gestionnaire du site : 
+		</span>
+		{{gestionnaire}}</br>
+		<span>
+			Superficie : 
+		</span>
+		{{superf_ha}} ha</br>
+		<span> 
+			En savoir plus : 
+		</span> 
+			<a href="{{web}}" target="_blank" class="button-link">Fiche de l'INPN</a><br/>
+		</p>
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #00936f;
+	}
+
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none;
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Texte */
+
+	.inventaire .title-feature {
+		color: #c43c39; /* Indique la couleur du texte (nom du géosite) */
+		font-family:"roboto_bold"; /* Indique la police du texte */
+		font-size:16px; /* Indique la taille de la police du texte */
+		margin-bottom:5%; /* Permet de définir une marge sous le titre */
+	}
+
+	.inventaire .text-feature{
+		font-family:"roboto_regular"; /* Indique la police du texte */
+		color:#555; /* Indique la couleur du texte */
+		font-size:13px; /* Indique la taille de la police du texte */
+		margin-top:5px; /* Permet de définir une marge au dessus */
+	}
+	.inventaire .text-feature span{
+		font-family:"roboto_bold";  /* Indique la police du texte qui se trouve sous la class text-feature et entre <span></span> */
+	}
+
+    .inventaire p, .inventaire h3 {
+        padding-left:1px; /* Permet un décalage à gauche */
+        padding-right:1px; /* Permet un décalage à droite */
+    }
+
+	/* Lien cliquable vers les fiches de géosites */
+	a.button-link {
+		color: #00936f; /* Couleur du lien */
+		cursor: pointer; /* Le curseur se change en petite main */
+	}
+
+	/* Ce qui se passe lorsqu'on passe la souris par dessus le lien cliquable */
+	a.button-link:hover {
+		color: #008050; /* Couleur du lien lorsqu'on passe la souris par dessus */
+		text-decoration: underline; /* Le lien est sourligné lorsqu'on passe la souris par dessus */
+	}
+
+</style>

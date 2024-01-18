@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A LIRE
+Ce fichier est une copie du fichier bocage-diachronique.xml et contient des commentaires afin de mieux comprendre la construction du fichier et de son code.
+Ce fichier ne doit pas être modifié ni ouvert avec Mviewer Studio. Cela pourrait causer la suppression des commentaires. 
+
+
+Afin de mieux comprendre le fonctionnement de Mviewer, consulter https://mviewerdoc.readthedocs.io/fr/latest/doc_tech/config_layers.html?parametres-pour-gerer-l-affichage-de-la-couche -->
+
+<config mviewerstudioversion="3.1-snapshot">
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Remonter le temps à travers le bocage du territoire du Parc Normandie-Maine</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>anonymous</dc:publisher>
+<dc:subject>Parc Normandie Maine</dc:subject>
+<dc:date>2022-09-12T13:00:12.968Z</dc:date>
+</rdf:Description></rdf:RDF></metadata>
+<application    
+    title="Remonter le temps à travers le bocage du territoire du Parc Normandie-Maine"    
+    logo=""    
+    help="doc_bocage_diachronique.html"    
+    style="css/themes/pnrnm.css"    
+    exportpng="false"    
+    showhelp="false"    
+    coordinates="false"    
+    measuretools="false"    
+    togglealllayersfromtheme="false"    
+    fullscreen="true"> <!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
+</application>
+<!-- Zoom de la carte, étendue de la carte -->
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-16656.4,6200926.3" zoom="17" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
+<extensions><extension type="component" id="fullscreen" path="demo/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<!-- Barre de recherche -->
+<olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
+<!-- Localities permet de chercher des adresses, Features permet de chercher des attributs de couches choisi plus loin, animate permet de lancer une animation de zoom sur la recherche sélectionnée -->
+<searchparameters bbox="false" localities="true" features="false" static="false"/>
+<!-- Fonds de carte -->
+<baselayers style="gallery"> 
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+</baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
+<!-- Themes correspond au panneau de couche qui peut être ouvert avec l'icône de menu hamburger -->
+<themes mini="false">
+    <!-- Chaque thème correspond à un groupe de couches -->
+    <!-- Photos aériennes et linéaires de haie -->
+    <theme id="theme-20220810114905" name="Comparer l'année 2020 à ..." collapsed="false" icon="layer-group">    
+        <!-- Couche permettant l'affichage de l'année 1945 -->
+        <layer 
+            id="histo_1945"
+            name="Année 1945"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"  
+            tiled="true"         
+            legendurl="img/legend/legende_1945.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+            </layer>  
+            <!-- ID correspond à l'ID dans GeoServer de la couche souhaitée. Visible indique si la couche est active au démarrage de la carte.
+            Queryable indique si la couche est interrogeable (ouvre la fiche d'information de l'entité).
+            Legendurl indique l'image à afficher dans la légende lorsque la couche est active.
+            Attribution permet d'ajouter du texte dans la légende. -->    
+        <!-- Couche permettant l'affichage de l'année 2000 -->
+        <layer 
+            id="histo_2000"
+            name="Année 2000"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"      
+            tiled="true"        
+            legendurl="img/legend/legende_2000.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne.">
+        </layer>    
+        <!-- Couche permettant l'affichage de l'année 2010 -->
+        <layer 
+            id="histo_2010"
+            name="Année 2010"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"   
+            tiled="true"           
+            legendurl="img/legend/legende_2010.png"  
+            infoformat="text/html"
+            queryable="false"
+            exclusive="true"
+            attribution="Déplacer le curseur sur la carte horizontalement pour effectuer un balayage de la photographie aérienne."> 
+            <!-- Booléen stipulant si la couche est exclusive. Si la valeur est « true », l’affichage de cette couche masquera automatiquement toutes les autres couches ayant ce paramètre activé. -->
+        </layer> 
+    </theme> 
+<!-- Balayage, communes et périmètre -->
+    <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->
+    <theme id="hideme-20220810114905" name="Balayage - à cacher ?" collapsed="true" icon="fas fa-leaf">
+        <!-- Couche permettant l'affichage du Balayage / Swipe -->          
+        <layer 
+            id="swipe" 
+            name="Année 2010 - sera année 2020" 
+            visible="true" 
+            queryable="false"           
+            type="customlayer"           
+            legendurl="img/legend/legende_2020.png"         
+            customcontrolpath="demo/swipe/control"            
+            opacity="1"            
+            url="demo/swipe/layer/swipe.js"            
+            customcontrol="true"            
+            expanded="false"                      
+            metadata=""            
+            metadata-csw=""            
+            swipelayerurl=""            
+            swipelayerid=""
+            toplayer="true"> <!-- Toplayer précise si la couche demeure figée. Booléen. Défaut = true. Si plusieurs couches sont en toplayer,
+                                elles seront affichées dans l’ordre d’écriture du XML -->
+        </layer>
+        <!-- Couche permettant l'affichage des communes du Parc -->
+        <layer 
+            id="communes_parc"
+            name="Communes du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/wms?"
+            visible="true"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre du Parc -->
+        <layer 
+            id="perimetre"
+            name="Périmètre du Parc"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="true"
+            style="perimetre"
+            infoformat="text/html"
+            queryable="false"
+            toplayer="true">
+        </layer> 
+    </theme>  
+</themes>
+</config>

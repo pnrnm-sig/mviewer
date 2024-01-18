@@ -1,0 +1,20 @@
+{
+  "js": [
+    "js/print.js",
+    "lib/easydrag/jquery.easyDrag.min.js",
+    "lib/html2pdf/html2pdf.bundle.min.js"
+  ],
+  "css": "style.css",
+  "type": "module",
+  "html": "print.html",
+  "target": "page-content-wrapper",
+  "options": {
+    "mviewer": {
+      "print": {
+        "printLayouts": "apps/commun/addons/print/layouts/standard.json",
+        "ownerLogo": "https://www.parc-naturel-normandie-maine.fr/web/images/ParcGeoparc2020_LogoRVB.svg",
+        "ownerInfos": "Cette carte a été réalisée à partir d'une carte interactive du Parc et Géoparc Normandie-Maine"
+      }
+    }
+  }
+}

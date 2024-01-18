@@ -11,7 +11,7 @@ Le visualiseur cartographique mviewer consomme des données et des services serv
 
 Si aucune configuration n'est indiquée dans l'URL, c'est la configuration par défaut qui s'applique ( **apps/default.xml**).
 
-Il est possible de créer n fichiers de configuration (config1.xml, config2.xml...) de façon à  créer plusieurs applications thématiques à  partir d'une seule instance mviewer. Pour appeler une configuration particulière, il suffit alors de rajouter le paramètre **config** dans l'url, exemple `?config=demo/geobretagne.xml <http://kartenn.region-bretagne.fr/kartoviz/?config=demo/geobretagne.xml>`_ .
+Il est possible de créer n fichiers de configuration (config1.xml, config2.xml...) de façon à créer plusieurs applications thématiques à partir d'une seule instance mviewer. Pour appeler une configuration particulière, il suffit alors de rajouter le paramètre **config** dans l'url, exemple `?config=demo/geobretagne.xml <http://kartenn.region-bretagne.fr/kartoviz/?config=demo/geobretagne.xml>`_ .
 
 Pour voir des **exemples d'applications et de fichiers de configuration XML**, rendez vous à cette page : `démos <http://kartenn.region-bretagne.fr/kartoviz/demo/>`_.
 
@@ -57,6 +57,13 @@ Il est possible d'instancier un mviewer avec des **paramètres** de configuratio
 * ``mode`` : Mode d'affichage à utiliser (d - default, s - simplifié, u - ultrasimplifié). Le mode simplifié ne dispose pas du panneau des thématiques et le mode ultra simplifié ne dispose pas de la barre de navigation.
 * ``title`` : Titre à utiliser. Seulement exploité en mode défault et simplifié.
 * ``topics`` : Thèmes à filtrer.
+* ``addLayer`` : pour ajouter une couche WMS à la carte. ce paramètre prends comme valeur un objet **JSON** contenant
+
+  * ``url`` : url du service
+  * ``name`` : nom de la couche (layername)
+  * ``title`` : label/titre à afficher dans mviewer
+
+exemple pour le paramètre **addLayer** : ``&addLayer={\%22url\%22:\%22https://www.geo2france.fr/geoserver/hdf_common/ows\%22,\%22name\%22:\%22Antennes__HdF_EnService_Agreg\%22,\%22title\%22:\%22Antennes_test\%22}`` 
 
 Paramètres d'URL utilisés pour les permaliens
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -64,7 +71,7 @@ Paramètres d'URL utilisés pour les permaliens
 * ``y`` : Coordonnées y du centre de la carte dans le système de projection utilisé par l'application.
 * ``z`` : Zoom de la carte (1 à 20).
 * ``lb`` : Identifiant de la couche de fond affichée.
-* ``c_[monparam]`` : où mon param est l'identifiant du composant personnalisé ou de la couche personalisée. La valeur du paramètre peut ensuite être utilisée par le composant ou la couche concernée. exemple c_mycustomlayer=red,blue,green
+* ``c_[monparam]`` : Où mon param est l'identifiant du composant personnalisé ou de la couche personalisée. La valeur du paramètre peut ensuite être utilisée par le composant ou la couche concernée. exemple c_mycustomlayer=red,blue,green
 * Plus d'informations sur les permaliens ":ref:`othertools`" menu Partage de carte
 
 Sections de configurations

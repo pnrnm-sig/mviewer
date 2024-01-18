@@ -1,0 +1,42 @@
+<!-- *** TEMPLATE CHIFFRES CLES 1 / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="inventaire item scrollbar-hidden" style="width:270px;">
+		<h3 class="title-feature">{{nomentiteh}}</h3>
+
+	
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #00936f;
+	}
+
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none;
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Texte */
+
+	.inventaire .title-feature {
+			color: #c43c39; /* Indique la couleur du texte (nom du géosite) */
+			font-family:"roboto_bold"; /* Indique la police du texte */
+			font-size:16px; /* Indique la taille de la police du texte */
+			margin-bottom:5%; /* Permet de définir une marge sous le titre */
+		}
+
+
+
+</style>

@@ -76,7 +76,8 @@ Cette partie est dédiée aux personnes qui ont vocation à déployer et configu
    doc_tech/config_customlayer.rst
    doc_tech/config_customcontrol.rst
    doc_tech/config_customcomponent.rst
-   doc_tech/config_styles.rst
+   doc_tech/config_styles.rst   
+   doc_tech/config_environmentvar.rst
 
 Documentation dévelopeur
 -------------------------------------------------
@@ -127,6 +128,6 @@ Sauf indication contraire, cette documentation est sous licence **Creative Commo
 
 .. _CC-BY-NC-SA: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
 
-.. _GitHub: https://github.com/geobretagne/mviewer
+.. _GitHub: https://github.com/mviewer/mviewer/
 
 .. _Gwendall Petit: http://gwen.xyz/

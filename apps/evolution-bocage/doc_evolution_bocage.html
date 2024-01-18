@@ -1,0 +1,156 @@
+<ul class="nav nav-tabs" role="tablist">    
+	<li role="presentation" class="active"><a href="#h_kartenn" aria-controls="profile" role="tab" data-toggle="tab">À propos</a></li>
+    <li role="presentation" ><a href="#h_aide" aria-controls="messages" role="tab" data-toggle="tab" i18n="help.modal.help">Aide</a></li>
+    <li role="presentation" ><a href="#h_data" aria-controls="messages" role="tab" data-toggle="tab" i18n="help.modal.help">Données</a></li>
+    <li role="presentation" ><a href="#h_contact" aria-controls="settings" role="tab" data-toggle="tab" i18n="help.modal.credits">Contact</a></li> 
+    <li role="presentation" ><a href="#h_credits" aria-controls="settings" role="tab" data-toggle="tab" i18n="help.modal.credits">Crédits</a></li>   
+</ul>
+
+ <!-- Tab panes -->
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane active" id="h_kartenn">
+        <h4 i18n="help.modal.about">À propos de la carte</h4>
+            <p>Les cartes représentent l’évolution du bocage sur le territoire du Parc avec des indicateurs de densités de linéaire de haies, ainsi que les évolutions de 1945 à aujourd’hui. 
+                Les données de plantations de haies sont également indiquées.
+            </p>
+            <p>Le bocage est un élément constitutif et identitaire du Parc et Géoparc Normandie-Maine qui œuvre depuis sa création à sa préservation et sa restauration. 
+                Partout en France, ce type de paysage connait un fort recul depuis la moitié du 20ème siècle, notamment en raison des remembrements et de la modernisation agricole. 
+                Pourtant, les haies rendent de nombreux services (production de bois et de fruits, lutte contre l’érosion, abri pour la faune, effet brise vent etc.) et 
+                les paysages de bocage constituent un atout en termes d’attractivité résidentielle et touristique.
+            </p>     
+            <p>
+                En savoir plus sur le suivi du bocage : <a href="https://www.parc-naturel-normandie-maine.fr/evolution-bocage.html" target="_blank">https://www.parc-naturel-normandie-maine.fr/evolution-bocage.html</a>
+            </p>     
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_aide">
+        <h4 i18n="help.modal.help">Aide</h4>
+        <h5>Fonctionnalités principales</h5>
+        <h6>Interagir avec la carte</h6>
+        Sur ordinateur, déplacez-vous sur la carte avec un cliquer-glisser. Sur tablette ou mobile, utiliser un doigt
+            <table style="margin-bottom:3%;border:none">
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_zoom.jpg">
+                        <img src="apps/commun/img/doc/icone_dezoom.jpg">
+                    </td>
+                    <td>
+                        Zoomer et dézoomer sur la carte. Sur ordinateur, utiliser la molette de la souris. Sur tablette ou mobile, pincer avec deux doigts
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px;text-align: right;">
+                        <img src="apps/commun/img/doc/icone_etendue.jpg">
+                    </td>
+                    <td>
+                        Sur ordinateur, revenir à l’étendue par défaut de la carte (c’est-à-dire la vue et le niveau de zoom à l’ouverture de la carte)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/icone_plein_ecran.jpg">
+                        <img src="apps/commun/img/doc/icone_plein_ecran_quitter.jpg">
+                    </td>
+                    <td>
+                        Afficher et quitter le mode plein écran
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;padding:5px">
+                        <img src="apps/commun/img/doc/hamburger_ouvert.jpg">
+                        <img src="apps/commun/img/doc/hamburger_ferme.jpg">
+                    </td>
+                    <td>
+                        Ouvrir et fermer le gestionnaire de couches. Cliquer ensuite si besoin sur le titre d’un groupe de couches pour faire appraître les couches qui peuvent être activées et désactivées
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/fond_carte.jpg">
+                    </td>
+                    <td>
+                        Changer le fond de carte utilisé
+                    </td>
+                </tr>
+            </table>
+
+        <h6>Interagir avec les données</h6>
+            <table style="margin-bottom:3%">
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/evolution-bocage/img/doc/hover_commune.jpg">
+                    </td>
+                    <td>
+                        Certaines données sur la carte sont interactives, en cliquant dessus un panneau d’information s’ouvre. Sur ordinateur, en passant la souris sur la carte, les communes sont mises en surbrillance et leur nom est affiché
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:5%;padding:5px">
+                        <img src="apps/commun/img/doc/rechercher.jpg">
+                    </td>
+                    <td>
+                        Rechercher une localité en entrant une adresse
+                    </td>
+                </tr>
+            </table>
+
+        <h5>Pour aller plus loin</h5>
+
+        <p>Une documentation plus détaillée expliquant le fonctionnement des cartes mviewer de manière générale est disponible.
+        <a href="https://mviewerdoc.readthedocs.io/fr/latest/doc_user/interface.html" target="_blank" i18n="help.modal.doc">Cliquer ici pour accéder à la documentation.</a></p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_data">
+        <h4 i18n="help.modal.help">Données</h4>
+        <h5>Définitions</h5>
+        <p><ul>
+            <li><b>Haies</b> : formations linéaires arborées et/ou arbustives, sans coupure supérieure à 10 mètres, d’une longueur minimale de 10 mètres et d’une largeur inférieure à 20 mètres, en dehors des zones urbanisées et excluant les lisières forestières. Les haies n’incluent pas les talus nus.</li>
+            <li><b>m/ha</b> : mètres linéaires de haies par hectare de l’unité géographique considéré (commune, intercommunalité, etc.)</li>
+            <li><b>ml et kml</b> : (kilo)mètres linéaires, ou longueur de haies</li>
+          </ul> 
+        </p>
+        <h5>Sources des données</h5>
+        <p>
+            <i>Mise à jour des données : décembre 2023</i>
+            <ul>
+                <li><b>Référentiel Bocage du PNR Normandie-Maine (BD-Bocage)</b> : La BD Bocage PNR Normandie-Maine est une base de données des haies numérisées sur l’ensemble du territoire du Parc, avec plusieurs millésimes (1945, 2000, 2010 et 2020), différenciant les types de haies (haie vive à dominante haut jet, sans dominante haut jet, haie basse, alignement d’arbre, et talus nu), et selon un cahier des charges communs aux PNR normands. Le travail de numérisation a été réalisé par photo-interprétation (PIAO) au 1/5000, première version en 2014, puis mis à jour en 2022. Les années des photographies aériennes IGN utilisées varient légèrement par départements. Manche : 1947 | 2002 | 2010 | 2019. Mayenne : 1950 | 2001 | 2010 | 2019. Orne : 1947 | 2001 | 2010 | 2020. Sarthe : 1950 | 2000 | 2010 | 2019</li>
+                <li><b>Suivi des plantations de haies</b> : Ces données sont issues de suivi des différents programmes de plantations du Parc entre 2004 et 2022. Elles représentent le total des linéaires de haies plantées par communes avec l’aide du Parc.</li>
+                <li><b>IGN Admin Express</b> : <a href="https://geoservices.ign.fr/adminexpress" target="_blank">https://geoservices.ign.fr/adminexpress</a></li>
+              </ul>
+        </p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_contact">
+        <h4 i18n="help.modal.help">Contact</h4>
+        <p> <a href="https://www.parc-naturel-normandie-maine.fr/contact.html" target="_blank">Pour nous écrire, cliquer ici. </a></p>
+    </div>  
+    <div role="tabpanel" class="tab-pane" id="h_credits">
+        <h4 i18n="help.modal.credits">Crédits</h4>  
+        <p>La carte a été développée par le Parc naturel régional et Géoparc Normandie-Maine et s'appuie sur la solution mviewer.</p>
+         <div style="display:inline-block;vertical-align:top;">
+        <a href="https://www.parc-naturel-normandie-maine.fr/" target="_blank">
+            <img src="img/logo/parcgeoparc2020.svg" alt="Logo Parc et Géoparc Normandie-Maine" height="100px">
+        </a>  
+        <a href="https://mviewer.netlify.app/fr/" target="_blank">
+            <img src="img/logo/logo_mviewer.svg" alt="Logo mviewer">
+        </a>  
+    </div>
+        <div style="display:inline-block;">
+            <ul style="list-style-type:none;font-size:9px;">
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/arbre" target="_blank">Arbre icônes créées par Freepik - Flaticon.</a>
+            </li>
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/jardin" target="_blank">Jardin icônes créées par ultimatearm - Flaticon.</a>
+            </li>
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/evolution" target="_blank">Évolution icônes créées par Iconjam - Flaticon</a>.
+            </li>
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/foret" target="_blank">Forêt icônes créées par Freepik - Flaticon</a>
+            </li>
+            <li>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/plantation-darbres" target="_blank">Plantation d'arbres icônes créées par Freepik - Flaticon.</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+    
+</div>

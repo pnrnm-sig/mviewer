@@ -14,7 +14,7 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 1px 1px 1px #FFFFFF;
-  background: #3071A9;
+  background: #12a85d;
   border-radius: 0px;
   border: 0px solid #2E5367;
 }
@@ -30,25 +30,25 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -15.5px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #3071A9;
+  background: #12a85d;
 }
 input[type=range]::-moz-range-track {
   width: 100%;
-  height: 1px;
+  height: 10px;
   cursor: pointer;
   animate: 0.2s;
-  box-shadow: 1px 1px 1px #FFFFFF;
-  background: #3071A9;
+  box-shadow: 1px 1px 1px #333333;
+  background: #00936F;
   border-radius: 0px;
   border: 0px solid #2E5367;
 }
 input[type=range]::-moz-range-thumb {
   box-shadow: 0px 0px 0px #000000;
-  border: 2px solid #FFFFFF;
+  border: 3px solid #FFFFFF;
   height: 30px;
   width: 30px;
   border-radius: 20px;
-  background: #2E5367;
+  background: #BB2D33;
   cursor: pointer;
 }
 input[type=range]::-ms-track {
@@ -96,32 +96,35 @@ class Swipe extends AdvancedCustomControl {
   constructor(id) {
     // Initialize CustomControl superClass
     super(id);
-
   }
   // Mandatory - code executed when panel is opened
   init() {
     var _map = mviewer.getMap();
-    var html = '<div><style>' + _css + '</style><input id="swipe" type="range" style="width: 100%;position: fixed;bottom: 60px;"></div>';
-    var _swipeElement = document.getElementById('swipe');
+    var html =
+      "<div><style>" +
+      _css +
+      '</style><input id="swipe" type="range" style="width: 100%;position: fixed;bottom: 60px;"></div>';
+    var _swipeElement = document.getElementById("swipe");
     if (!_swipeElement) {
       $("#map").append(html);
-      _swipeElement = document.getElementById('swipe');
-      _swipeElement.addEventListener('input', function () {
-        _map.render();
-      }, false);
+      _swipeElement = document.getElementById("swipe");
+      _swipeElement.addEventListener(
+        "input",
+        function () {
+          _map.render();
+        },
+        false
+      );
     }
 
     $("#swipe-select").click(function () {
       mviewer.setBaseLayer(this.value);
     });
-
   }
   // Mandatory - code executed when panel is closed
   destroy() {
     $("#swipe").remove();
-
   }
-
 }
 // Create The Swipe CustomControl
 new Swipe("swipe");

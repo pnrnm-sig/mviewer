@@ -182,10 +182,14 @@
     font-size: 13px;
     background-color: #00936F; }
 
-    /* masquer l'élément avec l'identifiant HTML btn-remove-layers*/
+    /* masquer l'élément avec l'identifiant HTML btn-remove-layers (petite poubelle)*/
     #btn-remove-layers {
         display: none !important;
     }
+    /* masquer l'élément avec la class HTML mv-layer-remove (petite croix)*/
+    .mv-layer-remove {
+      display: none !important;
+  }
 
     /* ACTIVATION BARRE OPACITE POUR LES COUCHES CHOISIES */
     .mv-layer-options[data-layerid="temp_annuel_pr_com"] .form-group-opacity {
@@ -197,6 +201,14 @@
     }
 
     .mv-layer-options[data-layerid="temp_annuel_hm85_com"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="temp_annuel_hl45_com"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="temp_annuel_hl85_com"] .form-group-opacity {
       display: initial;
     }
 
@@ -212,6 +224,14 @@
       display: initial;
     }
 
+    .mv-layer-options[data-layerid="preci_annuel_hl45_com"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="preci_annuel_hl85_com"] .form-group-opacity {
+      display: initial;
+    }
+
     .mv-layer-options[data-layerid="temp_annuel_pr_epci"] .form-group-opacity {
       display: initial;
     }
@@ -224,6 +244,14 @@
       display: initial;
     }
 
+    .mv-layer-options[data-layerid="temp_annuel_hl45_epci"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="temp_annuel_hl85_epci"] .form-group-opacity {
+      display: initial;
+    }
+
     .mv-layer-options[data-layerid="preci_annuel_pr_epci"] .form-group-opacity {
       display: initial;
     }
@@ -233,6 +261,30 @@
     }
 
     .mv-layer-options[data-layerid="preci_annuel_hm85_epci"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="preci_annuel_hl45_epci"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="preci_annuel_hl85_epci"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="classification_45_com"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="classification_85_com"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="classification_45_epci"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-layer-options[data-layerid="classification_85_epci"] .form-group-opacity {
       display: initial;
     }
 
@@ -353,8 +405,18 @@ body .popover-title {
   color: white; }
 
 /* Partager la carte*/
-#sharepanel {
+/* #sharepanel {
   font-family: "roboto_regular", Arial, Sans-serif; }
+#sharebtn{
+  display: none !important;
+} */
+
+#sharepanel h6{
+  display: none;
+}
+#sharepanel #mv-display-mode{
+  display: none;
+}
 
 /*******************************
 ------------- HELP PANEL -----

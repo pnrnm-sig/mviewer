@@ -1,0 +1,772 @@
+<!-- *** TEMPLATE 5.2 / GRAPH DIAGRAMME CIRCULAIRE / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="item scrollbar-hidden" style="width: inherit;padding: 0px 10px 0px 0px;">
+      {{#insee_com}} <!-- Ce qu'il faut afficher si l'utilisateur clique sur une des communes du Parc -->
+		<h3 class="title-feature ">{{nom}}</h3>				
+
+		<!-- Moyennes températures annuelles -->
+		<h4 class="subtitle-feature">Températures moyennes annuelles</h4>		
+		<div class="item">
+			<span class="number-mean">{{hl85_an_mean}}°C</span>
+			<span class="caption">Moyenne
+				<div class="tooltipdef">Donnée désagrégée</div>
+			</span>
+		</div>
+		<div class="item">
+			<span class="number-mean">{{hl85_an_nortnav}}°C</span>
+			<span class="caption">Moyenne des minimales
+				<div class="tooltipdef">Indicateur DRIAS</div>
+			</span>
+		</div>
+		<div class="item">
+			<span class="number-mean">{{hl85_an_nortxav}}°C</span>
+			<span class="caption">Moyenne des maximales
+				<div class="tooltipdef">Indicateur DRIAS</div>
+			</span>
+		</div>
+
+	<div class="subitem">
+			<span class="caption">
+				<div class="number-year">+{{hl85_difmean}}°C</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>
+	<div class="subitem">
+			<span class="caption">
+				<div class="number-year">+{{hl85_an_atnav}}°C</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>
+	<div class="subitem">
+			<span class="caption">
+				<div class="number-year">+{{hl85_an_atxav}}°C</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>	
+
+
+	    <!-- Range Bar 1-->	
+        <h4 class="subtitle-feature">Températures moyennes mensuelles</h4>	
+      <!-- Bar Chart 1-->
+	    <div class="Chart">
+	        <div id="idChart">
+				      {{! Graphique histogramme températures moyennes }}
+	            <canvas class="chart" id="myChartBar1_{{insee_com}}" data-codegeo="{{insee_com}}"
+	              data-mychartBarA-1="{{pr_01_mean}}" data-mychartBarA-2="{{pr_02_mean}}"
+	              data-mychartBarA-3="{{pr_03_mean}}" data-mychartBarA-4="{{pr_04_mean}}"
+	              data-mychartBarA-5="{{pr_05_mean}}" data-mychartBarA-6="{{pr_06_mean}}"
+	              data-mychartBarA-7="{{pr_07_mean}}" data-mychartBarA-8="{{pr_08_mean}}"
+	              data-mychartBarA-9="{{pr_09_mean}}" data-mychartBarA-10="{{pr_10_mean}}"
+	              data-mychartBarA-11="{{pr_11_mean}}" data-mychartBarA-12="{{pr_12_mean}}"
+                  data-mychartBarC-1="{{hp85_01_mean}}" data-mychartBarC-2="{{hp85_02_mean}}"
+	              data-mychartBarC-3="{{hp85_03_mean}}" data-mychartBarC-4="{{hp85_04_mean}}"
+	              data-mychartBarC-5="{{hp85_05_mean}}" data-mychartBarC-6="{{hp85_06_mean}}"
+	              data-mychartBarC-7="{{hp85_07_mean}}" data-mychartBarC-8="{{hp85_08_mean}}"
+	              data-mychartBarC-9="{{hp85_09_mean}}" data-mychartBarC-10="{{hp85_10_mean}}"
+	              data-mychartBarC-11="{{hp85_11_mean}}" data-mychartBarC-12="{{hp85_12_mean}}"
+	              data-mychartBarE-1="{{hm85_01_mean}}" data-mychartBarE-2="{{hm85_02_mean}}"
+	              data-mychartBarE-3="{{hm85_03_mean}}" data-mychartBarE-4="{{hm85_04_mean}}"
+	              data-mychartBarE-5="{{hm85_05_mean}}" data-mychartBarE-6="{{hm85_06_mean}}"
+	              data-mychartBarE-7="{{hm85_07_mean}}" data-mychartBarE-8="{{hm85_08_mean}}"
+	              data-mychartBarE-9="{{hm85_09_mean}}" data-mychartBarE-10="{{hm85_10_mean}}"
+	              data-mychartBarE-11="{{hm85_11_mean}}" data-mychartBarE-12="{{hm85_12_mean}}"  	              
+				  data-mychartBarG-1="{{hl85_01_mean}}" data-mychartBarG-2="{{hl85_02_mean}}"
+	              data-mychartBarG-3="{{hl85_03_mean}}" data-mychartBarG-4="{{hl85_04_mean}}"
+	              data-mychartBarG-5="{{hl85_05_mean}}" data-mychartBarG-6="{{hl85_06_mean}}"
+	              data-mychartBarG-7="{{hl85_07_mean}}" data-mychartBarG-8="{{hl85_08_mean}}"
+	              data-mychartBarG-9="{{hl85_09_mean}}" data-mychartBarG-10="{{hl85_10_mean}}"
+	              data-mychartBarG-11="{{hl85_11_mean}}" data-mychartBarG-12="{{hl85_12_mean}}" 
+                width="80" height="150"></canvas>
+	        </div>       
+	    </div>
+	    <!-- ./Bar Chart 1-->
+
+	  	<h4 class="subtitle-feature">Indicateurs DRIAS</h4>	
+
+      		<!--Chiffre clé 1-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber1"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{hl85_an_norsd}} jours<div class="up">
+  <p>+{{hl85_an_asd}}
+    </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
+</div></div>
+	          <div class="titlenumber-feature">d'été par an
+			  <div class="tooltipdef">Température maximale supérieure à 25°C</div>
+	        </div></div>
+      	</div>
+		<!--./Chiffres clé 1-->
+
+		<!--Chiffre clé 2-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber2"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{hl85_an_nortx35}} jours<div class="up">
+  <p>+{{hl85_an_atx35}}
+    </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
+</div></div>
+	          <div class="titlenumber-feature">de fortes chaleurs par an
+			  <div class="tooltipdef">Température maximale supérieure à 35°C</div>
+	        </div></div>
+      	</div>
+		<!--./Chiffre clé 2-->
+
+      		<!--Chiffre clé 3-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber3"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{hl85_an_nortr}} nuits <div class="up">
+  <p>+{{hl85_an_atr}}
+    </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
+</div></div>
+	          <div class="titlenumber-feature">tropicales par an
+			  <div class="tooltipdef">Nuits où la température moyenne ne descend pas sous 20°C</div>
+	        </div></div>
+      	</div>
+		<!--./Chiffres clé 3-->
+
+		
+      		<!--Chiffre clé 4-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber4"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{hl85_an_nortxhwd}} jours<div class="up">
+  <p>+{{hl85_an_atxhwd}}
+    </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
+</div></div>
+	          <div class="titlenumber-feature">d'une vague de chaleur par an
+  			  <div class="tooltipdef">Jours pour lesquels la température maximale est supérieure à +5 degrés par rapport à une température maximale quotidienne calculée dans une séquence de plus de 5 jours consécutifs</div>
+	        </div></div>
+      	</div>
+		<!--./Chiffres clé 4-->
+
+{{! Tableau }}
+		<div class="text-feature"><i>Unités exprimées en nombre de jours par an</i></div>
+		<table class="table-temp">
+			<thead>
+				<tr class="table-title"><th></th><th>Période de référence</th><th>RCP 8.5, horizon 2050</th><th>RCP 8.5, horizon 2070</th><th>RCP 8.5, horizon 2100</th></tr>
+			</thead>
+			<tbody>
+					<tr><td class="table-title">Jours d'été</td>
+						<td>		
+							{{pr_an_norsd}}
+						</td>
+						<td>		
+							{{hp85_an_norsd}}
+						</td>
+						<td>		
+							{{hm85_an_norsd}}
+						</td>
+						<td>		
+							{{hl85_an_norsd}}
+						</td>
+						</tr>
+			</tbody>
+			<tbody>
+					<tr><td class="table-title">Jours de fortes chaleur</td>
+						<td>		
+							{{pr_an_nortx35}}
+						</td>
+						<td>		
+							{{hp85_an_nortx35}}
+						</td>
+						<td>		
+							{{hm85_an_nortx35}}
+						</td>
+						<td>		
+							{{hl85_an_nortx35}}
+						</td>
+						</tr>
+			</tbody>
+			<tbody>
+					<tr><td class="table-title">Nuits tropicales</td>
+						<td>		
+							{{pr_an_nortr}}
+						</td>
+						<td>		
+							{{hp85_an_nortr}}
+						</td>
+						<td>		
+							{{hm85_an_nortr}}
+						</td>
+						<td>		
+							{{hl85_an_nortr}}
+						</td>
+						</tr>
+			</tbody>
+			<tbody>
+					<tr><td class="table-title">Jours de vagues de chaleur</td>
+						<td>		
+							{{pr_an_nortxhwd}}
+						</td>
+						<td>		
+							{{hp85_an_nortxhwd}}
+						</td>
+						<td>		
+							{{hm85_an_nortxhwd}}
+						</td>
+						<td>		
+							{{hl85_an_nortxhwd}}
+						</td>
+						</tr>
+			</tbody>
+		</table>
+      		
+		{{/insee_com}}
+		{{^insee_com}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur une commune -->
+				<h3 class="title-feature "></h3>		
+
+		<div class="no-data"><i>Cliquer sur une commune pour obtenir des informations.</i></div>
+	
+		{{/insee_com}}
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #1D1B35;
+  }
+
+  /*** Définir les paramètres des chiffres clés*/
+
+	/* Couleur - code HEX */ 
+	.numberkey {
+    	--mynumbercolor: #00936f; 
+  	}
+
+  	/** Définir les icônes des chiffres clés **/
+
+	/* Icône 1 - Lien vers l'îcone */
+	#iconnumber1{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/jours_ete.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/jours_ete.png);
+	 }
+	/* Icône 2 - Lien vers l'îcone */
+	#iconnumber2{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/nuit_tropicale.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/nuit_tropicale.png);
+	 }
+
+	/* Icône 3 - Lien vers l'îcone */
+	#iconnumber3{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/vague_chaleur.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/vague_chaleur.png);
+	 }	
+	/* Icône 4 - Lien vers l'îcone */
+	#iconnumber4{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/vague_chaleur.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/vague_chaleur.png);
+	 }
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	/* Moyenne des températures */
+	div.item {
+		/* To correctly align image, regardless of content height: */
+		vertical-align: top;
+		display: inline-block;
+		/* To horizontally center images and caption */
+		text-align: center;
+		/* The width of the container also implies margin around the images. */
+		width: 80px;
+    	margin-top: 10px; 
+    	margin-bottom: 2px; 
+	}
+	.subitem {
+		/* To correctly align image, regardless of content height: */
+		vertical-align: top;
+		display: inline-block;
+		/* To horizontally center images and caption */
+		text-align: center;
+		/* The width of the container also implies margin around the images. */
+		width: 80px;
+    	margin-bottom: 10px; 
+	}
+	.number-mean {
+    	color: #00936f;
+    	font-family:'roboto_bold';
+    	font-size:16px;   
+		width: 50px;
+		height: 50px;
+	}
+	.caption {
+		/* Make the caption a block so it occupies its own line. */
+		display: block;
+		font-family:'roboto_regular', Arial, Sans-serif;
+		color:#555;
+		font-size:12px;
+		width: 80px;
+	}
+	.number-year {		
+    	color: #bb2d33;
+    	font-family:'roboto_bold';
+    	font-size:12px;   
+	}
+	
+	/* Hover caption */
+	.caption .tooltipdef {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 160px;
+	    width: max-content;
+	}
+
+	.caption:hover .tooltipdef {
+		position: absolute;
+		visibility: visible;
+	}
+
+	/* Hover caption */
+	.caption .tooltipyear {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 170px;
+	    width: 80px;
+	}
+
+	.caption:hover .tooltipyear {
+		position: absolute;
+		visibility: visible;
+	}
+
+	/* Style du tableau */
+		
+	.table-title{
+		color:  #00936f; 
+		font-weight: bold; 
+		table-layout: fixed;
+		width: 10%;
+	}
+	table.table-temp { 
+		width: 95%; 
+		color: #555; 
+		border-collapse: collapse; 
+		font-size: 12px; /* Indique la taille de la police du texte */
+	}
+	table.table-temp th { 
+		background: #eee;  
+	}
+	table.table-temp td, th { 
+		padding: 2px; 
+		border: 1px solid #ccc; 
+		text-align: center; 		
+	}
+
+	/* Flèche et son hover */
+	.up {
+		position: relative;
+		left:5%;
+		width: 0px;
+		height: 0px;
+		border-style: inset;
+		border-width: 0 17px 30px 17px;
+		border-color: transparent transparent #bb2d33 transparent;
+		float: right;
+		transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		z-index: 1;
+		display:table-cell;
+	}
+
+	.up p {
+		font-size: 11px;
+		color: #FFFFFF;
+		top: 14px;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+
+	.up .tooltiptext {
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: black;
+		opacity: 70%;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: nowrap;
+
+		/* Position the tooltip */
+		position: relative;
+		z-index: 1;
+		top: -60px;
+		left: -207px;
+		transition-property: visibility;
+		transition-delay: 0.3s;
+	}
+
+	.up:hover .tooltiptext {
+		visibility: visible;
+		transition-delay: all 1s ease-in;
+	}
+
+	/* Hover number-feature */
+	.titlenumber-feature .tooltipdef {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		margin-left:-10px; 
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 90px;
+	    width: 220px;
+		left: -70px;
+	}
+
+	.titlenumber-feature:hover .tooltipdef {
+		position: absolute;
+		visibility: visible;
+	}
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+/* Chiffres clés */
+
+	.numberkey {
+    	margin-top: 10px; 
+    	height: 10px;   
+  	}
+
+	.zone-iconnumber{
+		padding:20px;
+	}
+	
+	#iconnumber1, #iconnumber2, #iconnumber3, #iconnumber4{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+
+	.number-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:30px;   
+		margin-top:10%;
+		margin-left:-10px;
+		display:table;  
+  	}
+
+  	.titlenumber-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:13px;
+    	line-height:1;
+		margin-left:-10px;
+ 	}
+
+	.subtitlenumber-feature{
+		font-size:11px;
+		color:#555;
+		margin-left:-10px;
+	}
+
+	/* Texte */
+
+	.title-feature {
+		color: var(--mycolor);
+	    font-family: 'roboto_bold', Arial, Sans-serif;
+	    font-size: 18px;
+	    margin-bottom: 7%;
+	    line-height: 1.2;
+	}
+	.subtitle-feature {
+		color: var(--mycolor);
+		font-family:'roboto_bold', Arial, Sans-serif;
+		font-size:16px;
+		margin-top:7%;
+		line-height:1;
+	}
+
+	.text-feature{
+		font-family:'roboto_regular', Arial, Sans-serif;
+		color:#555;
+		font-size:12px;
+		margin-top:5%;
+	}
+
+	/* Chart */
+  .Chart{
+		text-align: center; 
+		margin-bottom: 10%;
+	}
+
+  .textChart {
+      font-family:"roboto_regular";
+      font-size: 13px;
+      color:#777;
+      margin-top: 5px;
+      padding:2px;
+  }
+  
+  /* Clic hors territoire */
+
+  .no-data{
+      font-family:"roboto_regular";
+	  text-align:center;
+	  font-size: 13px;
+      color:#777;
+      margin-top: 5px;
+	  top:-50%;
+  }
+
+	/* Range */
+	.range {
+  		display: flex;
+  		justify-content: center;
+		position: relative;
+		margin-bottom: 15%;
+		text-align:center;
+	}
+	.range-data {
+		height: 25px;
+		width: 150px;
+		background-color: #00936f;
+		margin-left:2%;
+		margin-right:2%;
+	}
+	.range-slider{
+		position: absolute;
+		top:-2px;
+		height: 30px;
+		width: 5px;
+		background-color: #dcdcdc;
+	}
+
+	#range-feature1{
+		float:left;
+		color: var(--mycolor);
+		font-family:'roboto_bold', Arial, Sans-serif;
+		top:50%;
+		font-size:14px;
+	}
+	#range-feature2{
+		position: absolute;
+		top:-20px;
+		left:43%;
+		color: var(--mycolor);
+		font-family:'roboto_bold', Arial, Sans-serif;
+		font-size:14px;
+	}
+	#range-feature3{
+		float:right;
+		color: var(--mycolor);
+		font-family:'roboto_bold', Arial, Sans-serif;
+		font-size:14px;
+	}	
+
+	.range-feature{
+		position:relative;
+	}
+	
+	/* Hover range-slider */
+	.range-feature .tooltiptext {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 1;
+		top:20px;
+		left:-15px;
+	}
+
+	.range-feature:hover .tooltiptext {
+		visibility: visible;
+	}
+	/* Hover range-slider */
+	.range-slider .tooltiptext {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 1;
+		top:20px;
+		left:-15px;
+	}
+
+	.range-slider:hover .tooltiptext {
+		visibility: visible;
+	}
+	
+	
+</style>
+
+<script language="javascript"> 
+
+  ////// PARAMETRAGE DU GRAPHIQUE - JS///////
+
+  /// Récupération du insee_com de l'entité selectionnée 
+  var c_geo = [];
+        {{#features}}
+            c_geo.push('{{insee_com}}');
+        {{/features}}
+
+{{#features}}
+
+/// CHART BAR 1 - Création d'un diagramme bar
+
+  var graph_myChartBar1 = {};
+  graph_myChartBar1.getData = function () {
+    // Définition du code geo - ID
+    var code_geo = $("#myChartBar1_{{insee_com}}").attr("data-codegeo");
+    // Définition des variables du graphiques
+    var data = {myChartBar1_attr: {labels:["JAN","FEV","MAR","AVR","MAI","JUIN","JUIL","AOU","SEP","OCT","NOV","DEC"], data: 
+    {
+      datasets: [
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-4")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-5")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-6")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-7")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-8")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-9")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-10")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-11")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-12"))],
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-4")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-5")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-6")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-7")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-8")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-9")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-10")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-11")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-12"))],
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-4")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-5")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-6")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-7")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-8")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-9")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-10")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-11")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-12"))],
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-4")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-5")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-6")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-7")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-8")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-9")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-10")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-11")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarD-12"))],
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-4")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-5")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-6")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-7")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-8")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-9")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-10")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-11")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarE-12"))], 
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-4")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-5")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-6")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-7")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-8")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-9")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-10")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-11")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarF-12"))],       
+	    [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-4")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-5")),parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-6")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-7")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-8")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-9")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-10")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-11")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarG-12"))],       
+	  ]
+    }
+    }
+    };
+    // Création du graphique avec les paramètres définis
+    graph_myChartBar1.drawChart(data);
+  };    
+  
+  // Définition des paramètres du graphique
+  graph_myChartBar1.drawChart = function (data) {
+  var ctx = document.getElementById("myChartBar1_{{insee_com}}");
+  var myChart1 = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: data.myChartBar1_attr.labels,
+              datasets: [{                  
+                  label: "Période de référence (en °C)",
+                  borderColor: "#4DB259",
+                  backgroundColor: "#4DB259",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[0],
+              },
+              {
+                  label: "RCP 8.5, horizon 2050 (en °C)",
+                  borderColor: "#267AD9",
+                  backgroundColor: "#267AD9",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[2],
+              },
+              {
+                  label: "RCP 8.5, horizon 2070 (en °C)",
+                  borderColor: "#F20D0D",
+                  backgroundColor: "#F20D0D",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[4],
+              },
+              {
+                  label: "RCP 8.5, horizon 2100 (en °C)",
+                  borderColor: "#8c27f1",
+                  backgroundColor: "#8c27f1",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[6],
+              }]
+          },
+          options: {            
+            scales:{
+              yAxes:[{
+                  ticks:{
+                    min:0
+                  }
+                }]
+            },
+            responsive: true,
+            tooltips: {
+              callbacks: {
+				          // Label appraissant lors du survol de la souris sur le diagramme circulaire
+                  label: function(tooltipItem, data) {
+                      return parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString() + '°C en moyenne';
+                  }
+              }
+            }
+          }
+      });
+    };  
+
+    if  (typeof Chart === 'function') {
+       graph_myChartBar1.getData();
+  } else {
+      $.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function() {
+        graph_myChartBar1.getData();
+        
+      }); 
+  }
+
+{{/features}}
+</script>        

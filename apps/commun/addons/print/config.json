@@ -1,0 +1,25 @@
+{
+  "js": [
+    "js/print.js",
+    "lib/easydrag/jquery.easyDrag.min.js",
+    "lib/html2pdf/html2pdf.bundle.min.js"
+  ],
+  "css": "style.css",
+  "type": "module",
+  "html": "print.html",
+  "target": "page-content-wrapper",
+  "options": {
+    "mviewer": {
+      "print": {
+        "printLayouts": "apps/commun/addons/print/layouts/standard.json",
+        "ownerLogo": "https://observatoire.parc-naturel-normandie-maine.fr/img/ParcGeoparcUnesco_centered.jpg",
+        "ownerInfos": "Carte réalisée à partir d'une carte interactive du Parc et Géoparc Normandie-Maine"
+      },
+      "filter": {
+        "printLayouts": "apps/commun/addons/print/layouts/standard.json",
+        "ownerLogo": "https://observatoire.parc-naturel-normandie-maine.fr/img/ParcGeoparcUnesco_centered.jpg",
+        "ownerInfos": "Carte réalisée à partir d'une carte interactive du Parc et Géoparc Normandie-Maine"
+      }
+    }
+  }
+}

@@ -9,7 +9,8 @@
 <dc:subject>Parc Normandie Maine</dc:subject>
 <dc:date>2022-11-14T13:00:12.968Z</dc:date>
 </rdf:Description></rdf:RDF></metadata>
-<application    
+<application  
+    id="print"
     title="Remonter le temps sur le territoire du Parc et Géoparc Normandie-Maine"    
     logo=""    
     help="apps/remonter-le-temps/doc_remonter_le_temps.html" 
@@ -20,11 +21,15 @@
     fullscreen="true"> <!-- Fullscreen indique si la case "Plein écran" a été cochée lors de la sauvegarde du XML -->
 </application>
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-16656.4,6200926.3" zoom="17" maxextent="-149630.63669321573,6084333.249142119,129823.13871738865,6298356.928340613"/>
-<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> <!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<!-- Extension permettant l'ajout du bouton "Plein écran" -->
+<extensions>
+<extension type="component" id="fullscreen" path="apps/commun/addons"/>
+<extension type="component" id="print" path="apps/commun/addons"/>
+</extensions> 
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="true" features="true" static="false" animate="true"/>
 <baselayers style="gallery"> 
-    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Fond de carte Photographies aériennes IGN" type="WMTS" url="https://data.geopf.fr/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="Photographies aériennes : &lt;a href='https://geoservices.ign.fr/services-web-experts' target='_blank'&gt;&lt;img src='img/logo/geoservices.png'&gt;&lt;/a&gt;" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMS" url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/wms?" layers="HR.ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"></baselayer> 
 </baselayers> <!-- Un fond de carte est pour cette carte pas nécessaire. Cependant il est impératif de donner un fond de carte. La visibilité est mise sur "false" afin de ne pas afficher le changeur de fond de carte. -->
 <themes mini="true" legendmini="false">
         <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->

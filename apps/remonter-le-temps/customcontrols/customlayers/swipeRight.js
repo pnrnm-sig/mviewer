@@ -43,7 +43,7 @@ mviewer.customLayers.swipeRight = (function () {
       } else if (annee === 'carte_1950') {
         var anneeCouche = "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950";
       } else if (annee === 'carte_actuelle') {
-        var anneeCouche = "PLAN-IGN_PNG";
+        var anneeCouche = "GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2";
       }
       _rasterSource.updateParams({LAYERS: 'carteetdonnees:'+anneeCouche});
     };

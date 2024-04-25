@@ -23,12 +23,20 @@ const defaultTemplate = ({
   const colGrid = row ? `grid-column:${col}` : "";
 
   const pluginsOption = getOptions();
-
+  const datetoday = new Date();
+  const shareURL =  mviewer.setPermalink();
   const ownerInfos = `
-    <div>
-    <p class="small">${pluginsOption?.ownerInfos || ""}</p>
-    <img src="${pluginsOption?.ownerLogo || ""}"/>
-    <div/>
+    <div id="ownerInfos-parent">
+      <div id="ownerInfos-logo">
+        <img src="${pluginsOption?.ownerLogo || ""}"/></br>
+      </div>
+      <div id="ownerInfos-text">
+        <p class="small">${pluginsOption?.ownerInfos || ""}</p>
+        <p class="small">Date d'export : ${datetoday?.getUTCDate() || ""}/${datetoday?.getUTCMonth()+1 || ""}/${datetoday?.getFullYear() || ""}</p>
+        <p class="small">Contact SIG : sig@parc-normandie-maine.fr</p>
+        <p class="small"> Retrouvez toutes les cartes sur : parc-naturel-normandie-maine.fr/cartotheque.html</p>
+      </div>
+    </div>
   `;
 
   let divByType = "";

@@ -27,7 +27,7 @@ export const defaultBlocksInfos = {
   comments: {
     title: "Commentaires",
     col: "2 / 7",
-    placeHolder: "Aucun commentaire",
+    placeHolder: `Aucun commentaire.`,
     type: "text",
     zindex: 3,
   },

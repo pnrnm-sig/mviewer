@@ -12,8 +12,13 @@
     "mviewer": {
       "print": {
         "printLayouts": "apps/commun/addons/print/layouts/standard.json",
-        "ownerLogo": "https://www.parc-naturel-normandie-maine.fr/web/images/ParcGeoparc2020_LogoRVB.svg",
-        "ownerInfos": "Cette carte a été réalisée à partir d'une carte interactive du Parc et Géoparc Normandie-Maine"
+        "ownerLogo": "https://observatoire.parc-naturel-normandie-maine.fr/img/ParcGeoparcUnesco_centered.jpg",
+        "ownerInfos": "Carte réalisée à partir d'une carte interactive du Parc et Géoparc Normandie-Maine"
+      },
+      "filter": {
+        "printLayouts": "apps/commun/addons/print/layouts/standard.json",
+        "ownerLogo": "https://observatoire.parc-naturel-normandie-maine.fr/img/ParcGeoparcUnesco_centered.jpg",
+        "ownerInfos": "Carte réalisée à partir d'une carte interactive du Parc et Géoparc Normandie-Maine"
       }
     }
   }

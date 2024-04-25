@@ -9,11 +9,11 @@
  * */
 const defaultOptions = {
   margin: [0, 4],
-  filename: "mviewerMap.pdf",
+  filename: "impression-carte.pdf",
   // See official doc for more type and quality options :
   // https://ekoopmans.github.io/html2pdf.js/#image-type-and-quality
-  image: { type: "jpeg", quality: 1 },
-  html2canvas: { scale: 1, useCORS: true },
+  image: { type: "jpeg", quality: 0.99 },
+  html2canvas: { scale: 4, useCORS: true },
   // format could be string as "A4"
   // or an array with custom values [595.28, 841.89] in unit specified
   jsPDF: { unit: "mm", format: "A4", orientation: "landscape" },
@@ -93,7 +93,7 @@ export const displayAsPng = (options) => {
       // window.open(pdf.output("bloburl"), "_blank");
       var download = document.createElement("a");
       download.href = img.src;
-      download.download = "mviewer-print.png";
+      download.download = "impression-carte.png";
       download.click();
       element.classList.remove("print");
       element.classList.remove("a4-portrait");

@@ -4,38 +4,38 @@
     "northUrl": "apps/commun/addons/print/img/NorthArrow.png",
     "landscape": true,
     "grid": {
-      "rows": "6",
+      "rows": "8",
       "col": "6"
     },
     "items": {
       "mapPrint": {
-        "row": "2/6",
+        "row": "2/8",
         "col": "1/5"
       },
       "informations": {
-        "title": "Informations",
-        "row": "6/7",
-        "col": "1/2",
+        "title": "Crédits",
+        "row": "8/8",
+        "col": "1/3",
         "type": "informations"
       },
       "comments": {
-        "row": "6/7",
-        "col": "2/7",
+        "row": "8/8",
+        "col": "3/6",
         "type": "text"
       },
       "legend": {
-        "row": "2/6",
+        "row": "2/8",
         "col": "5/7",
         "type": "legend"
       },
       "title": {
         "row": "1/2",
-        "col": "1/6",
+        "col": "1/7",
         "type": "text"
       },
       "qrcode": {
+        "row": "8/8",
         "col": "6/6",
-        "row": "1/2",
         "type": "qrcode",
         "title": "Partage",
         "placeholder": "",
@@ -49,38 +49,38 @@
     "northUrl": "apps/commun/addons/print/img/NorthArrow.png",
     "landscape": false,
     "grid": {
-      "rows": "6",
+      "rows": "8",
       "col": "6"
     },
     "items": {
       "mapPrint": {
-        "row": "2/6",
+        "row": "2/8",
         "col": "1/5"
       },
       "informations": {
-        "title": "Informations",
-        "row": "6/7",
-        "col": "1/2",
+        "title": "Crédits",
+        "row": "8/8",
+        "col": "1/4",
         "type": "informations"
       },
       "comments": {
-        "row": "6/7",
-        "col": "2/7",
+        "row": "8/8",
+        "col": "4/6",
         "type": "text"
       },
       "legend": {
-        "row": "2/6",
+        "row": "2/8",
         "col": "5/7",
         "type": "legend"
       },
       "title": {
         "row": "1/2",
-        "col": "1/6",
+        "col": "1/8",
         "type": "text"
       },
       "qrcode": {
+        "row": "8/8",
         "col": "6/6",
-        "row": "1/2",
         "type": "qrcode",
         "title": "Partage",
         "placeholder": "",

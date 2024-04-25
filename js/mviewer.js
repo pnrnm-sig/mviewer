@@ -2369,7 +2369,7 @@ mviewer = (function () {
       $("#permalinklink").attr("href", url).attr("target", "_blank");
       $("#permaqr").attr(
         "src",
-        "http://chart.apis.google.com/chart?cht=qr&chs=140x140&chl=" +
+        "http://api.qrserver.com/v1/create-qr-code/?size=140x140&data=" +
           encodeURIComponent(url)
       );
       return url;

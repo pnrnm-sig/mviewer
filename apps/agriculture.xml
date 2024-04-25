@@ -10,6 +10,7 @@
 <dc:date>2022-09-27T10:08:28.263Z</dc:date>
 </rdf:Description></rdf:RDF></metadata>
 <application
+    id="print"
     title="L'évolution de l'agriculture sur le Parc et Géoparc Normandie-Maine"
     logo=""    
     help="apps/agriculture/doc_carte_agriculture.html"    
@@ -26,15 +27,18 @@
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-25003.74898791354,6185045.088741366" zoom="9" maxextent="-209877.4580,6009930.9516,200009.2689,9002292.7061"/>
 
 <!-- Extension permettant l'ajout du bouton "Plein écran" -->
-<extensions><extension type="component" id="fullscreen" path="apps/commun/addons"/></extensions> 
+<extensions>
+<extension type="component" id="fullscreen" path="apps/commun/addons"/>
+<extension type="component" id="print" path="apps/commun/addons"/>
+</extensions> 
 <!-- Barre de recherche -->
 <olscompletion type="ban" url="https://api-adresse.data.gouv.fr/search/" attribution="La recherche d'adresse est un service proposé par la BAN" />
 <searchparameters bbox="false" localities="false" features="true" static="false" animate="true"/>
 
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
-    <baselayer visible="false" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://data.geopf.fr/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
-    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://data.geopf.fr/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+    <baselayer visible="false" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMS" url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/wms?" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"></baselayer> 
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMS" url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/wms?" layers="HR.ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"></baselayer> 
 </baselayers>
 <themes mini="false">
     <theme id="theme-20220510132910" name="Orientation agricole des communes" collapsed="false" icon="fas fa-layer-group">

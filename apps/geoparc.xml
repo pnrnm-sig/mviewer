@@ -27,12 +27,14 @@
 
 <!-- Zoom de la carte, étendue de la carte -->
 <!-- <mapoptions maxzoom="20" projection="EPSG:3857" center="-39538.94496047902,6179048.932278912" zoom="10" maxextent="-259630.63669321573,6084333.249142119,209823.13871738865,6298356.928340613"/> -->
-<mapoptions maxzoom="20" projection="EPSG:3857" center="-65003.74898791354,6185045.088741366" zoom="10"  maxextent="-209877.4580,6009930.9516,100009.2689,9002292.7061"/>
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-65003.74898791354,6185045.088741366" zoom="10" maxextent="-309877.4580,6009930.9516,200009.2689,9002292.7061"/>
 
 <!-- Extensions ajoutées à la carte -->
 <extensions>
     <!-- Extension permettant l'ajout du bouton "Plein écran" -->
     <extension type="component" id="fullscreen" path="apps/commun/addons"/>
+    <!-- Extension permettant l'impression d'une carte -->
+    <extension type="component" id="print" path="apps/commun/addons"/>
     <!-- Extension permettant l'ajout de la fonctionnalité filtre, le chemin vers les fichiers de paramétrage du filtre est indiqué avec "path" -->
     <extension type="component" id="filter" path="apps/commun/addons"/>
 </extensions> 
@@ -43,8 +45,8 @@
 <!-- Fonds de carte -->
 <baselayers style="gallery">  
     <baselayer visible="true" id="positron" thumbgallery="img/basemap/positron.png" title="CartoDb" label="Fond de carte Positron" type="OSM" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution="Fond de carte par  &lt;a href='https://cartodb.com/attributions'target='_blank'>CartoDb&lt;/a>, sous  &lt;a href='https://creativecommons.org/licenses/by/3.0/'target='_blank'>CC BY 3.0 &lt;/a>"  ></baselayer> 
-    <baselayer  visible="false" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMTS" opacity="0.8" url="https://data.geopf.fr/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
-    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMTS" url="https://data.geopf.fr/wmts?" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"  ></baselayer> 
+    <baselayer visible="false" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" type="WMS" url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/wms?" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"></baselayer> 
+    <baselayer visible="false" id="ortho_ign" thumbgallery="img/basemap/ortho_2022.jpg" title="IGN" label="Photographies aériennes IGN" type="WMS" url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/wms?" layers="HR.ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" fromcapacity="false" attribution="&lt;a href='https://www.ign.fr/geoplateforme' target='_blank'>Géoplateforme&lt;/a>" style="normal" matrixset="PM" maxzoom="22"></baselayer> 
 </baselayers>
 <!-- Themes correspond au panneau de couche qui peut être ouvert avec l'icône de menu hamburger -->
 <themes mini="true" legendmini="false">   

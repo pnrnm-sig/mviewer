@@ -1,0 +1,743 @@
+<!-- *** TEMPLATE 5.2 / GRAPH DIAGRAMME CIRCULAIRE / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="item scrollbar-hidden" style="width: inherit;padding: 0px 10px 0px 0px;">
+		{{#siren_epci}}
+		<!-- Ce qu'il faut afficher si l'utilisateur clique sur une des EPCI du Parc -->
+		{{#modelisation}}
+		<h3 class="title-feature ">{{nom}}</h3>
+
+		<!-- Chart Pie-->
+		<h4 class="subtitle-feature">Répartition des évolutions du climat</h4>
+		<div class="Chart">
+			<div id="idChart">
+				{{! Graphique circulaire évolution du climat }}
+				<canvas class="chart" id="ChartPie_{{siren_epci}}" data-codegeo="{{siren_epci}}"
+					data-ChartPie-1="{{evo45oceanique}}" data-ChartPie-2="{{evo45danubien}}"
+					data-ChartPie-3="{{evo45charente}}" data-ChartPie-4="{{evo45mediterr}}" 
+					width="120"	height="90"></canvas>
+			</div>
+			<div class="textChart">
+				{{! Message qui apparaît lorsqu'une des deux valeurs est NULL pour l'année concernée }}
+				<div class="title-chart">Il n'y a pas de données disponibles.</div>
+				{{! Précision en italique }}
+				<div class="subtitle-chart"><i>Pour l'EPCI sélectionné</i></div>
+			</div>
+		</div>
+		<!-- ./Chart Pie-->
+
+		<!-- Mixed Bar Chart 1-->
+		<h4 class="subtitle-feature">Diagramme ombrothermique</h4>
+		<button id="btn_pr" class="btn_periode periode-active" onclick="showhide_pr()"><span>Période de
+				référence</span></button>
+		<button id="btn_hl45" class="btn_periode" onclick="showhide_hl45()"><span>Horizon 2100</span></button>
+		<div class="Chart" id="pr">
+			<div id="idChart">
+				<canvas class="chart" id="MixedBar1_{{siren_epci}}" data-codegeo="{{siren_epci}}"
+					data-MixedBarA-1="{{preci_pr_01_mean}}" data-MixedBarA-2="{{preci_pr_02_mean}}"
+					data-MixedBarA-3="{{preci_pr_03_mean}}" data-MixedBarA-4="{{preci_pr_04_mean}}"
+					data-MixedBarA-5="{{preci_pr_05_mean}}" data-MixedBarA-6="{{preci_pr_06_mean}}"
+					data-MixedBarA-7="{{preci_pr_07_mean}}" data-MixedBarA-8="{{preci_pr_08_mean}}"
+					data-MixedBarA-9="{{preci_pr_09_mean}}" data-MixedBarA-10="{{preci_pr_10_mean}}"
+					data-MixedBarA-11="{{preci_pr_11_mean}}" data-MixedBarA-12="{{preci_pr_12_mean}}"
+					data-MixedBarB-1="{{temp_pr_01_mean}}" data-MixedBarB-2="{{temp_pr_02_mean}}"
+					data-MixedBarB-3="{{temp_pr_03_mean}}" data-MixedBarB-4="{{temp_pr_04_mean}}"
+					data-MixedBarB-5="{{temp_pr_05_mean}}" data-MixedBarB-6="{{temp_pr_06_mean}}"
+					data-MixedBarB-7="{{temp_pr_07_mean}}" data-MixedBarB-8="{{temp_pr_08_mean}}"
+					data-MixedBarB-9="{{temp_pr_09_mean}}" data-MixedBarB-10="{{temp_pr_10_mean}}"
+					data-MixedBarB-11="{{temp_pr_11_mean}}" data-MixedBarB-12="{{temp_pr_12_mean}}" 
+					width="80" height="120"></canvas>
+			</div>
+		</div>
+		<!-- ./Mixed Bar Chart 1-->
+
+		<!-- Mixed Bar Chart 2-->
+		<div class="Chart" id="hl45">
+			<div id="idChart">
+				<canvas class="chart" id="MixedBar2_{{siren_epci}}" data-codegeo="{{siren_epci}}"
+					data-MixedBarC-1="{{preci_hl45_01_mean}}" data-MixedBarC-2="{{preci_hl45_02_mean}}"
+					data-MixedBarC-3="{{preci_hl45_03_mean}}" data-MixedBarC-4="{{preci_hl45_04_mean}}"
+					data-MixedBarC-5="{{preci_hl45_05_mean}}" data-MixedBarC-6="{{preci_hl45_06_mean}}"
+					data-MixedBarC-7="{{preci_hl45_07_mean}}" data-MixedBarC-8="{{preci_hl45_08_mean}}"
+					data-MixedBarC-9="{{preci_hl45_09_mean}}" data-MixedBarC-10="{{preci_hl45_10_mean}}"
+					data-MixedBarC-11="{{preci_hl45_11_mean}}" data-MixedBarC-12="{{preci_hl45_12_mean}}"
+					data-MixedBarD-1="{{temp_hl45_01_mean}}" data-MixedBarD-2="{{temp_hl45_02_mean}}"
+					data-MixedBarD-3="{{temp_hl45_03_mean}}" data-MixedBarD-4="{{temp_hl45_04_mean}}"
+					data-MixedBarD-5="{{temp_hl45_05_mean}}" data-MixedBarD-6="{{temp_hl45_06_mean}}"
+					data-MixedBarD-7="{{temp_hl45_07_mean}}" data-MixedBarD-8="{{temp_hl45_08_mean}}"
+					data-MixedBarD-9="{{temp_hl45_09_mean}}" data-MixedBarD-10="{{temp_hl45_10_mean}}"
+					data-MixedBarD-11="{{temp_hl45_11_mean}}" data-MixedBarD-12="{{temp_hl45_12_mean}}" 
+					width="80" height="120"></canvas>
+			</div>
+		</div>
+		<!-- ./Mixed Bar Chart 2-->
+
+		<!-- Stacked Bar Chart-->
+		<h4 class="subtitle-feature">Répartition des évolutions du climat par période et par scénario</h4>
+		<div class="Chart">
+			<div id="idChart">
+				<canvas class="chart" id="StackedBar_{{siren_epci}}" data-codegeo="{{siren_epci}}"
+					data-StackedBarA-1="{{pr_oceanique}}" data-StackedBarA-2="{{hp45_oceanique}}"
+					data-StackedBarA-3="{{hp85_oceanique}}" data-StackedBarA-4="{{hm45_oceanique}}"
+					data-StackedBarA-5="{{hm85_oceanique}}" data-StackedBarA-6="{{hl45_oceanique}}"
+					data-StackedBarA-7="{{hl85_oceanique}}" data-StackedBarB-1="{{pr_danubien}}"
+					data-StackedBarB-2="{{hp45_danubien}}" data-StackedBarB-3="{{hp85_danubien}}"
+					data-StackedBarB-4="{{hm45_danubien}}" data-StackedBarB-5="{{hm85_danubien}}"
+					data-StackedBarB-6="{{hl45_danubien}}" data-StackedBarB-7="{{hl85_danubien}}"
+					data-StackedBarC-1="{{pr_charente}}" data-StackedBarC-2="{{hp45_charente}}"
+					data-StackedBarC-3="{{hp85_charente}}" data-StackedBarC-4="{{hm45_charente}}"
+					data-StackedBarC-5="{{hm85_charente}}" data-StackedBarC-6="{{hl45_charente}}"
+					data-StackedBarC-7="{{hl85_charente}}" data-StackedBarD-1="{{pr_mediterr}}"
+					data-StackedBarD-2="{{hp45_mediterr}}" data-StackedBarD-3="{{hp85_mediterr}}"
+					data-StackedBarD-4="{{hm45_mediterr}}" data-StackedBarD-5="{{hm85_mediterr}}"
+					data-StackedBarD-6="{{hl45_mediterr}}" data-StackedBarD-7="{{hl85_mediterr}}" 
+					width="80" height="120"></canvas>
+			</div>
+		</div>
+		<!-- ./Stacked Bar Chart-->
+		{{/modelisation}}
+		{{^modelisation}}
+		<!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur un EPCI non modélisé -->
+		<h3 class="title-feature ">{{nom}}</h3>
+
+		<div class="no-data"><i>La CA Mont-Saint-Michel-Normandie n'a pas fait l'objet de la modélisation des
+				précipitations dû au territoire littoral de l'EPCI qui nécessite la prise en compte de facteurs
+				supplémentaires.</i></div>
+
+		{{/modelisation}}
+		{{/siren_epci}}
+		{{^siren_epci}}
+		<!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur un EPCI -->
+		<h3 class="title-feature "></h3>
+
+		<div class="no-data"><i>Cliquer sur un EPCI pour obtenir des informations.</i></div>
+
+		{{/siren_epci}}
+	</li>
+{{/features}}
+
+<style>
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #1D1B35;
+	}
+
+	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+
+	div.item {
+		/* To correctly align image, regardless of content height: */
+		vertical-align: top;
+		display: inline-block;
+		/* To horizontally center images and caption */
+		text-align: center;
+		/* The width of the container also implies margin around the images. */
+		width: 120px;
+		margin-top: 10px;
+		margin-bottom: 2px;
+		margin-left: 25%;
+		margin-right: 25%;
+	}
+
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+
+	.scrollbar-hidden {
+		-ms-overflow-style: none;
+		/* IE and Edge */
+		scrollbar-width: none;
+		/* Firefox */
+	}
+
+	/* Texte */
+	.title-feature {
+		color: var(--mycolor);
+		font-family: 'roboto_bold', Arial, Sans-serif;
+		font-size: 18px;
+		margin-bottom: 7%;
+		line-height: 1.2;
+	}
+
+	.subtitle-feature {
+		color: var(--mycolor);
+		font-family: 'roboto_bold', Arial, Sans-serif;
+		font-size: 16px;
+		margin-top: 7%;
+		line-height: 1;
+	}
+
+	/* Chart */
+	.Chart {
+		text-align: center;
+		margin-bottom: 10%;
+	}
+
+	.textChart {
+		font-family: "roboto_regular";
+		font-size: 13px;
+		color: #777;
+		margin-top: 5px;
+		padding: 2px;
+	}
+
+	.no-data {
+		font-family: "roboto_regular";
+		text-align: center;
+		font-size: 13px;
+		color: #777;
+		margin-top: 5px;
+		top: -50%;
+	}
+
+	.btn_periode {
+		font-weight: 0;
+		font-size: 11px;
+		color: #000;
+		background-color: #fff;
+		padding: 5px 15px;
+		border: none;
+		box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+		border-radius: 50px;
+		transition: 500ms;
+		transform: translateY(0);
+		flex-direction: row;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	.btn_periode:hover {
+		transition: 500ms;
+		padding: 5px 15px;
+		transform: translateY(-0px);
+		background-color: #6e6e6e70;
+		color: #000;
+		border: none;
+
+	}
+
+	.btn_periode:focus {
+		font-weight: 0;
+		font-size: 11px;
+		color: #000;
+		background-color: #6e6e6e70;
+		padding: 5px 15px;
+		border: none;
+		box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+		border-radius: 50px;
+		transition: 500ms;
+		transform: translateY(0);
+		flex-direction: row;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	.periode-active {
+		font-weight: 0;
+		font-size: 11px;
+		color: #000;
+		background-color: #6e6e6e70;
+		padding: 5px 15px;
+		border: none;
+		box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+		border-radius: 50px;
+		transition: 500ms;
+		transform: translateY(0);
+		flex-direction: row;
+		align-items: center;
+		cursor: pointer;
+	}
+
+
+	#btn_pr #btn_hl45 {
+		display: inline-block;
+	}
+
+	#hl45 {
+		display: none;
+	}
+
+</style>
+
+<script language="javascript"> 
+
+  ////// PARAMETRAGE DU GRAPHIQUE - JS///////
+
+  /// Récupération du siren_epci de l'entité selectionnée 
+  var c_geo = [];
+        {{#features}}
+            c_geo.push('{{siren_epci}}');
+        {{/features}}
+
+{{#features}}
+
+/// CHART 1 - Création d'un diagramme circulaire
+var graph_ChartPie = {};
+graph_ChartPie.getData = function () {
+	// Définition du code geo - ID
+	var siren_epci = $("#ChartPie_{{siren_epci}}").attr("data-codegeo");
+	// Définition des variables du graphique
+	var data = {
+		ChartPie_attr: {
+			labels: ["Climat océanique", "Climat danubien", "Climat charentais", "Climat méditerranéen"],
+			data: {
+				datasets: [
+					[parseFloat($("#ChartPie_{{siren_epci}}").attr("data-ChartPie-1")), parseFloat($("#ChartPie_{{siren_epci}}").attr("data-ChartPie-2")), parseFloat($("#ChartPie_{{siren_epci}}").attr("data-ChartPie-3")), parseFloat($("#ChartPie_{{siren_epci}}").attr("data-ChartPie-4"))]
+				]
+			}
+		}
+	};
+
+	function checkforData(array) {
+		var arrayOfElements = document.getElementsByClassName('textChart');
+		var lengthOfArray = arrayOfElements.length;
+		// Si toutes les valeurs sont égales à NaN
+		if (isNaN(parseFloat(array))) {
+			return;
+
+		} else {
+			// Si aucune valeur est égale à NaN
+			for (var i = 0; i < lengthOfArray; i++) {
+				// Création du graphique avec les paramètres définis
+				graph_ChartPie.drawChart(data);
+				// Ne pas afficher le message d'abscence de données
+				arrayOfElements[i].style.display = 'none';
+			}
+		}
+	}
+
+	checkforData(data.ChartPie_attr.data.datasets[0])
+
+};
+
+// Définition des paramètres du graphique
+graph_ChartPie.drawChart = function (data) {
+	var ctx = document.getElementById("ChartPie_{{siren_epci}}");
+	var chart = new Chart(ctx, {
+		type: 'pie',
+		data: {
+			labels: data.ChartPie_attr.labels,
+			datasets: [{
+				label: "%",
+				data: data.ChartPie_attr.data.datasets[0],
+				// Couleurs de fond du diagramme
+				backgroundColor: [
+					"#0fb70f",
+					"#254525",
+					"#efc164",
+					"#f6f67c",
+				],
+				// Couleurs du diagramme lors du survol de la souris
+				hoverBackgroundColor: [
+					"#0fb70f",
+					"#254525",
+					"#efc164",
+					"#f6f67c",
+				],
+				borderWidth: 3
+			}]
+		},
+		options: {
+			responsive: true,
+			tooltips: {
+				callbacks: {
+					// Label appraissant lors du survol de la souris sur le diagramme circulaire
+					label: function (tooltipItem, data) {
+						return parseFloat(data.datasets[0].data[tooltipItem.index]).toFixed(0).toLocaleString() + '% de ' + data.labels[tooltipItem.index].toLowerCase();
+					}
+				}
+			}
+		}
+	});
+};
+if (typeof Chart === 'function') {
+	graph_ChartPie.getData();
+} else {
+	$.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function () {
+		graph_ChartPie.getData();
+	});
+}
+
+/// MIXED BAR 1 - Création d'un diagramme bar avec ligne
+var graph_MixedBar1 = {};
+graph_MixedBar1.getData = function () {
+	// Définition du code geo - ID
+	var code_geo = $("#MixedBar1_{{siren_epci}}").attr("data-codegeo");
+	// Définition des variables du graphiques
+	var data = {
+		MixedBar1_attr: {
+			labels: ["JAN", "FEV", "MAR", "AVR", "MAI", "JUIN", "JUIL", "AOU", "SEP", "OCT", "NOV", "DEC"],
+			data: {
+				datasets: [
+					[parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-1")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-2")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-3")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-4")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-5")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-6")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-7")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-8")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-9")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-10")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-11")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarA-12"))],
+					[parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-1")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-2")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-3")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-4")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-5")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-6")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-7")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-8")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-9")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-10")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-11")), parseFloat($("#MixedBar1_{{siren_epci}}").attr("data-MixedBarB-12"))],
+				]
+			}
+		}
+	};
+	// Création du graphique avec les paramètres définis
+	graph_MixedBar1.drawChart(data);
+};
+
+// Définition des paramètres du graphique
+graph_MixedBar1.drawChart = function (data) {
+	var ctx = document.getElementById("MixedBar1_{{siren_epci}}").getContext("2d");;
+	var chart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: data.MixedBar1_attr.labels,
+			datasets: [{
+					type: 'line',
+					yAxisID: 'ytemp',
+					label: 'Températures (en °C)',
+					data: data.MixedBar1_attr.data.datasets[1],
+					borderColor: "#d43535",
+					backgroundColor: "#d43535",
+					fill: false,
+					lineTension: 0.1,
+					// this dataset is drawn on top
+					order: 2
+				},
+				{
+					type: 'bar',
+					yAxisID: 'ypreci',
+					label: "Précipitations (en mm)",
+					borderColor: "#267ad9",
+					backgroundColor: "#267ad9",
+					data: data.MixedBar1_attr.data.datasets[0],
+					// this dataset is drawn below
+					order: 1
+				},
+				{
+					type: 'line',
+					yAxisID: 'ytemp',
+					data: data.MixedBar1_attr.data.datasets[1],
+					borderColor: "#FFFF60",
+					backgroundColor: "#FFFF60",
+					fill: true,
+					lineTension: 0.1,
+					// this dataset is drawn on top
+					order: 0
+				}
+			]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					id: 'ypreci',
+					type: 'linear',
+					position: 'left',
+					ticks: {
+						min: 0,
+						max: 100
+					}
+				}, {
+					id: 'ytemp',
+					type: 'linear',
+					position: 'right',
+					ticks: {
+						min: 0,
+						max: 50
+					}
+				}],
+				xAxes: [{
+					categoryPercentage: 1.1,
+					barPercentage: 1.1
+				}],
+			},
+			responsive: true,
+			tooltips: {
+				callbacks: {
+					// Label appraissant lors du survol de la souris sur l'histogramme
+					label: function (tooltipItem, data) {
+						// if line chart
+						if (tooltipItem.datasetIndex === 0) return parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString() + '°C en moyenne';
+						// if bar chart
+						else if (tooltipItem.datasetIndex === 1) return parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString() + ' mm en moyenne';
+					}
+				}
+			},
+			legend: {
+				display: true,
+				labels: {
+					filter: function (legendItem, chartData) {
+						return (chartData.datasets[legendItem.datasetIndex].label)
+					},
+				}
+			},
+		}
+	});
+};
+
+if (typeof Chart === 'function') {
+	graph_MixedBar1.getData();
+} else {
+	$.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function () {
+		graph_MixedBar1.getData();
+
+	});
+}
+
+/// MIXED BAR 2 - Création d'un diagramme bar avec ligne
+var graph_MixedBar2 = {};
+graph_MixedBar2.getData = function () {
+	// Définition du code geo - ID
+	var code_geo = $("#MixedBar2_{{siren_epci}}").attr("data-codegeo");
+	// Définition des variables du graphiques
+	var data = {
+		MixedBar2_attr: {
+			labels: ["JAN", "FEV", "MAR", "AVR", "MAI", "JUIN", "JUIL", "AOU", "SEP", "OCT", "NOV", "DEC"],
+			data: {
+				datasets: [
+					[parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-1")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-2")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-3")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-4")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-5")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-6")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-7")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-8")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-9")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-10")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-11")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarC-12"))],
+					[parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-1")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-2")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-3")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-4")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-5")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-6")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-7")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-8")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-9")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-10")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-11")), parseFloat($("#MixedBar2_{{siren_epci}}").attr("data-MixedBarD-12"))],
+				]
+			}
+		}
+	};
+	// Création du graphique avec les paramètres définis
+	graph_MixedBar2.drawChart(data);
+};
+
+// Définition des paramètres du graphique
+graph_MixedBar2.drawChart = function (data) {
+	var ctx = document.getElementById("MixedBar2_{{siren_epci}}").getContext("2d");;
+	var chart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: data.MixedBar2_attr.labels,
+			datasets: [{
+					type: 'line',
+					yAxisID: 'ytemp',
+					label: 'Températures (en °C)',
+					data: data.MixedBar2_attr.data.datasets[1],
+					borderColor: "#d43535",
+					backgroundColor: "#d43535",
+					fill: false,
+					lineTension: 0.1,
+					// this dataset is drawn on top
+					order: 2
+				},
+				{
+					type: 'bar',
+					yAxisID: 'ypreci',
+					label: "Précipitations (en mm)",
+					borderColor: "#267ad9",
+					backgroundColor: "#267ad9",
+					data: data.MixedBar2_attr.data.datasets[0],
+					// this dataset is drawn below
+					order: 1
+				},
+				{
+					type: 'line',
+					yAxisID: 'ytemp',
+					data: data.MixedBar2_attr.data.datasets[1],
+					borderColor: "#FFFF60",
+					backgroundColor: "#FFFF60",
+					fill: true,
+					lineTension: 0.1,
+					// this dataset is drawn below
+					order: 0
+				}
+			]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					id: 'ypreci',
+					type: 'linear',
+					position: 'left',
+					ticks: {
+						min: 0,
+						max: 100
+					}
+				}, {
+					id: 'ytemp',
+					type: 'linear',
+					position: 'right',
+					ticks: {
+						min: 0,
+						max: 50
+					}
+				}],
+				xAxes: [{
+					categoryPercentage: 1.1,
+					barPercentage: 1.1
+				}],
+			},
+			responsive: true,
+			tooltips: {
+				callbacks: {
+					// Label appraissant lors du survol de la souris sur l'histogramme
+					label: function (tooltipItem, data) {
+						// if line chart
+						if (tooltipItem.datasetIndex === 0) return parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString() + '°C en moyenne';
+						// if bar chart
+						else if (tooltipItem.datasetIndex === 1) return parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString() + ' mm en moyenne';
+					}
+				}
+			},
+			legend: {
+				display: true,
+				labels: {
+					filter: function (legendItem, chartData) {
+						return (chartData.datasets[legendItem.datasetIndex].label)
+					},
+				}
+			},
+		}
+	});
+};
+
+if (typeof Chart === 'function') {
+	graph_MixedBar2.getData();
+} else {
+	$.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function () {
+		graph_MixedBar2.getData();
+
+	});
+}
+
+
+/// CHART STACKED BAR - Création d'un diagramme bar empilable
+var graph_StackedBar = {};
+graph_StackedBar.getData = function () {
+	// Définition du code geo - ID
+	var code_geo = $("#StackedBar_{{siren_epci}}").attr("data-codegeo");
+	// Définition des variables du graphiques
+	var data = {
+		StackedBar_attr: {
+			labels: ["Période de référence", "Horizon proche RCP 4.5", "Horizon proche RCP 8.5", "Horizon moyen RCP 4.5", "Horizon proche RCP 8.5", "Horizon lointain RCP 4.5", "Horizon lointain RCP 8.5"],
+			data: {
+				datasets: [
+					[parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarA-1")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarA-2")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarA-3")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarA-4")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarA-5")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarA-6")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarA-7"))],
+					[parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarB-1")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarB-2")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarB-3")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarB-4")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarB-5")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarB-6")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarB-7"))],
+					[parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarC-1")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarC-2")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarC-3")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarC-4")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarC-5")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarC-6")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarC-7"))],
+					[parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarD-1")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarD-2")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarD-3")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarD-4")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarD-5")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarD-6")), parseFloat($("#StackedBar_{{siren_epci}}").attr("data-StackedBarD-7"))]
+				]
+			}
+		}
+	};
+	// Création du graphique avec les paramètres définis
+	graph_StackedBar.drawChart(data);
+};
+
+// Définition des paramètres du graphique
+graph_StackedBar.drawChart = function (data) {
+	var ctx = document.getElementById("StackedBar_{{siren_epci}}");
+	var chart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: data.StackedBar_attr.labels,
+			datasets: [{
+					label: "Climat océanique",
+					borderColor: "#0fb70f",
+					backgroundColor: "#0fb70f",
+					borderWidth: 2,
+					fill: false,
+					data: data.StackedBar_attr.data.datasets[0],
+				},
+				{
+					label: "Climat danubien",
+					borderColor: "#254525",
+					backgroundColor: "#254525",
+					borderWidth: 2,
+					fill: false,
+					data: data.StackedBar_attr.data.datasets[1],
+				},
+				{
+					label: "Climat charentais",
+					borderColor: "#efc164",
+					backgroundColor: "#efc164",
+					borderWidth: 2,
+					fill: false,
+					data: data.StackedBar_attr.data.datasets[2],
+				},
+				{
+					label: "Climat méditerranéen",
+					borderColor: "#f6f67c",
+					backgroundColor: "#f6f67c",
+					borderWidth: 2,
+					fill: false,
+					data: data.StackedBar_attr.data.datasets[3],
+				}
+			]
+		},
+		options: {
+			scales: {
+				xAxes: [{
+					stacked: true,
+					ticks: {
+						fontSize: 8
+					}
+				}],
+				yAxes: [{
+					stacked: true,
+					ticks: {
+						min: 0,
+						max: 100
+					}
+				}]
+			},
+			responsive: true,
+			tooltips: {
+				callbacks: {
+					// Label appraissant lors du survol de la souris sur le diagramme 
+					label: function (tooltipItem, data) {
+						let label = parseFloat(tooltipItem.yLabel.toFixed(0)).toLocaleString()
+						return label + "% de la surface de l'EPCI ";
+					},
+					afterLabel: function (tooltipItem, data) {
+						let value = data.datasets[tooltipItem.datasetIndex].label.toLowerCase();
+						return 'correspond à un ' + value;
+					}
+
+				}
+			}
+		}
+	});
+};
+
+if (typeof Chart === 'function') {
+	graph_StackedBar.getData();
+} else {
+	$.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function () {
+		graph_StackedBar.getData();
+
+	});
+}
+
+{{/features}}
+	/* Permet de rendre les boutons de changement de période fonctionnel */
+	/* Style différent que celui par défaut pour "période de référence" dès ouverture du panneau d'information */
+	let tips = Array.from(document.getElementsByClassName('btn_periode'))
+	tips.forEach(function (mov) {
+		mov.addEventListener("click", handleClick);
+	});
+
+	function handleClick(event) {
+		tips.forEach(function (val) {
+			if (val == event.target) {
+				val.classList.add("periode-active");
+			} else {
+				val.classList.remove("periode-active");
+			}
+		});
+	}
+	/* Rend toggle entre les deux Mixed Chart fonctionnel */
+	function showhide_pr() {
+		var graph_pr = document.getElementById("pr");
+		var graph_hl45 = document.getElementById("hl45");
+		graph_hl45.style.display = "none";
+		graph_pr.style.display = "block";
+	}
+
+	function showhide_hl45() {
+		var graph_pr = document.getElementById("pr");
+		var graph_hl45 = document.getElementById("hl45");
+		graph_pr.style.display = "none";
+		graph_hl45.style.display = "block";
+	}
+
+</script>        

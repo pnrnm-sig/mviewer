@@ -70,8 +70,14 @@
 	              data-mychartBarE-5="{{hm45_05_mean}}" data-mychartBarE-6="{{hm45_06_mean}}"
 	              data-mychartBarE-7="{{hm45_07_mean}}" data-mychartBarE-8="{{hm45_08_mean}}"
 	              data-mychartBarE-9="{{hm45_09_mean}}" data-mychartBarE-10="{{hm45_10_mean}}"
-	              data-mychartBarE-11="{{hm45_11_mean}}" data-mychartBarE-12="{{hm45_12_mean}}" 
-                width="80" height="70"></canvas>
+	              data-mychartBarE-11="{{hm45_11_mean}}" data-mychartBarE-12="{{hm45_12_mean}}"  
+	              data-mychartBarF-1="{{hl45_01_mean}}" data-mychartBarF-2="{{hl45_02_mean}}"
+	              data-mychartBarF-3="{{hl45_03_mean}}" data-mychartBarF-4="{{hl45_04_mean}}"
+	              data-mychartBarF-5="{{hl45_05_mean}}" data-mychartBarF-6="{{hl45_06_mean}}"
+	              data-mychartBarF-7="{{hl45_07_mean}}" data-mychartBarF-8="{{hl45_08_mean}}"
+	              data-mychartBarF-9="{{hl45_09_mean}}" data-mychartBarF-10="{{hl45_10_mean}}"
+	              data-mychartBarF-11="{{hl45_11_mean}}" data-mychartBarF-12="{{hl45_12_mean}}" 
+                width="80" height="150"></canvas>
 	        </div>       
 	    </div>
 	    <!-- ./Bar Chart 1-->
@@ -148,7 +154,7 @@
 		<div class="text-feature"><i>Unités exprimées en nombre de jours par an</i></div>
 		<table class="table-temp">
 			<thead>
-				<tr class="table-title"><th></th><th>Période de référence</th><th>RCP 4.5, horizon 2050</th><th>RCP 4.5, horizon 2070</th></tr>
+				<tr class="table-title"><th></th><th>Période de référence</th><th>RCP 4.5, horizon 2050</th><th>RCP 4.5, horizon 2070</th><th>RCP 4.5, horizon 2100</th></tr>
 			</thead>
 			<tbody>
 					<tr><td class="table-title">Jours d'été</td>
@@ -160,6 +166,9 @@
 						</td>
 						<td>		
 							{{hm45_an_norsd}}
+						</td>
+						<td>		
+							{{hl45_an_norsd}}
 						</td>
 						</tr>
 			</tbody>
@@ -174,6 +183,9 @@
 						<td>		
 							{{hm45_an_nortx35}}
 						</td>
+						<td>		
+							{{hl45_an_nortx35}}
+						</td>
 						</tr>
 			</tbody>
 			<tbody>
@@ -186,6 +198,9 @@
 						</td>
 						<td>		
 							{{hm45_an_nortr}}
+						</td>
+						<td>		
+							{{hl45_an_nortr}}
 						</td>
 						</tr>
 			</tbody>
@@ -200,9 +215,14 @@
 						<td>		
 							{{hm45_an_nortxhwd}}
 						</td>
+						<td>		
+							{{hl45_an_nortxhwd}}
+						</td>
 						</tr>
 			</tbody>
 		</table>
+      		<br>
+      		<br>
       		
 		{{/modelisation}}
     	{{^modelisation}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur un EPCI non modélisé -->
@@ -315,7 +335,7 @@
 		width: 95%; 
 		color: #555; 
 		border-collapse: collapse; 
-		font-size: 12px; /* Indique la taille de la police du texte */
+		font-size: 11px; /* Indique la taille de la police du texte */
 	}
 	th { 
 		background: #eee;  
@@ -732,6 +752,8 @@
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-12"))],
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-12"))],
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-12"))], 
+        [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-12"))], 
+        [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-12"))], 
       ]
     }
     }
@@ -749,27 +771,35 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en °C)",
-                  borderColor: "#4DB259",
-                  backgroundColor: "#4DB259",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],
               },
               {
                   label: "RCP 4.5, horizon 2050 (en °C)",
-                  borderColor: "#664785",
-                  backgroundColor: "#664785",
+                  borderColor: "#26d4d9",
+                  backgroundColor: "#26d4d9",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[2],
               },
               {
                   label: "RCP 4.5, horizon 2070 (en °C)",
-                  borderColor: "#E5511A",
-                  backgroundColor: "#E5511A",
+                  borderColor: "#ff8500",
+                  backgroundColor: "#ff8500",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[4],
+              },
+              {
+                  label: "RCP 4.5, horizon 2100 (en °C)",
+                  borderColor: "#f893f8",
+                  backgroundColor: "#f893f8",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[5],
               }]
           },
           options: {            

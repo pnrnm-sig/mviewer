@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-md-8">
+        <p>
+            La carte interactive représente une synthèse de l'évolution du climat, de la période 1976-2005 à l’horizon 2100, selon la classification de Köppen. 
+            Cette classification permet de décrire des types de climats, correspondant à des zones de végétation, à l’échelle du globe. 
+            Elle repose sur des calculs à partir des moyennes des températures et du cumul des précipitations. 
+            Les évolutions sont ensuite obtenues en croisant les types de climats de la période de référence (1976-2005) avec ceux de l'horizon 2100 (2071-2100). 
+        </p>
+        <p>
+            <b>
+                En période de référence, tout le territoire du Parc et Géoparc Normandie-Maine correspond à un climat "océanique" (Cfb) (voir ci-contre la carte à l'échelle de la France métropolitaine). 
+                A l’horizon 2100 et selon les modélisations du changement climatique, les températures et régimes des précipitations ont changés suffisamment pour que le climat se transforme. 
+                C’est ce que montre la carte interactive d’évolution du climat. 
+            </b>
+        </p>
+        <p>
+            La classification de Köppen définit les climats en classes de 3 lettres ayant chacune une signification. 
+            La première lettre correspond au type de climat, la deuxième à la répartition des précipitations et la troisième à la variation des températures. 
+            Pour aider à la compréhension, ces classes sont souvent accompagnées d’une dénomination correspondant à leur répartition géographique.
+        </p>
+        <p>
+            Le tableau ci-dessous donne le détail pour chaque classe représentée sur la carte interactive :
+        </p>
+
+    </div>
+    <div class="col-md-4">
+        <a href="apps/futurs-climats/img/doc/france_koppen.jpg"><img src="apps/futurs-climats/img/doc/france_koppen.jpg" alt="Carte France Köppen" width="100%"></a>
+    </div>
+</div>
+        <table class="table-type">
+            <thead>
+                <tr>
+                    <th>Classe de Köppen</th>
+                    <th>Dénomination</th>
+                    <th>Couleur sur la carte</th>
+                    <th>Première lettre</th>
+                    <th>Explication</th>
+                    <th>Deuxième lettre</th>
+                    <th>Explication</th>
+                    <th>Troisième lettre</th>
+                    <th>Explication</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr><td><b>Cfa</b></td><td>Danubien</td><td><div class='box danubien'></div>Vert foncé</td><td>C</td><td>Tempéré</td><td>f</td><td>Humide toute l'année</td><td>a</td><td>&Eacute;té chaud</td></tr>
+            </tbody>
+            <tbody>
+                    <tr><td><b>Cfb</b></td><td>Océanique</td><td><div class='box oceanique'></div>Vert clair</td><td>C</td><td>Tempéré</td><td>f</td><td>Humide toute l'année</td><td>b</td><td>&Eacute;té tempéré</td></tr>
+            </tbody>
+            <tbody>
+                    <tr><td><b>Csa</b></td><td>Méditerranéen</td><td><div class='box mediterraneen'></div>Jaune</td><td>C</td><td>Tempéré</td><td>s</td><td>&Eacute;té sec</td><td>a</td><td>&Eacute;té chaud</td></tr>
+            </tbody>
+            <tbody>
+                    <tr><td><b>Csb</b></td><td>Charentais</td><td><div class='box charentais'></div>Marron</td><td>C</td><td>Tempéré</td><td>s</td><td>&Eacute;té sec</td><td>b</td><td>&Eacute;té tempéré</td></tr>
+            </tbody>
+        </table>
+
+<style>
+    	/* Style du tableau */
+	table.table-type { 
+		color: #00936f; 
+		border-collapse: collapse; 
+	}
+	table.table-type th { 
+		background: #eee; 
+		color: #00936f; 
+		font-weight: bold; 
+	}
+	table.table-type td, th { 
+		padding: 6px; 
+		border: 1px solid #ccc; 
+		text-align: center; 		
+	}
+
+    .box {
+        float: left;
+        height: 20px;
+        width: 20px;
+        clear: both;
+    }
+
+    .danubien {
+    background-color: #264325;
+    }
+
+    .oceanique {
+    background-color: #10B70F;
+    }
+
+    .mediterraneen {
+    background-color: #F6F67C;
+    }
+
+    .charentais {
+    background-color: #EEBF63;
+    }
+
+</style>

@@ -89,6 +89,8 @@
 	        </div></div>
       	</div>
   		<!--./Chiffre clé 4-->
+      		<br>
+      		<br>		
 		{{/modelisation}}
     	{{^modelisation}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur un EPCI non modélisé -->
 				<h3 class="title-feature ">{{nom}}</h3>		
@@ -475,6 +477,8 @@
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-12"))],
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarD-12"))],
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarE-12"))], 
+        [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarF-12"))],       
+	    [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-4")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-5")),parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-6")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-7")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-8")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-9")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-10")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-11")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarG-12"))],       
       ]
     }
     }
@@ -492,8 +496,8 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en °C)",
-                  borderColor: "#40BF4F",
-                  backgroundColor: "#40BF4F",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],

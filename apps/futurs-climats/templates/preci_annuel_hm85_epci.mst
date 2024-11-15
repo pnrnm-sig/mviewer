@@ -30,6 +30,8 @@
 	              data-mychartBarB-3="{{hp85_ete_mean}}" data-mychartBarB-4="{{hp85_aut_mean}}"
                   data-mychartBarC-1="{{hm85_hiv_mean}}" data-mychartBarC-2="{{hm85_pri_mean}}"
 	              data-mychartBarC-3="{{hm85_ete_mean}}" data-mychartBarC-4="{{hm85_aut_mean}}"
+                  data-mychartBarD-1="{{hl85_hiv_mean}}" data-mychartBarD-2="{{hl85_pri_mean}}"
+	              data-mychartBarD-3="{{hl85_ete_mean}}" data-mychartBarD-4="{{hl85_aut_mean}}"
                 width="80" height="80"></canvas>
 	        </div>       
 	    </div>
@@ -85,7 +87,7 @@
 {{! Tableau }}
 		<table class="table-preci">
 			<thead>
-				<tr class="table-title"><th></th><th>Période de référence</th><th>RCP 8.5, horizon 2050</th><th>RCP 8.5, horizon 2070</th></tr>
+				<tr class="table-title"><th></th><th>Période de référence</th><th>RCP 8.5, horizon 2050</th><th>RCP 8.5, horizon 2070</th><th>RCP 8.5, horizon 2100</th></tr>
 			</thead>
 			<tbody>
 					<tr><td class="table-title">Sans pluie</td>
@@ -97,6 +99,9 @@
 						</td>
 						<td>		
 							{{hm85_an_sanspluie}}
+						</td>
+						<td>		
+							{{hl85_an_sanspluie}}
 						</td>
 						</tr>
 			</tbody>
@@ -111,6 +116,9 @@
 						<td>		
 							{{hm85_an_norpn20mm}}
 						</td>
+						<td>		
+							{{hl85_an_norpn20mm}}
+						</td>
 						</tr>
 			</tbody>
 			<tbody>
@@ -124,11 +132,14 @@
 						<td>		
 							{{hm85_an_norpxcdd}}
 						</td>
+						<td>		
+							{{hl85_an_norpxcdd}}
+						</td>
 						</tr>
 			</tbody>
 		</table>
-      		
-      		
+      		<br>
+      		<br>      		
       		
 		{{/modelisation}}
     	{{^modelisation}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur un EPCI non modélisé -->
@@ -308,7 +319,7 @@
 		width: 95%; 
 		color: #555; 
 		border-collapse: collapse; 
-		font-size: 12px; /* Indique la taille de la police du texte */
+		font-size: 11px; /* Indique la taille de la police du texte */
 	}
 	table.table-preci th { 
 		background: #eee;  
@@ -340,7 +351,7 @@
 		font-family:'roboto_regular', Arial, Sans-serif;
 		color:#555;
 		font-size:12px;
-		margin-bottom:5%;
+		margin-top:5%;
 	}
 
 	/* Chart */
@@ -520,6 +531,7 @@
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarA-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarA-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarA-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarA-4"))],
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarB-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarB-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarB-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarB-4"))],
         [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-4"))],
+        [parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-1")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-2")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-3")), parseFloat($("#myChartBar1_{{siren_epci}}").attr("data-mychartBarC-4"))],
       ]
     }
     }
@@ -537,8 +549,8 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en mm)",
-                  borderColor: "#40BF4F",
-                  backgroundColor: "#40BF4F",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],
@@ -558,6 +570,14 @@
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[2],
+              },
+              {
+                  label: "RCP 8.5, horizon 2100 (en mm)",
+                  borderColor: "#8c27f1",
+                  backgroundColor: "#8c27f1",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[3],
               }]
           },
           options: {            

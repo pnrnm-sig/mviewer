@@ -62,10 +62,9 @@
 			  <div class="tooltiptext">Nombre maximum de jours consécutifs pour lesquels la précipitation quotidienne est inférieure à 1 mm</div>
 	        </div>
       	</div>
-		<!--./Chiffres clé 3-->
-      		
-      		
-      		
+		<!--./Chiffres clé 3-->	
+      		<br>
+      		<br>     		
 		{{/modelisation}}
     	{{^modelisation}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur un EPCI non modélisé -->
 				<h3 class="title-feature ">{{nom}}</h3>		
@@ -356,8 +355,8 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en mm)",
-                  borderColor: "#40BF4F",
-                  backgroundColor: "#40BF4F",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],

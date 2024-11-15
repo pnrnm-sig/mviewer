@@ -1,0 +1,586 @@
+<!-- *** TEMPLATE 5.2 / GRAPH DIAGRAMME CIRCULAIRE / BANDEAU DROITE *** --> 
+
+{{#features}}
+	<li class="item scrollbar-hidden" style="width: inherit;padding: 0px 10px 0px 0px;">
+      {{#insee_com}} <!-- Ce qu'il faut afficher si l'utilisateur clique sur une des communes du Parc -->
+		<h3 class="title-feature ">{{nom}}</h3>		
+
+		<!-- Moyennes cumul précipitations annuelles -->
+		<h4 class="subtitle-feature">Cumul précipitations annuelles</h4>
+		<div class="item">
+			<span class="number-mean">{{hm85_an_mean}} mm</span>
+			<span class="caption">Cumul moyen
+			  <div class="tooltipdef">Donnée désagrégée</div></span>
+		</div>
+		<div class="subitem">
+			<span class="caption">
+				<div class="number-year">{{hm85_an_difmean}} mm de différence</div>
+				<div class="tooltipyear">par rapport à la période de référence</div>
+			</span>
+		</div>
+
+	  	<h4 class="subtitle-feature">Cumul précipitations par saison</h4>
+	    <div class="Chart">
+	        <div id="idChart">
+	            <canvas class="chart" id="myChartBar1_{{insee_com}}" data-codegeo="{{insee_com}}"
+	              data-mychartBarA-1="{{pr_hiv_mean}}" data-mychartBarA-2="{{pr_pri_mean}}"
+	              data-mychartBarA-3="{{pr_ete_mean}}" data-mychartBarA-4="{{pr_aut_mean}}"
+                  data-mychartBarB-1="{{hp85_hiv_mean}}" data-mychartBarB-2="{{hp85_pri_mean}}"
+	              data-mychartBarB-3="{{hp85_ete_mean}}" data-mychartBarB-4="{{hp85_aut_mean}}"
+                  data-mychartBarC-1="{{hm85_hiv_mean}}" data-mychartBarC-2="{{hm85_pri_mean}}"
+	              data-mychartBarC-3="{{hm85_ete_mean}}" data-mychartBarC-4="{{hm85_aut_mean}}"
+                width="80" height="80"></canvas>
+	        </div>       
+	    </div>
+	    <!-- ./Bar Chart 1-->	
+	  	<h4 class="subtitle-feature">Indicateurs DRIAS</h4>
+      		<!--Chiffre clé 1-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber1"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{hm85_an_sanspluie}} jours<div class="up">
+  <p>+{{hm85_an_arr1mm}}
+    </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
+</div></div>
+	          <div class="titlenumber-feature">sans pluie par an
+			  <div class="tooltipdef">Nombre de jours pour lesquels la précipitation quotidienne est inférieure à 1 mm</div></div>
+	        </div>
+        </div>
+      	</div>
+		<!--./Chiffres clé 1-->
+		<!--Chiffre clé 2-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber2"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{hm85_an_norpn20mm}} jours<div class="up">
+  <p>+{{hm85_an_apn20mm}}
+    </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
+</div></div>
+	          <div class="titlenumber-feature">de fortes pluies par an
+			  <div class="tooltipdef">Nombre de jours pour lesquels la précipitation quotidienne est supérieure à 20 mm</div></div>
+	        </div>
+      	</div>
+		<!--./Chiffres clé 2-->
+		<!--Chiffre clé 3-->
+		<div class="row numberkey" style="height:auto;">
+        	<div class="zone-iconnumber col-sm-4">
+          		<div id="iconnumber3"></div>
+          	</div>
+	        <div class="col-sm-8">
+	          <div class="number-feature">{{hm85_an_norpxcdd}} jours<div class="up">
+  <p>+{{hm85_an_apxcdd}}
+    </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
+</div></div>
+	          <div class="titlenumber-feature">de période de sécheresse par an
+			  <div class="tooltipdef">Nombre maximum de jours consécutifs pour lesquels la précipitation quotidienne est inférieure à 1 mm</div></div>
+	        </div>
+      	</div>
+		<!--./Chiffres clé 3-->
+      				<div class="text-feature"><i>Unités exprimées en nombre de jours par an</i></div>
+{{! Tableau }}
+		<table class="table-preci">
+			<thead>
+				<tr class="table-title"><th></th><th>Période de référence</th><th>RCP 8.5, horizon 2050</th><th>RCP 8.5, horizon 2070</th></tr>
+			</thead>
+			<tbody>
+					<tr><td class="table-title">Sans pluie</td>
+						<td>		
+							{{pr_an_sanspluie}}
+						</td>
+						<td>		
+							{{hp85_an_sanspluie}}
+						</td>
+						<td>		
+							{{hm85_an_sanspluie}}
+						</td>
+						</tr>
+			</tbody>
+			<tbody>
+					<tr><td class="table-title">Forte pluie</td>
+						<td>		
+							{{pr_an_norpn20mm}}
+						</td>
+						<td>		
+							{{hp85_an_norpn20mm}}
+						</td>
+						<td>		
+							{{hm85_an_norpn20mm}}
+						</td>
+						</tr>
+			</tbody>
+			<tbody>
+					<tr><td class="table-title">Périodes de sécheresse</td>
+						<td>		
+							{{pr_an_norpxcdd}}
+						</td>
+						<td>		
+							{{hp85_an_norpxcdd}}
+						</td>
+						<td>		
+							{{hm85_an_norpxcdd}}
+						</td>
+						</tr>
+			</tbody>
+		</table>
+      		
+      		
+		{{/insee_com}}
+		{{^insee_com}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur une commune -->
+				<h3 class="title-feature "></h3>		
+
+		<div class="no-data"><i>Cliquer sur une commune pour obtenir des informations.</i></div>
+	
+		{{/insee_com}}
+	</li>
+{{/features}}
+
+<style>
+
+	/*** Définir la couleur de mon template - Insérer le code #HEX de votre couleur */
+	:root {
+		--mycolor: #1D1B35;
+  }
+
+  /*** Définir les paramètres des chiffres clés*/
+
+	/* Couleur - code HEX */ 
+	.numberkey {
+    	--mynumbercolor: #00936f; 
+  	}
+
+  	/** Définir les icônes des chiffres clés **/
+
+	/* Icône 1 - Lien vers l'îcone */
+	#iconnumber1{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/nuage.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/nuage.png);
+	 }
+	/* Icône 2 - Lien vers l'îcone */
+	#iconnumber2{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/pluie_forte.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/pluie_forte.png);
+	 }
+	/* Icône 3 - Lien vers l'îcone */
+	#iconnumber3{
+	    -webkit-mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/secheresse.png);
+	    mask-image: url(https://observatoire.parc-naturel-normandie-maine.fr/mviewer/dev/apps/futurs-climats/img/icone/secheresse.png);
+	 }
+	
+
+  	/***********************************************/
+	/*** Ne pas toucher aux propriétés suivantes ***/
+  
+
+	/* Moyenne des cumuls de précipitations */
+	div.item {
+		/* To correctly align image, regardless of content height: */
+		vertical-align: top;
+		display: inline-block;
+		/* To horizontally center images and caption */
+		text-align: center;
+		/* The width of the container also implies margin around the images. */
+		width: 120px;
+    	margin-top: 10px; 
+    	margin-bottom: 2px; 
+		margin-left:25%;
+		margin-right:25%;
+	}
+	.subitem {
+		/* To correctly align image, regardless of content height: */
+		vertical-align: top;
+		display: inline-block;
+		/* To horizontally center images and caption */
+		text-align: center;
+		/* The width of the container also implies margin around the images. */
+		width: 80px;
+    	margin-bottom: 10px; 
+		margin-left:25%;
+		margin-right:25%;
+	}
+	.number-mean {
+    	color: #00936f;
+    	font-family:'roboto_bold';
+    	font-size:16px;   
+		margin-left:25%;
+		margin-right:25%;
+	}
+	.caption {
+		/* Make the caption a block so it occupies its own line. */
+		display: block;
+		font-family:'roboto_regular', Arial, Sans-serif;
+		color:#555;
+		font-size:12px;
+		width: 120px;
+	}
+	.number-year {		
+    	color: #bb2d33;
+    	font-family:'roboto_bold';
+    	font-size:12px; 
+	}
+
+	/* Rendre les barres de défilement invisibles */
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scrollbar-hidden {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+/* Chiffres clés */
+
+	.numberkey {
+    	margin-top: 10px; 
+    	height: 10px;   
+  	}
+
+	.zone-iconnumber{
+		padding:20px;
+	}
+	#iconnumber1{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+
+	#iconnumber2{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+
+	#iconnumber3{
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    height: 70px;
+	    width: 70px;
+	    background: var(--mynumbercolor);
+	}
+
+	.number-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:30px;   
+		margin-top:10%;
+		margin-left:-10px; /* Décalage vers la gauche pour titre ou sous-titre du chiffre clefs long*/
+		display:table;  
+  	}
+
+  	.titlenumber-feature {
+    	color: var(--mynumbercolor);
+    	font-family:'roboto_bold';
+    	font-size:13px;
+    	line-height:1;
+		margin-left:-10px; /* Décalage vers la gauche pour titre ou sous-titre du chiffre clefs long*/
+ 	}
+
+	.subtitlenumber-feature{
+		font-size:11px;
+		color:#555;
+		margin-left:-10px; /* Décalage vers la gauche pour titre ou sous-titre du chiffre clefs long*/
+	}
+
+	/* Style du tableau */
+	.table-title{
+		color:  #00936f; 
+		font-weight: bold; 
+		table-layout: fixed;
+		width: 10%;
+	}
+	table.table-preci { 
+		width: 95%; 
+		color: #555; 
+		border-collapse: collapse; 
+		font-size: 12px; /* Indique la taille de la police du texte */
+	}
+	table.table-preci th { 
+		background: #eee;  
+	}
+	table.table-preci td, th { 
+		padding: 2px; 
+		border: 1px solid #ccc; 
+		text-align: center; 		
+	}
+
+	/* Texte */
+
+	.title-feature {
+		color: var(--mycolor);
+	    font-family: 'roboto_bold', Arial, Sans-serif;
+	    font-size: 18px;
+	    margin-bottom: 7%;
+	    line-height: 1.2;
+	}
+	.subtitle-feature {
+		color: var(--mycolor);
+		font-family:'roboto_bold', Arial, Sans-serif;
+		font-size:16px;
+		margin-top:7%;
+		line-height:1;
+	}
+
+	.text-feature{
+		font-family:'roboto_regular', Arial, Sans-serif;
+		color:#555;
+		font-size:12px;
+		margin-bottom:5%;
+	}
+
+	/* Chart */
+  .Chart{
+		text-align: center; 
+		margin-bottom: 10%;
+	}
+
+  .textChart {
+      font-family:"roboto_regular";
+      font-size: 13px;
+      color:#777;
+      margin-top: 5px;
+      padding:2px;
+  }
+
+  .no-data{
+      font-family:"roboto_regular";
+	  text-align:center;
+	  font-size: 13px;
+      color:#777;
+      margin-top: 5px;
+	  top:-50%;
+  }
+
+	/* Flèche et son hover */
+	.up {
+		position: relative;
+		left:5%;
+		width: 0px;
+		height: 0px;
+		border-style: inset;
+		border-width: 0 17px 30px 17px;
+		border-color: transparent transparent #bb2d33 transparent;
+		float: right;
+		transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		z-index: 1;
+		display:table-cell;
+	}
+
+	.up p {
+		font-size: 11px;
+		color: #FFFFFF;
+		top: 14px;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+
+	.up .tooltiptext {
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: black;
+		opacity: 70%;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: nowrap;
+
+		/* Position the tooltip */
+		position: relative;
+		z-index: 1;
+		top: -60px;
+		left: -207px;
+		transition-property: visibility;
+		transition-delay: 0.3s;
+	}
+
+	.up:hover .tooltiptext {
+		visibility: visible;
+		transition-delay: all 1s ease-in;
+	}
+
+	/* Hover number-feature */
+	.titlenumber-feature .tooltipdef {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		margin-left:-10px; 
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 90px;
+	    width: 220px;
+		left: -70px;
+		transition: all 400ms ease-out;
+	}
+
+	.titlenumber-feature:hover .tooltipdef {
+		position: absolute;
+		visibility: visible;
+	}
+
+	/* Hover caption */
+	.caption .tooltipdef {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 145px;
+		left: 27%;
+	}
+
+	.caption:hover .tooltipdef {
+		position: absolute;
+		visibility: visible;
+	}
+		/* Hover caption */
+	.caption .tooltipyear {
+    	font-family:'roboto_bold';
+    	line-height:1.25;
+		font-size: 11px;
+		visibility: hidden;
+		padding: 0.25em 0.5em;
+		background-color: #464646;
+		color: #fff;
+		border-radius: 0.25em;
+		white-space: normal;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 2;
+		top: 166px;
+	    width: 120px;
+	}
+
+	.caption:hover .tooltipyear {
+		position: absolute;
+		visibility: visible;
+	}
+
+
+</style>
+
+<script language="javascript"> 
+
+  ////// PARAMETRAGE DU GRAPHIQUE - JS///////
+
+  /// Récupération du insee_com de l'entité selectionnée 
+  var c_geo = [];
+        {{#features}}
+            c_geo.push('{{insee_com}}');
+        {{/features}}
+
+{{#features}}
+/// CHART BAR 1 - Création d'un diagramme bar
+
+  var graph_myChartBar1 = {};
+  graph_myChartBar1.getData = function () {
+    // Définition du code geo - ID
+    var code_geo = $("#myChartBar1_{{insee_com}}").attr("data-codegeo");
+    // Définition des variables du graphiques
+    var data = {myChartBar1_attr: {labels:["Hiver","Printemps","Été","Automne"], data: 
+    {
+      datasets: [
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarA-4"))],
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarB-4"))],
+        [parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-1")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-2")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-3")), parseFloat($("#myChartBar1_{{insee_com}}").attr("data-mychartBarC-4"))],
+      ]
+    }
+    }
+    };
+    // Création du graphique avec les paramètres définis
+    graph_myChartBar1.drawChart(data);
+  };    
+  
+  // Définition des paramètres du graphique
+  graph_myChartBar1.drawChart = function (data) {
+  var ctx = document.getElementById("myChartBar1_{{insee_com}}");
+  var myChart1 = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: data.myChartBar1_attr.labels,
+              datasets: [{                  
+                  label: "Période de référence (en mm)",
+                  borderColor: "#40BF4F",
+                  backgroundColor: "#40BF4F",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[0],
+              },
+              {
+                  label: "RCP 8.5, horizon 2050 (en mm)",
+                  borderColor: "#267AD9",
+                  backgroundColor: "#267AD9",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[1],
+              },
+              {
+                  label: "RCP 8.5, horizon 2070 (en mm)",
+                  borderColor: "#F20D0D",
+                  backgroundColor: "#F20D0D",
+                  borderWidth: 2,
+                  fill: false,
+                  data: data.myChartBar1_attr.data.datasets[2],
+              }]
+          },
+          options: {            
+            scales:{
+              yAxes:[{
+                  ticks:{
+                    min:0
+                  }
+                }]
+            },
+            responsive: true,
+            tooltips: {
+              callbacks: {
+				          // Label appraissant lors du survol de la souris sur le diagramme circulaire
+                  label: function(tooltipItem, data) {
+                      return parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString() + ' mm en moyenne';
+                  }
+              }
+            }
+          }
+      });
+    };  
+
+    if  (typeof Chart === 'function') {
+       graph_myChartBar1.getData();
+  } else {
+      $.get('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', function() {
+        graph_myChartBar1.getData();
+        
+      }); 
+  }
+
+{{/features}}
+</script>        

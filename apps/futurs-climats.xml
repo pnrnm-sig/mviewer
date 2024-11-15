@@ -11,9 +11,10 @@
 </rdf:Description></rdf:RDF></metadata>
 <application
     id="print"    
-    title="Quel climat pour 2070 sur le territoire du Parc et Géoparc Normandie-Maine ?"    
+    title="Quel climat pour 2100 sur le territoire du Parc et Géoparc Normandie-Maine ?"    
     logo=""    
     help="apps/futurs-climats/doc_futurs_climats.html"    
+    detailedlegend="apps/futurs-climats/legend_futurs_climats.html"    
     style="css/themes/pnrnm.css"    
     exportpng="false"    
     showhelp="false"  
@@ -40,12 +41,12 @@
     <group id="group-20240325165138" name="Par commune" collapsed="false" >
         <layer 
             id="temp_annuel_pr_com"
-            name="Période de référence 1976 - 2005"
+            name="Températures annuelles moyennes, période de référence 1976 - 2005"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="true"  
             tiled="true"         
-            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures_hl.jpg"  
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             opacity="0.7"
@@ -56,13 +57,13 @@
         </layer>  
         <layer 
             id="temp_annuel_hm45_com"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2070"
+            name="Températures annuelles moyennes, scénario intermédiaire : RCP 4.5, horizon 2070"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -72,13 +73,13 @@
         </layer>
         <layer 
             id="temp_annuel_hm85_com"
-            name="Scénario pessimiste : RCP 8.5, horizon 2070 "
+            name="Températures annuelles moyennes, scénario pessimiste : RCP 8.5, horizon 2070 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -88,7 +89,7 @@
         </layer>
         <layer 
             id="temp_annuel_hl45_com"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2100"
+            name="Températures annuelles moyennes, scénario intermédiaire : RCP 4.5, horizon 2100"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -104,7 +105,7 @@
         </layer>
         <layer 
             id="temp_annuel_hl85_com"
-            name="Scénario pessimiste : RCP 8.5, horizon 2100 "
+            name="Températures annuelles moyennes, scénario pessimiste : RCP 8.5, horizon 2100 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -123,12 +124,12 @@
         <group id="group-20240729965138" name="Par EPCI" collapsed="true" >
         <layer 
             id="temp_annuel_pr_epci"
-            name="Période de référence 1976 - 2005 "
+            name="Températures annuelles moyennes, période de référence 1976 - 2005 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"  
             tiled="true"         
-            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures_hl.jpg"  
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             opacity="0.7"
@@ -139,13 +140,13 @@
         </layer>  
         <layer 
             id="temp_annuel_hm45_epci"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2070"
+            name="Températures annuelles moyennes, scénario intermédiaire : RCP 4.5, horizon 2070"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -155,13 +156,13 @@
         </layer>
         <layer 
             id="temp_annuel_hm85_epci"
-            name="Scénario pessimiste : RCP 8.5, horizon 2070 "
+            name="Températures annuelles moyennes, scénario pessimiste : RCP 8.5, horizon 2070 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_temperatures.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_temperatures_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -171,7 +172,7 @@
         </layer>
         <layer 
             id="temp_annuel_hl45_epci"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2100"
+            name="Températures annuelles moyennes, scénario intermédiaire : RCP 4.5, horizon 2100"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -187,7 +188,7 @@
         </layer>
         <layer 
             id="temp_annuel_hl85_epci"
-            name="Scénario pessimiste : RCP 8.5, horizon 2100 "
+            name="Températures annuelles moyennes, scénario pessimiste : RCP 8.5, horizon 2100 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -208,12 +209,12 @@
     <group id="group-20230725165138" name="Par commune" collapsed="true" >
         <layer 
             id="preci_annuel_pr_com"
-            name="Période de référence 1976 - 2005  "
+            name="Précipitations annuelles cumulées, période de référence 1976 - 2005  "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"  
             tiled="true"         
-            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations_hl.jpg"  
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             opacity="0.7"
@@ -224,13 +225,13 @@
             </layer>  
         <layer 
             id="preci_annuel_hm45_com"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2070"
+            name="Précipitations annuelles cumulées, scénario intermédiaire : RCP 4.5, horizon 2070"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -240,13 +241,13 @@
         </layer>
         <layer 
             id="preci_annuel_hm85_com"
-            name="Scénario pessimiste : RCP 8.5, horizon 2070"
+            name="Précipitations annuelles cumulées, scénario pessimiste : RCP 8.5, horizon 2070"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -256,7 +257,7 @@
         </layer>
         <layer 
             id="preci_annuel_hl45_com"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2100"
+            name="Précipitations annuelles cumulées, scénario intermédiaire : RCP 4.5, horizon 2100"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -272,7 +273,7 @@
         </layer>
         <layer 
             id="preci_annuel_hl85_com"
-            name="Scénario pessimiste : RCP 8.5, horizon 2100"
+            name="Précipitations annuelles cumulées, scénario pessimiste : RCP 8.5, horizon 2100"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -290,12 +291,12 @@
         <group id="group-20230731165138" name="Par EPCI" collapsed="true" >
         <layer 
             id="preci_annuel_pr_epci"
-            name="Période de référence 1976 - 2005 "
+            name="Précipitations annuelles cumulées, période de référence 1976 - 2005 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"  
             tiled="true"         
-            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations_hl.jpg"  
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             opacity="0.7"
@@ -306,13 +307,13 @@
             </layer>  
         <layer 
             id="preci_annuel_hm45_epci"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2070 "
+            name="Précipitations annuelles cumulées, scénario intermédiaire : RCP 4.5, horizon 2070 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -322,13 +323,13 @@
         </layer>
         <layer 
             id="preci_annuel_hm85_epci"
-            name="Scénario pessimiste : RCP 8.5, horizon 2070 "
+            name="Précipitations annuelles cumulées, scénario pessimiste : RCP 8.5, horizon 2070 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
             tiled="true"        
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/futurs-climats/img/legend/legende_precipitations.jpg"  
+            legendurl="apps/futurs-climats/img/legend/legende_precipitations_hl.jpg"  
             queryable="true"
             opacity="0.7"
             scalemin="25000"
@@ -338,7 +339,7 @@
         </layer> 
         <layer 
             id="preci_annuel_hl45_epci"
-            name="Scénario intermédiaire : RCP 4.5, horizon 2100 "
+            name="Précipitations annuelles cumulées, scénario intermédiaire : RCP 4.5, horizon 2100 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -354,7 +355,7 @@
         </layer>
         <layer 
             id="preci_annuel_hl85_epci"
-            name="Scénario pessimiste : RCP 8.5, horizon 2100 "
+            name="Précipitations annuelles cumulées, scénario pessimiste : RCP 8.5, horizon 2100 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -370,11 +371,11 @@
         </layer>
         </group>
     </theme> 
-    <theme id="theme-20220810114904" name="Classification du climat de 1976 à 2100" collapsed="true" icon="fas fa-layer-group">               
+    <theme id="theme-20220810114904" name="Évolution du climat - Classification de Köppen" collapsed="true" icon="fas fa-layer-group">               
     <group id="group-20230725165968" name="Par commune" collapsed="true" >
         <layer 
             id="classification_45_com"
-            name="Scénario intermédiaire : RCP 4.5, évolution de 1976 à 2100"
+            name="Évolution du climat à l'horizon 2100 par rapport à la période de référence 1976-2005, scénario intermédiaire : RCP 4.5"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="true"  
@@ -390,7 +391,7 @@
         </layer>  
         <layer 
             id="classification_85_com"
-            name="Scénario pessimiste : RCP 8.5, évolution de 1976 à 2100"
+            name="Évolution du climat à l'horizon 2100 par rapport à la période de référence 1976-2005, scénario pessimiste : RCP 8.5"
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      
@@ -409,7 +410,7 @@
         <group id="group-20240738165138" name="Par EPCI" collapsed="false" >
         <layer 
             id="classification_45_epci"
-            name="Scénario intermédiaire : RCP 4.5, évolution de 1976 à 2100 "
+            name="Évolution du climat à l'horizon 2100 par rapport à la période de référence 1976-2005, scénario intermédiaire : RCP 4.5 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="true"  
@@ -425,7 +426,7 @@
         </layer>  
         <layer 
             id="classification_85_epci"
-            name="Scénario pessimiste : RCP 8.5, évolution de 1976 à 2100 "
+            name="Évolution du climat à l'horizon 2100 par rapport à la période de référence 1976-2005, scénario pessimiste : RCP 8.5 "
             type="wms"
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"      

@@ -220,6 +220,8 @@
 						</tr>
 			</tbody>
 		</table>
+      		<br>
+      		<br>
       		
 		{{/insee_com}}
 		{{^insee_com}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur une commune -->
@@ -374,7 +376,7 @@
 		width: 95%; 
 		color: #555; 
 		border-collapse: collapse; 
-		font-size: 12px; /* Indique la taille de la police du texte */
+		font-size: 11px; /* Indique la taille de la police du texte */
 	}
 	table.table-temp th { 
 		background: #eee;  
@@ -707,8 +709,8 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en °C)",
-                  borderColor: "#4DB259",
-                  backgroundColor: "#4DB259",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],

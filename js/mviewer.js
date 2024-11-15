@@ -781,6 +781,16 @@ mviewer = (function () {
         },
       });
     }
+    // AJOUT VARIABLE CONTENU MODAL LEGENDE DETAILLEE DANS XML
+    if (configuration.getConfiguration().application.detailedlegend) {
+      $.ajax({
+        url: configuration.getConfiguration().application.detailedlegend,
+        dataType: "text",
+        success: function (html) {
+          $("#detailed-legend-modal .modal-body").append(html);
+        },
+      });
+    }
   };
 
   /**

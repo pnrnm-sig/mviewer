@@ -988,6 +988,8 @@ input[type=range].mv-range:focus::-ms-fill-upper {
 .popup-content .nav-tabs {
   float: left;
   border-bottom: 0;
+  /* Réduit la largeur de la barre de navigation dans le panneau d'information */
+  width: 12%;
 }
 .popup-content .nav-tabs li {
   float: none;

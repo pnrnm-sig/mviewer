@@ -133,8 +133,8 @@
   background-color: #00936F; }
 
 #layers-container {
-  /* Opacit� */
-  /* Temporalit� */ }
+  /* Opacité */
+  /* Temporalité */ }
   #layers-container a {
     color: #00936F;
     font-family: "roboto_bold", Arial, Sans-serif; }
@@ -195,7 +195,7 @@
     .mv-layer-options[data-layerid="temp_annuel_pr_com"] .form-group-opacity {
       display: initial;
     }
-
+    
     .mv-layer-options[data-layerid="temp_annuel_hm45_com"] .form-group-opacity {
       display: initial;
     }
@@ -275,8 +275,16 @@
     .mv-layer-options[data-layerid="classification_45_com"] .form-group-opacity {
       display: initial;
     }
+    
+    .mv-detailed-legend[data-layerid="classification_45_com"] .btn {
+      display: initial;
+    }
 
     .mv-layer-options[data-layerid="classification_85_com"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-detailed-legend[data-layerid="classification_85_com"] .btn {
       display: initial;
     }
 
@@ -284,7 +292,15 @@
       display: initial;
     }
 
+    .mv-detailed-legend[data-layerid="classification_45_epci"] .btn {
+      display: initial;
+    }
+
     .mv-layer-options[data-layerid="classification_85_epci"] .form-group-opacity {
+      display: initial;
+    }
+
+    .mv-detailed-legend[data-layerid="classification_85_epci"] .btn {
       display: initial;
     }
 
@@ -292,6 +308,35 @@
     .mv-layer-options .form-group-opacity {
       display: none;
     }
+
+    .mv-detailed-legend .btn {
+      display: none;
+    }
+
+  /* MODAL DETAILED LEGEND */
+  .mv-detailed-legend .modal {
+    top:10%;
+  }
+
+  .mv-detailed-legend .modal-title {
+    font-weight: bold;
+    color:#00936F;
+  }
+
+  .mv-detailed-legend .btn, .mv-detailed-legend .btn:active:hover, .mv-detailed-legend .btn:focus {
+    background-color: #00936F;
+    color: white;
+    font-family: "roboto_regular", Arial, Sans-serif;
+    font-size: 11px;
+  }
+
+  .mv-detailed-legend .btn:hover {
+    background-color: white;
+    border-color: #00936F;
+    color:#00936F;
+    font-family: "roboto_regular", Arial, Sans-serif;
+    font-size: 11px;
+  }
 
 /*******************************
 ------------- POPOVER

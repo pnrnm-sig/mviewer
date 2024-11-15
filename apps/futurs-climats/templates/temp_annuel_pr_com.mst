@@ -88,6 +88,8 @@
 	        </div></div>
       	</div>
   		<!--./Chiffre clé 4-->
+      		<br>
+      		<br>
     		
 		{{/insee_com}}
 		{{^insee_com}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur une commune -->
@@ -487,8 +489,8 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en °C)",
-                  borderColor: "#40BF4F",
-                  backgroundColor: "#40BF4F",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],

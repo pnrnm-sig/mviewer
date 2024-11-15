@@ -7,7 +7,7 @@
 		<h3 class="title-feature ">{{nom}}</h3>
 
 		<!-- Chart Pie-->
-		<h4 class="subtitle-feature">Répartition des évolutions du climat</h4>
+		<h4 class="subtitle-feature">Répartition des évolutions du climat à l'horizon 2100</h4>
 		<div class="Chart">
 			<div id="idChart">
 				{{! Graphique circulaire évolution du climat }}
@@ -72,7 +72,7 @@
 		<!-- ./Mixed Bar Chart 2-->
 
 		<!-- Stacked Bar Chart-->
-		<h4 class="subtitle-feature">Répartition des évolutions du climat par période et par scénario</h4>
+		<h4 class="subtitle-feature">Répartition des types de climats par période pour le scénario pessimiste (RCP 8.5)</h4>
 		<div class="Chart">
 			<div id="idChart">
 				<canvas class="chart" id="StackedBar_{{insee_com}}" data-codegeo="{{insee_com}}"
@@ -93,6 +93,8 @@
 					width="80" height="120"></canvas>
 			</div>
 		</div>
+      		<br>
+      		<br>
 		<!-- ./Stacked Bar Chart-->
 		{{/insee_com}}
 		{{^insee_com}}
@@ -268,7 +270,7 @@ graph_ChartPie.getData = function () {
 	// Définition des variables du graphique
 	var data = {
 		ChartPie_attr: {
-			labels: ["Climat océanique", "Climat danubien", "Climat charentais", "Climat méditerranéen"],
+			labels: ['Maintien du climat "océanique"', '"Danubisation"', '"Charentaisation"', '"Méditerranéisation"'],
 			data: {
 				datasets: [
 					[parseFloat($("#ChartPie_{{insee_com}}").attr("data-ChartPie-1")), parseFloat($("#ChartPie_{{insee_com}}").attr("data-ChartPie-2")), parseFloat($("#ChartPie_{{insee_com}}").attr("data-ChartPie-3")), parseFloat($("#ChartPie_{{insee_com}}").attr("data-ChartPie-4"))]
@@ -419,6 +421,10 @@ graph_MixedBar1.drawChart = function (data) {
 					ticks: {
 						min: 0,
 						max: 100
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Précipitations'
 					}
 				}, {
 					id: 'ytemp',
@@ -427,12 +433,17 @@ graph_MixedBar1.drawChart = function (data) {
 					ticks: {
 						min: 0,
 						max: 50
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Températures'
 					}
-				}],
+					}],
 				xAxes: [{
 					categoryPercentage: 1.1,
 					barPercentage: 1.1
 				}],
+
 			},
 			responsive: true,
 			tooltips: {
@@ -539,6 +550,10 @@ graph_MixedBar2.drawChart = function (data) {
 					ticks: {
 						min: 0,
 						max: 100
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Précipitations'
 					}
 				}, {
 					id: 'ytemp',
@@ -547,12 +562,17 @@ graph_MixedBar2.drawChart = function (data) {
 					ticks: {
 						min: 0,
 						max: 50
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Températures'
 					}
-				}],
+					}],
 				xAxes: [{
 					categoryPercentage: 1.1,
 					barPercentage: 1.1
 				}],
+
 			},
 			responsive: true,
 			tooltips: {
@@ -596,13 +616,13 @@ graph_StackedBar.getData = function () {
 	// Définition des variables du graphiques
 	var data = {
 		StackedBar_attr: {
-			labels: ["Période de référence", "Horizon proche RCP 4.5", "Horizon proche RCP 8.5", "Horizon moyen RCP 4.5", "Horizon proche RCP 8.5", "Horizon lointain RCP 4.5", "Horizon lointain RCP 8.5"],
+			labels: ["Période de référence (1976-2005)", "Horizon 2050", "Horizon 2070", "Horizon 2100"],
 			data: {
 				datasets: [
-					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-2")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-4")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-6")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-7"))],
-					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-2")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-4")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-6")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-7"))],
-					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-2")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-4")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-6")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-7"))],
-					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-2")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-4")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-6")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-7"))]
+					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarA-7"))],
+					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarB-7"))],
+					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarC-7"))],
+					[parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-1")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-3")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-5")), parseFloat($("#StackedBar_{{insee_com}}").attr("data-StackedBarD-7"))]
 				]
 			}
 		}
@@ -619,7 +639,7 @@ graph_StackedBar.drawChart = function (data) {
 		data: {
 			labels: data.StackedBar_attr.labels,
 			datasets: [{
-					label: "Climat océanique",
+					label: 'Climat "océanique"',
 					borderColor: "#0fb70f",
 					backgroundColor: "#0fb70f",
 					borderWidth: 2,
@@ -627,7 +647,7 @@ graph_StackedBar.drawChart = function (data) {
 					data: data.StackedBar_attr.data.datasets[0],
 				},
 				{
-					label: "Climat danubien",
+					label: 'Climat "danubien"',
 					borderColor: "#254525",
 					backgroundColor: "#254525",
 					borderWidth: 2,
@@ -635,7 +655,7 @@ graph_StackedBar.drawChart = function (data) {
 					data: data.StackedBar_attr.data.datasets[1],
 				},
 				{
-					label: "Climat charentais",
+					label: 'Climat "charentais"',
 					borderColor: "#efc164",
 					backgroundColor: "#efc164",
 					borderWidth: 2,
@@ -643,7 +663,7 @@ graph_StackedBar.drawChart = function (data) {
 					data: data.StackedBar_attr.data.datasets[2],
 				},
 				{
-					label: "Climat méditerranéen",
+					label: 'Climat "méditerranéen"',
 					borderColor: "#f6f67c",
 					backgroundColor: "#f6f67c",
 					borderWidth: 2,
@@ -658,7 +678,8 @@ graph_StackedBar.drawChart = function (data) {
 					stacked: true,
 					ticks: {
 						fontSize: 8
-					}
+					},
+					textStrokeWidth : 0
 				}],
 				yAxes: [{
 					stacked: true,

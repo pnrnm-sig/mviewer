@@ -64,6 +64,8 @@
       	</div>
 		<!--./Chiffres clé 3-->
       		
+      		<br>
+      		<br>
       		
       		
 		{{/modelisation}}
@@ -356,8 +358,8 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en mm)",
-                  borderColor: "#40BF4F",
-                  backgroundColor: "#40BF4F",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],

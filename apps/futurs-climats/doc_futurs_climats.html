@@ -14,14 +14,14 @@
         <h4 i18n="help.modal.about">À propos de la carte</h4>
         <p>Cette interface affiche les résultats de la modélisation de changement climatique faites à échelle fine à
             partir de données de simulations climatiques et atmosphériques du DRIAS. Elle visualise les moyennes des
-            températures annuelles et le cumul de précipitations annuelles. Des chiffres issus de la
+            températures annuelles, le cumul de précipitations annuelles et l'évolution du climat selon la classification de Köppen. Des chiffres issus de la
             modélisation et des indicateurs DRIAS sont disponibles pour les communes et les intercommunalités (EPCI) du territoire du Parc et Géoparc
             Normandie-Maine.
         </p>
         <p>La modélisation des températures et des précipitations a été faites selon les scénarios RCP 4.5 et 8.5 pour
-            différentes périodes : la période de référence (1976-2005), l’horizon proche (2021-2050) et l’horizon moyen
-            (2051-2070). La modélisation a été appliquée à l’échelle des intercommunalités du territoire du Parc et
-            Géoparc Normandie-Maine. Seuls la période de référence et l'horizon moyen sont consultables sur cette interface.
+            différentes périodes : la période de référence (1976-2005), l’horizon proche (2021-2050), l’horizon moyen
+            (2051-2070) et l'horizon lointain (2071-2100). La modélisation a été appliquée à l’échelle des intercommunalités du territoire du Parc et
+            Géoparc Normandie-Maine. Seuls la période de référence, l'horizon moyen et l'horizon lointain sont consultables sur cette interface.
         </p>
         <p>En savoir plus sur les futurs du climat : <a href="https://www.parc-naturel-normandie-maine.fr/futurs-du-climat.html" target="_blank" i18n="help.modal.doc">https://www.parc-naturel-normandie-maine.fr/futurs-du-climat.html</a>
         </p>
@@ -113,15 +113,16 @@
             <li><b>Horizon 2070</b> : modélisation faite pour la période 2051-2070.</li>
             <li><b>Horizon 2100</b> : modélisation faite pour la période 2071-2100.</li>
             <li><b>Saison</b> : saison météorologique.</li>
-
+            <li><b>Classification de Köppen</b> : typologie climatique mondiale créée par le climatologue Wladimir Köppen en 1884, et largement reprise depuis. Algorithme utilisé : <a href="https://hal.archives-ouvertes.fr/hal-00305098/document" target="_blank">Koeppen-Geiger, d’après Peel et al. 2007</a>.</li>
+            <li><b>Diagramme ombrothermique</b> : graphique couramment utilisé en climatologie pour visualiser les caractéristiques principales du climat. La courbe des températures mensuelles moyennes (en rouge) se superpose avec les barres de précipitations mensuelles cumulées (en bleu), avec une échelle de P = 2T (2 mm = 1°C). Lorsque que les températures sont supérieures aux précipitations, l’écart (alors représenté en jaune) montre une période sèche. D’après <a href="https://www.persee.fr/doc/geo_0003-4010_1957_num_66_355_18273" target="_blank">F. Bagnouls et H. Gaussen, 1957</a>.</li>
         </ul> 
         </p>
         <h5>Sources des données</h5>
         <p>
-            <i>Mise à jour des données : avril 2024</i>
+            <i>Mise à jour des données : juillet 2024</i>
             <ul>
-                <li><b>Données corrigées DRIAS-2020</b> : <a href="http://www.drias-climat.fr/accompagnement/sections/240" target="_blank">http://www.drias-climat.fr/accompagnement/sections/240</a></li>
-                <li><b>Indicateurs DRIAS-2020</b> : <a href="http://www.drias-climat.fr/accompagnement/sections/181" target="_blank">http://www.drias-climat.fr/accompagnement/sections/181</a></li>
+                <li><b>Données corrigées DRIAS-2020</b> (modèle ALADIN63_CNRM-CM5): <a href="http://www.drias-climat.fr/accompagnement/sections/240" target="_blank">http://www.drias-climat.fr/accompagnement/sections/240</a></li>
+                <li><b>Indicateurs DRIAS-2020</b> (modèle ALADIN63_CNRM-CM5) : <a href="http://www.drias-climat.fr/accompagnement/sections/181" target="_blank">http://www.drias-climat.fr/accompagnement/sections/181</a></li>
                 <li><b>IGN BD Alti 25 m</b> : <a href="https://geoservices.ign.fr/bdalti" target="_blank">https://geoservices.ign.fr/bdalti</a></li>
                 <li><b>Logiciels utilisés pour la modélisation</b> : QGIS3, SAGA GIS 2.3.2, RStudio</li>
             </ul>
@@ -134,7 +135,7 @@
     </div>  
     <div role="tabpanel" class="tab-pane" id="h_credits">
         <h4 i18n="help.modal.credits">Crédits</h4>  
-        <p>La carte a été développée par le Parc naturel régional et Géoparc Normandie-Maine et s'appuie sur la solution mviewer.</p>
+        <p>La carte a été développée par le Parc naturel régional et Géoparc mondial Unesco Normandie-Maine et s'appuie sur la solution mviewer.</p>
         <a href="https://www.parc-naturel-normandie-maine.fr/" target="_blank">
             <img src="img/logo/parcgeoparc2020.svg" alt="Logo Parc et Géoparc Normandie-Maine" height="100px">
             <img src="img/logo/geopark_blue_fre.jpg" alt="Logo Géoparc mondial UNESCO" width="110px">
@@ -161,6 +162,6 @@
   
     <div role="tabpanel" class="tab-pane" id="h_responsible">
         <h4 i18n="help.modal.credits">Clause de non responsabilité</h4>  
-        <p>Le Parc naturel régional et Géoparc Normandie-Maine vise, avec cette carte interactive, à permettre au grand public de visualiser les variations de températures et de précipitations liées au changement climatique sur le territoire. Les données représentées dans cette interface sont le résultat de modélisations à partir de données de simulations climatiques et atmosphériques du DRIAS. Par conséquent, les utilisateurs interprètent et réutilisent les données obtenues sous leur pleine et entière responsabilité, sans possibilité de recours contre le Parc naturel régional et Géoparc Normandie-Maine, qui ne pourra être tenu responsable de tout dommage résultant directement ou indirectement de l'interprétation et de l'utilisation de ces données. </p> 
+        <p>Le Parc naturel régional et Géoparc mondial Unesco Normandie-Maine vise, avec cette carte interactive, à permettre au grand public de visualiser les variations de températures et de précipitations liées au changement climatique sur le territoire. Les données représentées dans cette interface sont le résultat de modélisations à partir de données de simulations climatiques et atmosphériques du DRIAS. Par conséquent, les utilisateurs interprètent et réutilisent les données obtenues sous leur pleine et entière responsabilité, sans possibilité de recours contre le Parc naturel régional et Géoparc mondial Unesco Normandie-Maine, qui ne pourra être tenu responsable de tout dommage résultant directement ou indirectement de l'interprétation et de l'utilisation de ces données. </p> 
     </div>    
 </div>

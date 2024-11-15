@@ -221,6 +221,8 @@
 						</tr>
 			</tbody>
 		</table>
+      		<br>
+      		<br>
       		
 		{{/modelisation}}
     	{{^modelisation}} <!-- Ce qu'il faut afficher si l'utilisateur clique ailleurs que sur un EPCI non modélisé -->
@@ -333,7 +335,7 @@
 		width: 95%; 
 		color: #555; 
 		border-collapse: collapse; 
-		font-size: 12px; /* Indique la taille de la police du texte */
+		font-size: 11px; /* Indique la taille de la police du texte */
 	}
 	th { 
 		background: #eee;  
@@ -769,8 +771,8 @@
               labels: data.myChartBar1_attr.labels,
               datasets: [{                  
                   label: "Période de référence (en °C)",
-                  borderColor: "#40BF4F",
-                  backgroundColor: "#40BF4F",
+                  borderColor: "#bababa",
+                  backgroundColor: "#bababa",
                   borderWidth: 2,
                   fill: false,
                   data: data.myChartBar1_attr.data.datasets[0],

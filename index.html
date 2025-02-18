@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-fr" lang="fr-fr" dir="ltr">
 
 <head>
-  <title i18n="map_title">mviewer</title>
+  <title>mviewer</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -864,10 +864,8 @@
           const is400 = status === "parsererror" ? "400" : "";
 
           if (API.debug === "true") {
-            document.querySelector(
-              "#loader-title"
-            ).innerHTML = `<i class="fa fa-code" aria-hidden="true"></i> code ${is404 || is400
-            }`;
+            document.querySelector("#loader-title").innerHTML =
+              `<i class="fa fa-code" aria-hidden="true"></i> code ${is404 || is400}`;
             return;
           }
           if (request.statusCode().status === 404) {

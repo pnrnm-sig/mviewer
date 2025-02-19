@@ -1836,6 +1836,11 @@ mviewer = (function () {
     return xyz;
   };
 
+  // returns name of language in its own language, ie autonym
+  // eg: de -> Deutsch, en -> English, fr -> français ...
+  const getLangNameAutonym = (langCode) =>
+    new Intl.DisplayNames([langCode], { type: "language" }).of(langCode);
+
   var _configureTranslate = function (dic) {
     var lang = configuration.getLang();
     var languages = configuration.getLanguages();
@@ -1863,7 +1868,7 @@ mviewer = (function () {
             '"><span style="margin-right: 5px;" class="flag-icon flag-icon-squared flag-icon-' +
             icon +
             '"></span><span>' +
-            language +
+            getLangNameAutonym(language) +
             "</span></a></li>"
         );
       });

@@ -1841,6 +1841,11 @@ mviewer = (function () {
   const getLangNameAutonym = (langCode) =>
     new Intl.DisplayNames([langCode], { type: "language" }).of(langCode);
 
+  // returns name of language in its own language, ie autonym
+  // eg: de -> Deutsch, en -> English, fr -> français ...
+  const getLangNameAutonym = (langCode) =>
+    new Intl.DisplayNames([langCode], { type: "language" }).of(langCode);
+
   var _configureTranslate = function (dic) {
     var lang = configuration.getLang();
     var languages = configuration.getLanguages();
@@ -1857,11 +1862,13 @@ mviewer = (function () {
         if (langitems.length === 0 && showHelp) {
           // set no padding for the first item element
           // help popup only
+          // set to right padding to take into account language dropdown menu syle
           p = 0;
         }
         // set right-padding instead of left to take into account  language dropdown menu syle
         langitems.push(
           '<li style="padding-right:' +
+            '<li style="padding-right:' +
             p +
             '" type="button" class="btn mv-translate""><a href="#" idlang="' +
             language +
@@ -1869,12 +1876,17 @@ mviewer = (function () {
             icon +
             '"></span><span>' +
             getLangNameAutonym(language) +
+            getLangNameAutonym(language) +
             "</span></a></li>"
         );
       });
 
       // if help popup only
       if (showHelp) {
+        //$("#help .modal-body").append('<ul style="padding-left:0">' + langitems.join("") + '</ul>');
+        $("#lang-button, #lang-selector").addClass("enabled");
+        $("#lang-body>ul").append(langitems.join(""));
+        $("#lang-selector>ul").append(langitems.join(""));
         //$("#help .modal-body").append('<ul style="padding-left:0">' + langitems.join("") + '</ul>');
         $("#lang-button, #lang-selector").addClass("enabled");
         $("#lang-body>ul").append(langitems.join(""));

@@ -110,7 +110,6 @@ var info = (function () {
    * @param featurescount {Integer}
    *
    */
-
   var _customizeHTML = function (
     html,
     featurescount,
@@ -355,7 +354,7 @@ var info = (function () {
               }
             }
 
-            // *****
+            // ***
 
             //Set view with layer info & html formated features
             views[panel].layers.push({

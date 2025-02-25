@@ -161,6 +161,7 @@ rajoutez les nouvelles clés dans votre fichier de traduction::
 
 6 - Testez
 
+
 **Traduction du contenu dynamique**
 
 * Utilisez le paramètre debug_translation=true pour afficher les attributs i18n à ajouter dans votre dictionnaire: 

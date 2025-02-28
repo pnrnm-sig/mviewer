@@ -35,7 +35,7 @@ mviewer.customLayers.swipeLeft = (function () {
       } else if (annee === 'sat_2021') {
         var anneeCouche = "ORTHOIMAGERY.ORTHO-SAT.SPOT.2021";
       } else if (annee === 'carte_cassini'){
-        var anneeCouche = "Carte_Cassini";
+        var anneeCouche = "BNF-IGNF_GEOGRAPHICALGRIDSYSTEMS.CASSINI";
       } else if (annee === 'carte_capitaine') {
         var anneeCouche = "Carte_Capitaine";
       } else if (annee === 'carte_etatmajor') {

@@ -51,7 +51,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2020.mst"></template>
+            <template url="apps/evolution-bocage/templates/densite-2020.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
         <layer 
@@ -64,7 +64,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2010.mst"></template>
+            <template url="apps/evolution-bocage/templates/densite-2010.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 2000 -->
         <layer 
@@ -77,7 +77,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-2000.mst"></template>
+            <template url="apps/evolution-bocage/templates/densite-2000.mst"></template>
         </layer> 
         <!-- Couche permettant l'affichage de la densité de bocage par commune en 1945 -->
         <layer 
@@ -90,7 +90,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/densite-1945.mst"></template>
+            <template url="apps/evolution-bocage/templates/densite-1945.mst"></template>
         </layer> 
 
 
@@ -107,7 +107,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2010-2020.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-2010-2020.mst"></template>
         </layer>
         <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 2000 et 2020 -->
         <layer 
@@ -120,7 +120,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-2000-2020.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-2000-2020.mst"></template>
         </layer>
         <!-- Couche permettant l'affichage de l'évolution du bocage par commune entre 1945 et 2020 -->
         <layer 
@@ -133,7 +133,7 @@
             infoformat="application/vnd.ogc.gml"
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/evolution-1945-2020.mst"></template>
+            <template url="apps/evolution-bocage/templates/evolution-1945-2020.mst"></template>
         </layer>
 
     </theme>     
@@ -146,10 +146,10 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/evolution-bocage/img/legend/legende_plantation_haies.png"  
+            legendurl="apps/evolution-bocage/img/legend/legende_plantation_haies_com.png"  
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/plantation-haies.mst"></template>
+            <template url="apps/evolution-bocage/templates/plantation-haies-com.mst"></template>
         </layer>         
         <!-- Couche permettant l'affichage de la couche plantation de haies par EPCI -->
         <layer 
@@ -159,10 +159,10 @@
             url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
             visible="false"
             infoformat="application/vnd.ogc.gml"
-            legendurl="apps/evolution-bocage/img/legend/legende_plantation_haies_epci.png"  
+            legendurl="apps/evolution-bocage/img/legend/legende_plantation_haies_epci_km.png"  
             queryable="true"
             exclusive="true">
-            <template url="apps/evolution-bocage/templates/evolution-bocage/plantation-haies.mst"></template>
+            <template url="apps/evolution-bocage/templates/plantation-haies-epci.mst"></template>
         </layer> 
     </theme>
     <!-- Thème non affiché dans le panneau de couches grâce à son ID qui commence par "hideme" -->

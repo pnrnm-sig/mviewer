@@ -5,18 +5,17 @@
   "target": "layers-container-box",
   "options": {
     "mviewer": {
-      "default": {
+      "label": {
         "layer": [
           {
-            "layerId": "epci",
-            "field": "nom_epci",
+            "layerId": "baignade",
+            "field": "BAIGNADE",
+            "textColor": "white",
+            "strokeColor": "rgb(130, 207, 232)",
             "font": "12px Calibri,sans-serif",
-            "textColor": "black",
-            "strokeColor": "lightblue",
-            "offsetX": 0,
-            "offsetY": 0,
-            "width": 6,
-            "zoomThreshold": 9
+            "offsetY": -10,
+            "offsetX": 10,
+            "zoomThreshold": 11
           }
         ]
       }

@@ -477,6 +477,15 @@
       "level": "intermédiaire",
       "url_source": "../demo/tms_datagouv.xml",
       "url_demo": "../?config=demo/tms_datagouv.xml"
+    },
+    {
+      "id": "56",
+      "title": "Ajouter des étiquettes à une couche (plugin)",
+      "tags": "label, étiquettes, vector, plugin",
+      "description": "Exemple d'application mobilisant le plugin label permettant d'ajouter des étiquettes à une couche vecteur ou cluster via un bouton dans la légende",
+      "level": "intermédiaire",
+      "url_source": "../demo/label.xml",
+      "url_demo": "../?config=demo/label.xml"
     }
   ]
 }

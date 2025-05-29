@@ -1905,10 +1905,6 @@ mviewer = (function () {
         $("#lang-button, #lang-selector").addClass("enabled");
         $("#lang-body>ul").append(langitems.join(""));
         $("#lang-selector>ul").append(langitems.join(""));
-        //$("#help .modal-body").append('<ul style="padding-left:0">' + langitems.join("") + '</ul>');
-        $("#lang-button, #lang-selector").addClass("enabled");
-        $("#lang-body>ul").append(langitems.join(""));
-        $("#lang-selector>ul").append(langitems.join(""));
       } else {
         // display selector or modal according to device
         $("#lang-button, #lang-selector").addClass("enabled");

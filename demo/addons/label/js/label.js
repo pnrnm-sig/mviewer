@@ -137,7 +137,8 @@ const label = (function () {
     rowDiv.className = "row";
     rowDiv.appendChild(colDiv);
 
-    return rowDiv;
+    // Conversion DOM to jQuery
+    return $(rowDiv);
   }
 
   /**
@@ -150,6 +151,7 @@ const label = (function () {
 
     const component = _createLabelCheckboxContainer();
     const targetDiv = $(`.mv-layer-options[data-layerid="${layerId}"]`);
+
     if (component && targetDiv) {
       targetDiv.prepend(component);
     } else {
@@ -178,11 +180,21 @@ const label = (function () {
 
     feature.setGeometry(geometry);
 
+    let style = null;
+
+    if (baseStyle instanceof ol.style.Style) {
+      style = baseStyle;
+    } else if (Array.isArray(baseStyle) && baseStyle[0] instanceof ol.style.Style) {
+      style = baseStyle[0];
+    } else {
+      return;
+    }
+
     feature.setStyle(
       new ol.style.Style({
-        image: baseStyle?.getImage(),
-        fill: baseStyle?.getFill(),
-        stroke: baseStyle?.getStroke(),
+        image: style?.getImage(),
+        fill: style?.getFill(),
+        stroke: style?.getStroke(),
         text: textStyle,
       })
     );

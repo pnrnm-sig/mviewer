@@ -37,7 +37,7 @@
   </baselayers>
 
   <extensions>
-    <extension type="component" id="label" path="apps/addons" />
+    <extension type="component" id="label" path="demo/addons" />
   </extensions>
 
   <themes mini="true" legendmini="false">

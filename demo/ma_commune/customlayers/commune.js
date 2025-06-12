@@ -22,13 +22,10 @@ var _loaderData = function () {
         success: function (data) {
           if (data) {
             _vectorSource.addFeatures(new ol.format.GeoJSON().readFeatures(data));
-            mviewer
-              .getMap()
-              .getView()
-              .fit(_vectorSource.getExtent(), {
-                size: mviewer.getMap().getSize(),
-                maxZoom: 13,
-              });
+            mviewer.getMap().getView().fit(_vectorSource.getExtent(), {
+              size: mviewer.getMap().getSize(),
+              maxZoom: 13,
+            });
           } else {
             console.log("pas de données");
           }

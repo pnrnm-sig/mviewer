@@ -210,6 +210,8 @@ Paramètres pour gérer le filtre attributaire (liste déroulante) des couches W
 * ``attributeoperator`` : Opérateur utilisé pour construire le filtre. (= ou like). Defaut = "=". Attention dans le cas de like, le wildcard est harcodé : %
 * ``wildcardpattern`` : Pattern à utiliser pour les filtre utilisant l'opérateur like. Defaut = "%value%, autres possibilités "%value" et "value%".
 
+Si vous souhaitez effectuer un filtre sur plusieurs couches, voir :ref:`configcustomcontrol`
+
 Autres paramètres
 ====================
 * ``customlayer`` : Texte précisant le nom du fichier JavaScript permettant la création d'une couche ou bien l'url complet du fichier JavaScript.

@@ -1,8 +1,9 @@
+const _idlayer = "lycee";
+
 mviewer.customControls.lycee = (function () {
   /*
    * Private
    */
-  const _idlayer = "lycee";
   const _layer = mviewer.getLayer(_idlayer);
   let noFilterLabel = "All";
   let logicalOperator = "AND";

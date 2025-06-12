@@ -495,6 +495,15 @@
       "level": "intermédiaire",
       "url_source": "../demo/ma_commune/config.xml",
       "url_demo": "../?config=demo/ma_commune/config.xml&commune=22266"
+    },
+    {
+      "id": "58",
+      "title": "Filtres multiples pour une couche WMS",
+      "tags": "WMS, filtre",
+      "description": "Exemple d'application utilisant plusieurs filtres liés sur une couche WMS.",
+      "level": "intermédiaire",
+      "url_source": "../demo/filtres_multiples/multifilter.xml",
+      "url_demo": "../?config=demo/filtres_multiples/multifilter.xml"
     }
   ]
 }

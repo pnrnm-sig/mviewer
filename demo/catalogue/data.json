@@ -486,6 +486,15 @@
       "level": "intermédiaire",
       "url_source": "../demo/label.xml",
       "url_demo": "../?config=demo/label.xml"
+    },
+    {
+      "id": "57",
+      "title": "Filtre sur une commune avec paramètre dans l'URL",
+      "tags": "vector, filtre",
+      "description": "Exemple d'application permettant de filtrer sur une commune via un paramètre dans l'URL.",
+      "level": "intermédiaire",
+      "url_source": "../demo/ma_commune/config.xml",
+      "url_demo": "../?config=demo/ma_commune/config.xml&commune=22266"
     }
   ]
 }

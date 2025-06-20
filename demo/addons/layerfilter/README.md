@@ -22,7 +22,7 @@ Cette extension permet de filtrer les thèmes, groupes et couches présents dans
     "position": 0,
     "fuseOptions": {
       "threshold": 0.3,
-	  "distance": 500
+      "distance": 500
     }
   }
 }

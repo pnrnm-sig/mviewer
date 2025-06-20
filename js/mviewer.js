@@ -1966,6 +1966,8 @@ mviewer = (function () {
               .show();
             //close panel if opened to trigger reload
             $(info_panel_selector_to_use).removeClass("active");
+            // unselect points
+            mviewer.hideLocation();
           });
 
           $("#mv_marker").hide();

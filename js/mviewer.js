@@ -2410,6 +2410,12 @@ mviewer = (function () {
       }
       linkParams.mode = $("input[name=mv-display-mode]:checked").val();
 
+      if (API.file) {
+        linkParams.file = encodeURIComponent(API.file);
+        linkParams.xfield = API?.xfield;
+        linkParams.yfield = API?.yfield;
+      }
+
       //Get extra params from API. Params has to begin with c_
       let reg = /^c_(.*)/;
       for (const [key, value] of Object.entries(API)) {

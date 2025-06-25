@@ -80,13 +80,13 @@ mviewer.customControls.lycee = (function () {
             // Filtres avec choix unique
             const value = values[0];
             if (value != noFilterLabel) {
-              _filter.push(`${q.dataset.source} = '${value.replace("'", "''")}'`);
+              _filter.push(`${q.dataset.source} = '${value.replace(/'/g, "''")}'`);
             }
           } else {
             // Filtres avec choix multiple
             const list = [];
             values.forEach(function (value) {
-              list.push(`'${value.replace("'", "''")}'`);
+              list.push(`'${value.replace(/'/g, "''")}'`);
             });
             _filter.push(`${q.dataset.source} in (${list.join(",")})`);
           }

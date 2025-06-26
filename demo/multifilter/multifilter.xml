@@ -21,7 +21,7 @@
 		    <layer id="lycee" name="Lycées"  visible="true" tiled="false"
                 searchable="false" queryable="true" expanded="true"
                 infoformat="application/vnd.ogc.gml" featurecount="20"
-				customcontrol="true" customcontrolpath="demo/filtres_multiples/customcontrols"
+				customcontrol="true" customcontrolpath="demo/multifilter/customcontrols"
                 url="https://ows.region-bretagne.fr/geoserver/rb/wms" 
                 attribution="Source: Région Bretagne" 
                 metadata="https://kartenn.region-bretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/99e78163-ce9a-4eee-9ea0-36afc2a53d25"

@@ -502,8 +502,8 @@
       "tags": "WMS, filtre",
       "description": "Exemple d'application utilisant plusieurs filtres liés sur une couche WMS.",
       "level": "intermédiaire",
-      "url_source": "../demo/filtres_multiples/multifilter.xml",
-      "url_demo": "../?config=demo/filtres_multiples/multifilter.xml"
+      "url_source": "../demo/multifilter/multifilter.xml",
+      "url_demo": "../?config=demo/multifilter/multifilter.xml"
     }
   ]
 }

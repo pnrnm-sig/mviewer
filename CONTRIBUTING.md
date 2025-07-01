@@ -86,7 +86,7 @@ Le code source des outils mviewer est hébergé sur GitHub et librement accessib
 
 La documentation associée est également accessible librement :
    * [mviewer](https://mviewerdoc.readthedocs.io/fr/stable/)
-   * [démo] (https://kartenn.region-bretagne.fr/kartoviz/demo/)
+   * [démo](https://kartenn.region-bretagne.fr/kartoviz/demo/)
    * [mviewerstudio](https://mviewerstudio.readthedocs.io/fr/stable/)
 
 Le site internet [https://mviewer.github.io](https://mviewer.github.io) permet la diffusion d'informations à un plus large public.

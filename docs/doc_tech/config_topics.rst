@@ -139,7 +139,7 @@ Configuration de la liste des thèmes
 **Paramètres**
 
 * ``mini``: paramètre optionnel de type booléen (true/false) qui précise si le panneau de gauche est réduit à l'ouverture de l'application. L'attribut ``collapsed`` des ``<theme>`` doit être à true pour que cet attribut soit pris en compte. Défaut = false.
-* ``legendmini``: paramètre optionnel de type booléen (true/false)  qui précise si le panneau de la légende est réduit à l'ouverture de l'application. Défaut = true.
+* ``legendmini``: paramètre optionnel de type booléen (true/false)  qui précise si le panneau de la légende est réduit à l'ouverture de l'application. Défaut = false.
 
 
 **Syntaxe** ``<theme>``

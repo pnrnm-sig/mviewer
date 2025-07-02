@@ -2,7 +2,9 @@ name: Code style checking
 on:
   pull_request:
   push:
-    branches: [develop]
+    branches:
+      - develop
+      - trad-i18n
 
 jobs:
   prettier:

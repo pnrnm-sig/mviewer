@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "js": ["js/panoramax.js"],
+  "html": "panoramax.html",
+  "target": "toolstoolbar",
+  "options": {
+    "panoramax": {
+      "url": "https://explore.panoramax.fr"
+    }
+  }
+}

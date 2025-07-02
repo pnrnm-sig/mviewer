@@ -8,36 +8,48 @@
 
 var panoramax = (function () {
   var _map;
-
   var _url;
-
   var _projection;
-
   var _panoramaxBtn;
-
   var _config;
-
   var _pnxLayer;
-
   var _pnxLayerId = "panoramax";
-
   var _pnxLayerEnabled;
-
   var _pnxClickEventId;
+  var _pnxDblClickEventId;
+  var _pnxViewer;
 
   /**
    * Initialize the component
    */
   var _initpanoramax = () => {
-    _panoramaxBtn = document.getElementById("panoramaxBtn");
     _config = mviewer.customComponents.panoramax.config.options.panoramax;
     _url = _config.url;
     _map = mviewer.getMap();
     _projection = _map.getView().getProjection();
+    _initToolbarBtn();
+    _initPhotoViewer();
+  };
 
-    _panoramaxBtn?.addEventListener("click", function () {
-      _toggleCoverageLayer();
-    });
+  /**
+   * Create the toolbar button
+   */
+  var _initToolbarBtn = () => {
+    var button = [
+      '<button id="panoramaxBtn" title href="#" type="button" class="btn btn-default btn-raised" data-original-title="Panoramax" data-toggle="tooltip">'+
+      '<span class="fas fa-street-view"></span>'+
+      '</button>'
+    ].join("");
+    $("#toolstoolbar").append(button);
+
+    _panoramaxBtn = document.getElementById("panoramaxBtn");
+    _panoramaxBtn?.addEventListener("click", _toggleCoverageLayer);
+  };
+
+  var _initPhotoViewer = () => {
+    _pnxViewer = document.getElementById("panoramaxPhotoViewer");
+    if(!_pnxViewer) { console.error("Panoramax photo viewer is not available"); return; }
+    _pnxViewer.setAttribute("endpoint", _url+"/api");
   };
 
   /**
@@ -53,9 +65,11 @@ var panoramax = (function () {
       } else {
         _map.removeLayer(_pnxLayer);
         if(_pnxClickEventId?.listener) {
-          _map.un("click", _pnxClickEventId.listener);
+          _map.un("singleclick", _pnxClickEventId.listener);
+          _map.un("dblclick", _pnxDblClickEventId.listener);
         }
         _pnxLayerEnabled = false;
+        _showPictureInViewer();
       }
     }
     // Create layer
@@ -65,7 +79,7 @@ var panoramax = (function () {
       // Get style JSON
       fetch(_url + "/api/map/style.json").then((response) => {
         response.json().then((glStyle) => {
-          glStyle.sources.geovisio.attribution = '© <a href="https://panoramax.fr">Panoramax</a>',
+          // glStyle.sources.geovisio.attribution = '© <a href="https://panoramax.fr">Panoramax</a>',
           olms.applyStyle(_pnxLayer, glStyle);
         });
       });
@@ -73,8 +87,25 @@ var panoramax = (function () {
       // Add to map + listen to click
       new CustomLayer(_pnxLayerId, _pnxLayer);
       _map.addLayer(_pnxLayer);
-      _pnxClickEventId = _map.on("click", _onCoverageClick);
+      _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
+      _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
       _pnxLayerEnabled = true;
+    }
+  };
+
+  var _showPictureInViewer = (picId, seqId) => {
+    if(picId) {
+      if(seqId) {
+        _pnxViewer.setAttribute("sequence", seqId);
+      }
+      else {
+        _pnxViewer.removeAttribute("sequence");
+      }
+      _pnxViewer.setAttribute("picture", picId);
+      _pnxViewer.style.display = "unset";
+    }
+    else {
+      _pnxViewer.style.display = "none";
     }
   };
 
@@ -106,6 +137,7 @@ var panoramax = (function () {
       // If picture ID is found from map, use it directly
       if(searchOpts.ids) {
         console.log("Picture ID (from map)", searchOpts.ids);
+        _showPictureInViewer(searchOpts.ids);
       }
       // Otherwise, launch API call to find best matching picture
       else {
@@ -114,9 +146,11 @@ var panoramax = (function () {
             const f = pnxjson?.features?.shift();
             if(f) {
               console.log("Picture ID (from API)", f.id);
+              _showPictureInViewer(f.id, f.collection);
             }
             else {
               console.log("No matching picture found");
+              _showPictureInViewer();
             }
           });
         });

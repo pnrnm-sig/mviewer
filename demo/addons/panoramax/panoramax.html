@@ -1,3 +1,24 @@
-<button id="panoramaxBtn" title href="#" type="button" class="btn btn-default btn-raised" data-original-title="Panoramax" data-toggle="tooltip">
-    <span class="fas fa-street-view"></span>
-</button>
+<style>
+	pnx-photo-viewer {
+		position: absolute;
+		bottom: 45px;
+		left: 10px;
+		width: 20%;
+		height: 30%;
+		display: none;
+		border: 5px solid white;
+	}
+
+	pnx-photo-viewer pnx-cornered-grid::part(corner-bottom-left),
+	pnx-photo-viewer pnx-cornered-grid::part(corner-bottom) {
+		display: none;
+	}
+</style>
+
+<pnx-photo-viewer
+	id="panoramaxPhotoViewer"
+	widgets="false"
+	url-parameters="false"
+>
+	<pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
+</pnx-photo-viewer>

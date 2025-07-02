@@ -1,8 +1,9 @@
 {
   "type": "module",
-  "js": ["js/panoramax.js"],
+  "js": ["lib/index.js", "panoramax.js"],
   "html": "panoramax.html",
-  "target": "toolstoolbar",
+  "css": "lib/index.css",
+  "target": "map",
   "options": {
     "panoramax": {
       "url": "https://explore.panoramax.fr"

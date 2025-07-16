@@ -16,7 +16,7 @@ Initialement développé à la Région Bretagne en 2014, l'outil mviewer bénéf
 
 mviewer est un outil accessible par tous et pour tous facilitant la création et la diffusion de cartes thématiques à partir de données disponibles.
 Il est basé sur des principes :
-   * Le respect des règles de l'Open Source : licence ouverte GPLv3, transparence...
+   * Le respect des règles de l'Open Source : licence ouverte GNU General Public License v3.0, transparence...
    * Une installation simple
    * L’utilisation de technologies répandues, simples, matures, fiables et maintenables
    * Un code source générique

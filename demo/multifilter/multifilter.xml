@@ -24,8 +24,8 @@
 				customcontrol="true" customcontrolpath="demo/multifilter/customcontrols"
                 url="https://ows.region-bretagne.fr/geoserver/rb/wms" 
                 attribution="Source: Région Bretagne" 
-                metadata="https://kartenn.region-bretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/99e78163-ce9a-4eee-9ea0-36afc2a53d25"
-                metadata-csw="https://kartenn.region-bretagne.fr/geonetwork/srv/eng/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID=99e78163-ce9a-4eee-9ea0-36afc2a53d25" >	   
+                metadata="https://geobretagne.fr/datahub/dataset/99e78163-ce9a-4eee-9ea0-36afc2a53d25"
+                metadata-csw="https://geobretagne.fr/geonetwork/srv/fre/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID=99e78163-ce9a-4eee-9ea0-36afc2a53d25" >	   
                 <ccfilters logicaloperator="and" nofilterlabel="Toutes">
                     <filter label="Réseau"  field="reseau_lib" values="Agricole,Education nationale,Maritime" multiselection="true"/>
                     <filter label="Secteur"  field="secteur_li" values="Privé sous contrat avec l'éducation nationale,Public" multiselection="true"/>

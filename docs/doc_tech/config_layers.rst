@@ -191,8 +191,8 @@ Paramètres pour gérer la dimension temporelle des couches WMS
 ================================================================
 
 * ``timefilter``: Booléen précisant si la dimension temporelle est activée pour cette couche. Voir (http://docs.geoserver.org/latest/en/user/services/wms/time.html)
-* ``timeinterval``: Intervalle de temps day|month|year
-* ``timecontrol``: Type d'affichage de l'intervalle de temps calendar|slider|slider-range
+* ``timeinterval``: Intervalle de temps day|month|year.
+* ``timecontrol``: Type d'affichage de l'intervalle de temps calendar|slider|slider-range. Attention, le calendrier fonctionne correctement seulement avec des valeurs continues et régulières gérées par la données source.
 * ``timevalues``: Valeurs temporelles séparées par des virgules. À utiliser avec le controle slider pour des valeurs non régulières ex (1950, 1976, 1980, 2004).
 * ``timemin``: Date mini format : "yyyy-mm-dd".
 * ``timemax``: Date maxi format : "yyyy-mm-dd".

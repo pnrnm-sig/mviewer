@@ -827,7 +827,9 @@ const fileimport = (function () {
     // if fusesearch is enabled in config, 'change' event is fired and handled in the  _processSearchableLayer method (search.js)
     _source.addFeatures(features);
     // zoom to layer extent
-    utils.zoomToFeaturesExtent(_source.getFeatures());
+    if (l.getVisible()) {
+      utils.zoomToFeaturesExtent(_source.getFeatures());
+    }
     $("#csv-status").attr("class", "start");
     //draw layer Legend
     oLayer.legend = {
@@ -862,9 +864,9 @@ const fileimport = (function () {
         })
         .then((data) => {
           // insert url into layer prop to be shared in permalink
-          oLayer.layer.set("url", url);
+          oLayer.layer.set("url", oLayer.url);
           setPermaLink({
-            file: url,
+            file: oLayer.url,
           });
           // geocoding
           _geocode(data, oLayer, l);

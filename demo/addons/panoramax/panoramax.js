@@ -18,6 +18,8 @@ var panoramax = (function () {
   var _pnxClickEventId;
   var _pnxDblClickEventId;
   var _pnxViewer;
+  var _pnxViewerContainer;
+  var _pnxViewerCloseBtn;
 
   /**
    * Initialize the component
@@ -47,9 +49,12 @@ var panoramax = (function () {
   };
 
   var _initPhotoViewer = () => {
+    _pnxViewerContainer = document.getElementById("panoramaxPhotoViewerContainer");
     _pnxViewer = document.getElementById("panoramaxPhotoViewer");
     if(!_pnxViewer) { console.error("Panoramax photo viewer is not available"); return; }
     _pnxViewer.setAttribute("endpoint", _url+"/api");
+    _pnxViewerCloseBtn = document.getElementById("panoramaxClose");
+    _pnxViewerCloseBtn.addEventListener("click", () => _showPictureInViewer());
   };
 
   /**
@@ -102,10 +107,10 @@ var panoramax = (function () {
         _pnxViewer.removeAttribute("sequence");
       }
       _pnxViewer.setAttribute("picture", picId);
-      _pnxViewer.style.display = "unset";
+      _pnxViewerContainer.style.display = "unset";
     }
     else {
-      _pnxViewer.style.display = "none";
+      _pnxViewerContainer.style.display = "none";
     }
   };
 
@@ -136,7 +141,6 @@ var panoramax = (function () {
 
       // If picture ID is found from map, use it directly
       if(searchOpts.ids) {
-        console.log("Picture ID (from map)", searchOpts.ids);
         _showPictureInViewer(searchOpts.ids);
       }
       // Otherwise, launch API call to find best matching picture
@@ -145,11 +149,9 @@ var panoramax = (function () {
           response.json().then((pnxjson) => {
             const f = pnxjson?.features?.shift();
             if(f) {
-              console.log("Picture ID (from API)", f.id);
               _showPictureInViewer(f.id, f.collection);
             }
             else {
-              console.log("No matching picture found");
               _showPictureInViewer();
             }
           });

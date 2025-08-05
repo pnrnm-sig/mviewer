@@ -44,9 +44,9 @@ var panoramax = (function () {
    */
   var _initToolbarBtn = () => {
     var button = [
-      '<button id="panoramaxBtn" title href="#" type="button" class="btn btn-default btn-raised" data-original-title="Panoramax" data-toggle="tooltip">'+
-      '<span class="fas fa-street-view"></span>'+
-      '</button>'
+      '<button id="panoramaxBtn" title href="#" type="button" class="btn btn-default btn-raised" data-original-title="Panoramax" data-toggle="tooltip">' +
+        '<span class="fas fa-street-view"></span>' +
+        "</button>",
     ].join("");
     $("#toolstoolbar").append(button);
 
@@ -60,15 +60,24 @@ var panoramax = (function () {
   var _initPhotoViewer = () => {
     _pnxViewerContainer = document.getElementById("panoramaxPhotoViewerContainer");
     _pnxViewer = document.getElementById("panoramaxPhotoViewer");
-    if(!_pnxViewer) { console.error("Panoramax photo viewer is not available"); return; }
-    _pnxViewer.setAttribute("endpoint", _url+"/api");
+    if (!_pnxViewer) {
+      console.error("Panoramax photo viewer is not available");
+      return;
+    }
+    _pnxViewer.setAttribute("endpoint", _url + "/api");
     _pnxViewerCloseBtn = document.getElementById("panoramaxClose");
     _pnxViewerCloseBtn.addEventListener("click", () => _showPictureInViewer());
 
     // Picture events
-    _pnxViewer.addEventListener("psv:picture-loading", e => _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x));
-    _pnxViewer.addEventListener("psv:picture-loaded", e => _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x));
-    _pnxViewer.addEventListener("psv:view-rotated", e => _changePicMarker(null, null, e.detail.x));
+    _pnxViewer.addEventListener("psv:picture-loading", (e) =>
+      _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x)
+    );
+    _pnxViewer.addEventListener("psv:picture-loaded", (e) =>
+      _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x)
+    );
+    _pnxViewer.addEventListener("psv:view-rotated", (e) =>
+      _changePicMarker(null, null, e.detail.x)
+    );
   };
 
   /**
@@ -84,7 +93,7 @@ var panoramax = (function () {
         _pnxLayerEnabled = true;
       } else {
         _map.removeLayer(_pnxLayer);
-        if(_pnxClickEventId?.listener) {
+        if (_pnxClickEventId?.listener) {
           _map.un("singleclick", _pnxClickEventId.listener);
           _map.un("dblclick", _pnxDblClickEventId.listener);
         }
@@ -104,21 +113,21 @@ var panoramax = (function () {
           olms.applyStyle(_pnxLayer, glStyle);
         });
       });
-      
+
       // Create marker for showing selected picture
       _pnxPicMarker = new ol.Feature({
-        geometry: new ol.geom.Point([0,0]),
+        geometry: new ol.geom.Point([0, 0]),
       });
       _pnxPicMarkerLayer = new ol.layer.Vector({
-        source: new ol.source.Vector({ features: [ _pnxPicMarker ]}),
+        source: new ol.source.Vector({ features: [_pnxPicMarker] }),
         style: new ol.style.Style({
           image: new ol.style.Icon({
             // Original image @ https://gitlab.com/panoramax/clients/web-viewer/-/blob/develop/src/img/marker_blue.svg
-            src: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgd2lkdGg9IjQ4IgogICBoZWlnaHQ9IjQ4IgogICB2aWV3Qm94PSIwIDAgMTIuNyAxMi43IgogICB2ZXJzaW9uPSIxLjEiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczEiIC8+CiAgPHBhdGgKICAgICBkPSJNLTMuMDA3LS4wMDVhNS45NzggNS45NzggMCAwIDEtNS45NzkgNS45NzhWLS4wMDV6IgogICAgIHN0eWxlPSJmaWxsOiMxYTIzN2U7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjAuNjYxNDU4O3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgdHJhbnNmb3JtPSJyb3RhdGUoLTEzNSkiLz4KICA8Y2lyY2xlCiAgICAgY3g9IjYuMzUiCiAgICAgY3k9IjYuNTQ1IgogICAgIHI9IjIuNjQiCiAgICAgc3R5bGU9ImZpbGw6IzFlODhlNTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6I2ZmZjtzdHJva2Utd2lkdGg6MC42NjAwMjc7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIgLz4KPC9zdmc+Cg=="
-          })
+            src: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgd2lkdGg9IjQ4IgogICBoZWlnaHQ9IjQ4IgogICB2aWV3Qm94PSIwIDAgMTIuNyAxMi43IgogICB2ZXJzaW9uPSIxLjEiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczEiIC8+CiAgPHBhdGgKICAgICBkPSJNLTMuMDA3LS4wMDVhNS45NzggNS45NzggMCAwIDEtNS45NzkgNS45NzhWLS4wMDV6IgogICAgIHN0eWxlPSJmaWxsOiMxYTIzN2U7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjAuNjYxNDU4O3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgdHJhbnNmb3JtPSJyb3RhdGUoLTEzNSkiLz4KICA8Y2lyY2xlCiAgICAgY3g9IjYuMzUiCiAgICAgY3k9IjYuNTQ1IgogICAgIHI9IjIuNjQiCiAgICAgc3R5bGU9ImZpbGw6IzFlODhlNTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6I2ZmZjtzdHJva2Utd2lkdGg6MC42NjAwMjc7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIgLz4KPC9zdmc+Cg==",
+          }),
         }),
         visible: false,
-        zIndex: 100
+        zIndex: 100,
       });
 
       // Settings form
@@ -132,14 +141,16 @@ var panoramax = (function () {
           // Bindings to look like native Panoramax map
           _pnxMapFiltersMenu._parent = _pnxViewer;
           _pnxMapFiltersMenu._parent._onMapFiltersChange = _onMapFiltersChange;
-          _pnxMapFiltersMenu._parent._showQualityScoreDoc = () => window.open("https://docs.panoramax.fr/pictures-metadata/quality_score/");
-          const _onMapZoom = () => _pnxMapFiltersMenu.showZoomIn = _map.getView().getZoom() < 7;
+          _pnxMapFiltersMenu._parent._showQualityScoreDoc = () =>
+            window.open("https://docs.panoramax.fr/pictures-metadata/quality_score/");
+          const _onMapZoom = () =>
+            (_pnxMapFiltersMenu.showZoomIn = _map.getView().getZoom() < 7);
           _onMapZoom();
           _map.on("moveend", _onMapZoom);
 
           document.getElementById("layers-container").appendChild(_pnxMapFiltersMenu);
         },
-    
+
         destroy: function () {
           _pnxMapFiltersMenu.parentNode.removeChild(_pnxMapFiltersMenu);
         },
@@ -162,17 +173,15 @@ var panoramax = (function () {
    * @param {string} [seqId] The sequence UUID for this picture (optional, for faster retrieval)
    */
   var _showPictureInViewer = (picId, seqId) => {
-    if(picId) {
-      if(seqId) {
+    if (picId) {
+      if (seqId) {
         _pnxViewer.setAttribute("sequence", seqId);
-      }
-      else {
+      } else {
         _pnxViewer.removeAttribute("sequence");
       }
       _pnxViewer.setAttribute("picture", picId);
       _pnxViewerContainer.style.display = "unset";
-    }
-    else {
+    } else {
       _pnxViewerContainer.style.display = "none";
       _changePicMarker(false);
     }
@@ -181,50 +190,51 @@ var panoramax = (function () {
   /**
    * Handles map click over coverage layer.
    */
-  var _onCoverageClick = function(evt) {
+  var _onCoverageClick = function (evt) {
     let coordinates = _coordsTo4326(evt.coordinate);
     let bbox = _coordsToBbox(coordinates);
 
     // Search for features under click position
     _pnxLayer.getFeatures(evt.pixel).then((features) => {
       const searchOpts = {
-        "limit": 1,
-        "bbox": bbox.join(",")
+        limit: 1,
+        bbox: bbox.join(","),
       };
 
       const f = features?.shift();
-      if(f) {
+      if (f) {
         const props = f.getProperties();
-        if(props.layer === "pictures" && props.id) {
+        if (props.layer === "pictures" && props.id) {
           searchOpts.ids = props.id;
-        }
-        else if(props.layer === "sequences" && props.id) {
+        } else if (props.layer === "sequences" && props.id) {
           searchOpts.collections = props.id;
         }
       }
 
       // If picture ID is found from map, use it directly
-      if(searchOpts.ids) {
+      if (searchOpts.ids) {
         _showPictureInViewer(searchOpts.ids);
       }
       // Otherwise, launch API call to find best matching picture
       else {
         // Make sure to use appropriate filters as well
-        if(_pnxMapFilters?.pic_type) {
-          searchOpts.filter = "field_of_view" + (_pnxMapFilters.pic_type === "flat" ? "<" : "=") + "360";
+        if (_pnxMapFilters?.pic_type) {
+          searchOpts.filter =
+            "field_of_view" + (_pnxMapFilters.pic_type === "flat" ? "<" : "=") + "360";
         }
 
-        fetch(_url + "/api/search?"+(new URLSearchParams(searchOpts)).toString()).then((response) => {
-          response.json().then((pnxjson) => {
-            const f = pnxjson?.features?.shift();
-            if(f) {
-              _showPictureInViewer(f.id, f.collection);
-            }
-            else {
-              _showPictureInViewer();
-            }
-          });
-        });
+        fetch(_url + "/api/search?" + new URLSearchParams(searchOpts).toString()).then(
+          (response) => {
+            response.json().then((pnxjson) => {
+              const f = pnxjson?.features?.shift();
+              if (f) {
+                _showPictureInViewer(f.id, f.collection);
+              } else {
+                _showPictureInViewer();
+              }
+            });
+          }
+        );
       }
     });
   };
@@ -232,30 +242,41 @@ var panoramax = (function () {
   /**
    * Reflects new settings on coverage layer
    */
-  var _onMapFiltersChange = function() {
+  var _onMapFiltersChange = function () {
     // Get Maplibre style using Panoramax functions
-		const mapFiltersMenu = document.getElementById("pnx-map-filters-menu");
-    let { mapFilters, mapSeqFilters, mapPicFilters, reloadMapStyle } = Panoramax.utils.map.mapFiltersToLayersFilters(
-      Panoramax.utils.map.mapFiltersFormValues(
-        mapFiltersMenu,
-        null,
-        mapFiltersMenu.getAttribute("quality-score") === ""
-      ),
-      true
-    );
+    const mapFiltersMenu = document.getElementById("pnx-map-filters-menu");
+    let { mapFilters, mapSeqFilters, mapPicFilters, reloadMapStyle } =
+      Panoramax.utils.map.mapFiltersToLayersFilters(
+        Panoramax.utils.map.mapFiltersFormValues(
+          mapFiltersMenu,
+          null,
+          mapFiltersMenu.getAttribute("quality-score") === ""
+        ),
+        true
+      );
     _pnxMapFilters = mapFilters;
 
     // Apply filter to current style
-    const seqStyle = _glStyle.layers.find(l => l["source-layer"] == "sequences");
-    const picStyle = _glStyle.layers.find(l => l["source-layer"] == "pictures");
-    const gridStyleID = _glStyle.layers.findIndex(l => l["source-layer"] == "grid");
+    const seqStyle = _glStyle.layers.find((l) => l["source-layer"] == "sequences");
+    const picStyle = _glStyle.layers.find((l) => l["source-layer"] == "pictures");
+    const gridStyleID = _glStyle.layers.findIndex((l) => l["source-layer"] == "grid");
 
-    if(seqStyle) { seqStyle.filter = mapSeqFilters || undefined; }
-    if(picStyle) { picStyle.filter = mapPicFilters || undefined; }
-    if(gridStyleID >= 0) {
+    if (seqStyle) {
+      seqStyle.filter = mapSeqFilters || undefined;
+    }
+    if (picStyle) {
+      picStyle.filter = mapPicFilters || undefined;
+    }
+    if (gridStyleID >= 0) {
       let newType = "coef";
-			if(mapFilters.pic_type) { newType = mapFilters.pic_type == "flat" ? "coef_flat_pictures" : "coef_360_pictures"; }
-      _glStyle.layers[gridStyleID] = Panoramax.utils.map.switchCoefValue(_glStyle.layers[gridStyleID], newType);
+      if (mapFilters.pic_type) {
+        newType =
+          mapFilters.pic_type == "flat" ? "coef_flat_pictures" : "coef_360_pictures";
+      }
+      _glStyle.layers[gridStyleID] = Panoramax.utils.map.switchCoefValue(
+        _glStyle.layers[gridStyleID],
+        newType
+      );
     }
 
     olms.applyStyle(_pnxLayer, _glStyle);
@@ -268,21 +289,28 @@ var panoramax = (function () {
    * @param {number[]} [coords] Map coordinates of picture as [lon, lat]
    * @param {number} [orientation] Picture orientation (in degrees, 0-360)
    */
-  var _changePicMarker = function(visible, coords, orientation) {
+  var _changePicMarker = function (visible, coords, orientation) {
     // Change coords
-    if(coords) { _pnxPicMarker.getGeometry().setCoordinates(_coordsFrom4326(coords)); }
+    if (coords) {
+      _pnxPicMarker.getGeometry().setCoordinates(_coordsFrom4326(coords));
+    }
 
     // Change orientation
-    if(orientation !== null && orientation !== undefined) {
-      _pnxPicMarkerLayer.getStyle().getImage().setRotation(orientation * Math.PI / 180);
-      
+    if (orientation !== null && orientation !== undefined) {
+      _pnxPicMarkerLayer
+        .getStyle()
+        .getImage()
+        .setRotation((orientation * Math.PI) / 180);
+
       // Hack to force map render to make rotation visible
       clearTimeout(_delayMapRender);
-      _delayMapRender = setTimeout(() =>_pnxPicMarkerLayer.changed(), 100);
+      _delayMapRender = setTimeout(() => _pnxPicMarkerLayer.changed(), 100);
     }
 
     // Change visibility
-    if(visible || visible === false) { _pnxPicMarkerLayer.setVisible(visible); }
+    if (visible || visible === false) {
+      _pnxPicMarkerLayer.setVisible(visible);
+    }
   };
 
   /**
@@ -291,25 +319,17 @@ var panoramax = (function () {
    * @returns {number[]} [lon,lat] coordinates in WGS84
    */
   var _coordsTo4326 = function (c) {
-    return ol.proj.transform(
-      c,
-      _projection.getCode(),
-      "EPSG:4326"
-    );
-  }
+    return ol.proj.transform(c, _projection.getCode(), "EPSG:4326");
+  };
 
   /**
    * Transforms EPSG:4326 coordinates into map projection
    * @param {object} c Original WGS84 coordinates
    * @returns {number[]} [lon,lat] coordinates in map projection
    */
-  var _coordsFrom4326 = function(c) {
-    return ol.proj.transform(
-      c,
-      "EPSG:4326",
-      _projection.getCode()
-    );
-  }
+  var _coordsFrom4326 = function (c) {
+    return ol.proj.transform(c, "EPSG:4326", _projection.getCode());
+  };
 
   /**
    * Generate a bounding box based on coordinates.
@@ -318,13 +338,13 @@ var panoramax = (function () {
    */
   var _coordsToBbox = function (coordinate) {
     const view = _map.getView();
-    const size = (20*0.01) / Math.max(view.getZoom(), 1);
-  
+    const size = (20 * 0.01) / Math.max(view.getZoom(), 1);
+
     return [
       coordinate[0] - size,
       coordinate[1] - size,
       coordinate[0] + size,
-      coordinate[1] + size
+      coordinate[1] + size,
     ];
   };
 

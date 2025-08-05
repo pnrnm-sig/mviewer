@@ -23,6 +23,9 @@ var panoramax = (function () {
   var _pnxPicMarker;
   var _pnxPicMarkerLayer;
   var _delayMapRender;
+  var _glStyle;
+  var _pnxMapFilters;
+  var _pnxMapFiltersMenu;
 
   /**
    * Initialize the component
@@ -51,6 +54,9 @@ var panoramax = (function () {
     _panoramaxBtn?.addEventListener("click", _toggleCoverageLayer);
   };
 
+  /**
+   * Create the photo viewer widget
+   */
   var _initPhotoViewer = () => {
     _pnxViewerContainer = document.getElementById("panoramaxPhotoViewerContainer");
     _pnxViewer = document.getElementById("panoramaxPhotoViewer");
@@ -74,6 +80,7 @@ var panoramax = (function () {
       if (!_pnxLayerEnabled) {
         _map.addLayer(_pnxLayer);
         _pnxClickEventId = _map.on("click", _onCoverageClick);
+        _pnxMapFiltersMenu.style.display = "block";
         _pnxLayerEnabled = true;
       } else {
         _map.removeLayer(_pnxLayer);
@@ -82,6 +89,7 @@ var panoramax = (function () {
           _map.un("dblclick", _pnxDblClickEventId.listener);
         }
         _pnxLayerEnabled = false;
+        _pnxMapFiltersMenu.style.display = "none";
         _showPictureInViewer();
       }
     }
@@ -92,18 +100,11 @@ var panoramax = (function () {
       // Get style JSON
       fetch(_url + "/api/map/style.json").then((response) => {
         response.json().then((glStyle) => {
-          // glStyle.sources.geovisio.attribution = '© <a href="https://panoramax.fr">Panoramax</a>',
+          _glStyle = glStyle;
           olms.applyStyle(_pnxLayer, glStyle);
         });
       });
       
-      // Add to map + listen to click
-      new CustomLayer(_pnxLayerId, _pnxLayer);
-      _map.addLayer(_pnxLayer);
-      _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
-      _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
-      _pnxLayerEnabled = true;
-
       // Create marker for showing selected picture
       _pnxPicMarker = new ol.Feature({
         geometry: new ol.geom.Point([0,0]),
@@ -119,10 +120,47 @@ var panoramax = (function () {
         visible: false,
         zIndex: 100
       });
+
+      // Settings form
+      _pnxLayer.customcontrol = true;
+      mviewer.customControls[_pnxLayerId] = {
+        init: function () {
+          _pnxMapFiltersMenu = document.createElement("pnx-map-filters-menu");
+          _pnxMapFiltersMenu.id = "pnx-map-filters-menu";
+          _pnxMapFiltersMenu.setAttribute("quality-score", "");
+
+          // Bindings to look like native Panoramax map
+          _pnxMapFiltersMenu._parent = _pnxViewer;
+          _pnxMapFiltersMenu._parent._onMapFiltersChange = _onMapFiltersChange;
+          _pnxMapFiltersMenu._parent._showQualityScoreDoc = () => window.open("https://docs.panoramax.fr/pictures-metadata/quality_score/");
+          const _onMapZoom = () => _pnxMapFiltersMenu.showZoomIn = _map.getView().getZoom() < 7;
+          _onMapZoom();
+          _map.on("moveend", _onMapZoom);
+
+          document.getElementById("layers-container").appendChild(_pnxMapFiltersMenu);
+        },
+    
+        destroy: function () {
+          _pnxMapFiltersMenu.parentNode.removeChild(_pnxMapFiltersMenu);
+        },
+      };
+      mviewer.customControls[_pnxLayerId].init();
+
+      // Add to map + listen to click
+      new CustomLayer(_pnxLayerId, _pnxLayer);
+      _map.addLayer(_pnxLayer);
+      _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
+      _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
+      _pnxLayerEnabled = true;
       _map.addLayer(_pnxPicMarkerLayer);
     }
   };
 
+  /**
+   * Change currently shown picture in photo viewer
+   * @param {string} [picId] The picture UUID (null to hide)
+   * @param {string} [seqId] The sequence UUID for this picture (optional, for faster retrieval)
+   */
   var _showPictureInViewer = (picId, seqId) => {
     if(picId) {
       if(seqId) {
@@ -171,6 +209,11 @@ var panoramax = (function () {
       }
       // Otherwise, launch API call to find best matching picture
       else {
+        // Make sure to use appropriate filters as well
+        if(_pnxMapFilters?.pic_type) {
+          searchOpts.filter = "field_of_view" + (_pnxMapFilters.pic_type === "flat" ? "<" : "=") + "360";
+        }
+
         fetch(_url + "/api/search?"+(new URLSearchParams(searchOpts)).toString()).then((response) => {
           response.json().then((pnxjson) => {
             const f = pnxjson?.features?.shift();
@@ -184,6 +227,38 @@ var panoramax = (function () {
         });
       }
     });
+  };
+
+  /**
+   * Reflects new settings on coverage layer
+   */
+  var _onMapFiltersChange = function() {
+    // Get Maplibre style using Panoramax functions
+		const mapFiltersMenu = document.getElementById("pnx-map-filters-menu");
+    let { mapFilters, mapSeqFilters, mapPicFilters, reloadMapStyle } = Panoramax.utils.map.mapFiltersToLayersFilters(
+      Panoramax.utils.map.mapFiltersFormValues(
+        mapFiltersMenu,
+        null,
+        mapFiltersMenu.getAttribute("quality-score") === ""
+      ),
+      true
+    );
+    _pnxMapFilters = mapFilters;
+
+    // Apply filter to current style
+    const seqStyle = _glStyle.layers.find(l => l["source-layer"] == "sequences");
+    const picStyle = _glStyle.layers.find(l => l["source-layer"] == "pictures");
+    const gridStyleID = _glStyle.layers.findIndex(l => l["source-layer"] == "grid");
+
+    if(seqStyle) { seqStyle.filter = mapSeqFilters || undefined; }
+    if(picStyle) { picStyle.filter = mapPicFilters || undefined; }
+    if(gridStyleID >= 0) {
+      let newType = "coef";
+			if(mapFilters.pic_type) { newType = mapFilters.pic_type == "flat" ? "coef_flat_pictures" : "coef_360_pictures"; }
+      _glStyle.layers[gridStyleID] = Panoramax.utils.map.switchCoefValue(_glStyle.layers[gridStyleID], newType);
+    }
+
+    olms.applyStyle(_pnxLayer, _glStyle);
   };
 
   /**
@@ -208,7 +283,7 @@ var panoramax = (function () {
 
     // Change visibility
     if(visible || visible === false) { _pnxPicMarkerLayer.setVisible(visible); }
-  }
+  };
 
   /**
    * Transforms map coordinates into EPSG:4326

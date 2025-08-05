@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "js": ["lib/index.js", "panoramax.js"],
   "html": "panoramax.html",
   "css": "lib/index.css",

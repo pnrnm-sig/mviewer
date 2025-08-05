@@ -20,6 +20,9 @@ var panoramax = (function () {
   var _pnxViewer;
   var _pnxViewerContainer;
   var _pnxViewerCloseBtn;
+  var _pnxPicMarker;
+  var _pnxPicMarkerLayer;
+  var _delayMapRender;
 
   /**
    * Initialize the component
@@ -55,6 +58,11 @@ var panoramax = (function () {
     _pnxViewer.setAttribute("endpoint", _url+"/api");
     _pnxViewerCloseBtn = document.getElementById("panoramaxClose");
     _pnxViewerCloseBtn.addEventListener("click", () => _showPictureInViewer());
+
+    // Picture events
+    _pnxViewer.addEventListener("psv:picture-loading", e => _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x));
+    _pnxViewer.addEventListener("psv:picture-loaded", e => _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x));
+    _pnxViewer.addEventListener("psv:view-rotated", e => _changePicMarker(null, null, e.detail.x));
   };
 
   /**
@@ -95,6 +103,23 @@ var panoramax = (function () {
       _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
       _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
       _pnxLayerEnabled = true;
+
+      // Create marker for showing selected picture
+      _pnxPicMarker = new ol.Feature({
+        geometry: new ol.geom.Point([0,0]),
+      });
+      _pnxPicMarkerLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({ features: [ _pnxPicMarker ]}),
+        style: new ol.style.Style({
+          image: new ol.style.Icon({
+            // Original image @ https://gitlab.com/panoramax/clients/web-viewer/-/blob/develop/src/img/marker_blue.svg
+            src: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgd2lkdGg9IjQ4IgogICBoZWlnaHQ9IjQ4IgogICB2aWV3Qm94PSIwIDAgMTIuNyAxMi43IgogICB2ZXJzaW9uPSIxLjEiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczEiIC8+CiAgPHBhdGgKICAgICBkPSJNLTMuMDA3LS4wMDVhNS45NzggNS45NzggMCAwIDEtNS45NzkgNS45NzhWLS4wMDV6IgogICAgIHN0eWxlPSJmaWxsOiMxYTIzN2U7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjAuNjYxNDU4O3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgdHJhbnNmb3JtPSJyb3RhdGUoLTEzNSkiLz4KICA8Y2lyY2xlCiAgICAgY3g9IjYuMzUiCiAgICAgY3k9IjYuNTQ1IgogICAgIHI9IjIuNjQiCiAgICAgc3R5bGU9ImZpbGw6IzFlODhlNTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6I2ZmZjtzdHJva2Utd2lkdGg6MC42NjAwMjc7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIgLz4KPC9zdmc+Cg=="
+          })
+        }),
+        visible: false,
+        zIndex: 100
+      });
+      _map.addLayer(_pnxPicMarkerLayer);
     }
   };
 
@@ -111,6 +136,7 @@ var panoramax = (function () {
     }
     else {
       _pnxViewerContainer.style.display = "none";
+      _changePicMarker(false);
     }
   };
 
@@ -161,6 +187,30 @@ var panoramax = (function () {
   };
 
   /**
+   * Edit the currently selected picture marker.
+   * If a parameter is not set, its state is not changed.
+   * @param {boolean} [visible] True to make it visible, false to hide
+   * @param {number[]} [coords] Map coordinates of picture as [lon, lat]
+   * @param {number} [orientation] Picture orientation (in degrees, 0-360)
+   */
+  var _changePicMarker = function(visible, coords, orientation) {
+    // Change coords
+    if(coords) { _pnxPicMarker.getGeometry().setCoordinates(_coordsFrom4326(coords)); }
+
+    // Change orientation
+    if(orientation !== null && orientation !== undefined) {
+      _pnxPicMarkerLayer.getStyle().getImage().setRotation(orientation * Math.PI / 180);
+      
+      // Hack to force map render to make rotation visible
+      clearTimeout(_delayMapRender);
+      _delayMapRender = setTimeout(() =>_pnxPicMarkerLayer.changed(), 100);
+    }
+
+    // Change visibility
+    if(visible || visible === false) { _pnxPicMarkerLayer.setVisible(visible); }
+  }
+
+  /**
    * Transforms map coordinates into EPSG:4326
    * @param {object} c Original map coordinates
    * @returns {number[]} [lon,lat] coordinates in WGS84
@@ -170,6 +220,19 @@ var panoramax = (function () {
       c,
       _projection.getCode(),
       "EPSG:4326"
+    );
+  }
+
+  /**
+   * Transforms EPSG:4326 coordinates into map projection
+   * @param {object} c Original WGS84 coordinates
+   * @returns {number[]} [lon,lat] coordinates in map projection
+   */
+  var _coordsFrom4326 = function(c) {
+    return ol.proj.transform(
+      c,
+      "EPSG:4326",
+      _projection.getCode()
     );
   }
 

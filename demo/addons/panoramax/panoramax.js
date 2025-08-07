@@ -26,6 +26,7 @@ var panoramax = (function () {
   var _delayMapRender;
   var _glStyle;
   var _pnxMapFilters;
+  var _pnxMapFiltersContainer;
   var _pnxMapFiltersMenu;
 
   /**
@@ -52,7 +53,7 @@ var panoramax = (function () {
     $("#toolstoolbar").append(button);
 
     _panoramaxBtn = document.getElementById("panoramaxBtn");
-    _panoramaxBtn?.addEventListener("click", _toggleCoverageLayer);
+    _panoramaxBtn?.addEventListener("click", _toggleMapLayer);
   };
 
   /**
@@ -95,14 +96,109 @@ var panoramax = (function () {
   };
 
   /**
+   * Create map layer (tiles + picture symbol)
+   */
+  var _initMapLayer = () => {
+    _pnxLayer = new ol.layer.VectorTile({ declutter: true });
+
+    // Get style JSON
+    fetch(_url + "/api/map/style.json").then((response) => {
+      response.json().then((glStyle) => {
+        _glStyle = glStyle;
+        olms.applyStyle(_pnxLayer, glStyle);
+      });
+    });
+
+    // Create marker for showing selected picture
+    _pnxPicMarker = new ol.Feature({
+      geometry: new ol.geom.Point([0, 0]),
+    });
+    _pnxPicMarkerLayer = new ol.layer.Vector({
+      source: new ol.source.Vector({ features: [_pnxPicMarker] }),
+      style: new ol.style.Style({
+        image: new ol.style.Icon({
+          // Original image @ https://gitlab.com/panoramax/clients/web-viewer/-/blob/develop/src/img/marker_blue.svg
+          src: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgd2lkdGg9IjQ4IgogICBoZWlnaHQ9IjQ4IgogICB2aWV3Qm94PSIwIDAgMTIuNyAxMi43IgogICB2ZXJzaW9uPSIxLjEiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczEiIC8+CiAgPHBhdGgKICAgICBkPSJNLTMuMDA3LS4wMDVhNS45NzggNS45NzggMCAwIDEtNS45NzkgNS45NzhWLS4wMDV6IgogICAgIHN0eWxlPSJmaWxsOiMxYTIzN2U7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjAuNjYxNDU4O3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgdHJhbnNmb3JtPSJyb3RhdGUoLTEzNSkiLz4KICA8Y2lyY2xlCiAgICAgY3g9IjYuMzUiCiAgICAgY3k9IjYuNTQ1IgogICAgIHI9IjIuNjQiCiAgICAgc3R5bGU9ImZpbGw6IzFlODhlNTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6I2ZmZjtzdHJva2Utd2lkdGg6MC42NjAwMjc7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIgLz4KPC9zdmc+Cg==",
+        }),
+      }),
+      visible: false,
+      zIndex: 100,
+    });
+
+    // Add to map + listen to click
+    new CustomLayer(_pnxLayerId, _pnxLayer);
+    _map.addLayer(_pnxLayer);
+    info.disable();
+    _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
+    _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
+    _pnxLayerEnabled = true;
+    _map.addLayer(_pnxPicMarkerLayer);
+    mviewer.alert(
+      "L'interrogation des couches est désactivé lorsque Panoramax est actif",
+      "alert-warning"
+    );
+  };
+
+  /**
+   * Create the map legend settings
+   */
+  var _initLegend = () => {
+    mviewer.customControls[_pnxLayerId] = {
+      init: function () {
+        // Wrapper for clean look in legend
+        _pnxMapFiltersContainer = document.createElement("li");
+        _pnxMapFiltersContainer.classList.add("list-group-item-pnx", "mv-layer-details"); //"list-group-item");
+        _pnxMapFiltersContainer.innerHTML = `
+          <div class="row layerdisplay-title">
+            <a>Panoramax</a>
+            <a href="#" class="mv-layer-remove" aria-label="close"title="" i18n="theme.layers.remove" data-original-title="Supprimer">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </div>
+          <div class="row layerdisplay-legend">
+            <pnx-map-filters-menu id="pnx-map-filters-menu" quality-score></pnx-map-filters-menu>
+          </div>
+        `;
+
+        // Bindings to look like native Panoramax map
+        _pnxMapFiltersMenu = _pnxMapFiltersContainer.querySelector(
+          "#pnx-map-filters-menu"
+        );
+        _pnxMapFiltersMenu._parent = _pnxViewer;
+        _pnxMapFiltersMenu._parent._onMapFiltersChange = _onMapFiltersChange;
+
+        _pnxMapFiltersMenu._parent._showQualityScoreDoc = () =>
+          window.open("https://docs.panoramax.fr/pictures-metadata/quality_score/");
+
+        const _onMapZoom = () =>
+          (_pnxMapFiltersMenu.showZoomIn = _map.getView().getZoom() < 7);
+
+        _onMapZoom();
+        _map.on("moveend", _onMapZoom);
+
+        _pnxMapFiltersContainer
+          .querySelector(".mv-layer-remove")
+          ?.addEventListener("click", _toggleMapLayer);
+
+        document.getElementById("layers-container").appendChild(_pnxMapFiltersContainer);
+      },
+
+      destroy: function () {
+        _pnxMapFiltersContainer.parentNode.removeChild(_pnxMapFiltersContainer);
+      },
+    };
+  };
+
+  /**
    * Toggle vector tiles on map.
    */
-  var _toggleCoverageLayer = function () {
+  var _toggleMapLayer = function () {
     // Layer exists : toggle its display
     if (_pnxLayer) {
       if (!_pnxLayerEnabled) {
         info.disable();
         _map.addLayer(_pnxLayer);
+        mviewer.customControls[_pnxLayerId].init();
         _pnxClickEventId = _map.on("click", _onCoverageClick);
         _pnxMapFiltersMenu.style.display = "block";
         _pnxLayerEnabled = true;
@@ -115,76 +211,15 @@ var panoramax = (function () {
         info.enable();
         _pnxLayerEnabled = false;
         _pnxMapFiltersMenu.style.display = "none";
+        mviewer.customControls[_pnxLayerId].destroy();
         _showPictureInViewer();
       }
     }
     // Create layer
     else {
-      _pnxLayer = new ol.layer.VectorTile({ declutter: true });
-
-      // Get style JSON
-      fetch(_url + "/api/map/style.json").then((response) => {
-        response.json().then((glStyle) => {
-          _glStyle = glStyle;
-          olms.applyStyle(_pnxLayer, glStyle);
-        });
-      });
-
-      // Create marker for showing selected picture
-      _pnxPicMarker = new ol.Feature({
-        geometry: new ol.geom.Point([0, 0]),
-      });
-      _pnxPicMarkerLayer = new ol.layer.Vector({
-        source: new ol.source.Vector({ features: [_pnxPicMarker] }),
-        style: new ol.style.Style({
-          image: new ol.style.Icon({
-            // Original image @ https://gitlab.com/panoramax/clients/web-viewer/-/blob/develop/src/img/marker_blue.svg
-            src: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgd2lkdGg9IjQ4IgogICBoZWlnaHQ9IjQ4IgogICB2aWV3Qm94PSIwIDAgMTIuNyAxMi43IgogICB2ZXJzaW9uPSIxLjEiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczEiIC8+CiAgPHBhdGgKICAgICBkPSJNLTMuMDA3LS4wMDVhNS45NzggNS45NzggMCAwIDEtNS45NzkgNS45NzhWLS4wMDV6IgogICAgIHN0eWxlPSJmaWxsOiMxYTIzN2U7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiNmZmY7c3Ryb2tlLXdpZHRoOjAuNjYxNDU4O3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgdHJhbnNmb3JtPSJyb3RhdGUoLTEzNSkiLz4KICA8Y2lyY2xlCiAgICAgY3g9IjYuMzUiCiAgICAgY3k9IjYuNTQ1IgogICAgIHI9IjIuNjQiCiAgICAgc3R5bGU9ImZpbGw6IzFlODhlNTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6I2ZmZjtzdHJva2Utd2lkdGg6MC42NjAwMjc7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIgLz4KPC9zdmc+Cg==",
-          }),
-        }),
-        visible: false,
-        zIndex: 100,
-      });
-
-      // Settings form
-      _pnxLayer.customcontrol = true;
-      mviewer.customControls[_pnxLayerId] = {
-        init: function () {
-          _pnxMapFiltersMenu = document.createElement("pnx-map-filters-menu");
-          _pnxMapFiltersMenu.id = "pnx-map-filters-menu";
-          _pnxMapFiltersMenu.setAttribute("quality-score", "");
-
-          // Bindings to look like native Panoramax map
-          _pnxMapFiltersMenu._parent = _pnxViewer;
-          _pnxMapFiltersMenu._parent._onMapFiltersChange = _onMapFiltersChange;
-          _pnxMapFiltersMenu._parent._showQualityScoreDoc = () =>
-            window.open("https://docs.panoramax.fr/pictures-metadata/quality_score/");
-          const _onMapZoom = () =>
-            (_pnxMapFiltersMenu.showZoomIn = _map.getView().getZoom() < 7);
-          _onMapZoom();
-          _map.on("moveend", _onMapZoom);
-
-          document.getElementById("layers-container").appendChild(_pnxMapFiltersMenu);
-        },
-
-        destroy: function () {
-          _pnxMapFiltersMenu.parentNode.removeChild(_pnxMapFiltersMenu);
-        },
-      };
+      _initMapLayer();
+      _initLegend();
       mviewer.customControls[_pnxLayerId].init();
-
-      // Add to map + listen to click
-      new CustomLayer(_pnxLayerId, _pnxLayer);
-      _map.addLayer(_pnxLayer);
-      info.disable();
-      _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
-      _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
-      _pnxLayerEnabled = true;
-      _map.addLayer(_pnxPicMarkerLayer);
-      mviewer.alert(
-        "L'interrogation des couches est désactivé lorsque Panoramax est actif",
-        "alert-warning"
-      );
     }
   };
 

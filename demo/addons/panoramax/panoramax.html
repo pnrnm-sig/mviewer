@@ -1,52 +1,98 @@
 <style>
-	#panoramaxPhotoViewerContainer {
-		position: absolute;
-		bottom: 45px;
-		left: 10px;
-		width: 20%;
-		height: 30%;
-		display: none;
-		border: 5px solid white;
-		resize: both;
-		overflow: auto;
-		transform: rotateX(180deg);
-	}
+  #panoramaxPhotoViewerContainer {
+    position: absolute;
+    bottom: 45px;
+    left: 10px;
+    width: 20%;
+    height: 30%;
+    display: none;
+    border: 5px solid white;
+    resize: both;
+    overflow: auto;
+    transform: rotateX(180deg);
+  }
 
-	pnx-photo-viewer {
-		position: absolute;
-		inset: 0;
-		transform: rotateX(-180deg);
-		overflow: hidden;
-	}
+  #panoramaxFullscreen {
+    display: none;
+  }
 
-	pnx-photo-viewer pnx-cornered-grid::part(corner-bottom-left),
-	pnx-photo-viewer pnx-cornered-grid::part(corner-bottom) {
-		display: none;
-	}
+  pnx-photo-viewer {
+    position: absolute;
+    inset: 0;
+    transform: rotateX(-180deg);
+    overflow: hidden;
+  }
 
-	#panoramaxClose {
-		background: white;
-		color: black;
-		font-size: 1.5em;
-		border: none;
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
+  pnx-photo-viewer pnx-cornered-grid::part(corner-bottom-left),
+  pnx-photo-viewer pnx-cornered-grid::part(corner-bottom) {
+    display: none;
+  }
 
-	pnx-map-filters-menu {
-		background: white;
-		display: block;
-	}
+  .pnx-mv-toolbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+  }
+  .pnx-mv-btn {
+    background: white;
+    color: black;
+    border: none;
+    width: 26px;
+    height: 26px;
+  }
+
+  pnx-map-filters-menu {
+    background: white;
+    display: block;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    #panoramaxPhotoViewerContainer {
+      bottom: 80px;
+      right: 0;
+      left: 0;
+      width: unset;
+      resize: unset;
+      transform: unset;
+    }
+
+    .pnx-mv-toolbar {
+      right: unset;
+      left: 0;
+    }
+
+    #panoramaxFullscreen {
+      display: block;
+    }
+
+    #panoramaxPhotoViewerContainer.pnx-mv-full {
+      top: 100px;
+      height: unset;
+    }
+
+    pnx-photo-viewer {
+      transform: unset;
+    }
+
+    .pnx-mv-btn {
+      width: 32px;
+      height: 32px;
+    }
+  }
 </style>
 
 <div id="panoramaxPhotoViewerContainer">
-	<pnx-photo-viewer
-		id="panoramaxPhotoViewer"
-		widgets="false"
-		url-parameters="false"
-	>
-		<pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
-		<button id="panoramaxClose" slot="top-right">×</button>
-	</pnx-photo-viewer>
+  <pnx-photo-viewer id="panoramaxPhotoViewer" widgets="false" url-parameters="false">
+    <pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
+    <div class="pnx-mv-toolbar" slot="top-right">
+      <button id="panoramaxFullscreen" class="pnx-mv-btn" title="Agrandir la photo">
+        <span class="fas fa-expand"></span>
+      </button>
+      <button id="panoramaxClose" class="pnx-mv-btn" title="Fermer la photo">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </div>
+  </pnx-photo-viewer>
 </div>

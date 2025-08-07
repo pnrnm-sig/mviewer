@@ -20,6 +20,7 @@ var panoramax = (function () {
   var _pnxViewer;
   var _pnxViewerContainer;
   var _pnxViewerCloseBtn;
+  var _pnxViewerExpandBtn;
   var _pnxPicMarker;
   var _pnxPicMarkerLayer;
   var _delayMapRender;
@@ -65,8 +66,21 @@ var panoramax = (function () {
       return;
     }
     _pnxViewer.setAttribute("endpoint", _url + "/api");
+
+    // Picture toolbar
     _pnxViewerCloseBtn = document.getElementById("panoramaxClose");
     _pnxViewerCloseBtn.addEventListener("click", () => _showPictureInViewer());
+    _pnxViewerExpandBtn = document.getElementById("panoramaxFullscreen");
+    _pnxViewerExpandBtn.addEventListener("click", () =>
+      document
+        .getElementById("panoramaxPhotoViewerContainer")
+        ?.classList.toggle("pnx-mv-full")
+    );
+    if (window.innerWidth < 768) {
+      document
+        .getElementsByClassName("pnx-mv-toolbar")[0]
+        ?.setAttribute("slot", "top-left");
+    }
 
     // Picture events
     _pnxViewer.addEventListener("psv:picture-loading", (e) =>

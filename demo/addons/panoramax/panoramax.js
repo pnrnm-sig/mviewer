@@ -87,6 +87,7 @@ var panoramax = (function () {
     // Layer exists : toggle its display
     if (_pnxLayer) {
       if (!_pnxLayerEnabled) {
+        info.disable();
         _map.addLayer(_pnxLayer);
         _pnxClickEventId = _map.on("click", _onCoverageClick);
         _pnxMapFiltersMenu.style.display = "block";
@@ -97,6 +98,7 @@ var panoramax = (function () {
           _map.un("singleclick", _pnxClickEventId.listener);
           _map.un("dblclick", _pnxDblClickEventId.listener);
         }
+        info.enable();
         _pnxLayerEnabled = false;
         _pnxMapFiltersMenu.style.display = "none";
         _showPictureInViewer();
@@ -160,10 +162,15 @@ var panoramax = (function () {
       // Add to map + listen to click
       new CustomLayer(_pnxLayerId, _pnxLayer);
       _map.addLayer(_pnxLayer);
+      info.disable();
       _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
       _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
       _pnxLayerEnabled = true;
       _map.addLayer(_pnxPicMarkerLayer);
+      mviewer.alert(
+        "L'interrogation des couches est désactivé lorsque Panoramax est actif",
+        "alert-warning"
+      );
     }
   };
 

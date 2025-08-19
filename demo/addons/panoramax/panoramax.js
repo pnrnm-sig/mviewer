@@ -95,19 +95,34 @@ var panoramax = (function () {
     );
   };
 
+  var _loadTilesJSON = (userId = null) => {
+    const tilesUrl = userId
+      ? _url + "/api/users/" + userId + "/map/style.json"
+      : _url + "/api/map/style.json";
+
+    fetch(tilesUrl).then((response) => {
+      response.json().then((glStyle) => {
+        _glStyle = glStyle;
+        olms.applyStyle(_pnxLayer, glStyle);
+
+        // Apply default filters from config if any
+        if (_pnxMapFilters) {
+          _onMapFiltersChange();
+        } else if (_config?.filters) {
+          _onMapFiltersChange(true);
+        }
+      });
+    });
+  };
+
   /**
    * Create map layer (tiles + picture symbol)
    */
   var _initMapLayer = () => {
     _pnxLayer = new ol.layer.VectorTile({ declutter: true });
 
-    // Get style JSON
-    fetch(_url + "/api/map/style.json").then((response) => {
-      response.json().then((glStyle) => {
-        _glStyle = glStyle;
-        olms.applyStyle(_pnxLayer, glStyle);
-      });
-    });
+    // Get style JSON (general or user-specific)
+    _loadTilesJSON(_config?.filters?.user);
 
     // Create marker for showing selected picture
     _pnxPicMarker = new ol.Feature({
@@ -144,7 +159,7 @@ var panoramax = (function () {
    */
   var _initLegend = () => {
     mviewer.customControls[_pnxLayerId] = {
-      init: function () {
+      init: async function () {
         // Wrapper for clean look in legend
         _pnxMapFiltersContainer = document.createElement("li");
         _pnxMapFiltersContainer.classList.add("list-group-item-pnx", "mv-layer-details"); //"list-group-item");
@@ -156,7 +171,7 @@ var panoramax = (function () {
             </a>
           </div>
           <div class="row layerdisplay-legend">
-            <pnx-map-filters-menu id="pnx-map-filters-menu" quality-score></pnx-map-filters-menu>
+            <pnx-map-filters-menu id="pnx-map-filters-menu" quality-score user-search></pnx-map-filters-menu>
           </div>
         `;
 
@@ -166,6 +181,28 @@ var panoramax = (function () {
         );
         _pnxMapFiltersMenu._parent = _pnxViewer;
         _pnxMapFiltersMenu._parent._onMapFiltersChange = _onMapFiltersChange;
+
+        if (_config?.filters) {
+          _pnxMapFiltersMenu._onParentFilterChange(_config.filters);
+          if (_config.filters?.user) {
+            _pnxMapFiltersMenu.user = await _pnxViewer.api.getUserName(
+              _config.filters.user
+            );
+            if (!_pnxMapFiltersMenu.user) {
+              _pnxMapFiltersMenu.user = _config.filters.user;
+            }
+          }
+        }
+
+        _pnxMapFiltersMenu._onUserSearchResult = (e) => {
+          if (e.detail) {
+            e.target.classList.add("pnx-filter-active");
+          } else {
+            e.target.classList.remove("pnx-filter-active");
+          }
+          // Switch map tiles
+          _loadTilesJSON(e.detail?.data ? e.detail?.data.id : undefined);
+        };
 
         _pnxMapFiltersMenu._parent._showQualityScoreDoc = () =>
           window.open("https://docs.panoramax.fr/pictures-metadata/quality_score/");
@@ -180,7 +217,8 @@ var panoramax = (function () {
           .querySelector(".mv-layer-remove")
           ?.addEventListener("click", _toggleMapLayer);
 
-        document.getElementById("layers-container").appendChild(_pnxMapFiltersContainer);
+        const layersList = document.getElementById("layers-container");
+        layersList.insertBefore(_pnxMapFiltersContainer, layersList.firstChild);
       },
 
       destroy: function () {
@@ -297,17 +335,20 @@ var panoramax = (function () {
 
   /**
    * Reflects new settings on coverage layer
+   * @param {boolean} [fromConfig=false] Read map filters from config.json file instead of HTML form
    */
-  var _onMapFiltersChange = function () {
+  var _onMapFiltersChange = function (fromConfig = false) {
     // Get Maplibre style using Panoramax functions
     const mapFiltersMenu = document.getElementById("pnx-map-filters-menu");
     let { mapFilters, mapSeqFilters, mapPicFilters, reloadMapStyle } =
       Panoramax.utils.map.mapFiltersToLayersFilters(
-        Panoramax.utils.map.mapFiltersFormValues(
-          mapFiltersMenu,
-          null,
-          mapFiltersMenu.getAttribute("quality-score") === ""
-        ),
+        fromConfig
+          ? _config?.filters
+          : Panoramax.utils.map.mapFiltersFormValues(
+              mapFiltersMenu,
+              null,
+              mapFiltersMenu.getAttribute("quality-score") === ""
+            ),
         true
       );
     _pnxMapFilters = mapFilters;

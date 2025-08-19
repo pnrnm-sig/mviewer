@@ -523,8 +523,8 @@ var info = (function () {
      * This callback is return when all request are resolved (like promiseAll behavior)
      * @param {object} result
      */
-    var callback = function () {
-      $.each(featureInfoByLayer, function (index, response) {
+    var callback = async function () {
+      for (const [index, response] of featureInfoByLayer.entries()) {
         var layerinfos = response.layerinfos;
         var panel = layerinfos.infospanel;
         if (configuration.getConfiguration().mobile) {
@@ -679,7 +679,9 @@ var info = (function () {
           }
         }
         //If many results, append panels views
-        if (html_result.length > 0) {
+        if (mviewer.customLayers[layerid].handle) {
+          await mviewer.customLayers[layerid].handle(features, views);
+        } else if (html_result.length > 0) {
           //Set view with layer info & html formated features
           if (_panelsTemplate[panel] == "allintabs") {
             for (var i = 0; i < html_result.length; i++) {
@@ -712,7 +714,7 @@ var info = (function () {
             });
           }
         }
-      });
+      }
       var infoLayers = [];
       for (var panel in views) {
         infoLayers = infoLayers.concat(views[panel].layers);

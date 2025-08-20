@@ -160,6 +160,18 @@ var panoramax = (function () {
   var _initLegend = () => {
     mviewer.customControls[_pnxLayerId] = {
       init: async function () {
+        // Filter display configs
+        const noFilterDate =
+          Array.isArray(_config?.show_filters) && !_config.show_filters.includes("date");
+        const noFilterPictype =
+          Array.isArray(_config?.show_filters) &&
+          !_config.show_filters.includes("picture_type");
+        const noFilterQS =
+          Array.isArray(_config?.show_filters) &&
+          !_config.show_filters.includes("quality_score");
+        const noFilterUser =
+          Array.isArray(_config?.show_filters) && !_config.show_filters.includes("user");
+
         // Wrapper for clean look in legend
         _pnxMapFiltersContainer = document.createElement("li");
         _pnxMapFiltersContainer.classList.add("list-group-item-pnx", "mv-layer-details"); //"list-group-item");
@@ -171,7 +183,13 @@ var panoramax = (function () {
             </a>
           </div>
           <div class="row layerdisplay-legend">
-            <pnx-map-filters-menu id="pnx-map-filters-menu" quality-score user-search></pnx-map-filters-menu>
+            <pnx-map-filters-menu
+              id="pnx-map-filters-menu"
+              ${noFilterDate ? "no-date" : ""}
+              ${noFilterPictype ? "no-picture-type" : ""}
+              ${noFilterQS ? "" : "quality-score"}
+              ${noFilterUser ? "" : "user-search"}
+            ></pnx-map-filters-menu>
           </div>
         `;
 
@@ -236,9 +254,11 @@ var panoramax = (function () {
       if (!_pnxLayerEnabled) {
         info.disable();
         _map.addLayer(_pnxLayer);
-        mviewer.customControls[_pnxLayerId].init();
+        if (_config?.show_filters !== false) {
+          mviewer.customControls[_pnxLayerId].init();
+          _pnxMapFiltersMenu.style.display = "block";
+        }
         _pnxClickEventId = _map.on("click", _onCoverageClick);
-        _pnxMapFiltersMenu.style.display = "block";
         _pnxLayerEnabled = true;
       } else {
         _map.removeLayer(_pnxLayer);
@@ -248,16 +268,20 @@ var panoramax = (function () {
         }
         info.enable();
         _pnxLayerEnabled = false;
-        _pnxMapFiltersMenu.style.display = "none";
-        mviewer.customControls[_pnxLayerId].destroy();
+        if (_config?.show_filters !== false) {
+          _pnxMapFiltersMenu.style.display = "none";
+          mviewer.customControls[_pnxLayerId].destroy();
+        }
         _showPictureInViewer();
       }
     }
     // Create layer
     else {
       _initMapLayer();
-      _initLegend();
-      mviewer.customControls[_pnxLayerId].init();
+      if (_config?.show_filters !== false) {
+        _initLegend();
+        mviewer.customControls[_pnxLayerId].init();
+      }
     }
   };
 

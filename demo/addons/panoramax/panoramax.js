@@ -413,7 +413,10 @@ var panoramax = (function () {
   var _changePicMarker = function (visible, coords, orientation) {
     // Change coords
     if (coords) {
-      _pnxPicMarker.getGeometry().setCoordinates(_coordsFrom4326(coords));
+      const mapcoords = _coordsFrom4326(coords);
+      _pnxPicMarker.getGeometry().setCoordinates(mapcoords);
+      _map.getView().setCenter(mapcoords);
+      _map.getView().setZoom(17);
     }
 
     // Change orientation

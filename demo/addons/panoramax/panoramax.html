@@ -63,6 +63,12 @@
     border: 2px dashed lightgray;
   }
 
+  /* No picture arrows */
+  pnx-photo-viewer .psv-virtual-tour-arrows,
+  pnx-photo-viewer .pnx-psv-annotation {
+    display: none;
+  }
+
   /* Mobile */
   @media (max-width: 767px) {
     #panoramaxPhotoViewerContainer {
@@ -100,7 +106,12 @@
 </style>
 
 <div id="panoramaxPhotoViewerContainer">
-  <pnx-photo-viewer id="panoramaxPhotoViewer" widgets="false" url-parameters="false">
+  <pnx-photo-viewer
+    id="panoramaxPhotoViewer"
+    widgets="false"
+    url-parameters="false"
+    psv="{picturesNavigation: 'seq'}">
+    <pnx-widget-player size="md" slot="top"></pnx-widget-player>
     <pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
     <div class="pnx-mv-toolbar" slot="top-right">
       <button id="panoramaxFullscreen" class="pnx-mv-btn" title="Agrandir la photo">

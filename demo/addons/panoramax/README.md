@@ -28,15 +28,16 @@ Une fois la configuration effectuée, un nouveau bouton **Panoramax** apparaît 
 
 ## Configuration avancée
 
-Il est possible de modifier les configurations avancées de l'extension à travers le fichier `demo/addons/panoramax/config.json` :
+Il est possible de modifier les configurations avancées de l'extension à travers le fichier `demo/addons/panoramax/config.json`, dans l'objet `options.panoramax` :
 
-- `options.panoramax.url` : URL du serveur Panoramax à utiliser (par défaut le catalogue général : `https://explore.panoramax.fr`)
-- `options.panoramax.show_filters` : modifier les filtres proposés à l'utilisateur. Les valeurs possibles sont :
+- `url` : URL du serveur Panoramax à utiliser (par défaut le catalogue général : `https://explore.panoramax.fr`)
+- `picture_size` : dimension originale du bloc photo à afficher, sous la forme `[largeur, hauteur]`. Les valeurs peuvent être exprimées dans n'importe quelle unité CSS valide, par exemple `200px` ou `30%`. Par défaut `["20%", "30%"]` sur PC. La configuration ne s'applique par sur affichage mobile.
+- `show_filters` : modifier les filtres proposés à l'utilisateur. Les valeurs possibles sont :
   - `true` (défaut) : affiche tous les filtres
   - `false` : masque complètement l'affichage des filtres et l'entrée de légende
   - `[]` : masque les filtres mais conserve l'entrée de légende
   - `["date", "picture_type", "quality_score", "user"]` : liste des filtres à proposer
-- `options.panoramax.filters` : modifier les valeurs initiales des filtres
+- `filters` : modifier les valeurs initiales des filtres
   - `minDate` : date minimale de prise de la photo au format `YYYY-MM-DD` (exemple `2025-01-01`)
   - `maxDate` : date maximale de prise de la photo au format `YYYY-MM-DD` (exemple `2025-06-01`)
   - `pic_type` : type de photo à afficher (`flat` pour photos classiques, `equirectangular` pour 360°, ne pas renseigner pour les deux)
@@ -50,6 +51,7 @@ Un exemple complet de configuration possible :
   "options": {
     "panoramax": {
       "url": "https://explore.panoramax.fr",
+      "picture_size": ["20%", "30%"],
       "filters": {
         "minDate": "2025-01-01",
         "maxDate": "2025-06-01",

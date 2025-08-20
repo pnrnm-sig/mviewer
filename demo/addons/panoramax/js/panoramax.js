@@ -93,6 +93,18 @@ var panoramax = (function () {
     _pnxViewer.addEventListener("psv:view-rotated", (e) =>
       _changePicMarker(null, null, e.detail.x)
     );
+
+    // Drag
+    $("#panoramaxPhotoViewerContainer").easyDrag({
+      handle: $("#panoramaxDrag"),
+      container: $("#map"),
+    });
+
+    // Sizing
+    if (Array.isArray(_config?.picture_size) && _config.picture_size.length == 2) {
+      _pnxViewerContainer.style.width = _config.picture_size[0];
+      _pnxViewerContainer.style.height = _config.picture_size[1];
+    }
   };
 
   var _loadTilesJSON = (userId = null) => {

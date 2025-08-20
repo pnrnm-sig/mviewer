@@ -9,7 +9,6 @@
     border: 5px solid white;
     resize: both;
     overflow: auto;
-    transform: rotateX(180deg);
   }
 
   #panoramaxFullscreen {
@@ -19,7 +18,6 @@
   pnx-photo-viewer {
     position: absolute;
     inset: 0;
-    transform: rotateX(-180deg);
     overflow: hidden;
   }
 
@@ -75,14 +73,18 @@
       bottom: 80px;
       right: 0;
       left: 0;
-      width: unset;
-      resize: unset;
-      transform: unset;
+      width: unset !important;
+      height: 30% !important;
+      resize: unset !important;
     }
 
     .pnx-mv-toolbar {
       right: unset;
       left: 0;
+    }
+
+    #panoramaxDrag {
+      display: none;
     }
 
     #panoramaxFullscreen {
@@ -91,7 +93,7 @@
 
     #panoramaxPhotoViewerContainer.pnx-mv-full {
       top: 100px;
-      height: unset;
+      height: unset !important;
     }
 
     pnx-photo-viewer {
@@ -114,6 +116,9 @@
     <pnx-widget-player size="md" slot="top"></pnx-widget-player>
     <pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
     <div class="pnx-mv-toolbar" slot="top-right">
+      <button id="panoramaxDrag" class="pnx-mv-btn" title="Déplacer la photo">
+        <span class="glyphicon glyphicon-move"></span>
+      </button>
       <button id="panoramaxFullscreen" class="pnx-mv-btn" title="Agrandir la photo">
         <span class="fas fa-expand"></span>
       </button>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application
-        mapfishurl="https://geobretagne.fr/mapfishapp/"
         home="https://cms.geobretagne.fr/"
-        studio="http://kartenn.region-bretagne.fr/mviewerstudio/?xml="
         title="Démo GéoBretagne"
         logo="img/logo/g.png"
         help="demo/demo_geobretagne_help.html"

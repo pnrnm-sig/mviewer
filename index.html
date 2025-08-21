@@ -87,7 +87,7 @@
     <div id="loading-page">
       <div class="single4"></div>
       <div id="loader-title" i18n="loader.text">Chargement de l'application ...</div>
-      <div id="loader-subtitle"></div>
+      <div id="loader-subtitle" i18n="loader.title"></div>
     </div>
     <div id="error">
       <h1></h1>
@@ -112,7 +112,7 @@
           <a class="navbar-brand" href="#">
             <img alt="Logo" src="img/logo/earth-globe.svg" class="mv-logo" />
           </a>
-          <a class="navbar-brand mv-title" href="#">mViewer</a>
+          <a class="navbar-brand mv-title" href="#" i18n="map_title">mViewer</a>
           <a
             type="button"
             class="navbar-toggle"
@@ -173,6 +173,7 @@
                 data-toggle="dropdown"
                 role="button"
                 aria-expanded="true">
+                <span aria-setsize="20px" class="fa fa-globe fa-lg"></span>
                 <span i18n="nav.down.lang">Langue</span>
                 <span class="caret"></span>
               </a>
@@ -348,12 +349,12 @@
             </div>
             <a
               i18n="search.result.locations"
-              class="search-header list-group-item disabled hidden">
+              class="search-header search-locations list-group-item disabled hidden">
               Localités
             </a>
             <a
               i18n="search.result.entities"
-              class="search-header list-group-item disabled hidden">
+              class="search-header search-entities list-group-item disabled hidden">
               Entités
             </a>
           </div>
@@ -795,33 +796,6 @@
                     title="QR code vers la carte"
                     i18n="share.picture.qrcode"
                     alt="QR code" />
-                </div>
-              </div>
-              <div class="row" id="shareToMapfish">
-                <div class="col-sm-10 form-inline">
-                  <button
-                    style="display: inline"
-                    id="shareToMapfishButton"
-                    type="button"
-                    class="btn btn-md btn-default"
-                    onclick="mviewer.sendToGeorchestra();">
-                    <span class="fas fa-share-square"></span>
-                    <div i18n="share.btn.mapfishapp">Afficher dans Mapfishapp</div>
-                  </button>
-                  <form
-                    id="georchestraForm"
-                    target="_blank"
-                    method="post"
-                    action="#"
-                    style="display: none">
-                    <input type="hidden" id="georchestraFormData" name="data" value="" />
-                    <input
-                      type="submit"
-                      data-role="button"
-                      data-mini="true"
-                      data-iconpos="right"
-                      value="geOrchestra" />
-                  </form>
                 </div>
               </div>
               <div id="IframeShare">

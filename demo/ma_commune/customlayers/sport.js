@@ -3,7 +3,7 @@ const LAYER_URL = URL_SPORT;
 const LAYER_ID = "sport";
 const COULEUR_POINT = "#4c74b5"; //Couleur du point cluster
 const LABEL_LEGEND = "Equipement sportif";
-const REQ_CQL = "&CQL_FILTER=new_code=";
+const REQ_CQL = "&CQL_FILTER=code_insee=";
 const code_insee = API.commune ?? undefined;
 
 mviewer.customLayers.sport = (function () {

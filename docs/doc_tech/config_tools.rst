@@ -20,18 +20,18 @@ Les outils actuellement disponibles sont :
 
 D'autres outils viendront compléter cette liste.
 
-Les outils sont localisés dans la balise <tools> de la configuration XML.
+Les outils sont localisés dans la balise <tools> de la configuration XML au même niveau que <application>`` (e.g ``config.tools``).
 
 .. code-block:: xml
        :linenos:
        
         <application/>
         
-            <tools>
-                ... outils
-            </tools>
+        <tools>
+            ... outils
+        </tools>
 
-            ....reste de la configuration XML
+        ....reste de la configuration XML
 
 Les outils sont présentés dans les sections qui suivent. 
 
@@ -48,11 +48,12 @@ L'outil de dessin permet de :
 * afficher des informations de mesure
 * dessiner selon une couche d'accroche WFS (snapping)
 
-Pour activer l'outil, vous devez le rajouter dans la balise ``<tools>`` :
+Pour activer l'outil, vous devez le rajouter dans la balise ``<tools>`` et activer l'outil de mesure dans <application> pour l'utiliser ou non:
 
 .. code-block:: xml
        :linenos:
 
+        <application drawtools="true">
         <tools>
             <draw geometryTypes="Polygon" snapLayerId="geom_parcelle_2023" ... />
         </tools>
@@ -69,3 +70,8 @@ Paramètres
 * singleDraw : (boolen) - True pour dessiner uniquement une forme à la fois.
 * snapTolerance : (int) - Tolérence du snapping en pixel (c.fg pixelTolerance ol > v8.0)
 
+
+Exemples
+--------
+
+Vous trouverez un exemple simple ou plus avancé dans ``demo/draw/draw.xml`` et ``demo/draw/draw2.xml``.

@@ -192,7 +192,7 @@ var search = (function () {
    */
   var _showResults = function (results, resultsType) {
     if (resultsType) {
-      var searchHeader = $(`[i18n='search.result.${resultsType}']`);
+      var searchHeader = $(`.search-${resultsType}`);
       searchHeader.removeClass("hidden");
       searchHeader.after(results);
     } else {
@@ -244,6 +244,7 @@ var search = (function () {
       // TIMEOUT will avoid one request by keyup
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
+        _clearSearchResults();
         // Avoid double trigger
         if (isPasting && e.key.toLowerCase() === "v") {
           isPasting = false;

@@ -105,6 +105,14 @@ var panoramax = (function () {
       _pnxViewerContainer.style.width = _config.picture_size[0];
       _pnxViewerContainer.style.height = _config.picture_size[1];
     }
+
+    // Position
+    if (_config?.picture_position) {
+      _pnxViewerContainer.style.top = _config.picture_position?.top || "unset";
+      _pnxViewerContainer.style.bottom = _config.picture_position?.bottom || "unset";
+      _pnxViewerContainer.style.right = _config.picture_position?.right || "unset";
+      _pnxViewerContainer.style.left = _config.picture_position?.left || "unset";
+    }
   };
 
   var _loadTilesJSON = (userId = null) => {

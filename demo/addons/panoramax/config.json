@@ -5,7 +5,22 @@
   "target": "map",
   "options": {
     "panoramax": {
-      "url": "https://explore.panoramax.fr"
+      "url": "https://explore.panoramax.fr",
+      "picture_size": ["20%", "30%"],
+      "picture_position": {
+        "top": "60px",
+        "left": "280px",
+        "right": null,
+        "bottom": null
+      },
+      "show_filters": ["date", "picture_type", "quality_score", "user"],
+      "filters": {
+        "minDate": null,
+        "maxDate": null,
+        "pic_type": null,
+        "qualityscore": null,
+        "user": null
+      }
     }
   }
 }

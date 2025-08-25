@@ -32,7 +32,7 @@ Il est possible de modifier les configurations avancées de l'extension à trave
 
 - `url` : URL du serveur Panoramax à utiliser (par défaut le catalogue général : `https://explore.panoramax.fr`)
 - `picture_size` : dimension originale du bloc photo à afficher, sous la forme `[largeur, hauteur]`. Les valeurs peuvent être exprimées dans n'importe quelle unité CSS valide, par exemple `200px` ou `30%`. Par défaut `["20%", "30%"]` sur PC. La configuration ne s'applique par sur affichage mobile.
-- `picture_position` : positionnement initial du bloc photo, sous la forme `{top: ..., bottom: ..., right: ..., left: ...}`. Les valeurs sont exprimées en espacement par rapport au bord de la carte. Les valeurs d'espacement peuvent être exprimées dans n'importe quelle unité CSS valide, par exemple `50px` ou `15%`. La valeur `null` permet de ne pas forcer le rapprochement d'un des bords. Par défaut `{ "top": "60px", "left": "280px", "right": null, "bottom": null }` sur PC. La configuration ne s'applique par sur affichage mobile.
+- `picture_position` : positionnement initial du bloc photo, sous la forme `{top: ..., bottom: ..., right: ..., left: ...}`. Les valeurs sont exprimées en espacement par rapport au bord de la carte. Les valeurs d'espacement peuvent être exprimées dans n'importe quelle unité CSS valide, par exemple `50px` ou `15%`. La valeur `null` permet de ne pas forcer le rapprochement d'un des bords. Par défaut `{ "top": "60px", "left": "310px", "right": null, "bottom": null }` sur PC. La configuration ne s'applique par sur affichage mobile.
 - `show_filters` : modifier les filtres proposés à l'utilisateur. Les valeurs possibles sont :
   - `true` (défaut) : affiche tous les filtres
   - `false` : masque complètement l'affichage des filtres et l'entrée de légende
@@ -63,7 +63,7 @@ Un exemple complet de configuration possible :
       "show_filters": ["date", "picture_type"],
       "picture_position": {
         "top": "60px",
-        "left": "280px",
+        "left": "310px",
         "right": null,
         "bottom": null
       }

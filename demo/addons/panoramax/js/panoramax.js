@@ -202,7 +202,7 @@ var panoramax = (function () {
               <span class="glyphicon glyphicon-remove"></span>
             </a>
           </div>
-          <div class="row layerdisplay-legend">
+          <div class="mv-layer-options" style="display: none">
             <pnx-map-filters-menu
               id="pnx-map-filters-menu"
               ${noFilterDate ? "no-date" : ""}
@@ -211,6 +211,9 @@ var panoramax = (function () {
               ${noFilterUser ? "" : "user-search"}
             ></pnx-map-filters-menu>
           </div>
+          <a href="#" aria-label="Options" onclick="mviewer.toggleLayerOptions(this);" title="" i18n="theme.layers.options" class="icon-options" data-original-title="Options">
+              <span class="state-icon glyphicon glyphicon-chevron-down"></span>
+          </a>
         `;
 
         // Bindings to look like native Panoramax map

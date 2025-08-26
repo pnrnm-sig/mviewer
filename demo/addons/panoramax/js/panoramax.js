@@ -84,12 +84,16 @@ var panoramax = (function () {
     }
 
     // Picture events
-    _pnxViewer.addEventListener("psv:picture-loading", (e) =>
-      _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x)
-    );
-    _pnxViewer.addEventListener("psv:picture-loaded", (e) =>
-      _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x)
-    );
+    _pnxViewer.addEventListener("psv:picture-loading", (e) => {
+      if (_pnxLayerEnabled) {
+        _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x);
+      }
+    });
+    _pnxViewer.addEventListener("psv:picture-loaded", (e) => {
+      if (_pnxLayerEnabled) {
+        _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x);
+      }
+    });
     _pnxViewer.addEventListener("psv:view-rotated", (e) =>
       _changePicMarker(null, null, e.detail.x)
     );
@@ -161,12 +165,12 @@ var panoramax = (function () {
     });
 
     // Add to map + listen to click
+    _pnxLayerEnabled = true;
     new CustomLayer(_pnxLayerId, _pnxLayer);
     _map.addLayer(_pnxLayer);
     info.disable();
     _pnxClickEventId = _map.on("singleclick", _onCoverageClick);
     _pnxDblClickEventId = _map.on("dblclick", () => _showPictureInViewer());
-    _pnxLayerEnabled = true;
     _map.addLayer(_pnxPicMarkerLayer);
     mviewer.alert(
       "L'interrogation des couches est désactivé lorsque Panoramax est actif",
@@ -277,20 +281,20 @@ var panoramax = (function () {
       if (!_pnxLayerEnabled) {
         info.disable();
         _map.addLayer(_pnxLayer);
+        _pnxLayerEnabled = true;
         if (_config?.show_filters !== false) {
           mviewer.customControls[_pnxLayerId].init();
           _pnxMapFiltersMenu.style.display = "block";
         }
         _pnxClickEventId = _map.on("click", _onCoverageClick);
-        _pnxLayerEnabled = true;
       } else {
+        _pnxLayerEnabled = false;
         _map.removeLayer(_pnxLayer);
         if (_pnxClickEventId?.listener) {
           _map.un("singleclick", _pnxClickEventId.listener);
           _map.un("dblclick", _pnxDblClickEventId.listener);
         }
         info.enable();
-        _pnxLayerEnabled = false;
         if (_config?.show_filters !== false) {
           _pnxMapFiltersMenu.style.display = "none";
           mviewer.customControls[_pnxLayerId].destroy();
@@ -323,6 +327,7 @@ var panoramax = (function () {
       _pnxViewer.setAttribute("picture", picId);
       _pnxViewerContainer.style.display = "unset";
     } else {
+      _pnxViewer.psv.stopSequence();
       _pnxViewerContainer.style.display = "none";
       _changePicMarker(false);
     }

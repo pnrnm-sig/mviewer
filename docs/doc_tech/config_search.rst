@@ -65,7 +65,8 @@ Options liées à la recherche d'adresse *(olscompletion)* et/ou à la recherche
               querymaponclick=""
               closeafterclick=""
               animate=""
-              duration=""/>
+              duration=""
+              searchmaxzoomlevel=""/>
 
 **Attributs**
 
@@ -82,6 +83,7 @@ Options liées à la recherche d'adresse *(olscompletion)* et/ou à la recherche
 * ``imgurl`` *(optionnel)* : Url de l'image PNG / JPEG à afficher à l'emplacement du résultat sélectionné en guise de pointeur.
 * ``imgwidth`` *(optionnel)* : Taille de l'image (voir paramètre imgurl) du pointeur représentant le résultat sélectionné.
 * ``svgcolor`` *(optionnel)* : Couleur du pointeur représentant la localisation du résultat sélectionné.
+* ``searchmaxzoomlevel`` *(optionnel)* : définit le niveau de zoom maximal appliqué lors d'une recherche ELS ou fuse (valeur par défaut = 15) Pour une géométrie de type polygone ou multi-polygone, le zoom est calculé selon l'étendue.
 
 .. figure:: ../_images/dev/config_search/option-animate.gif
             :alt: activation de l'option animate

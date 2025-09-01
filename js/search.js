@@ -326,8 +326,8 @@ var search = (function () {
                   ${_searchparams.querymaponclick}
               );
               mviewer.showLocation('${_proj4326}', ${coords[0]}, ${coords[1]}, ${
-        _searchparams.marker
-      });">
+                _searchparams.marker
+              });">
               ${props?.label || res[i].fulltext}
           </a>`;
     }
@@ -458,12 +458,12 @@ var search = (function () {
             <a class="fuse list-group-item" title="${result_label}" 
                 href="#" onclick="
                   mviewer.animateToFeature(${JSON.stringify([xyz.lon, xyz.lat])}, ${
-            xyz.zoom
-          }, ${JSON.stringify(extentCenter)}, ${_searchparams.querymaponclick}); 
+                    xyz.zoom
+                  }, ${JSON.stringify(extentCenter)}, ${_searchparams.querymaponclick}); 
                   mviewer.showLocation('${_proj4326}', ${xyz.lon}, ${xyz.lat}, false);" 
                 onmouseover="mviewer.flash('${_proj4326}', ${xyz.lon}, ${
-            xyz.lat
-          }, false);">
+                  xyz.lat
+                }, false);">
               ${result_label}
             </a>`;
         });
@@ -963,11 +963,10 @@ var search = (function () {
                   feature.setId("feature." + indexId + "." + j);
                   _sourceEls.addFeature(feature);
 
-                  action_click +=
-                    `mviewer.animateToFeature(${JSON.stringify([xyz.lon, xyz.lat])}, ${xyz.zoom}, ${JSON.stringify(extentCenter)}, false); 
+                  action_click += `mviewer.animateToFeature(${JSON.stringify([xyz.lon, xyz.lat])}, ${xyz.zoom}, ${JSON.stringify(extentCenter)}, false); 
                     mviewer.showLocation('${_proj4326}', ${xyz.lon}, ${xyz.lat}, false);`;
-                  
-                    //If index has the same name than a mviewer layer make the query on layer
+
+                  //If index has the same name than a mviewer layer make the query on layer
                   if (_overLayers[indexId] && _searchparams.querymaponclick) {
                     _overLayers[indexId].searchid = _elasticSearchLinkid.get(indexId);
                     action_click +=
@@ -1231,7 +1230,9 @@ var search = (function () {
       _searchparams.static = sparams.static === "true";
       _searchparams.querymaponclick = sparams.querymaponclick === "true";
       _searchparams.closeafterclick = sparams.closeafterclick === "true";
-      _searchparams.searchmaxzoomlevel = sparams.searchmaxzoomlevel ? sparams.searchmaxzoomlevel : 15;
+      _searchparams.searchmaxzoomlevel = sparams.searchmaxzoomlevel
+        ? sparams.searchmaxzoomlevel
+        : 15;
     }
 
     if (_searchparams.localities === false && _searchparams.features === false) {

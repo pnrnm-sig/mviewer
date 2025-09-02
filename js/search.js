@@ -422,7 +422,7 @@ var search = (function () {
       var layerid = searchableLayers[i].get("mviewerid");
 
       var results = _fuseSearchData[layerid].search(val);
-      var zoom = 15;
+      var zoom = _searchparams.searchmaxzoomlevel;
       var max_results = 5;
       var str = "";
       if (results.length > 0) {
@@ -922,6 +922,7 @@ var search = (function () {
                 let titleDisplayKey = "id";
                 var nb = data.hits.hits.length;
                 let formatELS = new ol.format.GeoJSON();
+                let zoom = _searchparams.searchmaxzoomlevel;
 
                 if (nb > 0) {
                   indexId = data.hits.hits[0]._index;
@@ -940,6 +941,8 @@ var search = (function () {
                   let geom = formatELS.readGeometry(currentFeature._source.location);
 
                   let xyz = mviewer.getLonLatZfromGeometry(geom, _proj4326, zoom);
+
+                  let extentCenter = _getCenterWithExtent(geom, _proj4326);
 
                   var title = "";
                   title += $.map(currentFeature._source, function (value, key) {
@@ -960,11 +963,14 @@ var search = (function () {
                   feature.setId("feature." + indexId + "." + j);
                   _sourceEls.addFeature(feature);
 
-                  action_click +=
-                    "mviewer.zoomToFeature('feature." + indexId + "." + j + "', 16);";
+                  action_click += `mviewer.animateToFeature(${JSON.stringify([
+                    xyz.lon,
+                    xyz.lat,
+                  ])}, ${xyz.zoom}, ${JSON.stringify(extentCenter)}, false); 
+                    mviewer.showLocation('${_proj4326}', ${xyz.lon}, ${xyz.lat}, false);`;
 
                   //If index has the same name than a mviewer layer make the query on layer
-                  if (_overLayers[indexId]) {
+                  if (_overLayers[indexId] && _searchparams.querymaponclick) {
                     _overLayers[indexId].searchid = _elasticSearchLinkid.get(indexId);
                     action_click +=
                       "mviewer.tools.info.queryLayer(" +
@@ -1227,6 +1233,9 @@ var search = (function () {
       _searchparams.static = sparams.static === "true";
       _searchparams.querymaponclick = sparams.querymaponclick === "true";
       _searchparams.closeafterclick = sparams.closeafterclick === "true";
+      _searchparams.searchmaxzoomlevel = sparams.searchmaxzoomlevel
+        ? sparams.searchmaxzoomlevel
+        : 15;
     }
 
     if (_searchparams.localities === false && _searchparams.features === false) {

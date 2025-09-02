@@ -679,7 +679,7 @@ var info = (function () {
           }
         }
         //If many results, append panels views
-        if (mviewer.customLayers[layerid].handle) {
+        if (mviewer.customLayers[layerid] && mviewer.customLayers[layerid].handle) {
           await mviewer.customLayers[layerid].handle(features, views);
         } else if (html_result.length > 0) {
           //Set view with layer info & html formated features

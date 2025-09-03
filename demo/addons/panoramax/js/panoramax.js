@@ -81,6 +81,7 @@ var panoramax = (function () {
       document
         .getElementsByClassName("pnx-mv-toolbar")[0]
         ?.setAttribute("slot", "top-left");
+      document.getElementsByTagName("pnx-widget-player")[0]?.setAttribute("slot", "top");
     }
 
     // Picture events

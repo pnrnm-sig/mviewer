@@ -120,9 +120,23 @@
       transform: unset;
     }
 
+    pnx-widget-player {
+      left: unset;
+    }
+
+    pnx-widget-player > pnx-button-group > pnx-button::part(btn),
+    pnx-widget-player > pnx-button-group > pnx-togglable-group > pnx-button::part(btn) {
+      height: 32px;
+      width: 32px;
+    }
+
     .pnx-mv-btn {
       width: 32px;
       height: 32px;
+    }
+
+    a.pnx-mv-btn {
+      line-height: 32px;
     }
   }
 </style>

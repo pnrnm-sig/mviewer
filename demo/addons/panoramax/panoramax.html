@@ -39,6 +39,11 @@
     width: 26px;
     height: 26px;
   }
+  a.pnx-mv-btn {
+    text-align: center;
+    text-decoration: none;
+    line-height: 26px;
+  }
 
   .list-group-item-pnx {
     border: 1px solid #ddd;
@@ -63,7 +68,16 @@
 
   pnx-widget-player {
     position: absolute;
-    top: 2px;
+    top: 0px;
+    left: 0px;
+  }
+
+  pnx-widget-player > pnx-button-group > pnx-button::part(btn),
+  pnx-widget-player > pnx-button-group > pnx-togglable-group > pnx-button::part(btn) {
+    border-radius: 0px;
+    height: 26px;
+    width: 26px;
+    border: none;
   }
 
   /* No picture arrows */
@@ -119,9 +133,17 @@
     widgets="false"
     url-parameters="false"
     psv-options="{transitionDuration: 700, picturesNavigation: 'seq'}">
-    <pnx-widget-player size="md" slot="top" more="always"></pnx-widget-player>
+    <pnx-widget-player size="md" slot="top-left" more="always"></pnx-widget-player>
     <pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
     <div class="pnx-mv-toolbar" slot="top-right">
+      <a
+        href=""
+        target="_blank"
+        id="panoramaxOpen"
+        class="pnx-mv-btn"
+        title="Voir sur Panoramax">
+        <span class="glyphicon glyphicon-map-marker"></span>
+      </a>
       <button id="panoramaxDrag" class="pnx-mv-btn" title="Déplacer la photo">
         <span class="glyphicon glyphicon-move"></span>
       </button>

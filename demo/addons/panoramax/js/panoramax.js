@@ -85,18 +85,25 @@ var panoramax = (function () {
 
     // Picture events
     _pnxViewer.addEventListener("psv:picture-loading", (e) => {
+      _updateGoToPnxLink(e.detail.picId, { x: e.detail.x, y: e.detail.y, z: e.detail.z });
       if (_pnxLayerEnabled) {
         _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x);
       }
     });
     _pnxViewer.addEventListener("psv:picture-loaded", (e) => {
+      _updateGoToPnxLink(e.detail.picId, { x: e.detail.x, y: e.detail.y, z: e.detail.z });
       if (_pnxLayerEnabled) {
         _changePicMarker(true, [e.detail.lon, e.detail.lat], e.detail.x);
       }
     });
-    _pnxViewer.addEventListener("psv:view-rotated", (e) =>
-      _changePicMarker(null, null, e.detail.x)
-    );
+    _pnxViewer.addEventListener("psv:view-rotated", (e) => {
+      _updateGoToPnxLink(_pnxViewer.psv.getPictureId(), {
+        x: e.detail.x,
+        y: e.detail.y,
+        z: e.detail.z,
+      });
+      _changePicMarker(null, null, e.detail.x);
+    });
 
     // Drag
     $("#panoramaxPhotoViewerContainer").easyDrag({
@@ -205,6 +212,9 @@ var panoramax = (function () {
             <a href="#" class="mv-layer-remove" aria-label="close"title="" i18n="theme.layers.remove" data-original-title="Supprimer">
               <span class="glyphicon glyphicon-remove"></span>
             </a>
+          </div>
+          <div class="mv-layer-options">
+            Cliquez sur les lignes oranges pour visualiser les photos. Retrouvez les options de filtre en cliquant sur la flèche ci-dessous.
           </div>
           <div class="mv-layer-options" style="display: none">
             <pnx-map-filters-menu
@@ -326,11 +336,24 @@ var panoramax = (function () {
       }
       _pnxViewer.setAttribute("picture", picId);
       _pnxViewerContainer.style.display = "unset";
+      _updateGoToPnxLink(picId, _pnxViewer.psv.getXYZ());
     } else {
       _pnxViewer.psv.stopSequence();
       _pnxViewerContainer.style.display = "none";
       _changePicMarker(false);
     }
+  };
+
+  /**
+   * Change the "open on Panoramax" link
+   */
+  var _updateGoToPnxLink = (picid, xyz) => {
+    const btn = document.getElementById("panoramaxOpen");
+    if (!btn) {
+      return;
+    }
+
+    btn.href = `${_url}/?pic=${picid}&xyz=${xyz.x}/${xyz.y}/${xyz.z}`;
   };
 
   /**

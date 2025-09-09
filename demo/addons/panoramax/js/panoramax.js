@@ -109,7 +109,7 @@ var panoramax = (function () {
     // Drag
     $("#panoramaxPhotoViewerContainer").easyDrag({
       handle: $("#panoramaxDrag"),
-      container: $("#map"),
+      container: $("#panoramaxDragContainer"),
     });
 
     // Sizing

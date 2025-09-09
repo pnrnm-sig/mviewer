@@ -1,4 +1,14 @@
 <style>
+  #panoramaxDragContainer {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 75%;
+    height: calc(100% - 80px);
+    pointer-events: none;
+    left: 10px;
+  }
+
   #panoramaxPhotoViewerContainer {
     position: absolute;
     top: 60px;
@@ -9,6 +19,7 @@
     border: 5px solid white;
     resize: both;
     overflow: auto;
+    pointer-events: auto;
   }
 
   #panoramaxFullscreen {
@@ -88,6 +99,13 @@
 
   /* Mobile */
   @media (max-width: 767px) {
+    #panoramaxDragContainer {
+      position: absolute;
+      inset: 0;
+      width: unset;
+      height: unset;
+    }
+
     #panoramaxPhotoViewerContainer {
       bottom: 80px !important;
       right: 0 !important;
@@ -141,32 +159,34 @@
   }
 </style>
 
-<div id="panoramaxPhotoViewerContainer">
-  <pnx-photo-viewer
-    id="panoramaxPhotoViewer"
-    widgets="false"
-    url-parameters="false"
-    psv-options="{transitionDuration: 700, picturesNavigation: 'seq'}">
-    <pnx-widget-player size="md" slot="top-left" more="always"></pnx-widget-player>
-    <pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
-    <div class="pnx-mv-toolbar" slot="top-right">
-      <a
-        href=""
-        target="_blank"
-        id="panoramaxOpen"
-        class="pnx-mv-btn"
-        title="Voir sur Panoramax">
-        <span class="glyphicon glyphicon-map-marker"></span>
-      </a>
-      <button id="panoramaxDrag" class="pnx-mv-btn" title="Déplacer la photo">
-        <span class="glyphicon glyphicon-move"></span>
-      </button>
-      <button id="panoramaxFullscreen" class="pnx-mv-btn" title="Agrandir la photo">
-        <span class="fas fa-expand"></span>
-      </button>
-      <button id="panoramaxClose" class="pnx-mv-btn" title="Fermer la photo">
-        <span class="glyphicon glyphicon-remove"></span>
-      </button>
-    </div>
-  </pnx-photo-viewer>
+<div id="panoramaxDragContainer">
+  <div id="panoramaxPhotoViewerContainer">
+    <pnx-photo-viewer
+      id="panoramaxPhotoViewer"
+      widgets="false"
+      url-parameters="false"
+      psv-options="{transitionDuration: 700, picturesNavigation: 'seq'}">
+      <pnx-widget-player size="md" slot="top-left" more="always"></pnx-widget-player>
+      <pnx-widget-legend light slot="bottom-right"></pnx-widget-legend>
+      <div class="pnx-mv-toolbar" slot="top-right">
+        <a
+          href=""
+          target="_blank"
+          id="panoramaxOpen"
+          class="pnx-mv-btn"
+          title="Voir sur Panoramax">
+          <span class="glyphicon glyphicon-map-marker"></span>
+        </a>
+        <button id="panoramaxDrag" class="pnx-mv-btn" title="Déplacer la photo">
+          <span class="glyphicon glyphicon-move"></span>
+        </button>
+        <button id="panoramaxFullscreen" class="pnx-mv-btn" title="Agrandir la photo">
+          <span class="fas fa-expand"></span>
+        </button>
+        <button id="panoramaxClose" class="pnx-mv-btn" title="Fermer la photo">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </div>
+    </pnx-photo-viewer>
+  </div>
 </div>

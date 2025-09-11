@@ -3,7 +3,9 @@
     position: absolute;
     top: 60px;
     right: 10px;
-    width: 75%;
+    width: calc(
+      100% - 280px
+    ); /* Width computed in JS as well for handling sidebar toggling */
     height: calc(100% - 80px);
     pointer-events: none;
     left: 10px;

@@ -125,6 +125,14 @@ var panoramax = (function () {
       _pnxViewerContainer.style.right = _config.picture_position?.right || "unset";
       _pnxViewerContainer.style.left = _config.picture_position?.left || "unset";
     }
+
+    // Sidebar toggling
+    if (window.innerWidth >= 768) {
+      _onSidebarToggle();
+      new ResizeObserver(_onSidebarToggle).observe(
+        document.getElementById("sidebar-wrapper")
+      );
+    }
   };
 
   var _loadTilesJSON = (userId = null) => {
@@ -487,6 +495,33 @@ var panoramax = (function () {
     if (visible || visible === false) {
       _pnxPicMarkerLayer.setVisible(visible);
     }
+  };
+
+  var _onSidebarToggleThrottler = null;
+
+  /**
+   * Handles drag area size change due to sidebar toggling.
+   */
+  var _onSidebarToggle = function () {
+    clearTimeout(_onSidebarToggleThrottler);
+    _onSidebarToggleThrottler = setTimeout(() => {
+      const wrapper = document.getElementById("wrapper");
+      const dragContainer = document.getElementById("panoramaxDragContainer");
+      if (wrapper.className.includes("toggled")) {
+        dragContainer.style.width = "calc(100% - 80px)";
+      } else {
+        dragContainer.style.width = "calc(100% - 280px)";
+
+        // If viewer goes outside of window, move to left
+        const offsets = _pnxViewerContainer.getBoundingClientRect();
+        if (offsets.right > document.body.clientWidth) {
+          _pnxViewerContainer.style.right = "10px";
+          _pnxViewerContainer.style.left = `${
+            document.body.clientWidth - 270 - offsets.width
+          }px`;
+        }
+      }
+    }, 50);
   };
 
   /**

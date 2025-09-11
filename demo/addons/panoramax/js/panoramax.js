@@ -395,6 +395,10 @@ var panoramax = (function () {
       }
       // Otherwise, launch API call to find best matching picture
       else {
+        if (_map.getView().getZoom() >= 14) {
+          searchOpts.sortby = "-ts";
+        }
+
         // Make sure to use appropriate filters as well
         if (_pnxMapFilters?.pic_type) {
           searchOpts.filter =
@@ -548,8 +552,8 @@ var panoramax = (function () {
    * @param {number[]} coordinate The map coordinates (in EPSG:4326)
    */
   var _coordsToBbox = function (coordinate) {
-    const view = _map.getView();
-    const size = (20 * 0.01) / Math.max(view.getZoom(), 1);
+    const z = _map.getView().getZoom();
+    const size = Math.min(0.1, Math.max(0.00005, 0.5 / Math.pow(2, z - 5)));
 
     return [
       coordinate[0] - size,

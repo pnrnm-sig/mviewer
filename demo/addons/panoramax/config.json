@@ -1,0 +1,27 @@
+{
+  "js": ["lib/index.js", "js/jquery.easyDrag.min.js", "js/panoramax.js"],
+  "html": "panoramax.html",
+  "css": "lib/index.css",
+  "target": "map",
+  "options": {
+    "panoramax": {
+      "url": "https://explore.panoramax.fr",
+      "picture_size": ["30%", "60%"],
+      "picture_position": {
+        "top": "0px",
+        "left": "310px",
+        "right": null,
+        "bottom": null
+      },
+      "map_position_offset": [-150, 0],
+      "show_filters": ["date", "picture_type", "quality_score", "user"],
+      "filters": {
+        "minDate": null,
+        "maxDate": null,
+        "pic_type": null,
+        "qualityscore": null,
+        "user": null
+      }
+    }
+  }
+}

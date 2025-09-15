@@ -504,6 +504,15 @@
       "level": "intermédiaire",
       "url_source": "../demo/multifilter/multifilter.xml",
       "url_demo": "../?config=demo/multifilter/multifilter.xml"
+    },
+    {
+      "id": "59",
+      "title": "Images de rues Panoramax",
+      "tags": "plugin, vector, photo",
+      "description": "Afficher et filtrer les photos de rues de Panoramax.",
+      "level": "simple",
+      "url_source": "../demo/panoramax.xml",
+      "url_demo": "../?config=demo/panoramax.xml"
     }
   ]
 }

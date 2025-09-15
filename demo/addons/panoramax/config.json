@@ -6,13 +6,14 @@
   "options": {
     "panoramax": {
       "url": "https://explore.panoramax.fr",
-      "picture_size": ["450px", "350px"],
+      "picture_size": ["30%", "60%"],
       "picture_position": {
         "top": "0px",
         "left": "310px",
         "right": null,
         "bottom": null
       },
+      "map_position_offset": [-150, 0],
       "show_filters": ["date", "picture_type", "quality_score", "user"],
       "filters": {
         "minDate": null,

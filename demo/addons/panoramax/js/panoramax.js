@@ -479,7 +479,12 @@ var panoramax = (function () {
     if (coords) {
       const mapcoords = _coordsFrom4326(coords);
       _pnxPicMarker.getGeometry().setCoordinates(mapcoords);
-      _map.getView().setCenter(mapcoords);
+      let pixel = _map.getPixelFromCoordinate(mapcoords);
+      if (_config.map_position_offset) {
+        pixel[0] += _config.map_position_offset?.[0];
+        pixel[1] += _config.map_position_offset?.[1];
+      }
+      _map.getView().setCenter(_map.getCoordinateFromPixel(pixel));
       _map.getView().setZoom(17);
     }
 

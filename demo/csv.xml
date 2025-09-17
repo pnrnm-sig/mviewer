@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application title="Mviewer CSV" mouseposition="false" logo="" help="mviewer_help.html" measuretools="true" exportpng="false" style="css/themes/wet_asphalt.css" togglealllayersfromtheme="true"/>
-    <mapoptions maxzoom="19" projection="EPSG:3857" center="695309,6222570" zoom="12" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
+    <mapoptions maxzoom="19" projection="EPSG:3857" center="345178.7959843283, 6056420.492982192" zoom="6" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 
     <baselayers style="default"><!-- style="default"||gallery" -->
         <baselayer  type="OSM" id="positron" label="Positron" title="CartoDb" thumbgallery="img/basemap/positron.png"
@@ -19,7 +19,8 @@
     </extensions>
     <themes>
         <theme name="csv"  collapsed="false" id="csv" icon="fas fa-users">
-            <layer type="import" id="csv1" name="Fichier CSV chargé au démarrage"  visible="false"
+            <layer type="import" id="csv1" name="Fichier CSV chargé au démarrage"
+                visible="false"
                 queryable="true"
                 vectorlegend="true"
                 geocoder="search"

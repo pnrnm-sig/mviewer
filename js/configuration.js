@@ -1017,22 +1017,7 @@ var configuration = (function () {
             } // end kml
 
             if (oLayer.type === "import") {
-              l = new ol.layer.Vector({
-                source: new ol.source.Vector(),
-              });
-              if (layer.projections) {
-                oLayer.projections = layer.projections;
-              }
-              if (layer.geocodingfields) {
-                oLayer.geocodingfields = layer.geocodingfields.split(",");
-              }
-              oLayer.geocoder = layer.geocoder || false;
-              oLayer.geocoderurl = layer.geocoderurl || false;
-              //                        oLayer.xfield = layer.xfield;
-              //                        oLayer.yfield = layer.yfield;
-              //allow transformation to mapProjection before map is initialized
-              oLayer.mapProjection = conf.mapoptions.projection;
-              mviewer.processLayer(oLayer, l);
+              l = _createVectorLayer(oLayer, layer);
             } // end import
 
             if (oLayer.type === "customlayer") {
@@ -1264,6 +1249,27 @@ var configuration = (function () {
     mviewer.processLayer(oLayer, l);
   };
 
+  const _createVectorLayer = (oLayer, layer) => {
+    console.log(oLayer);
+    const conf = configuration.getConfiguration();
+    const vectorLayer = new ol.layer.Vector({
+      source: new ol.source.Vector(),
+    });
+    if (layer.projections) {
+      oLayer.projections = layer.projections;
+    }
+    if (layer.geocodingfields) {
+      oLayer.geocodingfields = layer.geocodingfields.split(",");
+    }
+    oLayer.geocoder = layer.geocoder || false;
+    oLayer.geocoderurl = layer.geocoderurl || false;
+
+    // allow transformation to mapProjection before map is initialized
+    oLayer.mapProjection = conf.mapoptions.projection;
+    mviewer.processLayer(oLayer, vectorLayer);
+    return vectorLayer;
+  };
+
   return {
     parseXML: _parseXML,
     getExtensions: _getExtensions,
@@ -1303,5 +1309,6 @@ var configuration = (function () {
     },
     getEnvData: _getEnvData,
     renderEnvPath: _renderEnvPath,
+    createVectorLayer: _createVectorLayer,
   };
 })();

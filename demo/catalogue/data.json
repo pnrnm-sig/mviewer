@@ -3,7 +3,7 @@
     "logo": "",
     "searchable": true,
     "template": "./catalogue/template/catalogue.mst",
-    "searchKeys": ["tags","title"],
+    "searchKeys": ["tags", "title"],
     "placeholder": "Exemple: SLD",
     "inputMin": 2
   },

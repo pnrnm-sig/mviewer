@@ -3,7 +3,7 @@
     "logo": "",
     "searchable": true,
     "template": "./catalogue/template/catalogue.mst",
-    "searchKeys": ["tags"],
+    "searchKeys": ["tags", "title"],
     "placeholder": "Exemple: SLD",
     "inputMin": 2
   },
@@ -477,6 +477,42 @@
       "level": "intermédiaire",
       "url_source": "../demo/tms_datagouv.xml",
       "url_demo": "../?config=demo/tms_datagouv.xml"
+    },
+    {
+      "id": "56",
+      "title": "Ajouter des étiquettes à une couche (plugin)",
+      "tags": "label, étiquettes, vector, plugin",
+      "description": "Exemple d'application mobilisant le plugin label permettant d'ajouter des étiquettes à une couche vecteur ou cluster via un bouton dans la légende",
+      "level": "intermédiaire",
+      "url_source": "../demo/label.xml",
+      "url_demo": "../?config=demo/label.xml"
+    },
+    {
+      "id": "57",
+      "title": "Filtre sur une commune avec paramètre dans l'URL",
+      "tags": "vector, filtre",
+      "description": "Exemple d'application permettant de filtrer sur une commune via un paramètre dans l'URL.",
+      "level": "intermédiaire",
+      "url_source": "../demo/ma_commune/config.xml",
+      "url_demo": "../?config=demo/ma_commune/config.xml&commune=22266"
+    },
+    {
+      "id": "58",
+      "title": "Filtres multiples pour une couche WMS",
+      "tags": "WMS, filtre",
+      "description": "Exemple d'application utilisant plusieurs filtres liés sur une couche WMS.",
+      "level": "intermédiaire",
+      "url_source": "../demo/multifilter/multifilter.xml",
+      "url_demo": "../?config=demo/multifilter/multifilter.xml"
+    },
+    {
+      "id": "59",
+      "title": "Images de rues Panoramax",
+      "tags": "plugin, vector, photo",
+      "description": "Afficher et filtrer les photos de rues de Panoramax.",
+      "level": "simple",
+      "url_source": "../demo/panoramax.xml",
+      "url_demo": "../?config=demo/panoramax.xml"
     }
   ]
 }

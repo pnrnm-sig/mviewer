@@ -1,7 +1,7 @@
 <config>
     <application title="Démo ElasticSearch" logo="" help="demo/demo_els_help.html" showhelp="true" style="css/themes/nephritis.css" exportpng="false" measuretools="false" />
     <mapoptions maxzoom="20" projection="EPSG:3857" center="-307903.74898791354,6141345.088741366" zoom="7" />
-    <searchparameters localities="false" features="true" bbox="true"/>
+    <searchparameters localities="false" features="true" bbox="true" querymaponclick="true" closeafterclick="true" searchmaxzoomlevel="12"/>
 	<elasticsearchs>
 		<elasticsearch url="https://ows.region-bretagne.fr/els/lycee/_search" geometryfield="location" linkid="search_id" querymode="match" 
 			version="7.17" geometryformat="WKT" mouseoverfields="title" displayfields="title" layer="lycee"/>

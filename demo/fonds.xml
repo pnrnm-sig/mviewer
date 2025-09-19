@@ -33,7 +33,7 @@
         <baselayer  type="fake" id="fake" label="Carroyage" title="Carroyage" thumbgallery="img/basemap/grid.png" visible="false"  />
     </baselayers>     
     <proxy url=""/>
-    <olscompletion url="https://data.geopf.fr/geocodage/search/" type="ban" attribution="La recherche d'adresse est un service proposé par la geoplateforme IGN"/>
+    <olscompletion url="https://api-adresse.data.gouv.fr/search/" type="search" attribution="La recherche d'adresse est un service de l'IGN via les données de la BAN"/>
     <themes mini="true">
         <theme name="Formation"  id="formation" collapsed="true" icon="fas fa-graduation-cap">
             <layer id="lycee" name="Lycée" visible="true" tiled="false"
@@ -42,8 +42,8 @@
 				style=""
 				url="https://ows.region-bretagne.fr/geoserver/rb/wms"
 				attribution="Région Bretagne"
-				metadata="https://kartenn.region-bretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/99e78163-ce9a-4eee-9ea0-36afc2a53d25"
-                metadata-csw="https://kartenn.region-bretagne.fr/geonetwork/srv/eng/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID=99e78163-ce9a-4eee-9ea0-36afc2a53d25" />
+				metadata="https://geobretagne.fr/datahub/dataset/99e78163-ce9a-4eee-9ea0-36afc2a53d25"
+                metadata-csw="https://geobretagne.fr/geonetwork/srv/fre/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID=99e78163-ce9a-4eee-9ea0-36afc2a53d25" />
             <layer
                 id="pciign"
                 name="PCI"

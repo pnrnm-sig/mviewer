@@ -8,7 +8,7 @@ var configuration = (function () {
 
   // Mviewer version a saisir manuellement
 
-  var VERSION = "3.14";
+  var VERSION = "3.15";
 
   var _showhelp_startup = false;
 
@@ -416,11 +416,6 @@ var configuration = (function () {
     if (conf.application.home) {
       $(".mv-logo").parent().attr("href", conf.application.home);
     }
-    if (conf.application.mapfishurl) {
-      $("#georchestraForm").attr("action", conf.application.mapfishurl);
-    } else {
-      $("#shareToMapfish").hide();
-    }
 
     //map options
     _map = mviewer.initMap(conf.mapoptions);
@@ -807,13 +802,49 @@ var configuration = (function () {
             }
             //Mustache template
             if (layer.template && layer.template.url) {
-              $.get(mviewer.ajaxURL(layer.template.url, _proxy), function (template) {
-                oLayer.template = template;
-              });
-            } else if (layer.template) {
-              oLayer.template = layer.template;
+              /* if there are multiple languages, the user then has 2 possibilities:
+                    a - provide a template local file for each language,
+                        + ie: directory/template_fr.mst, directory/template_en.mst
+                        + the given url will be directory/template
+                        + ie: directory/template?lang=fr
+                        + the given url will be directory/template
+                */
+
+              /* to implement this i will add template_{lang} field to the layer object
+                in any case, the system will try to find all the templates and save them in the layer properties
+                
+                */
+
+              var languages = configuration.getLanguages();
+
+              // used jquery validator's url regex
+              const isUrl = (str) =>
+                str.match(
+                  /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+                ) !== null;
+              const uniqLang = configuration.getLang().length === 1;
+              if (uniqLang || layer.template.url.endsWith(".mst")) {
+                //NORMAL CASE, conditions: [mst extension at the end of the url]"
+                $.get(mviewer.ajaxURL(layer.template.url, _proxy), function (template) {
+                  oLayer.template = template;
+                });
+              } else {
+                languages.forEach(function (lang) {
+                  let correctUrl = isUrl(layer.template.url);
+                  var template_url_field_name = `template_${lang}`;
+                  let template_url = utils.getTemplateUrl(lang, layer, correctUrl);
+                  $.get(mviewer.ajaxURL(template_url, _proxy), function (template) {
+                    oLayer[template_url_field_name] = template;
+                  }).fail(() => {
+                    const msg = correctUrl
+                      ? "failed to load " + lang + " template through api"
+                      : "failed to load " + lang + " template through filesystem";
+                    console.log(msg);
+                  });
+                });
+              }
             } else {
-              oLayer.template = false;
+              oLayer.template = layer?.template || false;
             }
             oLayer.queryable = layer.queryable === "true" ? true : false;
             oLayer.exclusive = layer.exclusive === "true" ? true : false;
@@ -986,22 +1017,7 @@ var configuration = (function () {
             } // end kml
 
             if (oLayer.type === "import") {
-              l = new ol.layer.Vector({
-                source: new ol.source.Vector(),
-              });
-              if (layer.projections) {
-                oLayer.projections = layer.projections;
-              }
-              if (layer.geocodingfields) {
-                oLayer.geocodingfields = layer.geocodingfields.split(",");
-              }
-              oLayer.geocoder = layer.geocoder || false;
-              oLayer.geocoderurl = layer.geocoderurl || false;
-              //                        oLayer.xfield = layer.xfield;
-              //                        oLayer.yfield = layer.yfield;
-              //allow transformation to mapProjection before map is initialized
-              oLayer.mapProjection = conf.mapoptions.projection;
-              mviewer.processLayer(oLayer, l);
+              l = _createVectorLayer(oLayer, layer);
             } // end import
 
             if (oLayer.type === "customlayer") {
@@ -1233,6 +1249,27 @@ var configuration = (function () {
     mviewer.processLayer(oLayer, l);
   };
 
+  const _createVectorLayer = (oLayer, layer) => {
+    console.log(oLayer);
+    const conf = configuration.getConfiguration();
+    const vectorLayer = new ol.layer.Vector({
+      source: new ol.source.Vector(),
+    });
+    if (layer.projections) {
+      oLayer.projections = layer.projections;
+    }
+    if (layer.geocodingfields) {
+      oLayer.geocodingfields = layer.geocodingfields.split(",");
+    }
+    oLayer.geocoder = layer.geocoder || false;
+    oLayer.geocoderurl = layer.geocoderurl || false;
+
+    // allow transformation to mapProjection before map is initialized
+    oLayer.mapProjection = conf.mapoptions.projection;
+    mviewer.processLayer(oLayer, vectorLayer);
+    return vectorLayer;
+  };
+
   return {
     parseXML: _parseXML,
     getExtensions: _getExtensions,
@@ -1272,5 +1309,6 @@ var configuration = (function () {
     },
     getEnvData: _getEnvData,
     renderEnvPath: _renderEnvPath,
+    createVectorLayer: _createVectorLayer,
   };
 })();

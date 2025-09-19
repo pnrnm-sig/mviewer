@@ -63,6 +63,8 @@ Il faut pour cela ajouter ceci dans votre XML :
         <extension type="component" id="layerfilter" path="demo/addons"/>
     </extensions>
 
+Plus d’informations sur la configuration : https://github.com/mviewer/mviewer/blob/master/demo/addons/layerfilter/README.md
+
 Extension plein écran
 --------------------
 
@@ -110,7 +112,13 @@ Cette extension permet d'ajouter une couche dans votre mviewer. Attention, la co
               :alt: Calcul isochrone
               :align: center
 
-| Elle fonctionne avec les formats CSV et Shapefile (via un ZIP).
+
+| Elle fonctionne avec les formats GeoJSON, CSV et Shapefile (via un ZIP).
+
+| Pour le GeoJSON, il sera nécessaire d'utiliser la projection EPSG:4326. La fenêtre modal pour le CSV permettant de choisir la projeciton.
+
+| Pour le CSV, une fenêtre modale vous permettra de configurer une étape de géocodage ou bien une étape d'affichage simple nécessiant de préciser les champs utiles et la projection.
+
 | Il faut pour cela ajouter l'appel à l'extension dans votre XML :
 
 .. code-block:: xml
@@ -459,3 +467,22 @@ Il est essentiel de renseigner le même id que précédemment pour assurer le bo
 **Personnalisation de l'extension**
 
 Pour plus d'informations sur la personnalisation de cette extension, veuillez consulter la documentation complète à l'adresse suivante : https://github.com/mviewer/mviewer/tree/master/demo/addons/trackview/readme.md
+
+Extension streetview
+--------------------
+
+Cette extension permet de visualiser l'environnement réel à partir de coordonnées comme ceci :
+
+.. image:: ../_images/dev/config_extension/streetview.png
+              :alt: Vue panoramique - Google Street View
+              :align: center
+
+Pour cela, il suffit d’ajouter ceci dans votre fichier XML :
+
+.. code-block:: xml
+
+    <extensions>    
+        <extension type="component" id="streetview" path="demo/addons"/>
+    </extensions>
+
+Pour plus d'informations sur le fonctionnement de cette extension, veuillez consulter la documentation complète à l'adresse suivante : https://github.com/mviewer/mviewer/tree/develop/demo/addons/streetview/README.md

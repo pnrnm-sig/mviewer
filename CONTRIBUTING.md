@@ -16,7 +16,7 @@ Initialement développé à la Région Bretagne en 2014, l'outil mviewer bénéf
 
 mviewer est un outil accessible par tous et pour tous facilitant la création et la diffusion de cartes thématiques à partir de données disponibles.
 Il est basé sur des principes :
-   * Le respect des règles de l'Open Source : licence ouverte GPLv3, transparence...
+   * Le respect des règles de l'Open Source : licence ouverte GNU General Public License v3.0, transparence...
    * Une installation simple
    * L’utilisation de technologies répandues, simples, matures, fiables et maintenables
    * Un code source générique
@@ -53,13 +53,13 @@ Les missions des membres du PSC :
    * assister aux réunions du comité de pilotage
    * échanger, émettre des avis...
    * participer au temps forts : rencontres mviewer, webinaires...
-   * animer la communauté : support des utilisateur via le forum matrix, contributions au code... en fonction de ses compétences, maintien du site internet
+   * animer la communauté : support des utilisateurs via le forum matrix, contributions au code... en fonction de ses compétences, maintien du site internet
 
 Toute personne qui le souhaite et qui correspond à la définition d’un membre du comité de pilotage présentée précédemment, peut se porter candidate pour intégrer le comité de pilotage.
 L'intégration d'un nouveau membre au PSC s'effectue suite à un échange préalable durant lequel le candidat expose ses motivations et s'engage à respecter les principes de la présente charte.
 La décision finale sera notifiée à la personne candidate après un vote à la majorité réalisé par les membres déjà en place.
 Tout refus doit pouvoir être expliqué en toute transparence et dans le respect des principes décrits dans cette charte.
-Tout membre peut quitter définitivement le PSC librement. Il ne peut toutefois déléguer sa place à une autre personne qui devra se porter candidat selon le processus décrit précédemment. 
+Tout membre peut quitter définitivement le PSC librement. Il ne peut toutefois déléguer sa place à une autre personne qui devra se porter candidate selon le processus décrit précédemment. 
 La place d'un membre du PSC dont la participation au projet est jugé insuffisante pourra être remise en cause.
 
 ### Contribution au code source
@@ -86,6 +86,7 @@ Le code source des outils mviewer est hébergé sur GitHub et librement accessib
 
 La documentation associée est également accessible librement :
    * [mviewer](https://mviewerdoc.readthedocs.io/fr/stable/)
+   * [démo](https://kartenn.region-bretagne.fr/kartoviz/demo/)
    * [mviewerstudio](https://mviewerstudio.readthedocs.io/fr/stable/)
 
 Le site internet [https://mviewer.github.io](https://mviewer.github.io) permet la diffusion d'informations à un plus large public.

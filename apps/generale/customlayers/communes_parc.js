@@ -26,7 +26,7 @@
               }) 
             break;
           // Si la valeur de statutparc est égale à Ville porte
-          case "Ville porte":
+          case "Ville partenaire":
             // Appliquer le style ci-dessous
             stl = new ol.style.Style({
               stroke: new ol.style.Stroke({

@@ -1,7 +1,7 @@
 {{! Ce qui est affiché dans le panneau d'information... }}
 {{#features}}
 	<li id="{{type}}" class="inventaire item scrollbar-hidden" style="width:270px;">
-		<h3 class="title-feature">Périmètre d'étude {{periodes}}</h3> <!-- Titre du panneau d'information : nom du partenaire -->
+		<h3 class="title-feature">Périmètre de classement potentiel {{periodes}}</h3> <!-- Titre du panneau d'information : nom du partenaire -->
 
 		<!--Chiffre clé 1-->
 		<div class="row numberkey" style="height:auto;">

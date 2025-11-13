@@ -163,7 +163,7 @@
         </layer>  
     </theme>
     <theme id="theme-20220510132913" name="Périmètre du Parc" collapsed="true" icon="fas fa-layer-group"> 
-        <!-- Couche permettant l'affichage du périmètre du Parc actuel -->
+        <!-- Couche permettant l'affichage du périmètre du Parc actuel du Parc-->
         <layer 
             id="perimetreparc"
             name="Périmètre actuel"
@@ -174,6 +174,19 @@
             infoformat="text/html"
             queryable="false"
             toplayer="true">  
+        </layer> 
+        <!-- Couche permettant l'affichage du périmètre du Parc d'étude de 2024 à 2039 du Parc-->
+        <layer 
+            id="perimetre2024"
+            name="Périmètre de classement potentiel 2024 - 2039"
+            type="wms"
+            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
+            visible="false"
+            style="perimetre"
+            infoformat="application/vnd.ogc.gml"
+            queryable="true"
+            toplayer="true">  
+            <template url="apps/generale/templates/perimetre2024.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage du périmètre du Géoparc -->
         <layer 
@@ -187,19 +200,6 @@
             queryable="true"
             toplayer="true">  
             <template url="apps/generale/templates/perimetregeoparc.mst"></template> 
-        </layer> 
-        <!-- Couche permettant l'affichage du périmètre d"étude de 2024 à 2039 du Parc -->
-        <layer 
-            id="perimetre2024"
-            name="Périmètre d'étude 2024 - 2039"
-            type="wms"
-            url="https://observatoire.parc-naturel-normandie-maine.fr/geoserver/carteetdonnees/ows?"
-            visible="false"
-            style="hachures"
-            infoformat="application/vnd.ogc.gml"
-            queryable="true"
-            exclusive="false"> 
-            <template url="apps/generale/templates/perimetre2024.mst"></template> 
         </layer> 
         <!-- Couche permettant l'affichage du périmètre actuel de 2009 à 2023 du Parc -->
         <layer 

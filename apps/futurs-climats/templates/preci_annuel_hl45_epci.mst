@@ -9,13 +9,13 @@
 		<!-- Moyennes cumul précipitations annuelles -->
 		<h4 class="subtitle-feature">Cumul précipitations annuelles</h4>
 		<div class="item">
-			<span class="number-mean">{{hm45_an_mean}} mm</span>
+			<span class="number-mean">{{hl45_an_mean}} mm</span>
 			<span class="caption">Cumul moyen
 			  <div class="tooltipdef">Donnée désagrégée</div></span>
 		</div>
 		<div class="subitem">
 			<span class="caption">
-				<div class="number-year">{{hm45_an_difmean}} mm de différence</div>
+				<div class="number-year">{{hl45_an_difmean}} mm de différence</div>
 				<div class="tooltipyear">par rapport à la période de référence</div>
 			</span>
 		</div>
@@ -44,8 +44,8 @@
           		<div id="iconnumber1"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{hm45_an_sanspluie}} jours<div class="up">
-  <p>+{{hm45_an_arr1mm}}
+	          <div class="number-feature">{{hl45_an_sanspluie}} jours<div class="up">
+  <p>+{{hl45_an_arr1mm}}
     </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
 </div></div>
 	          <div class="titlenumber-feature">sans pluie par an
@@ -60,8 +60,8 @@
           		<div id="iconnumber2"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{hm45_an_norpn20mm}} jours<div class="up">
-  <p>+{{hm45_an_apn20mm}}
+	          <div class="number-feature">{{hl45_an_norpn20mm}} jours<div class="up">
+  <p>+{{hl45_an_apn20mm}}
     </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
 </div></div>
 	          <div class="titlenumber-feature">de fortes pluies par an
@@ -75,8 +75,8 @@
           		<div id="iconnumber3"></div>
           	</div>
 	        <div class="col-sm-8">
-	          <div class="number-feature">{{hm45_an_norpxcdd}} jours<div class="up">
-  <p>+{{hm45_an_apxcdd}}
+	          <div class="number-feature">{{hl45_an_norpxcdd}} jours<div class="up">
+  <p>+{{hl45_an_apxcdd}}
     </p><span class="tooltiptext">Hausse par rapport à la période de référence</span>
 </div></div>
 	          <div class="titlenumber-feature">de période de sécheresse par an

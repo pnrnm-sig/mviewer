@@ -144,6 +144,21 @@
 						</td>
 					</tr>
 			</tbody>
+			<tbody>
+					<tr>
+						<td>
+							<b>2024-2025</b>
+						</td>
+						<td>
+							{{#ml_haie_2024_2025}}
+								{{ml_haie_2024_2025}} ml
+							{{/ml_haie_2024_2025}}
+							{{^ml_haie_2024_2025}}
+								0 ml
+							{{/ml_haie_2024_2025}}
+						</td>
+					</tr>
+			</tbody>
 		</table>
 	
 	</li>
